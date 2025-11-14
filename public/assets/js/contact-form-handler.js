@@ -58,7 +58,8 @@
                 budget_range: budgetInput.value || null,
                 services: selectedServices.length > 0 ? selectedServices : null,
                 message: messageInput.value.trim(),
-                contact_type: contactTypeInput.value || null
+                contact_type: contactTypeInput.value || null,
+                submitted_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             };
 
             try {
@@ -66,7 +67,7 @@
                 const response = await fetch('/api/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ table: 'connect.inquiries', data: formData }),
+                    body: JSON.stringify({ table: 'contact_inquiries', data: formData }),
                     timeout: 10000 // 10 second timeout
                 });
                 

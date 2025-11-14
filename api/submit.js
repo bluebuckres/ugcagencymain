@@ -11,7 +11,7 @@ const supabase = createClient(
 );
 
 // Whitelist of allowed tables for security
-const ALLOWED_TABLES = ['connect.inquiries', 'creator_applications'];
+const ALLOWED_TABLES = ['contact_inquiries', 'creator_applications'];
 
 export default async function handler(req, res) {
   // Set CORS headers
