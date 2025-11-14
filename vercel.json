@@ -1,11 +1,21 @@
 {
   "version": 2,
   "public": false,
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
   "buildCommand": null,
   "outputDirectory": "public",
   "installCommand": null,
+  "routes": [
+    {
+      "src": "/blog/.*",
+      "dest": "/blog/$1"
+    },
+    {
+      "src": "/public/.*",
+      "dest": "/public/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -32,7 +42,8 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; connect-src 'self' https://*.supabase.co https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
+          "value": "connect-src 'self' https://*.supabase.co;"
+        
         }
       ]
     },
