@@ -62,12 +62,20 @@
             };
 
             try {
-                // TODO: API submission will be enabled after Supabase env vars are configured
-                // For now, show success message
-                console.log('Application data ready (API submission disabled):', formData);
-                
-                // Simulate successful submission
-                // In production, this will submit to /api/submit when env vars are set
+                // Submit via serverless proxy
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ table: 'creator_applications', data: formData }),
+                    timeout: 10000
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                if (result.error) throw new Error(result.error);
 
                 // Success
                 console.log('Creator application submitted successfully:', formData);
