@@ -542,8 +542,8 @@
                     </div>
                 </div>
                 
-                <form class="application-form" id="creatorApplicationForm">
-                    <!-- Supabase will handle form submission -->
+                <form class="application-form" name="creator-application" method="POST" netlify netlify-honeypot="website">
+                    <!-- Netlify form handling -->
                     <!-- Honeypot field (hidden from users, catches bots) -->
                     <input type="text" name="website" style="display: none; position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
                     
@@ -822,8 +822,5 @@
             }
         });
     </script>
-    
-    <!-- Creator Application Form Handler -->
-    <script src="assets/js/creator-application-handler.js" defer></script>
 </body>
 </html>
