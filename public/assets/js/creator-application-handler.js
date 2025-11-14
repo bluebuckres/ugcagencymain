@@ -42,22 +42,28 @@
             const emailInput = form.querySelector('input[name="email"]');
             const phoneInput = form.querySelector('input[name="phone"]');
             const cityInput = form.querySelector('input[name="city"]');
-            const instagramInput = form.querySelector('input[name="instagram"]');
-            const experienceInput = form.querySelector('select[name="experience"]');
-            const categoriesCheckboxes = form.querySelectorAll('input[name="categories"]:checked');
-            const bioInput = form.querySelector('textarea[name="bio"]');
-
-            const selectedCategories = Array.from(categoriesCheckboxes).map(cb => cb.value);
+            const platformInput = form.querySelector('select[name="platform"]');
+            const handleInput = form.querySelector('input[name="handle"]');
+            const experienceInput = form.querySelector('textarea[name="experience"]');
+            const interestsInput = form.querySelector('textarea[name="interests"]');
+            const instagramUrlInput = form.querySelector('input[name="instagram_url"]');
+            const youtubeUrlInput = form.querySelector('input[name="youtube_url"]');
+            const portfolioLinkInput = form.querySelector('input[name="portfolio_link"]');
+            const additionalLinksInput = form.querySelector('textarea[name="additional_links"]');
 
             const formData = {
                 full_name: fullNameInput.value.trim(),
                 email: emailInput.value.trim(),
                 phone: phoneInput.value.trim() || null,
                 city: cityInput.value.trim(),
-                instagram_handle: instagramInput.value.trim() || null,
-                experience_level: experienceInput.value || null,
-                content_categories: selectedCategories.length > 0 ? selectedCategories : null,
-                bio: bioInput.value.trim() || null,
+                platform: platformInput.value || null,
+                social_handle: handleInput.value.trim() || null,
+                experience: experienceInput.value.trim() || null,
+                interests: interestsInput.value.trim(),
+                instagram_url: instagramUrlInput.value.trim() || null,
+                youtube_url: youtubeUrlInput.value.trim() || null,
+                portfolio_link: portfolioLinkInput.value.trim(),
+                additional_links: additionalLinksInput.value.trim() || null,
                 submitted_at: new Date().toISOString()
             };
 
@@ -84,8 +90,8 @@
                 // Track event if analytics available
                 if (window.ugcAnalytics && typeof window.ugcAnalytics.trackEvent === 'function') {
                     window.ugcAnalytics.trackEvent('creator_application_submitted', {
-                        categories_count: selectedCategories.length,
-                        experience_level: formData.experience_level
+                        platform: formData.platform,
+                        experience: formData.experience
                     });
                 }
 
