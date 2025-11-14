@@ -1,0 +1,62 @@
+{
+  "name": "makeugc-website",
+  "version": "2.0.0",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.4"
+  },
+  "description": "Professional UGC Agency Website - Beautifully Designed & Analytics-Enabled",
+  "main": "index.html",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "dev": "./dev-server.sh 8000",
+    "dev:alt": "./dev-server.sh 8001", 
+    "dev:8080": "./dev-server.sh 8080",
+    "start": "./dev-server.sh 8080",
+    "preview": "./dev-server.sh 3000",
+    "analytics:setup": "./deployment/scripts/setup-analytics.sh",
+    "analytics:start": "cd deployment/docker && docker-compose up -d",
+    "analytics:stop": "cd deployment/docker && docker-compose down",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "deploy:netlify": "netlify deploy --prod --dir=./public",
+    "lint": "echo 'Linting HTML/CSS/JS files...'",
+    "format": "echo 'Formatting code...'",
+    "test": "echo 'Running tests...'",
+    "clean": "echo 'Cleaning build artifacts...'"
+  },
+  "keywords": [
+    "ugc-agency",
+    "user-generated-content", 
+    "content-marketing",
+    "creator-economy",
+    "digital-marketing",
+    "brand-partnerships",
+    "social-media-marketing",
+    "content-creation",
+    "influencer-marketing"
+  ],
+  "author": {
+    "name": "MakeUGC Team",
+    "email": "contact@makeugc.in",
+    "url": "https://makeugc.in"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makeugc/website.git"
+  },
+  "homepage": "https://makeugc.in",
+  "bugs": {
+    "url": "https://github.com/makeugc/website/issues",
+    "email": "contact@makeugc.in"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

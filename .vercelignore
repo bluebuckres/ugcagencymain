@@ -1,0 +1,54 @@
+# Vercel deployment ignore patterns
+# Only /public directory will be deployed
+
+# Documentation (not needed for deployment)
+docs/
+*.md
+!README.md
+Blog/
+
+# Development files
+.env.example
+.editorconfig
+DEPLOY.sh
+QUICK_DEPLOY_COMMANDS.sh
+
+# Git
+.git/
+.gitignore
+
+# Analytics & Deployment configs (handled separately)
+analytics/
+deployment/
+scripts/
+
+# Database
+supabase-tables.sql
+
+# Temporary & system files
+.DS_Store
+*.log
+*.tmp
+node_modules/
+_redirects
+netlify.toml
+
+# Scripts
+scripts/
+deployment/scripts/
+
+*.tmp
+*.temp
+.cache/
+
+# Blog source files (keep only HTML)
+Blog/*.txt
+
+# Config directories (empty)
+config/
+src/
+umami/
+
+# Development tools
+.editorconfig
+.env.example
