@@ -1,7 +1,7 @@
 {
   "version": 2,
   "public": false,
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "buildCommand": null,
   "outputDirectory": "public",
@@ -32,8 +32,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "connect-src 'self' https://*.supabase.co;"
-        
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; connect-src 'self' https://*.supabase.co https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
         }
       ]
     },
