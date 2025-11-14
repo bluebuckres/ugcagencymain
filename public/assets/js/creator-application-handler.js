@@ -62,19 +62,9 @@
             };
 
             try {
-                // SPAM CHECK 2: Rate limiting (prevent duplicate submissions)
-                const email = emailInput.value.trim();
-                const rateCheckResponse = await fetch('/api/check-rate-limit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, table: 'creator_applications' })
-                });
-
-                const rateCheckResult = await rateCheckResponse.json();
-                if (rateCheckResult.blocked) {
-                    throw new Error(rateCheckResult.message || 'Please wait before submitting another application');
-                }
-
+                // TODO: Rate limiting will be enabled after API configuration
+                // For now, honeypot field provides basic spam protection
+                
                 // Submit via serverless proxy
                 const response = await fetch('/api/submit', {
                     method: 'POST',
