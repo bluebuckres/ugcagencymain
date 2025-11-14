@@ -56,13 +56,13 @@
                 email: emailInput.value.trim(),
                 phone: phoneInput.value.trim() || null,
                 city: cityInput.value.trim(),
-                platform: platformInput.value || null,
+                primary_platform: platformInput.value || null,
                 social_handle: handleInput.value.trim() || null,
-                experience: experienceInput.value.trim() || null,
-                interests: interestsInput.value.trim(),
+                content_experience: experienceInput.value.trim() || null,
+                niches: interestsInput.value.trim(),
                 instagram_url: instagramUrlInput.value.trim() || null,
                 youtube_url: youtubeUrlInput.value.trim() || null,
-                portfolio_link: portfolioLinkInput.value.trim(),
+                portfolio_video_url: portfolioLinkInput.value.trim(),
                 additional_links: additionalLinksInput.value.trim() || null,
                 submitted_at: new Date().toISOString()
             };
@@ -90,8 +90,8 @@
                 // Track event if analytics available
                 if (window.ugcAnalytics && typeof window.ugcAnalytics.trackEvent === 'function') {
                     window.ugcAnalytics.trackEvent('creator_application_submitted', {
-                        platform: formData.platform,
-                        experience: formData.experience
+                        platform: formData.primary_platform,
+                        city: formData.city
                     });
                 }
 
