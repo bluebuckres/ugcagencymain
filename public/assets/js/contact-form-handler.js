@@ -58,8 +58,7 @@
                 budget_range: budgetInput.value || null,
                 services: selectedServices.length > 0 ? selectedServices : null,
                 message: messageInput.value.trim(),
-                contact_type: contactTypeInput.value || null,
-                submitted_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+                contact_type: contactTypeInput.value || null
             };
 
             try {
