@@ -65,15 +65,24 @@
             try {
                 // SPAM CHECK 2: Rate limiting (prevent duplicate submissions)
                 const email = emailInput.value.trim();
-                const rateCheckResponse = await fetch('/api/check-rate-limit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, table: 'connect.inquiries' })
-                });
-                
-                const rateCheckResult = await rateCheckResponse.json();
-                if (rateCheckResult.blocked) {
-                    throw new Error(rateCheckResult.message || 'Please wait before submitting another inquiry');
+                try {
+                    const rateCheckResponse = await fetch('/api/check-rate-limit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, table: 'connect.inquiries' })
+                    });
+                    
+                    if (rateCheckResponse.ok) {
+                        const rateCheckResult = await rateCheckResponse.json();
+                        if (rateCheckResult.blocked) {
+                            throw new Error(rateCheckResult.message || 'Please wait before submitting another inquiry');
+                        }
+                    } else {
+                        console.warn('Rate limit check failed, proceeding with submission');
+                    }
+                } catch (rateCheckError) {
+                    console.warn('Rate limit check error, proceeding:', rateCheckError);
+                    // Continue with submission even if rate check fails
                 }
 
                 // Submit via serverless proxy

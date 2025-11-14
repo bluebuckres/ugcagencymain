@@ -4,10 +4,16 @@ import { createClient } from '@supabase/supabase-js';
 const RATE_LIMIT_WINDOW = 3600000; // 1 hour in milliseconds
 const MAX_SUBMISSIONS_PER_HOUR = 3;
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+// Initialize Supabase with validation
+let supabase;
+try {
+  supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+} catch (err) {
+  console.error('Supabase initialization error:', err);
+}
 
 // Whitelist of allowed tables
 const ALLOWED_TABLES = ['connect.inquiries', 'creator_applications'];
@@ -17,6 +23,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -24,6 +31,12 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Validate Supabase is initialized
+  if (!supabase || !process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.error('Supabase not configured');
+    return res.status(500).json({ error: 'Service unavailable' });
   }
 
   const { email, table } = req.body || {};
