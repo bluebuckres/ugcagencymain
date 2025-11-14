@@ -64,7 +64,7 @@
                 youtube_url: youtubeUrlInput.value.trim() || null,
                 portfolio_video_url: portfolioLinkInput.value.trim(),
                 additional_links: additionalLinksInput.value.trim() || null,
-                submitted_at: new Date().toISOString()
+                submitted_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             };
 
             try {
