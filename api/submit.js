@@ -45,12 +45,19 @@ export default async function handler(req, res) {
   res.setHeader('X-RateLimit-Remaining', '99');
 
   try {
+    console.log(`Inserting into ${table}:`, JSON.stringify(data, null, 2));
     const { error } = await supabase.from(table).insert([data]);
-    if (error) throw error;
+    if (error) {
+      console.error(`Supabase error for table ${table}:`, error);
+      throw error;
+    }
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Supabase insert error:', err);
+    // Log the error details for debugging
+    const errorMessage = err.message || 'Unknown error';
+    console.error('Error details:', errorMessage);
     // Don't expose internal error details to client
-    return res.status(500).json({ error: 'Failed to process request' });
+    return res.status(500).json({ error: 'Failed to process request', details: errorMessage });
   }
 }

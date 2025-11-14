@@ -59,7 +59,7 @@
                 if (error) throw new Error(error);
 
                 // Success! Show success message
-                console.log('Application submitted successfully:', data);
+                console.log('Application submitted successfully:', formData);
                 showSuccess();
                 
                 // Track event if analytics is available
