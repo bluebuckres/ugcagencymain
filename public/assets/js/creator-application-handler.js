@@ -103,7 +103,7 @@
             } catch (error) {
                 console.error('Error submitting creator application:', error);
                 
-                let errorMessage = 'Something went wrong! Please try again or contact us at contact@makeugc.in';
+                let errorMessage = 'Something went wrong! Please try again or contact us at connect@makeugc.in';
                 
                 if (error.message.includes('network')) {
                     errorMessage = 'Internet connection issue. Please check your connection.';

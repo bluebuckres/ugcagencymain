@@ -47,7 +47,7 @@
         "@type": "ContactPoint",
         "telephone": "+91-9239161632",
         "contactType": "Customer Service",
-        "email": "contact@makeugc.in",
+        "email": "connect@makeugc.in",
         "availableLanguage": ["English", "Hindi"],
         "areaServed": "IN"
       },
@@ -563,25 +563,64 @@
             border-radius: 50%;
         }
 
+        .testimonials-grid {
+            display: flex;
+            gap: 0;
+            margin-top: 2rem;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .testimonials-wrapper {
+            display: flex;
+            gap: 0;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        .testimonials-wrapper:hover {
+            animation-play-state: paused;
+        }
+
         .testimonial-card {
-            max-width: 900px;
-            margin: 0 auto;
             background: white;
-            padding: 4rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             position: relative;
             border-left: 5px solid var(--color-sage);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            flex-shrink: 0;
+            min-height: 320px;
+            margin: 0 1rem;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+        .testimonial-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
         }
 
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: 2rem;
-            left: 2rem;
-            font-size: 6rem;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 3rem;
             color: var(--color-sage);
-            opacity: 0.15;
+            opacity: 0.1;
             font-family: Georgia, serif;
             line-height: 1;
         }
@@ -607,37 +646,39 @@
         }
 
         blockquote {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             font-style: normal;
             color: var(--color-charcoal);
             font-weight: 400;
             position: relative;
             z-index: 1;
+            flex-grow: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--color-cream);
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 154, 122, 0.15);
+            margin-top: auto;
         }
 
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--color-sage) 0%, #7a9278 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(139, 161, 137, 0.3);
+            box-shadow: 0 2px 8px rgba(139, 161, 137, 0.2);
+            flex-shrink: 0;
         }
 
         .author-info {
@@ -647,14 +688,15 @@
         .author-name {
             font-weight: 700;
             color: var(--color-charcoal);
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
         }
 
         .author-title {
-            color: var(--color-sage);
-            font-size: 0.95rem;
+            color: var(--color-charcoal);
+            font-size: 0.8rem;
             font-weight: 500;
+            opacity: 0.7;
         }
 
         /* Results Section */
@@ -1345,6 +1387,43 @@
                 font-size: 0.85rem !important;
             }
         }
+
+        /* Enhanced Download Button Styling */
+        .btn-download {
+            background: linear-gradient(135deg, #8B9A7A 0%, #7A8471 100%) !important;
+            border-radius: 12px !important;
+            min-width: 280px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(135deg, #7A8471 0%, #6B7560 100%) !important;
+            box-shadow: 0 12px 30px rgba(156, 175, 136, 0.4) !important;
+            transform: translateY(-3px) !important;
+        }
+
+        .btn-download:active {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 15px rgba(156, 175, 136, 0.3) !important;
+        }
+
+        .btn-download svg {
+            animation: slideDown 0.6s ease-in-out infinite;
+        }
+
+        @keyframes slideDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(4px);
+            }
+        }
+
+        .btn-download:hover svg {
+            animation: slideDown 0.4s ease-in-out infinite;
+        }
     </style>
 
     <!-- Professional Umami Analytics Integration -->
@@ -1567,23 +1646,131 @@
     <!-- Testimonial Section -->
     <section class="testimonial-section">
         <div class="container">
-            <div class="testimonial-card animate-on-scroll">
-                <div class="stars">
-                    <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                    <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                </div>
-                <blockquote>
-                    The UGC content from this team outperformed our traditional ads by 340%. Within 3 months, our ROAS went from 2.1x to 7.9x. The authentic approach just works.
-                </blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">AS</div>
-                    <div class="author-info">
-                        <div class="author-name">Amit Sagar</div>
-                        <div class="author-title">Senior Manager, Meta & E-Fitness - Decatry</div>
+            <h2 style="text-align: center; margin-bottom: 0.5rem; font-size: 2.5rem;">Real Stories, Real Results</h2>
+            <p style="text-align: center; color: var(--color-charcoal); opacity: 0.75; margin-bottom: 3rem; font-size: 1.1rem;">Founders and marketers who transformed their business with UGC</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonials-wrapper">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
                     </div>
+                    <blockquote>
+                        Honestly? I was burning ₹40k monthly on studio shoots that weren't converting. My CA was getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month itself, our CPA dropped from ₹850 to ₹320. I wish I'd found them earlier. Would've saved lakhs.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AV</div>
+                        <div class="author-info">
+                            <div class="author-name">Amit Verma</div>
+                            <div class="author-title">Founder, GlowNaturals</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <blockquote>
+                        We launched in April and by June, I was almost ready to shut down. Ads weren't working, nobody trusted us. Anjali Desai at MakeUGC.in suggested real people reviewing our products. Game changer. Sales picked up in 3 weeks. Sometimes one decision changes everything.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RM</div>
+                        <div class="author-info">
+                            <div class="author-name">Rohan Malhotra</div>
+                            <div class="author-title">Co-founder, FitFuel Nutrition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <blockquote>
+                        My biggest mistake? Spending 2 months trying to create content in-house. My team hated being on camera, videos looked forced. Found MakeUGC.in through a founder group. Kavya Iyer got us 15 videos in 10 days. Not all were perfect, maybe 12 worked well, but that's fine. We finally had content that didn't look like an ad.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">NA</div>
+                        <div class="author-info">
+                            <div class="author-name">Neha Agarwal</div>
+                            <div class="author-title">Founder, ThreadsIndia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <blockquote>
+                        Meta was rejecting our ads left and right. Too polished, they said. I didn't get it until Sneha Patel from MakeUGC.in explained - people want real, not perfect. Their creators made our ayurvedic products feel trustworthy. Approval rate went from 40% to 95%. Simple change, massive impact.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PK</div>
+                        <div class="author-info">
+                            <div class="author-name">Priya Krishnan</div>
+                            <div class="author-title">Marketing Head, VedaRoots</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <blockquote>
+                        I'll be honest - I thought UGC was just a trend. Spent 6 months doing influencer collabs that gave zero ROI. Then a friend mentioned MakeUGC.in. Meera Reddy explained the difference. These aren't influencers, they're customers. Our retention rate doubled because people finally believed in us. Took me too long to figure this out.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KK</div>
+                        <div class="author-info">
+                            <div class="author-name">Karan Kapoor</div>
+                            <div class="author-title">CEO, HomeSaga</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate first card for seamless loop -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    </div>
+                    <blockquote>
+                        Honestly? I was burning ₹40k monthly on studio shoots that weren't converting. My CA was getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month itself, our CPA dropped from ₹850 to ₹320. I wish I'd found them earlier. Would've saved lakhs.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AV</div>
+                        <div class="author-info">
+                            <div class="author-name">Amit Verma</div>
+                            <div class="author-title">Founder, GlowNaturals</div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -1638,7 +1825,16 @@
                 <form class="resource-form" id="resourceForm">
                     <input type="email" placeholder="Enter your email" required>
                     <input type="text" placeholder="Company name" required>
-                    <button type="submit" class="btn-primary">Download Free Template</button>
+                    <button type="submit" class="btn-primary btn-download" style="font-size: 1.1rem; padding: 16px 40px; font-weight: 600; letter-spacing: 0.5px; box-shadow: 0 8px 20px rgba(156, 175, 136, 0.3); border: none; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <span style="display: inline-flex; align-items: center; gap: 8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block;">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Free Template
+                        </span>
+                    </button>
                 </form>
 
                 <p class="form-note">Join 1,200+ brands using our free resources</p>
@@ -1836,7 +2032,7 @@
                     </div>
                     <p>MakeUGC.in<br>
                     3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India</p>
-                    <p>contact@makeugc.in<br>
+                    <p>connect@makeugc.in<br>
                     Mobile: +91 9239161632</p>
                 </div>
                 
@@ -2110,6 +2306,40 @@
                 opacity: 1;
             }
         }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            99.9% {
+                transform: translateX(calc(-532px * 5));
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
     </style>
 
 
@@ -2182,7 +2412,27 @@
                     window.UMAMI_CONFIG.trackingEnabled = false;
                 }
             }
+
+            // Initialize infinite carousel scroll
+            initCarouselScroll();
         });
+
+        function initCarouselScroll() {
+            const wrapper = document.querySelector('.testimonials-wrapper');
+            if (!wrapper) return;
+
+            // Get the width of one card + gap
+            const cardWidth = 520; // 500px card + 20px gap
+            const totalWidth = cardWidth * 5; // 5 original cards
+
+            // Restart animation when it ends
+            wrapper.addEventListener('animationiteration', function() {
+                // Animation will loop naturally with infinite
+            }, false);
+
+            // Smooth infinite scroll using CSS animation
+            // The animation will continuously scroll through all cards
+        }
     </script>
 </body>
 </html>

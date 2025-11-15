@@ -48,12 +48,16 @@
   ],
   "rewrites": [
     {
-      "source": "/blog/:path",
-      "destination": "/blog/:path.html"
+      "source": "/blog",
+      "destination": "/blog.html"
     },
     {
-      "source": "/:path",
-      "destination": "/:path.html"
+      "source": "/blog/:path*",
+      "destination": "/blog/:path*.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/:path*.html"
     }
   ],
   "redirects": [

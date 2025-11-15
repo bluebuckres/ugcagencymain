@@ -103,7 +103,7 @@
             } catch (error) {
                 console.error('Error submitting contact form:', error);
                 
-                let errorMessage = 'कुछ गलत हो गया! Please try again or contact us directly at contact@makeugc.in';
+                let errorMessage = 'कुछ गलत हो गया! Please try again or contact us directly at connect@makeugc.in';
                 
                 if (error.message.includes('network')) {
                     errorMessage = 'Internet connection issue. कृपया अपना connection check करें।';
