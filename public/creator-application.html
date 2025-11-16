@@ -475,6 +475,12 @@
     
     <!-- Creator Form Handler -->
     <script src="assets/js/creator-form-handler.js" defer></script>
+    <!-- Meta Pixel Code -->
+    <script src="/assets/js/meta-pixel.js" defer></script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+    </noscript>
 </head>
 <body>
     <!-- Navigation -->
@@ -540,7 +546,7 @@
                     </div>
                 </div>
                 
-                <form class="application-form" id="creatorApplicationForm">
+                <form class="application-form" id="creatorApplicationForm" data-form="creator-signup">
                     <!-- Supabase will handle form submission -->
                     <!-- Honeypot field (hidden from users, catches bots) -->
                     <input type="text" name="website" style="display: none; position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">

@@ -261,6 +261,12 @@
       100% { box-shadow: 0 0 0 0 rgba(156, 175, 136, 0); }
     }
   </style>
+    <!-- Meta Pixel Code -->
+    <script src="/assets/js/meta-pixel.js" defer></script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+    </noscript>
 </head>
 <body class="font-inter bg-warm-stone text-charcoal">
   <!-- Navigation -->
@@ -400,7 +406,7 @@
         </div>
       </div>
       
-      <form class="glass-effect rounded-2xl p-8 md:p-12 shadow-2xl" name="contact" action="javascript:void(0);" onsubmit="return false;">
+      <form class="glass-effect rounded-2xl p-8 md:p-12 shadow-2xl" name="contact" id="contactForm" data-form="contact" action="javascript:void(0);" onsubmit="return false;">
         <!-- Supabase will handle form submission -->
         <input type="hidden" name="contact_type" id="contact_type_input" value="">
         
