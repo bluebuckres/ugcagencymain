@@ -12,8 +12,8 @@
   "description": "Professional UGC Agency Website - Beautifully Designed & Analytics-Enabled",
   "main": "index.html",
   "engines": {
-    "node": "18.x",
-    "npm": ">=9.0.0"
+    "node": "22.x",
+    "npm": ">=10.0.0"
   },
   "scripts": {
     "dev": "./dev-server.sh 8000 & npm run tailwind:watch",
