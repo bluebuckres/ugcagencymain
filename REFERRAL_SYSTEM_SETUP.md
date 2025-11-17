@@ -6,21 +6,30 @@ This guide walks you through setting up a complete referral system for MakeUGC c
 
 ## 🗄️ Part 1: Database Setup (Supabase)
 
-### Step 1: Update Creators Table
+### ⚠️ Important: Choose Your Schema
+
+You have two options for database setup:
+
+1. **Option 1**: Add referral columns to existing `creator_applications` table
+2. **Option 2**: Create new `creators` table (recommended for scalability)
+
+**See `REFERRAL_SYSTEM_SQL_GUIDE.md` for complete SQL commands for both options.**
+
+### Quick Start: Option 1 (Existing Table)
 
 Run these SQL commands in your Supabase SQL Editor:
 
 ```sql
--- Add referral columns to creators table
-ALTER TABLE creators ADD COLUMN IF NOT EXISTS referral_code TEXT UNIQUE;
-ALTER TABLE creators ADD COLUMN IF NOT EXISTS referred_by TEXT;
-ALTER TABLE creators ADD COLUMN IF NOT EXISTS referral_count INTEGER DEFAULT 0;
-ALTER TABLE creators ADD COLUMN IF NOT EXISTS referral_earnings INTEGER DEFAULT 0;
-ALTER TABLE creators ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'pending';
+-- Add referral columns to creator_applications table
+ALTER TABLE creator_applications ADD COLUMN IF NOT EXISTS referral_code TEXT UNIQUE;
+ALTER TABLE creator_applications ADD COLUMN IF NOT EXISTS referred_by TEXT;
+ALTER TABLE creator_applications ADD COLUMN IF NOT EXISTS referral_count INTEGER DEFAULT 0;
+ALTER TABLE creator_applications ADD COLUMN IF NOT EXISTS referral_earnings INTEGER DEFAULT 0;
+ALTER TABLE creator_applications ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'pending';
 
 -- Create index for faster queries
-CREATE INDEX IF NOT EXISTS idx_referral_code ON creators(referral_code);
-CREATE INDEX IF NOT EXISTS idx_referred_by ON creators(referred_by);
+CREATE INDEX IF NOT EXISTS idx_creator_applications_referral_code ON creator_applications(referral_code);
+CREATE INDEX IF NOT EXISTS idx_creator_applications_referred_by ON creator_applications(referred_by);
 ```
 
 ### Step 2: Create Referrals Tracking Table
