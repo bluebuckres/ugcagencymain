@@ -3,9 +3,10 @@
   "public": false,
   "cleanUrls": true,
   "trailingSlash": false,
-  "buildCommand": "npm run tailwind:build",
+  "buildCommand": "npm run tailwind:build && echo 'Build completed successfully'",
   "outputDirectory": "public",
   "installCommand": "npm install",
+  "nodeVersion": "18.x",
   "headers": [
     {
       "source": "/(.*)",
