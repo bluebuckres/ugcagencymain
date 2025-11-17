@@ -31,36 +31,41 @@
             // Show loading state
             setLoadingState(true);
 
-            // Collect form data
+            // Collect form data with correct field names for API
             const formData = {
-                full_name: document.getElementById('fullName').value.trim(),
+                fullName: document.getElementById('fullName').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 phone: document.getElementById('phone').value.trim() || null,
                 city: document.getElementById('city').value.trim(),
-                primary_platform: document.getElementById('platform').value,
-                social_handle: document.getElementById('handle').value.trim() || null,
-                content_experience: document.getElementById('experience').value.trim() || null,
-                niches: document.getElementById('interests').value.trim(),
+                platform: document.getElementById('platform').value,
+                handle: document.getElementById('handle').value.trim() || null,
+                experience: document.getElementById('experience').value.trim() || null,
+                interests: document.getElementById('interests').value.trim(),
                 instagram_url: document.getElementById('instagram_url').value.trim() || null,
                 youtube_url: document.getElementById('youtube_url').value.trim() || null,
-                portfolio_video_url: document.getElementById('portfolio_link').value.trim(),
+                portfolio_link: document.getElementById('portfolio_link').value.trim(),
                 additional_links: document.getElementById('additional_links').value.trim() || null,
-                submitted_at: new Date().toISOString()
+                referred_by: document.getElementById('referred_by') ? document.getElementById('referred_by').value : null
             };
 
             try {
-                // Submit via serverless proxy
-                const response = await fetch('/api/submit', {
+                // Submit to new referral-enabled API endpoint
+                const response = await fetch('/api/submit-application', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ table: 'creator_applications', data: formData })
+                    body: JSON.stringify(formData)
                 });
-                const { error } = await response.json();
-                if (error) throw new Error(error);
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
 
-                // Success! Show success message
-                console.log('Application submitted successfully:', formData);
-                showSuccess();
+                // Success! Redirect to thank you page with referral code
+                console.log('Application submitted successfully:', data);
+                if (data.success && data.referralCode) {
+                    // Redirect to thank you page with referral code and name
+                    window.location.href = `/creator-thank-you.html?code=${data.referralCode}&name=${encodeURIComponent(data.name)}`;
+                } else {
+                    showSuccess();
+                }
                 
                 // Track event if analytics is available
                 if (window.ugcAnalytics && typeof window.ugcAnalytics.trackEvent === 'function') {

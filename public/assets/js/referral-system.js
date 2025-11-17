@@ -135,12 +135,16 @@
         </div>
       `;
 
-      // Insert after thank you message
-      const thankYouSection = document.querySelector('h1, .thank-you-message');
-      if (thankYouSection) {
-        thankYouSection.parentNode.insertBefore(section, thankYouSection.nextSibling);
+      // Insert into referral section container
+      const container = document.getElementById('referral-section-container');
+      if (container) {
+        container.appendChild(section);
       } else {
-        document.body.appendChild(section);
+        // Fallback: insert after h1
+        const h1 = document.querySelector('h1');
+        if (h1) {
+          h1.parentNode.insertBefore(section, h1.nextSibling);
+        }
       }
 
       // Clear referral code after displaying
