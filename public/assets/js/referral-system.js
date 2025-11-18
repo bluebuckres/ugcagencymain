@@ -79,14 +79,26 @@
 
     // Setup thank you page
     setupThankYouPage() {
-      if (!window.location.pathname.includes('thank-you')) return;
+      const pathname = window.location.pathname;
+      console.log('[Referral] Current pathname:', pathname);
+      
+      if (!pathname.includes('thank-you')) {
+        console.log('[Referral] Not on thank you page, skipping setup');
+        return;
+      }
 
       const urlParams = new URLSearchParams(window.location.search);
       const referralCode = urlParams.get('code');
       const name = urlParams.get('name');
+      
+      console.log('[Referral] Thank you page detected');
+      console.log('[Referral] URL params - code:', referralCode, 'name:', name);
 
       if (referralCode) {
+        console.log('[Referral] Displaying referral section with code:', referralCode);
         this.displayReferralSection(referralCode, name);
+      } else {
+        console.log('[Referral] No referral code in URL');
       }
     }
 
@@ -137,18 +149,27 @@
 
       // Insert into referral section container
       const container = document.getElementById('referral-section-container');
+      console.log('[Referral] Looking for container #referral-section-container:', container);
+      
       if (container) {
+        console.log('[Referral] Found container, appending referral section');
         container.appendChild(section);
       } else {
         // Fallback: insert after h1
         const h1 = document.querySelector('h1');
+        console.log('[Referral] Container not found, trying fallback with h1:', h1);
         if (h1) {
+          console.log('[Referral] Found h1, inserting after it');
           h1.parentNode.insertBefore(section, h1.nextSibling);
+        } else {
+          console.log('[Referral] No h1 found, appending to body');
+          document.body.appendChild(section);
         }
       }
 
       // Clear referral code after displaying
       this.clearReferralCode();
+      console.log('[Referral] Referral section displayed and localStorage cleared');
     }
 
     // Copy referral link

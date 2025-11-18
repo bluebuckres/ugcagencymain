@@ -50,20 +50,31 @@
 
             try {
                 // Submit to new referral-enabled API endpoint
+                console.log('[Form] Submitting to /api/submit-application with data:', formData);
+                
                 const response = await fetch('/api/submit-application', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
+                
+                console.log('[Form] Response status:', response.status);
                 const data = await response.json();
-                if (data.error) throw new Error(data.error);
+                console.log('[Form] Response data:', data);
+                
+                if (!response.ok || data.error) {
+                    throw new Error(data.error || `API error: ${response.status}`);
+                }
 
                 // Success! Redirect to thank you page with referral code
-                console.log('Application submitted successfully:', data);
+                console.log('[Form] Application submitted successfully:', data);
                 if (data.success && data.referralCode) {
                     // Redirect to thank you page with referral code and name
-                    window.location.href = `/creator-thank-you.html?code=${data.referralCode}&name=${encodeURIComponent(data.name)}`;
+                    const redirectUrl = `/creator-thank-you.html?code=${encodeURIComponent(data.referralCode)}&name=${encodeURIComponent(data.name)}`;
+                    console.log('[Form] Redirecting to:', redirectUrl);
+                    window.location.href = redirectUrl;
                 } else {
+                    console.log('[Form] No referral code in response, showing success message');
                     showSuccess();
                 }
                 
