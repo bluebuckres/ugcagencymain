@@ -1,6 +1,6 @@
 /**
- * Creator Application Form Handler with Spam Protection
- * Handles creator application form submission with honeypot and rate limiting
+ * Creator Application Form Handler with Referral System
+ * Handles creator application form submission with referral tracking and redirect
  */
 
 (function() {
@@ -26,7 +26,7 @@
                 return;
             }
 
-            // SPAM CHECK 1: Honeypot field (catches bots)
+            // SPAM CHECK: Honeypot field (catches bots)
             const honeypot = form.querySelector('input[name="website"]');
             if (honeypot && honeypot.value.trim() !== '') {
                 console.warn('Honeypot field filled - spam detected');
@@ -37,7 +37,7 @@
             // Show loading state
             setLoadingState(true);
 
-            // Collect form data
+            // Collect form data with correct field names for referral API
             const fullNameInput = form.querySelector('input[name="fullName"]');
             const emailInput = form.querySelector('input[name="email"]');
             const phoneInput = form.querySelector('input[name="phone"]');
@@ -50,55 +50,61 @@
             const youtubeUrlInput = form.querySelector('input[name="youtube_url"]');
             const portfolioLinkInput = form.querySelector('input[name="portfolio_link"]');
             const additionalLinksInput = form.querySelector('textarea[name="additional_links"]');
+            const referredByInput = form.querySelector('input[name="referred_by"]');
 
             const formData = {
-                full_name: fullNameInput.value.trim(),
+                fullName: fullNameInput.value.trim(),
                 email: emailInput.value.trim(),
                 phone: phoneInput.value.trim() || null,
                 city: cityInput.value.trim(),
-                primary_platform: platformInput.value || null,
-                social_handle: handleInput.value.trim() || null,
-                content_experience: experienceInput.value.trim() || null,
-                niches: interestsInput.value.trim(),
+                platform: platformInput.value || null,
+                handle: handleInput.value.trim() || null,
+                experience: experienceInput.value.trim() || null,
+                interests: interestsInput.value.trim(),
                 instagram_url: instagramUrlInput.value.trim() || null,
                 youtube_url: youtubeUrlInput.value.trim() || null,
-                portfolio_video_url: portfolioLinkInput.value.trim(),
+                portfolio_link: portfolioLinkInput.value.trim(),
                 additional_links: additionalLinksInput.value.trim() || null,
-                submitted_at: new Date().toISOString()
+                referred_by: referredByInput ? referredByInput.value : null
             };
 
             try {
-                // Submit via serverless proxy
-                const response = await fetch('/api/submit', {
+                // Submit to referral-enabled API endpoint
+                console.log('[Form] Submitting to /api/submit-application with data:', formData);
+                
+                const response = await fetch('/api/submit-application', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ table: 'creator_applications', data: formData }),
+                    body: JSON.stringify(formData),
                     timeout: 10000
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                console.log('[Form] Response status:', response.status);
+                const data = await response.json();
+                console.log('[Form] Response data:', data);
+
+                if (!response.ok || data.error) {
+                    throw new Error(data.error || `HTTP error! status: ${response.status}`);
                 }
 
-                const result = await response.json();
-                if (result.error) throw new Error(result.error);
-
-                // Success
-                console.log('Creator application submitted successfully:', formData);
-                showSuccess();
+                // Success! Redirect to thank you page with referral code
+                console.log('[Form] Application submitted successfully:', data);
+                if (data.success && data.referralCode) {
+                    // Redirect to thank you page with referral code and name
+                    const redirectUrl = `/creator-thank-you.html?code=${encodeURIComponent(data.referralCode)}&name=${encodeURIComponent(data.name)}`;
+                    console.log('[Form] Redirecting to:', redirectUrl);
+                    window.location.href = redirectUrl;
+                } else {
+                    showSuccess();
+                }
 
                 // Track event if analytics available
                 if (window.ugcAnalytics && typeof window.ugcAnalytics.trackEvent === 'function') {
                     window.ugcAnalytics.trackEvent('creator_application_submitted', {
-                        platform: formData.primary_platform,
+                        platform: formData.platform,
                         city: formData.city
                     });
                 }
-
-                // Reset form after delay
-                setTimeout(() => {
-                    form.reset();
-                }, 1500);
 
             } catch (error) {
                 console.error('Error submitting creator application:', error);
