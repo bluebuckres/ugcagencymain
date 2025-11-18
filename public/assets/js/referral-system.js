@@ -106,6 +106,10 @@
     displayReferralSection(code, name) {
       const baseUrl = window.location.origin;
       const referralLink = `${baseUrl}/creator-application.html?ref=${code}`;
+      
+      console.log('[Referral] Generated referral link:', referralLink);
+      console.log('[Referral] Base URL:', baseUrl);
+      console.log('[Referral] Code:', code);
 
       const section = document.createElement('div');
       section.className = 'referral-section';
