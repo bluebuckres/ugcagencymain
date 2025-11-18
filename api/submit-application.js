@@ -3,18 +3,6 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
-
-if (!supabaseUrl || !supabaseKey) {
-  return {
-    statusCode: 500,
-    body: JSON.stringify({ error: 'Missing Supabase credentials' })
-  };
-}
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
 // Generate unique referral code
 function generateReferralCode(email, phone) {
   const emailPart = email.substring(0, 3).toUpperCase();
@@ -24,12 +12,26 @@ function generateReferralCode(email, phone) {
 }
 
 module.exports = async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Content-Type', 'application/json');
+  
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
+    // Check credentials
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Missing Supabase credentials');
+      return res.status(500).json({ error: 'Server configuration error: Missing credentials' });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
     const {
       fullName,
       email,
@@ -73,6 +75,8 @@ module.exports = async function handler(req, res) {
       submitted_at: new Date().toISOString()
     };
 
+    console.log('Inserting application data:', applicationData);
+
     // Insert the application into creator_applications table
     const { data: newCreator, error: insertError } = await supabase
       .from('creator_applications')
@@ -82,34 +86,33 @@ module.exports = async function handler(req, res) {
 
     if (insertError) {
       console.error('Insert error:', insertError);
-      throw insertError;
+      return res.status(400).json({ 
+        error: 'Failed to insert application',
+        details: insertError.message 
+      });
     }
 
-    // If they were referred, track it
+    console.log('Application inserted successfully:', newCreator);
+
+    // If they were referred, track it (non-blocking)
     if (referred_by) {
-      // Add to referrals table
-      const { error: referralError } = await supabase
-        .from('referrals')
-        .insert([{
-          referrer_code: referred_by,
-          referred_email: email,
-          referred_name: fullName,
-          status: 'pending',
-          created_at: new Date().toISOString()
-        }]);
-
-      if (referralError) {
-        console.error('Referral tracking error:', referralError);
-        // Don't fail the application if referral tracking fails
-      }
-
-      // Increment referrer's count
       try {
-        await supabase.rpc('increment_referral_count', {
-          ref_code: referred_by
-        });
+        // Add to referrals table
+        const { error: referralError } = await supabase
+          .from('referrals')
+          .insert([{
+            referrer_code: referred_by,
+            referred_email: email,
+            referred_name: fullName,
+            status: 'pending',
+            created_at: new Date().toISOString()
+          }]);
+
+        if (referralError) {
+          console.warn('Referral tracking error (non-blocking):', referralError);
+        }
       } catch (error) {
-        console.error('Error incrementing referral count:', error);
+        console.warn('Error tracking referral (non-blocking):', error);
       }
     }
 
@@ -126,7 +129,7 @@ module.exports = async function handler(req, res) {
     console.error('Submission error:', error);
     return res.status(500).json({
       error: 'Submission failed',
-      message: error.message
+      details: error.message || 'Unknown error'
     });
   }
 }
