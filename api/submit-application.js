@@ -1,13 +1,16 @@
 // API Handler: Creator Application Submission with Referral Tracking
 // Endpoint: /api/submit-application
 
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase credentials');
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ error: 'Missing Supabase credentials' })
+  };
 }
 
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -20,7 +23,7 @@ function generateReferralCode(email, phone) {
   return `${emailPart}${phonePart}${randomPart}`;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -51,29 +54,28 @@ export default async function handler(req, res) {
     // Generate unique referral code for this applicant
     const newReferralCode = generateReferralCode(email, phone || '0000');
 
-    // Prepare application data
+    // Prepare application data - using creator_applications table
     const applicationData = {
       full_name: fullName,
       email: email,
       phone: phone || null,
       city: city,
-      platform: platform,
-      handle: handle || null,
-      experience: experience || null,
-      interests: interests,
+      primary_platform: platform,
+      social_handle: handle || null,
+      content_experience: experience || null,
+      niches: interests,
       instagram_url: instagram_url || null,
       youtube_url: youtube_url || null,
-      portfolio_link: portfolio_link || null,
+      portfolio_video_url: portfolio_link || null,
       additional_links: additional_links || null,
       referral_code: newReferralCode,
       referred_by: referred_by || null,
-      status: 'pending',
-      created_at: new Date().toISOString()
+      submitted_at: new Date().toISOString()
     };
 
-    // Insert the application
+    // Insert the application into creator_applications table
     const { data: newCreator, error: insertError } = await supabase
-      .from('creators')
+      .from('creator_applications')
       .insert([applicationData])
       .select()
       .single();
