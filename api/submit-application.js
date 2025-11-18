@@ -21,12 +21,17 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Check credentials
+    // Check credentials - use SERVICE_ROLE_KEY for server-side operations
     const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY;
 
     if (!supabaseUrl || !supabaseKey) {
-      console.error('Missing Supabase credentials');
+      console.error('Missing Supabase credentials:', {
+        url: !!supabaseUrl,
+        serviceRoleKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+        anonKey: !!process.env.SUPABASE_ANON_KEY,
+        key: !!process.env.SUPABASE_KEY
+      });
       return res.status(500).json({ error: 'Server configuration error: Missing credentials' });
     }
 
