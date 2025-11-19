@@ -140,7 +140,7 @@
               📋 Copy Link
             </button>
 
-            <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.3s;">
+            <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; border: none;">
               💬 Join WhatsApp Channel
             </a>
 
