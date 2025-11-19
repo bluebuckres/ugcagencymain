@@ -80,10 +80,11 @@
     // Setup thank you page
     setupThankYouPage() {
       const pathname = window.location.pathname;
-      console.log('[Referral] Current pathname:', pathname);
+      console.log('[Referral v2.0] Current pathname:', pathname);
+      console.log('[Referral v2.0] Full URL:', window.location.href);
       
-      if (!pathname.includes('thank-you')) {
-        console.log('[Referral] Not on thank you page, skipping setup');
+      if (!pathname.includes('thank-you') && !pathname.includes('creator-thank-you')) {
+        console.log('[Referral v2.0] Not on thank you page, skipping setup');
         return;
       }
 
@@ -91,14 +92,15 @@
       const referralCode = urlParams.get('code');
       const name = urlParams.get('name');
       
-      console.log('[Referral] Thank you page detected');
-      console.log('[Referral] URL params - code:', referralCode, 'name:', name);
+      console.log('[Referral v2.0] Thank you page detected');
+      console.log('[Referral v2.0] URL params - code:', referralCode, 'name:', name);
+      console.log('[Referral v2.0] All URL params:', Array.from(urlParams.entries()));
 
       if (referralCode) {
-        console.log('[Referral] Displaying referral section with code:', referralCode);
+        console.log('[Referral v2.0] Displaying referral section with code:', referralCode);
         this.displayReferralSection(referralCode, name);
       } else {
-        console.log('[Referral] No referral code in URL');
+        console.log('[Referral v2.0] No referral code in URL');
       }
     }
 
@@ -107,9 +109,11 @@
       const baseUrl = window.location.origin;
       const referralLink = `${baseUrl}/creator-application.html?ref=${code}`;
       
-      console.log('[Referral] Generated referral link:', referralLink);
-      console.log('[Referral] Base URL:', baseUrl);
-      console.log('[Referral] Code:', code);
+      console.log('[Referral v2.0] displayReferralSection called');
+      console.log('[Referral v2.0] Generated referral link:', referralLink);
+      console.log('[Referral v2.0] Base URL:', baseUrl);
+      console.log('[Referral v2.0] Code:', code);
+      console.log('[Referral v2.0] Name:', name);
 
       const section = document.createElement('div');
       section.className = 'referral-section';
