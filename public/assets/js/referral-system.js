@@ -136,18 +136,25 @@
               📋 Copy Link
             </button>
 
-            <a href="https://wa.me/?text=${encodeURIComponent(`🎬 Join India's top UGC agency! Get paid to create content for brands.\n\n✅ No experience needed\n✅ Work from home\n✅ Keep all products\n\nApply here: ${referralLink}`)}" target="_blank" rel="noopener noreferrer" style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.3s;">
-              💬 Share on WhatsApp
+            <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" style="background: #25d366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.3s;">
+              💬 Join WhatsApp Channel
             </a>
 
             <button onclick="window.referralSystem.copyInstagramCaption('${referralLink}')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: opacity 0.3s;">
-              📱 Copy for Instagram
+              📱 Share on Instagram
             </button>
           </div>
 
           <p style="font-size: 12px; color: #666; margin-top: 16px;">
             Your referral code: <strong style="font-family: monospace; font-size: 14px;">${code}</strong>
           </p>
+
+          <!-- Amazon Voucher Offer -->
+          <div style="background: linear-gradient(135deg, #FF9900 0%, #FF6B35 100%); border-radius: 12px; padding: 20px; margin-top: 20px; color: white; text-align: center;">
+            <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">🎉 Special Offer!</h3>
+            <p style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Get ₹2000 worth Amazon Voucher</p>
+            <p style="font-size: 14px; margin-bottom: 0;">Complete your first project with us and unlock your reward!</p>
+          </div>
         </div>
       `;
 
