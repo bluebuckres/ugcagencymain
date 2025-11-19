@@ -135,17 +135,17 @@
             ${referralLink}
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px;">
-            <button onclick="window.referralSystem.copyLink('${referralLink}')" style="background: #1f2937; color: white; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: background 0.3s;">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 16px;">
+            <button onclick="window.referralSystem.copyLink('${referralLink}')" style="background: #1f2937; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 0.9rem;">
               📋 Copy Link
             </button>
 
-            <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; border: none;">
-              💬 Join WhatsApp Channel
+            <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #25D366 0%, #20BA58 100%); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; border: none; font-size: 0.9rem;">
+              💬 WhatsApp
             </a>
 
-            <button onclick="window.referralSystem.copyInstagramCaption('${referralLink}')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: opacity 0.3s;">
-              📱 Share on Instagram
+            <button onclick="window.referralSystem.copyInstagramCaption('${referralLink}')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: opacity 0.3s; font-size: 0.9rem;">
+              📱 Instagram
             </button>
           </div>
 
