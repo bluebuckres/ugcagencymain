@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Training Cohort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --color-sage: #8B9A7A;
+            --color-charcoal: #2C2C2C;
+            --color-cream: #FAF8F5;
+            --font-sans: 'Inter', sans-serif;
+            --radius-soft: 12px;
+            --shadow-lift: 0 4px 16px rgba(44, 44, 44, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: transparent;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-soft);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-out;
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--color-charcoal);
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-charcoal);
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .close-btn:hover {
+            color: var(--color-sage);
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-sage);
+            box-shadow: 0 0 0 3px rgba(139, 154, 122, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-note {
+            text-align: center;
+            color: var(--color-charcoal);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-submit:hover {
+            background: #7a8a6a;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lift);
+        }
+        
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+            
+            .modal-header {
+                padding: 1.5rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-overlay" id="trainingCohortOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join Training Cohort</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="trainingCohortForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortFullName">Full Name *</label>
+                            <input type="text" id="cohortFullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortEmail">Email Address *</label>
+                            <input type="email" id="cohortEmail" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortPhone">Phone Number *</label>
+                            <input type="tel" id="cohortPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortCity">City *</label>
+                            <input type="text" id="cohortCity" name="city" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortPlatform">Primary Platform *</label>
+                            <select id="cohortPlatform" name="platform" required>
+                                <option value="">Select Platform</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="Instagram Reels">Instagram Reels</option>
+                                <option value="YouTube Shorts">YouTube Shorts</option>
+                                <option value="Multiple">Multiple Platforms</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortExperience">Experience Level *</label>
+                            <select id="cohortExperience" name="experienceLevel" required>
+                                <option value="">Select Level</option>
+                                <option value="Beginner">Beginner (0-6 months)</option>
+                                <option value="Intermediate">Intermediate (6-12 months)</option>
+                                <option value="Advanced">Advanced (1+ years)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortNiche">Content Niche *</label>
+                            <input type="text" id="cohortNiche" name="contentNiche" placeholder="e.g., Beauty, Tech, Lifestyle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortInstagram">Instagram Handle</label>
+                            <input type="text" id="cohortInstagram" name="instagramHandle" placeholder="@yourhandle">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortYoutube">YouTube Channel</label>
+                            <input type="text" id="cohortYoutube" name="youtubeChannel" placeholder="Channel name or URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortPortfolio">Portfolio Link</label>
+                            <input type="url" id="cohortPortfolio" name="portfolioLink" placeholder="Link to your best work">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="cohortMotivation">Why do you want to join this training? *</label>
+                        <textarea id="cohortMotivation" name="motivation" placeholder="Tell us about your goals and what you hope to achieve" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cohortName">Preferred Cohort</label>
+                            <select id="cohortName" name="cohortName">
+                                <option value="">Next Available</option>
+                                <option value="January 2025">January 2025</option>
+                                <option value="February 2025">February 2025</option>
+                                <option value="March 2025">March 2025</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cohortStartDate">Preferred Start Date</label>
+                            <input type="date" id="cohortStartDate" name="cohortStartDate">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Register for Training →</button>
+                    <p class="form-note">We'll review your application and contact you within 24-48 hours</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/training-cohort-handler.js"></script>
+    <script>
+        function closeModal() {
+            document.getElementById('trainingCohortOverlay').remove();
+        }
+        
+        // Close on overlay click
+        document.getElementById('trainingCohortOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('trainingCohortOverlay');
+                if (overlay) {
+                    closeModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

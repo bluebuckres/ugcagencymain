@@ -1025,15 +1025,20 @@
         
         .cohort-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 4rem;
-            align-items: start;
+            align-items: center;
+            text-align: center;
         }
         
         .cohort-info {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+        }
+        
+        .cohort-cta {
+            margin-top: 2rem;
         }
         
         .cohort-benefit {
@@ -1050,9 +1055,12 @@
         }
         
         .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
             display: block;
+            color: var(--color-sage);
+            stroke: var(--color-sage);
         }
         
         .cohort-benefit h4 {
@@ -1067,74 +1075,9 @@
             margin: 0;
         }
         
-        /* Training Cohort Form */
-        .cohort-form {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius-softer);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--color-sage);
-        }
-        
-        .cohort-form h3 {
-            color: var(--color-charcoal);
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .form-group label {
-            font-weight: 600;
-            color: var(--color-charcoal);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: var(--transition-gentle);
-            background: white;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-sage);
-            box-shadow: 0 0 0 3px rgba(139, 154, 122, 0.1);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
         .btn-large {
-            width: 100%;
-            padding: 1rem;
+            padding: 1rem 2rem;
             font-size: 1.1rem;
-            margin-top: 1rem;
         }
         
         .form-note {
@@ -1145,110 +1088,10 @@
             margin-top: 1rem;
         }
         
-        /* Success Modal */
-        .cohort-success-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        .cohort-success-modal {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius-softer);
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease-out;
-        }
-        
-        .success-icon {
-            font-size: 3rem;
-            color: var(--color-sage);
-            margin-bottom: 1rem;
-        }
-        
-        .cohort-success-modal h3 {
-            color: var(--color-charcoal);
-            margin-bottom: 1rem;
-        }
-        
-        .cohort-success-modal p {
-            color: var(--color-charcoal);
-            margin-bottom: 1rem;
-        }
-        
-        .confirmation-email {
-            background: var(--color-cream);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        
-        .next-steps {
-            color: var(--color-sage);
-            font-weight: 600;
-        }
-        
-        .btn-close-success {
-            background: var(--color-sage);
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition-gentle);
-            margin-top: 1rem;
-        }
-        
-        .btn-close-success:hover {
-            background: #7a8a6a;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
         /* Responsive Design for Training Cohort */
-        @media (max-width: 1024px) {
-            .cohort-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         @media (max-width: 768px) {
             .training-cohort-section {
                 padding: 3rem 0;
-            }
-            
-            .cohort-form {
-                padding: 2rem;
             }
             
             .cohort-info {
@@ -1884,7 +1727,7 @@
     </section>
     
     <!-- Training Cohort Registration Section -->
-    <section class="training-cohort-section" id="training-cohort">
+    <section class="training-cohort-section">
         <div class="container">
             <div class="cohort-header">
                 <h2>Join Next Training Cohort</h2>
@@ -1894,122 +1737,44 @@
             <div class="cohort-content">
                 <div class="cohort-info">
                     <div class="cohort-benefit">
-                        <div class="benefit-icon">📚</div>
+                        <svg class="benefit-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
                         <h4>Structured Learning</h4>
                         <p>4-week intensive program covering script writing, filming, editing, and brand collaboration</p>
                     </div>
                     <div class="cohort-benefit">
-                        <div class="benefit-icon">👥</div>
+                        <svg class="benefit-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
                         <h4>Cohort Community</h4>
                         <p>Learn alongside 20-30 creators, share experiences, and build lasting professional relationships</p>
                     </div>
                     <div class="cohort-benefit">
-                        <div class="benefit-icon">🎯</div>
+                        <svg class="benefit-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
                         <h4>Live Projects</h4>
                         <p>Work on real brand projects during training and earn while you learn</p>
                     </div>
                     <div class="cohort-benefit">
-                        <div class="benefit-icon">🏆</div>
+                        <svg class="benefit-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
                         <h4>Mentorship</h4>
                         <p>Direct guidance from experienced UGC creators and brand strategists</p>
                     </div>
                 </div>
                 
-                <form id="trainingCohortForm" class="cohort-form">
-                    <h3>Register for Training Cohort</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortFullName">Full Name *</label>
-                            <input type="text" id="cohortFullName" name="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortEmail">Email Address *</label>
-                            <input type="email" id="cohortEmail" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortPhone">Phone Number *</label>
-                            <input type="tel" id="cohortPhone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortCity">City *</label>
-                            <input type="text" id="cohortCity" name="city" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortPlatform">Primary Platform *</label>
-                            <select id="cohortPlatform" name="platform" required>
-                                <option value="">Select Platform</option>
-                                <option value="Instagram">Instagram</option>
-                                <option value="YouTube">YouTube</option>
-                                <option value="TikTok">TikTok</option>
-                                <option value="Instagram Reels">Instagram Reels</option>
-                                <option value="YouTube Shorts">YouTube Shorts</option>
-                                <option value="Multiple">Multiple Platforms</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortExperience">Experience Level *</label>
-                            <select id="cohortExperience" name="experienceLevel" required>
-                                <option value="">Select Level</option>
-                                <option value="Beginner">Beginner (0-6 months)</option>
-                                <option value="Intermediate">Intermediate (6-12 months)</option>
-                                <option value="Advanced">Advanced (1+ years)</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortNiche">Content Niche *</label>
-                            <input type="text" id="cohortNiche" name="contentNiche" placeholder="e.g., Beauty, Tech, Lifestyle" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortInstagram">Instagram Handle</label>
-                            <input type="text" id="cohortInstagram" name="instagramHandle" placeholder="@yourhandle">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortYoutube">YouTube Channel</label>
-                            <input type="text" id="cohortYoutube" name="youtubeChannel" placeholder="Channel name or URL">
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortPortfolio">Portfolio Link</label>
-                            <input type="url" id="cohortPortfolio" name="portfolioLink" placeholder="Link to your best work">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="cohortMotivation">Why do you want to join this training? *</label>
-                        <textarea id="cohortMotivation" name="motivation" rows="4" placeholder="Tell us about your goals and what you hope to achieve" required></textarea>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cohortName">Preferred Cohort</label>
-                            <select id="cohortName" name="cohortName">
-                                <option value="">Next Available</option>
-                                <option value="January 2025">January 2025</option>
-                                <option value="February 2025">February 2025</option>
-                                <option value="March 2025">March 2025</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cohortStartDate">Preferred Start Date</label>
-                            <input type="date" id="cohortStartDate" name="cohortStartDate">
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-large">Register for Training →</button>
-                    <p class="form-note">We'll review your application and contact you within 24-48 hours</p>
-                </form>
+                <div class="cohort-cta">
+                    <button class="btn btn-primary btn-large" onclick="openTrainingCohortModal()">Register for Training →</button>
+                    <p class="form-note">Limited spots available. Apply now to secure your place</p>
+                </div>
             </div>
         </div>
     </section>
@@ -2151,8 +1916,21 @@
         }
     </script>
     
-    <!-- Training Cohort Form Handler -->
-    <script src="assets/js/training-cohort-handler.js"></script>
+    <!-- Training Cohort Modal Opener -->
+    <script>
+        function openTrainingCohortModal() {
+            fetch('training-cohort-modal.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.body.insertAdjacentHTML('beforeend', html);
+                    // Initialize Lucide icons in the modal
+                    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                        lucide.createIcons();
+                    }
+                })
+                .catch(error => console.error('Error loading modal:', error));
+        }
+    </script>
     
     <!-- Footer -->
     <footer class="footer">
