@@ -111,7 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function showSuccessMessage(result, formData) {
-    // Create and show success modal or message
+    // Create and show success modal with cohort info
+    const cohortInfo = formData.cohortName ? `<p class="cohort-info-display">📅 <strong>Preferred Cohort:</strong> ${formData.cohortName}</p>` : '';
+    
     const successHTML = `
       <div class="cohort-success-overlay">
         <div class="cohort-success-modal">
@@ -120,6 +122,16 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>Hi <strong>${formData.fullName}</strong>,</p>
           <p>Thank you for registering for our training cohort. We've received your application and will review it shortly.</p>
           <p class="confirmation-email">A confirmation email has been sent to <strong>${formData.email}</strong></p>
+          ${cohortInfo}
+          <div class="cohort-details">
+            <p><strong>Next Cohorts Available:</strong></p>
+            <ul class="cohort-list">
+              <li>December 2025</li>
+              <li>January 2026</li>
+              <li>February 2026</li>
+              <li>March 2026</li>
+            </ul>
+          </div>
           <p class="next-steps">We'll contact you within 24-48 hours with next steps and cohort details.</p>
           <button class="btn-close-success" onclick="this.closest('.cohort-success-overlay').remove()">Close</button>
         </div>
