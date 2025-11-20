@@ -62,12 +62,46 @@ CREATE INDEX idx_contact_inquiries_type ON contact_inquiries(contact_type);
 COMMENT ON TABLE contact_inquiries IS 'Stores business inquiry submissions from the contact form';
 
 -- ============================================
+-- TABLE 3: Training Cohort Registrations
+-- ============================================
+
+CREATE TABLE training_cohort_registrations (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  full_name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  city TEXT NOT NULL,
+  primary_platform TEXT NOT NULL,
+  experience_level TEXT NOT NULL,
+  content_niche TEXT NOT NULL,
+  instagram_handle TEXT,
+  youtube_channel TEXT,
+  portfolio_link TEXT,
+  motivation TEXT,
+  cohort_name TEXT,
+  cohort_start_date DATE,
+  status TEXT DEFAULT 'pending',
+  submitted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create indexes for better performance
+CREATE INDEX idx_training_cohort_email ON training_cohort_registrations(email);
+CREATE INDEX idx_training_cohort_submitted ON training_cohort_registrations(submitted_at DESC);
+CREATE INDEX idx_training_cohort_status ON training_cohort_registrations(status);
+CREATE INDEX idx_training_cohort_cohort ON training_cohort_registrations(cohort_name);
+
+-- Add table comment
+COMMENT ON TABLE training_cohort_registrations IS 'Stores training cohort registration submissions from creators';
+
+-- ============================================
 -- ROW LEVEL SECURITY (RLS) SETUP
 -- ============================================
 
--- Enable RLS on both tables
+-- Enable RLS on all tables
 ALTER TABLE creator_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE contact_inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE training_cohort_registrations ENABLE ROW LEVEL SECURITY;
 
 -- ============================================
 -- POLICIES: Allow public to submit forms
@@ -87,6 +121,13 @@ FOR INSERT
 TO anon
 WITH CHECK (true);
 
+-- Allow anonymous users to INSERT training cohort registrations
+CREATE POLICY "Allow public insert on training_cohort_registrations"
+ON training_cohort_registrations
+FOR INSERT
+TO anon
+WITH CHECK (true);
+
 -- ============================================
 -- POLICIES: Only authenticated users can read
 -- ============================================
@@ -101,6 +142,13 @@ USING (true);
 -- Allow authenticated users (you) to read contact inquiries
 CREATE POLICY "Allow authenticated read on contact_inquiries"
 ON contact_inquiries
+FOR SELECT
+TO authenticated
+USING (true);
+
+-- Allow authenticated users (you) to read training cohort registrations
+CREATE POLICY "Allow authenticated read on training_cohort_registrations"
+ON training_cohort_registrations
 FOR SELECT
 TO authenticated
 USING (true);
@@ -125,18 +173,18 @@ USING (true);
 SELECT table_name 
 FROM information_schema.tables 
 WHERE table_schema = 'public' 
-AND table_name IN ('creator_applications', 'contact_inquiries');
+AND table_name IN ('creator_applications', 'contact_inquiries', 'training_cohort_registrations');
 
 -- Check RLS is enabled
 SELECT tablename, rowsecurity 
 FROM pg_tables 
 WHERE schemaname = 'public' 
-AND tablename IN ('creator_applications', 'contact_inquiries');
+AND tablename IN ('creator_applications', 'contact_inquiries', 'training_cohort_registrations');
 
 -- Check policies exist
 SELECT schemaname, tablename, policyname, permissive, roles, cmd 
 FROM pg_policies 
-WHERE tablename IN ('creator_applications', 'contact_inquiries');
+WHERE tablename IN ('creator_applications', 'contact_inquiries', 'training_cohort_registrations');
 
 -- ============================================
 -- SAMPLE QUERIES FOR VIEWING DATA
@@ -169,6 +217,20 @@ WHERE tablename IN ('creator_applications', 'contact_inquiries');
 -- FROM contact_inquiries 
 -- GROUP BY contact_type 
 -- ORDER BY count DESC;
+
+-- View recent training cohort registrations (last 10)
+-- SELECT * FROM training_cohort_registrations 
+-- ORDER BY submitted_at DESC 
+-- LIMIT 10;
+
+-- Count total training cohort registrations
+-- SELECT COUNT(*) as total_registrations FROM training_cohort_registrations;
+
+-- Group training cohort registrations by cohort
+-- SELECT cohort_name, COUNT(*) as count, status 
+-- FROM training_cohort_registrations 
+-- GROUP BY cohort_name, status 
+-- ORDER BY cohort_name DESC;
 
 -- ============================================
 -- SETUP COMPLETE! 🎉
