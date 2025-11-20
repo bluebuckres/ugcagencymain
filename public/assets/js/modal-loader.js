@@ -163,6 +163,116 @@ function openTrainingCohortModal() {
             }
         }
         
+        /* Success Modal Styles */
+        .cohort-success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .cohort-success-modal {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: #8B9A7A;
+            margin-bottom: 1rem;
+        }
+        
+        .cohort-success-modal h3 {
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .cohort-success-modal p {
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .confirmation-email {
+            background: #FAF8F5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .cohort-info-display {
+            color: #8B9A7A;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        .cohort-details {
+            background: #f0f4f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .cohort-details p {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .cohort-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        
+        .cohort-list li {
+            background: white;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #8B9A7A;
+            color: #2C2C2C;
+            font-weight: 500;
+        }
+        
+        .next-steps {
+            color: #8B9A7A;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        .btn-close-success {
+            background: #8B9A7A;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn-close-success:hover {
+            background: #7a8a6a;
+            transform: translateY(-2px);
+        }
+        
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -179,6 +289,15 @@ function openTrainingCohortModal() {
             
             .modal-body {
                 padding: 1.5rem;
+            }
+            
+            .cohort-success-modal {
+                padding: 2rem;
+                max-width: 90%;
+            }
+            
+            .cohort-list {
+                grid-template-columns: 1fr;
             }
         }
     `;
