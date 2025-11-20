@@ -3,8 +3,8 @@
 
 console.log('✅ Training Cohort Handler: Script loaded');
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('📋 DOMContentLoaded: Looking for form with ID: trainingCohortForm');
+function initializeTrainingCohortForm() {
+  console.log('📋 Initializing: Looking for form with ID: trainingCohortForm');
   
   const form = document.getElementById('trainingCohortForm');
   
@@ -148,4 +148,26 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }, 5000);
   }
+}
+
+// Initialize form when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeTrainingCohortForm);
+} else {
+  initializeTrainingCohortForm();
+}
+
+// Also initialize if form is added dynamically (for modal)
+const observer = new MutationObserver(function(mutations) {
+  const form = document.getElementById('trainingCohortForm');
+  if (form && !form.dataset.initialized) {
+    console.log('📋 Form detected dynamically, initializing...');
+    form.dataset.initialized = 'true';
+    initializeTrainingCohortForm();
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
 });
