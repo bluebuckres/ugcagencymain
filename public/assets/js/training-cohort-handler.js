@@ -3,20 +3,9 @@
 
 console.log('✅ Training Cohort Handler: Script loaded');
 
-function initializeTrainingCohortForm() {
-  console.log('📋 Initializing: Looking for form with ID: trainingCohortForm');
+function attachFormListener(form) {
+  console.log('✅ Attaching form listener to:', form.id);
   
-  const form = document.getElementById('trainingCohortForm');
-  
-  if (!form) {
-    console.error('❌ CRITICAL: Form not found! ID: trainingCohortForm');
-    console.log('📊 Available forms on page:', document.querySelectorAll('form').length);
-    console.log('📊 Form IDs:', Array.from(document.querySelectorAll('form')).map(f => f.id));
-    return;
-  }
-  
-  console.log('✅ Form found successfully:', form);
-
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -150,24 +139,29 @@ function initializeTrainingCohortForm() {
   }
 }
 
-// Initialize form when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeTrainingCohortForm);
-} else {
-  initializeTrainingCohortForm();
-}
-
-// Also initialize if form is added dynamically (for modal)
+// Watch for form being added to DOM (modal loads dynamically)
 const observer = new MutationObserver(function(mutations) {
   const form = document.getElementById('trainingCohortForm');
-  if (form && !form.dataset.initialized) {
-    console.log('📋 Form detected dynamically, initializing...');
-    form.dataset.initialized = 'true';
-    initializeTrainingCohortForm();
+  if (form && !form.dataset.listenerAttached) {
+    console.log('📋 Form detected in DOM, attaching listener...');
+    form.dataset.listenerAttached = 'true';
+    attachFormListener(form);
   }
 });
 
-observer.observe(document.body, {
-  childList: true,
-  subtree: true
-});
+// Start observing when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('📋 DOMContentLoaded: Starting to watch for form...');
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+} else {
+  console.log('📋 DOM already loaded: Starting to watch for form...');
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}
