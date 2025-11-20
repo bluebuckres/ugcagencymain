@@ -1923,12 +1923,30 @@
     <script>
         function openTrainingCohortModal() {
             console.log('🔄 Opening training cohort modal...');
+            console.log('📍 Fetching from: training-cohort-modal.html');
+            
             fetch('training-cohort-modal.html')
-                .then(response => response.text())
+                .then(response => {
+                    console.log('📊 Response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
                 .then(html => {
-                    console.log('✅ Modal HTML loaded');
+                    console.log('✅ Modal HTML loaded, length:', html.length);
+                    console.log('📝 First 100 chars:', html.substring(0, 100));
+                    
                     document.body.insertAdjacentHTML('beforeend', html);
                     console.log('✅ Modal added to DOM');
+                    
+                    // Check if modal is visible
+                    const modal = document.getElementById('trainingCohortOverlay');
+                    if (modal) {
+                        console.log('✅ Modal element found in DOM');
+                    } else {
+                        console.error('❌ Modal element NOT found after insertion');
+                    }
                     
                     // Initialize Lucide icons in the modal
                     if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -1936,7 +1954,11 @@
                         console.log('✅ Lucide icons initialized');
                     }
                 })
-                .catch(error => console.error('❌ Error loading modal:', error));
+                .catch(error => {
+                    console.error('❌ Error loading modal:', error);
+                    console.error('❌ Error details:', error.message);
+                    alert('Error loading form. Please try again.');
+                });
         }
     </script>
     
