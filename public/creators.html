@@ -1916,19 +1916,27 @@
         }
     </script>
     
+    <!-- Training Cohort Form Handler -->
+    <script src="assets/js/training-cohort-handler.js"></script>
+    
     <!-- Training Cohort Modal Opener -->
     <script>
         function openTrainingCohortModal() {
+            console.log('🔄 Opening training cohort modal...');
             fetch('training-cohort-modal.html')
                 .then(response => response.text())
                 .then(html => {
+                    console.log('✅ Modal HTML loaded');
                     document.body.insertAdjacentHTML('beforeend', html);
+                    console.log('✅ Modal added to DOM');
+                    
                     // Initialize Lucide icons in the modal
                     if (typeof lucide !== 'undefined' && lucide.createIcons) {
                         lucide.createIcons();
+                        console.log('✅ Lucide icons initialized');
                     }
                 })
-                .catch(error => console.error('Error loading modal:', error));
+                .catch(error => console.error('❌ Error loading modal:', error));
         }
     </script>
     

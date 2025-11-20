@@ -455,18 +455,23 @@
         </div>
     </div>
 
-    <script src="assets/js/training-cohort-handler.js"></script>
     <script>
         function closeModal() {
-            document.getElementById('trainingCohortOverlay').remove();
+            const overlay = document.getElementById('trainingCohortOverlay');
+            if (overlay) {
+                overlay.remove();
+            }
         }
         
         // Close on overlay click
-        document.getElementById('trainingCohortOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        const overlay = document.getElementById('trainingCohortOverlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        }
         
         // Close on Escape key
         document.addEventListener('keydown', function(e) {
