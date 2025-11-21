@@ -1,8 +1,10 @@
 // Modal Loader - Creates training cohort modal dynamically
 console.log('✅ Modal Loader: Script loaded');
 
-function openTrainingCohortModal() {
+// Make function global so it's accessible from HTML onclick
+window.openTrainingCohortModal = function() {
     console.log('🔄 Opening training cohort modal...');
+    console.log('📍 Function called from:', event?.target?.outerHTML || 'unknown');
     
     // Create modal styles
     const styles = `
@@ -429,24 +431,29 @@ function openTrainingCohortModal() {
         // Close on overlay click
         overlay.addEventListener('click', function(e) {
             if (e.target === this) {
-                closeTrainingCohortModal();
+                window.closeTrainingCohortModal();
             }
         });
         
         // Close on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeTrainingCohortModal();
+                window.closeTrainingCohortModal();
             }
         });
     }
-}
+};
 
-function closeTrainingCohortModal() {
+// Make close function global
+window.closeTrainingCohortModal = function() {
     console.log('🔄 Closing modal...');
     const overlay = document.getElementById('trainingCohortOverlay');
     if (overlay) {
         overlay.remove();
         console.log('✅ Modal closed');
     }
-}
+};
+
+// Verify functions are accessible
+console.log('✅ openTrainingCohortModal available:', typeof window.openTrainingCohortModal);
+console.log('✅ closeTrainingCohortModal available:', typeof window.closeTrainingCohortModal);
