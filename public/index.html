@@ -867,6 +867,208 @@
             margin-top: 1rem;
         }
 
+        /* Why Us Section */
+        .why-us-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #FAF8F5 0%, #F5F1EB 100%);
+        }
+
+        .why-us-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .why-us-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .why-us-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-charcoal);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .ugc-card {
+            border: 2px solid var(--color-sage);
+            background: linear-gradient(135deg, #FAFBF9 0%, white 100%);
+        }
+
+        .influencer-card {
+            border: 1px solid #E5E7EB;
+        }
+
+        .smart-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-sage);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-charcoal);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .comparison-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .point {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .checkmark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--color-sage);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .cross {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #EF4444;
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .point strong {
+            color: var(--color-charcoal);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .point p {
+            color: var(--color-charcoal);
+            opacity: 0.7;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .why-us-cta {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .why-us-cta .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .cta-link {
+            color: var(--color-sage);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta-link:hover {
+            color: var(--color-charcoal);
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .why-us-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-us-subtitle {
+                font-size: 1rem;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .comparison-card {
+                padding: 2rem;
+            }
+
+            .smart-badge {
+                top: 1rem;
+                left: 1rem;
+                position: static;
+                transform: none;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+
+            .point {
+                gap: 0.75rem;
+            }
+
+            .why-us-cta .btn-large {
+                width: 100%;
+            }
+        }
+
         /* ROI Calculator Section */
         .roi-section {
             padding: 5rem 0;
@@ -1696,7 +1898,7 @@
                     <div class="stat-description">For our brand partners</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">48hr</span>
+                    <span class="stat-number">72hr</span>
                     <div class="stat-label">Turnaround Time</div>
                     <div class="stat-description">From brief to final content</div>
                 </div>
@@ -1899,6 +2101,112 @@
                 </form>
 
                 <p class="form-note">Join 1,200+ brands using our free resources</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us-section">
+        <div class="container">
+            <div class="why-us-header">
+                <h2>Followers Don't Pay Bills.<br>Great Stories Do.</h2>
+                <p class="why-us-subtitle">Stop wasting ₹50k+/month on influencer fees. Invest in authentic UGC and spend the savings on Meta ads that actually convert.</p>
+            </div>
+
+            <div class="comparison-container">
+                <!-- UGC Side -->
+                <div class="comparison-card ugc-card">
+                    <div class="smart-badge">SMART CHOICE</div>
+                    <div class="card-icon">🎯</div>
+                    <h3>UGC Creation</h3>
+                    
+                    <div class="comparison-points">
+                        <div class="point">
+                            <span class="checkmark">✓</span>
+                            <div>
+                                <strong>Save 40-70%</strong>
+                                <p>₹7,900+ vs ₹50k+ influencer costs</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="checkmark">✓</span>
+                            <div>
+                                <strong>Own it forever</strong>
+                                <p>100% commercial rights, scale unlimited</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="checkmark">✓</span>
+                            <div>
+                                <strong>Total creative control</strong>
+                                <p>Your script, your edits, 48-72hr delivery</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="checkmark">✓</span>
+                            <div>
+                                <strong>2-4× ROAS on ads</strong>
+                                <p>Optimized for conversions, not likes</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="checkmark">✓</span>
+                            <div>
+                                <strong>Scale winners freely</strong>
+                                <p>No one stops your profitable campaigns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Influencer Side -->
+                <div class="comparison-card influencer-card">
+                    <div class="card-icon">📉</div>
+                    <h3>Influencer Marketing</h3>
+                    
+                    <div class="comparison-points">
+                        <div class="point">
+                            <span class="cross">✗</span>
+                            <div>
+                                <strong>High costs, low ROI</strong>
+                                <p>₹10k-₹1L+ per post based on followers</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="cross">✗</span>
+                            <div>
+                                <strong>Limited usage rights</strong>
+                                <p>May ask you to stop running winning ads</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="cross">✗</span>
+                            <div>
+                                <strong>Zero creative control</strong>
+                                <p>They control style, timeline, revisions</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="cross">✗</span>
+                            <div>
+                                <strong>High followers ≠ sales</strong>
+                                <p>Vanity metrics, feels like an obvious ad</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <span class="cross">✗</span>
+                            <div>
+                                <strong>Hard to scale</strong>
+                                <p>Find more influencers, renegotiate deals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-us-cta">
+                <button class="btn btn-primary btn-large" onclick="scrollToSection('roiCalculatorSection')">Start Creating UGC That Converts</button>
+                <a href="#" class="cta-link">See Detailed Breakdown →</a>
             </div>
         </div>
     </section>
