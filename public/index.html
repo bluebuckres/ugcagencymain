@@ -940,8 +940,19 @@
         }
 
         .card-icon {
-            font-size: 2.5rem;
+            width: 48px;
+            height: 48px;
             margin-bottom: 1rem;
+            color: var(--color-sage);
+            stroke-width: 2;
+        }
+        
+        .ugc-card .card-icon {
+            color: var(--color-sage);
+        }
+        
+        .influencer-card .card-icon {
+            color: #EF4444;
         }
 
         .comparison-card h3 {
@@ -2118,7 +2129,7 @@
                 <!-- UGC Side -->
                 <div class="comparison-card ugc-card">
                     <div class="smart-badge">SMART CHOICE</div>
-                    <div class="card-icon">🎯</div>
+                    <svg class="card-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                     <h3>UGC Creation</h3>
                     
                     <div class="comparison-points">
@@ -2162,7 +2173,7 @@
 
                 <!-- Influencer Side -->
                 <div class="comparison-card influencer-card">
-                    <div class="card-icon">📉</div>
+                    <svg class="card-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>
                     <h3>Influencer Marketing</h3>
                     
                     <div class="comparison-points">
