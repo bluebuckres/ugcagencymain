@@ -1260,15 +1260,27 @@
 
             .why-us-cta {
                 gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+                max-width: 100%;
             }
 
             .why-us-cta .btn-large {
                 width: 100%;
+                max-width: 400px;
                 padding: 1rem 2rem;
+                font-size: clamp(0.95rem, 2vw, 1.05rem);
+                border-radius: 12px;
             }
             
             .cta-link {
-                font-size: 0.95rem;
+                font-size: clamp(0.9rem, 2vw, 1rem);
+                padding: 0.75rem 1.5rem;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 400px;
+                width: 100%;
             }
         }
 
