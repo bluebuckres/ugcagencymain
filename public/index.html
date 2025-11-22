@@ -688,17 +688,18 @@
             justify-content: center;
         }
 
-        .star {
-            width: 24px;
-            height: 24px;
-            position: relative;
-        }
-
-        .star svg {
-            width: 100%;
-            height: 100%;
+        .star-icon {
+            width: 20px;
+            height: 20px;
+            color: #FFB800;
             fill: #FFB800;
             filter: drop-shadow(0 2px 4px rgba(255, 184, 0, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .star-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 3px 6px rgba(255, 184, 0, 0.4));
         }
 
         blockquote {
@@ -1916,11 +1917,11 @@
                 <div class="testimonials-wrapper">
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         Honestly? I was burning ₹40k monthly on studio shoots that weren't converting. My CA was getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month itself, our CPA dropped from ₹850 to ₹320. I wish I'd found them earlier. Would've saved lakhs.
@@ -1936,11 +1937,11 @@
 
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         We launched in April and by June, I was almost ready to shut down. Ads weren't working, nobody trusted us. Anjali Desai at MakeUGC.in suggested real people reviewing our products. Game changer. Sales picked up in 3 weeks. Sometimes one decision changes everything.
@@ -1956,11 +1957,11 @@
 
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         My biggest mistake? Spending 2 months trying to create content in-house. My team hated being on camera, videos looked forced. Found MakeUGC.in through a founder group. Kavya Iyer got us 15 videos in 10 days. Not all were perfect, maybe 12 worked well, but that's fine. We finally had content that didn't look like an ad.
@@ -1976,11 +1977,11 @@
 
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         Meta was rejecting our ads left and right. Too polished, they said. I didn't get it until Sneha Patel from MakeUGC.in explained - people want real, not perfect. Their creators made our ayurvedic products feel trustworthy. Approval rate went from 40% to 95%. Simple change, massive impact.
@@ -1996,11 +1997,11 @@
 
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         I'll be honest - I thought UGC was just a trend. Spent 6 months doing influencer collabs that gave zero ROI. Then a friend mentioned MakeUGC.in. Meera Reddy explained the difference. These aren't influencers, they're customers. Our retention rate doubled because people finally believed in us. Took me too long to figure this out.
@@ -2017,11 +2018,11 @@
                 <!-- Duplicate first card for seamless loop -->
                 <div class="testimonial-card animate-on-scroll">
                     <div class="stars">
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
+                        <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2"></polygon></svg>
                     </div>
                     <blockquote>
                         Honestly? I was burning ₹40k monthly on studio shoots that weren't converting. My CA was getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month itself, our CPA dropped from ₹850 to ₹320. I wish I'd found them earlier. Would've saved lakhs.
