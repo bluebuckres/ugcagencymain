@@ -904,10 +904,10 @@
                     <!-- Trending Posts -->
                     <aside class="bg-white rounded-2xl p-6 border border-sage/20" role="complementary" aria-labelledby="trending-heading">
                         <h3 id="trending-heading" class="font-crimson text-xl font-bold mb-6">Trending Now</h3>
-                        <div class="space-y-4" id="trendingPosts">
+                        <div class="grid grid-cols-1 gap-4" id="trendingPosts">
                             <!-- Trending posts will be populated by JavaScript -->
                         </div>
-                    </div>
+                    </aside>
                     
                     <!-- Analytics Dashboard - Enhanced -->
                     <div class="bg-gradient-to-br from-white to-sage/5 rounded-2xl p-5 border border-sage/20 mt-6 shadow-lg">
@@ -922,8 +922,8 @@
                             </span>
                         </div>
                         
-                        <!-- Main Metrics -->
-                        <div class="space-y-3">
+                        <!-- Main Metrics - Horizontal Grid on Desktop -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
                             <!-- Total Views -->
                             <div class="bg-white rounded-lg p-3 border border-sage/10 hover:border-sage/30 transition-all">
                                 <div class="flex justify-between items-start">
@@ -984,7 +984,7 @@
                         
                         <!-- Mini Stats Grid -->
                         <div class="mt-4 pt-4 border-t border-sage/10">
-                            <div class="grid grid-cols-2 gap-2.5">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2.5">
                                 <div class="bg-gradient-to-br from-sage/10 to-sage/5 rounded-lg p-3 border border-sage/20">
                                     <div class="flex items-center gap-2 mb-1">
                                         <i data-lucide="trending-up" class="w-3.5 h-3.5 text-sage"></i>
@@ -1003,7 +1003,7 @@
                         </div>
                         
                         <!-- Additional Stats -->
-                        <div class="mt-2.5 grid grid-cols-2 gap-2.5">
+                        <div class="mt-2.5 grid grid-cols-1 lg:grid-cols-2 gap-2.5">
                             <div class="bg-white rounded-lg p-2.5 border border-sage/10">
                                 <div class="flex items-center gap-1.5 mb-0.5">
                                     <i data-lucide="arrow-left-right" class="w-3 h-3 text-charcoal/60"></i>
