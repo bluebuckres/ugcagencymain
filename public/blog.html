@@ -925,17 +925,17 @@
                         <!-- Main Metrics - Vertical on Mobile, Horizontal on Desktop -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <!-- Total Views -->
-                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all">
+                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all overflow-hidden">
                                 <div class="flex justify-between items-start mb-3">
                                     <div class="flex-1 min-w-0">
                                         <span class="text-xs text-charcoal/60 font-medium uppercase tracking-wide block truncate">Total Views</span>
-                                        <div class="flex items-baseline gap-2 mt-1">
-                                            <span class="font-bold text-2xl text-charcoal" id="totalViews">1.8M</span>
-                                            <span class="text-xs text-sage font-semibold whitespace-nowrap">+2.3%</span>
+                                        <div class="flex items-baseline gap-1.5 mt-1 min-w-0">
+                                            <span class="font-bold text-lg sm:text-xl text-charcoal truncate" id="totalViews">1.8M</span>
+                                            <span class="text-xs text-sage font-semibold whitespace-nowrap flex-shrink-0">+2.3%</span>
                                         </div>
                                     </div>
-                                    <div class="text-sage ml-3 flex-shrink-0">
-                                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                                    <div class="text-sage ml-2 flex-shrink-0">
+                                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
                                     </div>
                                 </div>
                                 <div class="h-1.5 bg-sage/10 rounded-full overflow-hidden">
@@ -944,17 +944,17 @@
                             </div>
                             
                             <!-- Engagement Rate -->
-                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all">
+                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all overflow-hidden">
                                 <div class="flex justify-between items-start mb-3">
                                     <div class="flex-1 min-w-0">
                                         <span class="text-xs text-charcoal/60 font-medium uppercase tracking-wide block truncate">Engagement</span>
-                                        <div class="flex items-baseline gap-2 mt-1">
-                                            <span class="font-bold text-2xl text-sage" id="engagementRate">12.7%</span>
-                                            <span class="text-xs text-sage font-semibold whitespace-nowrap">+0.8%</span>
+                                        <div class="flex items-baseline gap-1.5 mt-1 min-w-0">
+                                            <span class="font-bold text-lg sm:text-xl text-sage truncate" id="engagementRate">12.7%</span>
+                                            <span class="text-xs text-sage font-semibold whitespace-nowrap flex-shrink-0">+0.8%</span>
                                         </div>
                                     </div>
-                                    <div class="text-sage ml-3 flex-shrink-0">
-                                        <i data-lucide="target" class="w-6 h-6"></i>
+                                    <div class="text-sage ml-2 flex-shrink-0">
+                                        <i data-lucide="target" class="w-5 h-5"></i>
                                     </div>
                                 </div>
                                 <div class="h-1.5 bg-sage/10 rounded-full overflow-hidden">
@@ -963,20 +963,20 @@
                             </div>
                             
                             <!-- Active Readers -->
-                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all md:col-span-2 lg:col-span-1">
+                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all overflow-hidden md:col-span-2 lg:col-span-1">
                                 <div class="flex justify-between items-start">
                                     <div class="flex-1 min-w-0">
                                         <span class="text-xs text-charcoal/60 font-medium uppercase tracking-wide block truncate">Active Now</span>
-                                        <div class="flex items-baseline gap-2 mt-1">
-                                            <span class="font-bold text-2xl text-rust" id="activeReaders">127</span>
-                                            <span class="text-xs text-charcoal/50 font-medium whitespace-nowrap">online</span>
+                                        <div class="flex items-baseline gap-1.5 mt-1 min-w-0">
+                                            <span class="font-bold text-lg sm:text-xl text-rust truncate" id="activeReaders">127</span>
+                                            <span class="text-xs text-charcoal/50 font-medium whitespace-nowrap flex-shrink-0">online</span>
                                         </div>
                                         <div class="mt-2 text-xs text-charcoal/50 truncate">
-                                            <span id="readerLocations">Mumbai, Delhi, Bangalore...</span>
+                                            <span id="readerLocations">Mumbai, Delhi...</span>
                                         </div>
                                     </div>
-                                    <div class="text-rust ml-3 flex-shrink-0">
-                                        <i data-lucide="users" class="w-6 h-6"></i>
+                                    <div class="text-rust ml-2 flex-shrink-0">
+                                        <i data-lucide="users" class="w-5 h-5"></i>
                                     </div>
                                 </div>
                             </div>
@@ -985,38 +985,38 @@
                         <!-- Mini Stats Grid -->
                         <div class="mt-5 pt-5 border-t border-sage/10">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <div class="bg-gradient-to-br from-sage/10 to-sage/5 rounded-lg p-4 border border-sage/20">
+                                <div class="bg-gradient-to-br from-sage/10 to-sage/5 rounded-lg p-4 border border-sage/20 overflow-hidden">
                                     <div class="flex items-center gap-2 mb-2">
-                                        <i data-lucide="trending-up" class="w-4 h-4 text-sage"></i>
-                                        <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide">This Week</div>
+                                        <i data-lucide="trending-up" class="w-4 h-4 text-sage flex-shrink-0"></i>
+                                        <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide truncate">This Week</div>
                                     </div>
-                                    <div class="font-bold text-2xl text-sage" id="weeklyGrowth">+18.4%</div>
+                                    <div class="font-bold text-lg sm:text-xl text-sage truncate" id="weeklyGrowth">+18.4%</div>
                                 </div>
-                                <div class="bg-gradient-to-br from-rust/10 to-rust/5 rounded-lg p-4 border border-rust/20">
+                                <div class="bg-gradient-to-br from-rust/10 to-rust/5 rounded-lg p-4 border border-rust/20 overflow-hidden">
                                     <div class="flex items-center gap-2 mb-2">
-                                        <i data-lucide="clock" class="w-4 h-4 text-rust"></i>
-                                        <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide">Avg. Time</div>
+                                        <i data-lucide="clock" class="w-4 h-4 text-rust flex-shrink-0"></i>
+                                        <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide truncate">Avg. Time</div>
                                     </div>
-                                    <div class="font-bold text-2xl text-rust" id="avgTime">6m 47s</div>
+                                    <div class="font-bold text-lg sm:text-xl text-rust truncate" id="avgTime">6m 47s</div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Additional Stats -->
                         <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all">
+                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all overflow-hidden">
                                 <div class="flex items-center gap-2 mb-2">
-                                    <i data-lucide="arrow-left-right" class="w-4 h-4 text-charcoal/60"></i>
-                                    <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide">Bounce Rate</div>
+                                    <i data-lucide="arrow-left-right" class="w-4 h-4 text-charcoal/60 flex-shrink-0"></i>
+                                    <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide truncate">Bounce Rate</div>
                                 </div>
-                                <div class="font-bold text-2xl text-charcoal" id="bounceRate">31.2%</div>
+                                <div class="font-bold text-lg sm:text-xl text-charcoal truncate" id="bounceRate">31.2%</div>
                             </div>
-                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all">
+                            <div class="bg-white rounded-lg p-4 border border-sage/10 hover:border-sage/30 transition-all overflow-hidden">
                                 <div class="flex items-center gap-2 mb-2">
-                                    <i data-lucide="file-text" class="w-4 h-4 text-charcoal/60"></i>
-                                    <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide">Page Views</div>
+                                    <i data-lucide="file-text" class="w-4 h-4 text-charcoal/60 flex-shrink-0"></i>
+                                    <div class="text-xs text-charcoal/60 font-medium uppercase tracking-wide truncate">Page Views</div>
                                 </div>
-                                <div class="font-bold text-2xl text-charcoal" id="pageViews">3.8</div>
+                                <div class="font-bold text-lg sm:text-xl text-charcoal truncate" id="pageViews">3.8</div>
                             </div>
                         </div>
                     </div>
