@@ -47,7 +47,6 @@
             const experienceInput = form.querySelector('textarea[name="experience"]');
             const interestsInput = form.querySelector('textarea[name="interests"]');
             const instagramUrlInput = form.querySelector('input[name="instagram_url"]');
-            const youtubeUrlInput = form.querySelector('input[name="youtube_url"]');
             const portfolioLinkInput = form.querySelector('input[name="portfolio_link"]');
             const additionalLinksInput = form.querySelector('textarea[name="additional_links"]');
             const referredByInput = form.querySelector('input[name="referred_by"]');
@@ -62,7 +61,6 @@
                 experience: experienceInput.value.trim() || null,
                 interests: interestsInput.value.trim(),
                 instagram_url: instagramUrlInput.value.trim() || null,
-                youtube_url: youtubeUrlInput.value.trim() || null,
                 portfolio_link: portfolioLinkInput.value.trim(),
                 additional_links: additionalLinksInput.value.trim() || null,
                 referred_by: referredByInput ? referredByInput.value : null
