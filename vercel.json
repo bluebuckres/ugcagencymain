@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "public": false,
+  "public": true,
   "cleanUrls": false,
   "trailingSlash": false,
   "buildCommand": "npm run tailwind:build",
