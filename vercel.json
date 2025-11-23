@@ -1,7 +1,7 @@
 {
   "version": 2,
   "public": false,
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "buildCommand": "npm run tailwind:build",
   "outputDirectory": "public",
@@ -50,6 +50,10 @@
     {
       "source": "/blog/:path*",
       "destination": "/blog/:path*.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/:path*.html"
     }
   ],
   "redirects": [
