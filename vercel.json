@@ -48,6 +48,11 @@
   ],
   "redirects": [
     {
+      "source": "https://www.makeugc.in/:path*",
+      "destination": "https://makeugc.in/:path*",
+      "permanent": true
+    },
+    {
       "source": "/index",
       "destination": "/",
       "permanent": true
