@@ -42,7 +42,6 @@
                 experience: document.getElementById('experience').value.trim() || null,
                 interests: document.getElementById('interests').value.trim(),
                 instagram_url: document.getElementById('instagram_url').value.trim() || null,
-                youtube_url: document.getElementById('youtube_url').value.trim() || null,
                 portfolio_link: document.getElementById('portfolio_link').value.trim(),
                 additional_links: document.getElementById('additional_links').value.trim() || null,
                 referred_by: document.getElementById('referred_by') ? document.getElementById('referred_by').value : null
