@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium UGC Services | MakeUGC</title>
+    <meta name="description" content="Premium UGC services for D2C brands. Real Indian creators, proven ROAS, fast turnaround.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --color-warm-stone: #F5F1EB;
+            --color-sage: #8B9A7A;
+            --color-charcoal: #2C2C2C;
+            --color-clay: #C4A484;
+            --color-cream: #FAF8F5;
+            --color-muted-teal: #7A9B9B;
+            --color-soft-terracotta: #D4A574;
+            
+            --font-serif: 'Crimson Text', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            --radius-soft: 12px;
+            --radius-softer: 16px;
+            --shadow-subtle: 0 2px 8px rgba(44, 44, 44, 0.1);
+            --shadow-lift: 0 4px 16px rgba(44, 44, 44, 0.15);
+            --shadow-modal: 0 20px 60px rgba(44, 44, 44, 0.3);
+            
+            --transition-gentle: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--color-charcoal);
+            background-color: var(--color-warm-stone);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(139, 154, 122, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-charcoal);
+            font-weight: 500;
+            transition: var(--transition-gentle);
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-sage);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 2rem 80px;
+            background: linear-gradient(135deg, var(--color-warm-stone) 0%, var(--color-cream) 100%);
+            position: relative;
+        }
+        
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-subtle);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        
+        .trust-badge .separator {
+            width: 1px;
+            height: 16px;
+            background: rgba(44, 44, 44, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            max-width: 1000px;
+            margin: 0 auto 24px;
+            line-height: 1.1;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-sage), var(--color-muted-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subheading {
+            font-size: clamp(18px, 2.5vw, 24px);
+            max-width: 800px;
+            margin: 0 auto 48px;
+            font-weight: 500;
+        }
+        
+        .hero-subheading strong {
+            color: var(--color-sage);
+            font-weight: 700;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-gentle);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-sage), #7A8A6A);
+            color: white;
+            box-shadow: var(--shadow-lift);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 154, 122, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-charcoal);
+            border: 2px solid var(--color-charcoal);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-charcoal);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-muted-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        section:nth-child(even) {
+            background: var(--color-cream);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: var(--radius-softer);
+            text-align: center;
+            transition: var(--transition-gentle);
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lift);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(139, 154, 122, 0.1), rgba(139, 154, 122, 0.2));
+            border-radius: var(--radius-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        
+        .feature-icon i {
+            width: 32px;
+            height: 32px;
+            color: var(--color-sage);
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-softer);
+            border: 1px solid rgba(139, 154, 122, 0.2);
+            transition: var(--transition-gentle);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--color-sage);
+        }
+        
+        .pricing-card.popular {
+            border: 3px solid var(--color-sage);
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-sage);
+            color: white;
+            padding: 6px 24px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tier-name {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .price-details {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 24px 0;
+        }
+        
+        .features-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            color: var(--color-sage);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .view-details-btn {
+            width: 100%;
+            margin-top: 24px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 44, 44, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-softer);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-modal);
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 32px;
+            border-bottom: 1px solid rgba(139, 154, 122, 0.2);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: var(--color-charcoal);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition-gentle);
+        }
+        
+        .modal-close:hover {
+            background: rgba(139, 154, 122, 0.1);
+        }
+        
+        .modal-body {
+            padding: 32px;
+        }
+        
+        .modal-footer {
+            padding: 24px 32px;
+            border-top: 1px solid rgba(139, 154, 122, 0.2);
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">MakeUGC</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="trust-badge">
+                <span>🇮🇳</span>
+                <span>Trusted by 50+ D2C Brands</span>
+                <span class="separator"></span>
+                <span>Avg 5.2× ROAS</span>
+            </div>
+            
+            <h1>
+                Premium Human UGC<br>
+                <span class="gradient-text">That Actually Converts</span>
+            </h1>
+            
+            <p class="hero-subheading">
+                100% Real Diverse Indian Creators • No AI Fakes<br>
+                Built for D2C brands spending <strong>₹2 lakh+ per month</strong> on ads
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#pricing" class="btn btn-primary">
+                    See Tiers & Pricing
+                    <i data-lucide="arrow-down"></i>
+                </a>
+                <a href="/contact.html" class="btn btn-secondary">
+                    Book a Call
+                    <i data-lucide="message-circle"></i>
+                </a>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">D2C Brands</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5.2×</div>
+                    <div class="stat-label">Avg ROAS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">72-120h</div>
+                    <div class="stat-label">Turnaround</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Vetted Creators</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i data-lucide="chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Why Different Section -->
+    <section id="why-different">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real People, Real Stories, <span class="gradient-text">Real ROAS</span></h2>
+                <p>Why 50+ D2C brands choose us over generic content agencies</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>100% Real Indian Creators</h3>
+                    <p>120+ vetted, trained creators who represent your diverse Indian audience authentically</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3>72-120 Hour Turnaround</h3>
+                    <p>Launch campaigns fast. Get content when you need it, not when agencies feel like delivering</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>2-4 Hook Variants + Full Rights</h3>
+                    <p>Multiple versions for A/B testing with complete commercial usage rights included</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h3>Data-Driven ROAS Focus</h3>
+                    <p>Content built for conversion, not vanity metrics. Tested, measured, and optimized for performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UGC Pricing Tiers -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>UGC Creation Tiers</h2>
+                <p>Select what you need now, scale later</p>
+                <p style="font-size: 16px; margin-top: 16px;">Perfect for brands spending <strong>₹2 lakh+ / month</strong> on ads and ready to 10× creative volume</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Starter Tier -->
+                <div class="pricing-card" onclick="openModal('starter')">
+                    <h3 class="tier-name">Starter</h3>
+                    <div class="price">₹9,900</div>
+                    <div class="price-details">
+                        <strike style="opacity: 0.5;">₹12,000</strike>
+                        <span style="background: #e74c3c; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px;">Save 17%</span>
+                        <div style="margin-top: 8px;">₹9,900 per video</div>
+                    </div>
+                    <ul class="features-list">
+                        <li>1 Premium UGC Video</li>
+                        <li>1 Real Indian Creator</li>
+                        <li>2 Hook Variants for Testing</li>
+                        <li>72-120 Hour Delivery</li>
+                        <li>Full Commercial Usage Rights</li>
+                    </ul>
+                    <button class="btn btn-primary view-details-btn">View Details</button>
+                </div>
+
+                <!-- Growth Tier (Popular) -->
+                <div class="pricing-card popular" onclick="openModal('growth')">
+                    <div class="popular-badge">⭐ MOST POPULAR</div>
+                    <h3 class="tier-name">Growth</h3>
+                    <div class="price">₹49,000</div>
+                    <div class="price-details">
+                        <strike style="opacity: 0.5;">₹59,400</strike>
+                        <span style="background: #e74c3c; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px;">Save 18%</span>
+                        <div style="margin-top: 8px;">₹8,167 per video</div>
+                    </div>
+                    <ul class="features-list">
+                        <li>6 Premium UGC Videos</li>
+                        <li>Multiple Diverse Creators</li>
+                        <li>2-4 Hook Variants Each</li>
+                        <li>72-120 Hour Delivery</li>
+                        <li>Full Commercial Usage Rights</li>
+                        <li>Priority Support</li>
+                        <li>1 Free Revision Round</li>
+                    </ul>
+                    <button class="btn btn-primary view-details-btn">View Details</button>
+                </div>
+
+                <!-- Scale Tier -->
+                <div class="pricing-card" onclick="openModal('scale')">
+                    <h3 class="tier-name">Scale</h3>
+                    <div class="price">₹89,000</div>
+                    <div class="price-details">
+                        <strike style="opacity: 0.5;">₹1,14,000</strike>
+                        <span style="background: #e74c3c; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px;">Save 22%</span>
+                        <div style="margin-top: 8px;">₹7,417 per video</div>
+                    </div>
+                    <ul class="features-list">
+                        <li>12 Premium UGC Videos</li>
+                        <li>Hand-Picked Creator Team</li>
+                        <li>2-4 Hook Variants Each</li>
+                        <li>Priority 72-96 Hour Delivery</li>
+                        <li>Full Commercial Usage Rights</li>
+                        <li>Dedicated Account Manager</li>
+                        <li>Unlimited Revisions</li>
+                        <li>Content Strategy Session</li>
+                    </ul>
+                    <button class="btn btn-primary view-details-btn">View Details</button>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px; font-size: 18px; font-weight: 600;">
+                Need 20+ videos monthly? → <a href="/contact.html" style="color: var(--color-sage);">Contact us for custom pricing</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Growth Bundle -->
+    <section id="growth-bundle" style="background: var(--color-warm-stone);">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto; background: white; padding: 48px; border-radius: 20px; border: 3px solid var(--color-sage); box-shadow: var(--shadow-modal);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <span style="background: var(--color-sage); color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;">🔥 MOST POPULAR BUNDLE</span>
+                    <span style="background: #e74c3c; color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;">⚡ Limited Slots: 5 Available</span>
+                </div>
+                
+                <h2 style="font-size: clamp(28px, 4vw, 36px); margin-bottom: 16px;">Full-Stack Growth Bundle</h2>
+                
+                <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap;">
+                    <span style="font-size: clamp(48px, 6vw, 64px); font-weight: 800;">₹1,49,000</span>
+                    <strike style="font-size: 24px; opacity: 0.5;">₹2,20,000</strike>
+                    <span style="background: #2ecc71; color: white; padding: 8px 20px; border-radius: 50px; font-size: 20px; font-weight: 700;">Save 32%</span>
+                </div>
+                
+                <p style="font-size: 18px; opacity: 0.7; margin-bottom: 32px;">per month</p>
+                
+                <hr style="border: none; height: 2px; background: rgba(139, 154, 122, 0.2); margin-bottom: 32px;">
+                
+                <h3 style="font-size: 20px; margin-bottom: 20px;">What You Get:</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 32px;">
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>20 Premium UGC Videos</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>30 Static Ad Creatives</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>10 Edited Video Ads</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>Unlimited Revisions</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>Priority 24-Hour Delivery</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>Dedicated Account Manager</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>Monthly Strategy Call</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 18px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px;"></i>
+                        <span>Performance Analytics Dashboard</span>
+                    </div>
+                </div>
+                
+                <a href="/contact.html" class="btn btn-primary" style="width: 100%; max-width: 400px; display: flex; margin: 0 auto; height: 64px; font-size: 20px; justify-content: center;">
+                    Apply for Growth Bundle →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Grid -->
+    <section id="additional-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Growth Solutions</h2>
+                <p>From production to performance marketing - we've got you covered</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" onclick="openModal('production')" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i data-lucide="video"></i>
+                    </div>
+                    <h3>Video & Photo Production</h3>
+                    <p>Agency-quality at efficient pricing</p>
+                    <button class="btn btn-secondary" style="margin-top: 20px; width: 100%;">View Packages</button>
+                </div>
+                
+                <div class="feature-card" onclick="openModal('ecommerce')" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i data-lucide="shopping-cart"></i>
+                    </div>
+                    <h3>Shopify Launch & CRO</h3>
+                    <p>Stores that convert browsers into buyers</p>
+                    <button class="btn btn-secondary" style="margin-top: 20px; width: 100%;">View Services</button>
+                </div>
+                
+                <div class="feature-card" onclick="openModal('creative')" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <h3>Creative Strategy & Meta Ads</h3>
+                    <p>Performance-driven creatives for Meta platforms</p>
+                    <button class="btn btn-secondary" style="margin-top: 20px; width: 100%;">View Packages</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Growth Management -->
+    <section id="growth-management" style="background: linear-gradient(135deg, var(--color-charcoal) 0%, #3a3a3a 100%); color: white;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <div style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 24px; font-size: 14px; font-weight: 700;">
+                🚀 LIMITED AVAILABILITY
+            </div>
+            
+            <h2 style="color: white; font-size: clamp(40px, 5vw, 52px); margin-bottom: 16px;">Growth & Ads Management</h2>
+            <p style="font-size: 22px; margin-bottom: 32px; opacity: 0.9;">For brands ready to scale profitably with expert guidance</p>
+            
+            <div style="border: 2px solid rgba(255,255,255,0.3); padding: 12px 24px; border-radius: 50px; display: inline-block; margin-bottom: 40px; font-size: 16px; font-weight: 600;">
+                Minimum ad spend: ₹1,00,000/month
+            </div>
+            
+            <div style="margin-bottom: 24px;">
+                <div style="font-size: 18px; opacity: 0.8; margin-bottom: 8px;">Starting at</div>
+                <div style="font-size: clamp(40px, 5vw, 48px); font-weight: 800; margin-bottom: 12px;">₹75,000/month</div>
+                <div style="font-size: 18px; opacity: 0.7;">+ 15-20% of ad spend + performance bonus</div>
+            </div>
+            
+            <div style="background: rgba(231, 76, 60, 0.2); border: 2px solid #e74c3c; padding: 12px 24px; border-radius: 50px; display: inline-block; margin-bottom: 48px; font-size: 16px; font-weight: 700; animation: pulse 2s infinite;">
+                ⚡ Only 5 Slots Available
+            </div>
+            
+            <button onclick="openModal('growth-mgmt')" class="btn btn-primary" style="background: white; color: var(--color-charcoal); font-size: 18px; padding: 18px 36px;">
+                View Full Details
+            </button>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal-starter" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Starter Tier - Complete Details</h2>
+                <button class="modal-close" onclick="closeModal('starter')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Package Includes:</h3>
+                <ul class="features-list" style="margin: 20px 0;">
+                    <li>1 Premium UGC Video (60-90 seconds)</li>
+                    <li>1 Real, Vetted Indian Creator</li>
+                    <li>2 Hook Variants for A/B Testing</li>
+                    <li>72-120 Hour Delivery</li>
+                    <li>Full Commercial Usage Rights</li>
+                    <li>Raw + Edited Versions</li>
+                </ul>
+                
+                <h3 style="margin-top: 32px;">Perfect For:</h3>
+                <p style="margin: 12px 0; line-height: 1.6;">Brands testing UGC for the first time or needing quick content for specific campaigns</p>
+                
+                <h3 style="margin-top: 32px;">Pricing:</h3>
+                <div style="background: rgba(139, 154, 122, 0.1); padding: 20px; border-radius: 12px; margin: 12px 0;">
+                    <div style="font-size: 36px; font-weight: 800;">₹9,900</div>
+                    <div style="opacity: 0.7;">Originally ₹12,000 • Save 17%</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('starter')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-growth" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Growth Tier - Complete Details</h2>
+                <button class="modal-close" onclick="closeModal('growth')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="background: var(--color-sage); color: white; padding: 12px 24px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-size: 14px; font-weight: 700;">
+                    ⭐ MOST POPULAR
+                </div>
+                
+                <h3>Package Includes:</h3>
+                <ul class="features-list" style="margin: 20px 0;">
+                    <li>6 Premium UGC Videos (60-90 seconds each)</li>
+                    <li>Multiple Diverse Creators (different demographics)</li>
+                    <li>2-4 Hook Variants Per Video</li>
+                    <li>72-120 Hour Delivery</li>
+                    <li>Full Commercial Usage Rights</li>
+                    <li>Priority Support (24-hour response)</li>
+                    <li>1 Free Revision Round per video</li>
+                    <li>Raw + Edited Versions</li>
+                </ul>
+                
+                <h3 style="margin-top: 32px;">Perfect For:</h3>
+                <p style="margin: 12px 0; line-height: 1.6;">Growing D2C brands running consistent campaigns and needing regular content refresh</p>
+                
+                <h3 style="margin-top: 32px;">Pricing:</h3>
+                <div style="background: rgba(139, 154, 122, 0.1); padding: 20px; border-radius: 12px; margin: 12px 0;">
+                    <div style="font-size: 36px; font-weight: 800;">₹49,000</div>
+                    <div style="opacity: 0.7;">Originally ₹59,400 • Save 18%</div>
+                    <div style="margin-top: 8px; font-weight: 600;">₹8,167 per video</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('growth')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-scale" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Scale Tier - Complete Details</h2>
+                <button class="modal-close" onclick="closeModal('scale')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Package Includes:</h3>
+                <ul class="features-list" style="margin: 20px 0;">
+                    <li>12 Premium UGC Videos (60-90 seconds each)</li>
+                    <li>Hand-Picked Creator Team (matched to your brand)</li>
+                    <li>2-4 Hook Variants Per Video</li>
+                    <li>Priority 72-96 Hour Delivery</li>
+                    <li>Full Commercial Usage Rights</li>
+                    <li>Dedicated Account Manager</li>
+                    <li>Unlimited Revisions</li>
+                    <li>Content Strategy Session (60 min)</li>
+                    <li>Raw + Edited Versions</li>
+                    <li>Monthly Performance Review</li>
+                </ul>
+                
+                <h3 style="margin-top: 32px;">Perfect For:</h3>
+                <p style="margin: 12px 0; line-height: 1.6;">Established brands scaling ad spend and needing high-volume, consistent content production</p>
+                
+                <h3 style="margin-top: 32px;">Pricing:</h3>
+                <div style="background: rgba(139, 154, 122, 0.1); padding: 20px; border-radius: 12px; margin: 12px 0;">
+                    <div style="font-size: 36px; font-weight: 800;">₹89,000</div>
+                    <div style="opacity: 0.7;">Originally ₹1,14,000 • Save 22%</div>
+                    <div style="margin-top: 8px; font-weight: 600;">₹7,417 per video</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('scale')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-production" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Video & Photo Production</h2>
+                <button class="modal-close" onclick="closeModal('production')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; gap: 24px;">
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Half-Day Studio Shoot</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">Starting at ₹24,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Perfect for product-focused content shoots</p>
+                        <ul class="features-list">
+                            <li>4 hours studio time</li>
+                            <li>1 in-house model</li>
+                            <li>Basic props & setup</li>
+                            <li>15-20 final shots</li>
+                            <li>2-3 short video clips</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Full-Day Production</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">Starting at ₹44,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Complete production for comprehensive content</p>
+                        <p style="font-size: 14px; opacity: 0.7;">+₹15,000 for on-location</p>
+                        <ul class="features-list">
+                            <li>8 hours production time</li>
+                            <li>2-3 models available</li>
+                            <li>Full props & creative setup</li>
+                            <li>40-50 final shots</li>
+                            <li>5-7 edited video clips</li>
+                            <li>Professional editing included</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Monthly Retainer</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">Custom Pricing</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Ongoing production needs for growing brands</p>
+                        <ul class="features-list">
+                            <li>Dedicated monthly slot</li>
+                            <li>Priority scheduling</li>
+                            <li>Flexible shoot days</li>
+                            <li>Bulk pricing benefits</li>
+                            <li>Strategy consultation included</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('production')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Book Production Call</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ecommerce" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Shopify Launch, Redesign & CRO</h2>
+                <button class="modal-close" onclick="closeModal('ecommerce')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 24px; font-size: 18px; opacity: 0.8;">Stores that actually convert browsers into buyers</p>
+                
+                <div style="display: grid; gap: 24px;">
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Shopify Launch</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹69,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Complete store setup from zero to launch</p>
+                        <ul class="features-list">
+                            <li>Custom theme design</li>
+                            <li>Product page optimization</li>
+                            <li>Mobile-responsive design</li>
+                            <li>Payment gateway setup</li>
+                            <li>SEO foundation</li>
+                            <li>30-day post-launch support</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Website Redesign</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹59,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Transform your existing store for better conversions</p>
+                        <ul class="features-list">
+                            <li>UX/UI overhaul</li>
+                            <li>Speed optimization</li>
+                            <li>Mobile optimization</li>
+                            <li>Brand consistency update</li>
+                            <li>Trust element integration</li>
+                            <li>A/B testing setup</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>CRO Audit + Fix</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹39,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Identify and fix conversion blockers</p>
+                        <ul class="features-list">
+                            <li>Comprehensive CRO audit</li>
+                            <li>Heatmap analysis</li>
+                            <li>User journey optimization</li>
+                            <li>Checkout flow fixes</li>
+                            <li>2 rounds of implementation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('ecommerce')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">See Portfolio Samples</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-creative" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Creative Strategy & Meta Ads</h2>
+                <button class="modal-close" onclick="closeModal('creative')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 24px; font-size: 18px; opacity: 0.8;">Performance-driven creatives for Meta platforms</p>
+                
+                <div style="display: grid; gap: 24px;">
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Static Pro</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹49,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Static Ads Package</p>
+                        <ul class="features-list">
+                            <li>25 static ad creatives</li>
+                            <li>5 copy/hook variations</li>
+                            <li>Carousel + single image formats</li>
+                            <li>ROAS-optimized design</li>
+                            <li>2 revision rounds</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid rgba(139, 154, 122, 0.2); padding: 24px; border-radius: 12px;">
+                        <h3>Video Pro</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹79,900</div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Video Ads Package</p>
+                        <ul class="features-list">
+                            <li>8 edited video ads</li>
+                            <li>Platform optimization (Meta formats)</li>
+                            <li>Hook testing variations</li>
+                            <li>Engaging copy included</li>
+                            <li>Music & subtitles</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; border: 2px solid var(--color-sage); padding: 24px; border-radius: 12px;">
+                        <div style="background: var(--color-sage); color: white; padding: 6px 16px; border-radius: 20px; display: inline-block; margin-bottom: 12px; font-size: 12px; font-weight: 700;">BEST VALUE</div>
+                        <h3>Mixed Bundle</h3>
+                        <div style="font-size: 32px; font-weight: 800; margin: 12px 0;">₹99,900</div>
+                        <div style="opacity: 0.7;">
+                            <strike>₹1,29,900</strike>
+                            <span style="background: #2ecc71; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px;">Save 23%</span>
+                        </div>
+                        <p style="margin: 12px 0; opacity: 0.8;">Complete Creative Bundle</p>
+                        <ul class="features-list">
+                            <li>30 total ad assets</li>
+                            <li>20 static + 10 video</li>
+                            <li>Full hook library</li>
+                            <li>Ad copy included</li>
+                            <li>Monthly refresh option</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('creative')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Get Creative Strategy</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-growth-mgmt" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Growth & Ads Management</h2>
+                <button class="modal-close" onclick="closeModal('growth-mgmt')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="background: rgba(231, 76, 60, 0.1); border: 2px solid #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 24px; text-align: center; font-weight: 600;">
+                    🚀 LIMITED AVAILABILITY - Only 5 Slots Available
+                </div>
+                
+                <p style="font-size: 18px; margin-bottom: 24px;">For brands ready to scale profitably with expert guidance</p>
+                
+                <div style="background: rgba(139, 154, 122, 0.1); padding: 24px; border-radius: 12px; margin: 24px 0;">
+                    <h3>Investment:</h3>
+                    <div style="font-size: 36px; font-weight: 800; margin: 12px 0;">₹75,000/month</div>
+                    <div style="opacity: 0.7;">+ 15-20% of ad spend + performance bonus</div>
+                    <div style="margin-top: 16px; padding: 12px; background: white; border-radius: 8px; font-weight: 600;">
+                        Minimum ad spend: ₹1,00,000/month
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 32px;">What You Get:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin: 20px 0;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Full-funnel Meta ad campaigns</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Weekly performance strategy calls</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Continuous A/B testing</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Audience research & targeting</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Creative optimization & iteration</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Landing page CRO recommendations</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Monthly analytics reports</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Dedicated growth strategist</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i data-lucide="check" style="color: #2ecc71; width: 24px; height: 24px; flex-shrink: 0;"></i>
+                        <span>Priority access to creative team</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('growth-mgmt')">Close</button>
+                <a href="/contact.html" class="btn btn-primary">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Modal functions
+        function openModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
