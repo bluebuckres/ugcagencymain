@@ -3,6 +3,7 @@
   "public": true,
   "cleanUrls": false,
   "trailingSlash": false,
+  "framework": "static",
   "buildCommand": "npm run tailwind:build",
   "outputDirectory": "public",
   "installCommand": "npm install",
