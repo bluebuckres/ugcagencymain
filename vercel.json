@@ -49,11 +49,15 @@
   ],
   "rewrites": [
     {
+      "source": "/tools/(.+)",
+      "destination": "/tools/$1.html"
+    },
+    {
       "source": "/blog/(.+)",
       "destination": "/blog/$1.html"
     },
     {
-      "source": "/(?!assets|api|_next)(.+)",
+      "source": "/(?!assets|api|_next|tools)(.+)",
       "destination": "/$1.html"
     }
   ],
