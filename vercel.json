@@ -2,6 +2,7 @@
   "version": 2,
   "public": true,
   "cleanUrls": false,
+  "buildCache": "override",
   "trailingSlash": false,
   "buildCommand": "npm run tailwind:build",
   "outputDirectory": "public",
