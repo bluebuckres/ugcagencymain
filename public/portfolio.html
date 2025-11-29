@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Portfolio - UGC Videos | MakeUGC</title>
+  <meta name="description" content="Explore our portfolio of 20+ high-performing UGC videos. See how we create authentic content that drives conversions for D2C brands." />
+  <meta name="keywords" content="UGC portfolio, user generated content examples, UGC videos, D2C content, performance marketing" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://makeugc.in/portfolio.html">
+  <meta property="og:title" content="Our Portfolio - UGC Videos | MakeUGC">
+  <meta property="og:description" content="Explore our portfolio of 20+ high-performing UGC videos.">
+  <meta property="og:image" content="https://makeugc.in/assets/images/makeugclogo-01.svg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://makeugc.in/portfolio.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/makeugclogo-01.svg">
+  <link rel="apple-touch-icon" href="/assets/images/makeugclogo-01.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <!-- Tailwind CSS -->
+  <link href="/assets/css/tailwind.css" rel="stylesheet">
+  
+  <!-- UTM Parameter Tracking -->
+  <script src="assets/js/utm-tracker.js" defer></script>
+  
+  <style>
+    :root {
+      --sage: #9CAF88;
+      --charcoal: #2C2C2C;
+      --cream: #F5F1E8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    nav a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      margin-left: 2rem;
+    }
+
+    nav a:hover {
+      color: var(--sage);
+    }
+
+    /* Hero Section */
+    .portfolio-hero {
+      padding: 4rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(156, 175, 136, 0.05) 0%, rgba(156, 175, 136, 0.02) 100%);
+    }
+
+    .portfolio-hero h1 {
+      font-family: 'Crimson Text', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .portfolio-hero p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* Portfolio Grid Section */
+    .portfolio-section {
+      padding: 4rem 0;
+    }
+
+    .portfolio-grid-container {
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    }
+
+    .portfolio-grid-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1.5rem;
+      animation: scroll-horizontal 60s linear infinite;
+      will-change: transform;
+    }
+
+    .portfolio-grid.paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-horizontal {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .video-card {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover .video-overlay {
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 1;
+    }
+
+    .play-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage);
+    }
+
+    /* Responsive Grid */
+    @media (max-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 1rem;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .portfolio-grid-container {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 0.75rem;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .portfolio-hero p {
+        font-size: 0.95rem;
+      }
+
+      .portfolio-section {
+        padding: 2rem 0;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: white;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .footer-section a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--sage);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--sage);
+    }
+
+    /* Loading State */
+    .video-card.loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo">
+        <span>MakeUGC</span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="creators.html">Creators</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="portfolio-hero">
+    <div class="container">
+      <h1>Our Portfolio</h1>
+      <p>Explore 20+ high-performing UGC videos that drive real conversions for D2C brands. Each video is crafted to tell your brand story authentically.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid Section -->
+  <section class="portfolio-section">
+    <div class="container">
+      <div class="portfolio-grid-container" id="portfolioContainer">
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Videos will be loaded here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo" style="height: 35px; width: 35px; border-radius: 50%; object-fit: cover;">
+            <h4 style="margin: 0;">MakeUGC</h4>
+          </div>
+          <p>MakeUGC.in<br>
+          3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India</p>
+          <p>connect@makeugc.in<br>
+          Mobile: +91 9239161632</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <p><a href="index.html">Home</a><br>
+          <a href="services.html">Services</a><br>
+          <a href="creators.html">Creators</a><br>
+          <a href="blog.html">Blog</a><br>
+          <a href="contact.html">Contact</a></p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <p><a href="resources.html">Free Templates</a><br>
+          <a href="/tools/roi-calculator.html">ROI Calculator</a><br>
+          <a href="blog.html">Case Studies</a></p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Trust & Legal</h4>
+          <p>Trusted by 50+ D2C Brands<br>
+          Meta Business Partner<br>
+          <a href="public/legal/security.html">🛡️ Your Data is Secure</a></p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html">Privacy Policy</a> • <a href="/legal/terms-conditions.html">Terms of Service</a> • <a href="/legal/refund-policy.html">Refund Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Cloudinary video URLs with optimizations
+    const portfolioVideos = [
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_1',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_2',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_3',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_5',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_6',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_7',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_8',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_9',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_10',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_11',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_12',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_13',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_14',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_15',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_16',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_17',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_18',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_19',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1/ac55c6fc039f0736d0ef9f609063978d/video_20',
+    ];
+
+    const portfolioGrid = document.getElementById('portfolioGrid');
+    const portfolioContainer = document.getElementById('portfolioContainer');
+
+    // Create video cards
+    function createVideoCards() {
+      portfolioVideos.forEach((videoUrl, index) => {
+        const videoCard = document.createElement('div');
+        videoCard.className = 'video-card loading';
+        videoCard.innerHTML = `
+          <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            preload="metadata"
+            data-video-index="${index}"
+          >
+            <source src="${videoUrl}.mp4" type="video/mp4">
+            <source src="${videoUrl}.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-overlay">
+            <div class="play-icon">
+              <i data-lucide="play" style="width: 30px; height: 30px;"></i>
+            </div>
+          </div>
+        `;
+        portfolioGrid.appendChild(videoCard);
+      });
+
+      // Reinitialize Lucide icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    // Pause animation on hover
+    function setupHoverPause() {
+      portfolioContainer.addEventListener('mouseenter', () => {
+        portfolioGrid.classList.add('paused');
+      });
+
+      portfolioContainer.addEventListener('mouseleave', () => {
+        portfolioGrid.classList.remove('paused');
+      });
+
+      // Mobile touch support
+      portfolioContainer.addEventListener('touchstart', () => {
+        portfolioGrid.classList.add('paused');
+      });
+
+      portfolioContainer.addEventListener('touchend', () => {
+        setTimeout(() => {
+          portfolioGrid.classList.remove('paused');
+        }, 2000);
+      });
+    }
+
+    // Remove loading state when video loads
+    function setupVideoLoading() {
+      const videos = portfolioGrid.querySelectorAll('video');
+      videos.forEach(video => {
+        video.addEventListener('loadeddata', () => {
+          video.closest('.video-card').classList.remove('loading');
+        });
+
+        video.addEventListener('error', () => {
+          video.closest('.video-card').classList.remove('loading');
+          console.warn(`Failed to load video: ${video.src}`);
+        });
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createVideoCards();
+      setupHoverPause();
+      setupVideoLoading();
+    });
+  </script>
+</body>
+</html>
