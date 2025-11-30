@@ -19,6 +19,10 @@
       --sage: #9CAF88;
       --charcoal: #2C2C2C;
       --cream: #F5F1E8;
+      --radius-soft: 12px;
+      --radius-softer: 16px;
+      --shadow-lift: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --transition-gentle: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -110,7 +114,7 @@
       line-height: 1.6;
     }
 
-    /* Portfolio Grid Section */
+    /* Portfolio Grid Section - Like Hero but Horizontal */
     .portfolio-section {
       padding: 4rem 1.5rem;
       max-width: 1400px;
@@ -121,79 +125,88 @@
       position: relative;
       overflow: hidden;
       background: white;
-      border-radius: 16px;
+      border-radius: var(--radius-softer);
       padding: 2rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+      box-shadow: var(--shadow-lift);
     }
 
-    /* Horizontal scrolling grid - 2 rows, 4 columns visible */
-    .portfolio-grid-wrapper {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .portfolio-grid {
+    /* 2 rows × 4 columns with horizontal scroll */
+    .ugc-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(calc(25% - 1.125rem), 1fr));
+      grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      gap: 1.5rem;
-      animation: scroll-horizontal 120s linear infinite;
-      will-change: transform;
-      width: 100%;
-    }
-
-    .portfolio-grid.paused {
-      animation-play-state: paused;
-    }
-
-    @keyframes scroll-horizontal {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .video-card {
+      gap: 1rem;
+      height: 600px;
       position: relative;
-      aspect-ratio: 9 / 16;
-      border-radius: 12px;
       overflow: hidden;
-      background: #000;
+      border-radius: var(--radius-softer);
+    }
+
+    .ugc-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: scroll-left 120s linear infinite;
+    }
+
+    .ugc-column:nth-child(even) {
+      animation: scroll-right 120s linear infinite;
+      animation-delay: -60s;
+    }
+
+    .ugc-item {
+      position: relative;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
       cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
+      transition: var(--transition-gentle);
+      aspect-ratio: 9 / 16;
+      background: #000;
     }
 
-    .video-card:hover {
-      transform: scale(1.02);
+    .ugc-item:hover {
+      transform: scale(1.05);
+      z-index: 10;
     }
 
-    .video-card video {
+    .ugc-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      transition: var(--transition-gentle);
+    }
+
+    .ugc-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 1rem;
+      opacity: 0;
+      transition: var(--transition-gentle);
+      z-index: 5;
+    }
+
+    .ugc-item:hover .ugc-overlay {
+      opacity: 1;
     }
 
     /* Video Controls */
     .video-controls {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-      padding: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
       display: flex;
       gap: 0.5rem;
       opacity: 0;
       transition: opacity 0.3s ease;
-      z-index: 10;
+      z-index: 15;
     }
 
-    .video-card:hover .video-controls {
+    .ugc-item:hover .video-controls {
       opacity: 1;
     }
 
@@ -222,17 +235,34 @@
       height: 20px;
     }
 
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes scroll-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Pause on hover */
+    .ugc-grid.paused .ugc-column {
+      animation-play-state: paused;
+    }
+
     /* Responsive */
     @media (max-width: 1200px) {
-      .portfolio-grid {
+      .ugc-grid {
         grid-template-columns: repeat(3, 1fr);
+        height: 500px;
       }
     }
 
     @media (max-width: 768px) {
-      .portfolio-grid {
+      .ugc-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        height: 400px;
+        gap: 0.75rem;
       }
 
       .portfolio-hero h1 {
@@ -245,8 +275,10 @@
     }
 
     @media (max-width: 480px) {
-      .portfolio-grid {
+      .ugc-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        height: 300px;
         gap: 0.5rem;
       }
 
@@ -342,10 +374,12 @@
   <!-- Portfolio Grid Section -->
   <section class="portfolio-section">
     <div class="portfolio-container">
-      <div class="portfolio-grid-wrapper" id="portfolioWrapper">
-        <div class="portfolio-grid" id="portfolioGrid">
-          <!-- Videos will be loaded here by JavaScript -->
-        </div>
+      <div class="ugc-grid" id="ugcGrid">
+        <!-- 4 columns for 2x4 grid -->
+        <div class="ugc-column" id="column1"></div>
+        <div class="ugc-column" id="column2"></div>
+        <div class="ugc-column" id="column3"></div>
+        <div class="ugc-column" id="column4"></div>
       </div>
     </div>
   </section>
@@ -391,7 +425,7 @@
   </footer>
 
   <script>
-    // Cloudinary video URLs with optimizations (q_auto/f_auto for best performance)
+    // Cloudinary video URLs
     const portfolioVideos = [
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446581/AQPbxUGdP4UddmF8aRynh0sqBrNyd1Q-mpAyYrhrNjHf9adUWTQMrCJGYfhGiXy9pX_MiW-HAJcphMxt96peEabUxv0spLR5jCPf9Eo_liacui.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446581/AQPQmd7GtoDP9Bxe8FwuEw0lHgnYoHlEICMXiSPSeKK2sYG8D-XH1TbzdvlNbFRA7YSxJouq7-0Wmm8vBUurIksbNvdJDtneadXB38U_ofcl6b.mp4',
@@ -420,16 +454,23 @@
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446498/AQNpyZh2boNkt41bD3URXTYypGMDqPAES66T_wNLuVLcoL3BavOU7fioAf7yse9wwUl4QoiZT8INFBeKYiX9AcbdLBZc1NnJx-3VuKw_gfx54o.mp4',
     ];
 
-    const portfolioGrid = document.getElementById('portfolioGrid');
-    const portfolioWrapper = document.getElementById('portfolioWrapper');
+    const columns = [
+      document.getElementById('column1'),
+      document.getElementById('column2'),
+      document.getElementById('column3'),
+      document.getElementById('column4'),
+    ];
 
-    // Create video cards with controls
+    const ugcGrid = document.getElementById('ugcGrid');
+
+    // Distribute videos across 4 columns (2 rows each)
     function createVideoCards() {
-      // Create cards twice for infinite loop effect
+      // Create 2 loops for seamless infinite scroll
       for (let loop = 0; loop < 2; loop++) {
         portfolioVideos.forEach((videoUrl, index) => {
+          const columnIndex = index % 4;
           const videoCard = document.createElement('div');
-          videoCard.className = 'video-card';
+          videoCard.className = 'ugc-item';
           
           videoCard.innerHTML = `
             <video 
@@ -438,11 +479,10 @@
               loop 
               playsinline
               preload="metadata"
-              data-video-index="${index}"
             >
               <source src="${videoUrl}" type="video/mp4">
-              Your browser does not support the video tag.
             </video>
+            <div class="ugc-overlay"></div>
             <div class="video-controls">
               <button class="control-btn play-btn" title="Play/Pause">
                 <svg fill="currentColor" viewBox="0 0 24 24">
@@ -460,54 +500,51 @@
             </div>
           `;
 
-          portfolioGrid.appendChild(videoCard);
+          columns[columnIndex].appendChild(videoCard);
+
+          // Add event listeners
+          const video = videoCard.querySelector('video');
+          const playBtn = videoCard.querySelector('.play-btn');
+          const soundBtn = videoCard.querySelector('.sound-btn');
+          const speakerOn = videoCard.querySelector('.speaker-on');
+          const speakerOff = videoCard.querySelector('.speaker-off');
+
+          playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+              video.play();
+              playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
+            } else {
+              video.pause();
+              playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+            }
+          });
+
+          soundBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            video.muted = !video.muted;
+            speakerOn.classList.toggle('hidden');
+            speakerOff.classList.toggle('hidden');
+          });
+
+          video.addEventListener('play', () => {
+            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
+          });
+
+          video.addEventListener('pause', () => {
+            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+          });
         });
       }
-
-      // Add event listeners to all video cards
-      const videoCards = document.querySelectorAll('.video-card');
-      videoCards.forEach((card) => {
-        const video = card.querySelector('video');
-        const playBtn = card.querySelector('.play-btn');
-        const soundBtn = card.querySelector('.sound-btn');
-        const speakerOn = card.querySelector('.speaker-on');
-        const speakerOff = card.querySelector('.speaker-off');
-
-        playBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (video.paused) {
-            video.play();
-            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
-          } else {
-            video.pause();
-            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
-          }
-        });
-
-        soundBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          video.muted = !video.muted;
-          speakerOn.classList.toggle('hidden');
-          speakerOff.classList.toggle('hidden');
-        });
-
-        video.addEventListener('play', () => {
-          playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
-        });
-
-        video.addEventListener('pause', () => {
-          playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
-        });
-      });
     }
 
-    // Pause animation on hover
-    portfolioWrapper.addEventListener('mouseenter', () => {
-      portfolioGrid.classList.add('paused');
+    // Pause on hover
+    ugcGrid.addEventListener('mouseenter', () => {
+      ugcGrid.classList.add('paused');
     });
 
-    portfolioWrapper.addEventListener('mouseleave', () => {
-      portfolioGrid.classList.remove('paused');
+    ugcGrid.addEventListener('mouseleave', () => {
+      ugcGrid.classList.remove('paused');
     });
 
     // Initialize
