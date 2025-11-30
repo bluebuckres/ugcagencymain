@@ -126,13 +126,33 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
     }
 
-    /* 2x4 Grid with 9:16 aspect ratio */
+    /* Horizontal scrolling grid - 2 rows, 4 columns visible */
+    .portfolio-grid-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, auto);
+      grid-template-columns: repeat(auto-fit, minmax(calc(25% - 1.125rem), 1fr));
+      grid-template-rows: repeat(2, 1fr);
       gap: 1.5rem;
+      animation: scroll-horizontal 120s linear infinite;
+      will-change: transform;
       width: 100%;
+    }
+
+    .portfolio-grid.paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-horizontal {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     .video-card {
@@ -144,6 +164,7 @@
       cursor: pointer;
       transition: transform 0.3s ease;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
     }
 
     .video-card:hover {
@@ -205,14 +226,13 @@
     @media (max-width: 1200px) {
       .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
       }
     }
 
     @media (max-width: 768px) {
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        gap: 1rem;
       }
 
       .portfolio-hero h1 {
@@ -322,8 +342,10 @@
   <!-- Portfolio Grid Section -->
   <section class="portfolio-section">
     <div class="portfolio-container">
-      <div class="portfolio-grid" id="portfolioGrid">
-        <!-- Videos will be loaded here by JavaScript -->
+      <div class="portfolio-grid-wrapper" id="portfolioWrapper">
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Videos will be loaded here by JavaScript -->
+        </div>
       </div>
     </div>
   </section>
@@ -399,45 +421,57 @@
     ];
 
     const portfolioGrid = document.getElementById('portfolioGrid');
+    const portfolioWrapper = document.getElementById('portfolioWrapper');
 
     // Create video cards with controls
     function createVideoCards() {
-      portfolioVideos.forEach((videoUrl, index) => {
-        const videoCard = document.createElement('div');
-        videoCard.className = 'video-card';
-        
-        videoCard.innerHTML = `
-          <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            preload="metadata"
-            data-video-index="${index}"
-          >
-            <source src="${videoUrl}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-controls">
-            <button class="control-btn play-btn" title="Play/Pause">
-              <svg fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </button>
-            <button class="control-btn sound-btn" title="Toggle Sound">
-              <svg fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
-            </button>
-          </div>
-        `;
+      // Create cards twice for infinite loop effect
+      for (let loop = 0; loop < 2; loop++) {
+        portfolioVideos.forEach((videoUrl, index) => {
+          const videoCard = document.createElement('div');
+          videoCard.className = 'video-card';
+          
+          videoCard.innerHTML = `
+            <video 
+              autoplay 
+              muted 
+              loop 
+              playsinline
+              preload="metadata"
+              data-video-index="${index}"
+            >
+              <source src="${videoUrl}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+              <button class="control-btn play-btn" title="Play/Pause">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              <button class="control-btn sound-btn" title="Toggle Sound">
+                <svg class="speaker-on" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <svg class="speaker-off hidden" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16.6915026,12.4744748 L21.0151496,16.7981218 C21.8006036,17.5835758 21.8006036,18.8563981 21.0151496,19.6418521 C20.2296956,20.4273061 18.9568733,20.4273061 18.1714193,19.6418521 L13.8477722,15.3182051 L9.52412521,19.6418521 C8.73867121,20.4273061 7.46584886,20.4273061 6.68039486,19.6418521 C5.89494086,18.8563981 5.89494086,17.5835758 6.68039486,16.7981218 L11.0040419,12.4744748 L6.68039486,8.15082772 C5.89494086,7.36537372 5.89494086,6.09255147 6.68039486,5.30709747 C7.46584886,4.52164347 8.73867121,4.52164347 9.52412521,5.30709747 L13.8477722,9.63074452 L18.1714193,5.30709747 C18.9568733,4.52164347 20.2296956,4.52164347 21.0151496,5.30709747 C21.8006036,6.09255147 21.8006036,7.36537372 21.0151496,8.15082772 L16.6915026,12.4744748 Z"/>
+                </svg>
+              </button>
+            </div>
+          `;
 
-        portfolioGrid.appendChild(videoCard);
+          portfolioGrid.appendChild(videoCard);
+        });
+      }
 
-        // Add event listeners
-        const video = videoCard.querySelector('video');
-        const playBtn = videoCard.querySelector('.play-btn');
-        const soundBtn = videoCard.querySelector('.sound-btn');
+      // Add event listeners to all video cards
+      const videoCards = document.querySelectorAll('.video-card');
+      videoCards.forEach((card) => {
+        const video = card.querySelector('video');
+        const playBtn = card.querySelector('.play-btn');
+        const soundBtn = card.querySelector('.sound-btn');
+        const speakerOn = card.querySelector('.speaker-on');
+        const speakerOff = card.querySelector('.speaker-off');
 
         playBtn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -453,7 +487,8 @@
         soundBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           video.muted = !video.muted;
-          soundBtn.style.opacity = video.muted ? '0.5' : '1';
+          speakerOn.classList.toggle('hidden');
+          speakerOff.classList.toggle('hidden');
         });
 
         video.addEventListener('play', () => {
@@ -465,6 +500,15 @@
         });
       });
     }
+
+    // Pause animation on hover
+    portfolioWrapper.addEventListener('mouseenter', () => {
+      portfolioGrid.classList.add('paused');
+    });
+
+    portfolioWrapper.addEventListener('mouseleave', () => {
+      portfolioGrid.classList.remove('paused');
+    });
 
     // Initialize
     createVideoCards();
