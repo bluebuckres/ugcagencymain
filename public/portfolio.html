@@ -156,13 +156,14 @@
       width: max-content;
     }
 
-    /* Row 1: left, Row 2: right */
+    /* Row 1: left, Row 2: left (same direction for seamless) */
     .row-1 .ugc-track {
       animation: scroll-left 60s linear infinite;
     }
 
     .row-2 .ugc-track {
-      animation: scroll-right 60s linear infinite;
+      animation: scroll-left 60s linear infinite;
+      animation-direction: reverse;
     }
 
     .ugc-item {
@@ -254,11 +255,6 @@
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
-    }
-
-    @keyframes scroll-right {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(50%); }
     }
 
     /* Pause on hover */
