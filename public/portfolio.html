@@ -152,13 +152,12 @@
 
     /* Row 1: Scroll LEFT */
     .ugc-row:nth-child(1) {
-      animation: scroll-left 120s linear infinite;
+      animation: scroll-left 60s linear infinite;
     }
 
     /* Row 2: Scroll RIGHT (opposite) */
     .ugc-row:nth-child(2) {
-      animation: scroll-right 120s linear infinite;
-      animation-delay: -60s;
+      animation: scroll-right 60s linear infinite;
     }
 
     .ugc-item {
@@ -171,6 +170,7 @@
       background: #000;
       flex: 0 0 calc(25% - 0.75rem);
       min-width: calc(25% - 0.75rem);
+      height: auto;
     }
 
     .ugc-item:hover {
@@ -248,12 +248,12 @@
 
     @keyframes scroll-left {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-100%); }
     }
 
     @keyframes scroll-right {
       0% { transform: translateX(0); }
-      100% { transform: translateX(50%); }
+      100% { transform: translateX(100%); }
     }
 
     /* Pause on hover */
@@ -483,8 +483,8 @@
       // Create 2 loops for seamless infinite scroll
       for (let loop = 0; loop < 2; loop++) {
         portfolioVideos.forEach((videoUrl, index) => {
-          // Distribute videos: first 12-13 in row1, rest in row2
-          const rowIndex = index < 13 ? 0 : 1;
+          // Distribute videos equally: odd indices in row1, even in row2
+          const rowIndex = index % 2;
           const targetRow = rowIndex === 0 ? row1 : row2;
 
           const videoCard = document.createElement('div');
