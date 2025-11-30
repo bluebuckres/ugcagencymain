@@ -172,11 +172,11 @@
       overflow: hidden;
       cursor: pointer;
       transition: var(--transition-gentle);
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 9 / 16;
       background: #000;
       flex-shrink: 0;
-      width: 240px;
-      height: 135px;
+      width: 150px;
+      height: 267px;
     }
 
     .ugc-item:hover {
@@ -262,21 +262,74 @@
       animation-play-state: paused;
     }
 
+    /* Static Ads Carousel */
+    .static-ads-carousel {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scroll-behavior: smooth;
+    }
+
+    .static-ads-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .static-ads-carousel::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .static-ads-carousel::-webkit-scrollbar-thumb {
+      background: var(--sage);
+      border-radius: 10px;
+    }
+
+    .static-ads-carousel::-webkit-scrollbar-thumb:hover {
+      background: var(--sage)/80;
+    }
+
+    .static-ad-item {
+      position: relative;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition-gentle);
+      aspect-ratio: 4 / 5;
+      background: #000;
+      flex-shrink: 0;
+      width: 160px;
+      height: 200px;
+      box-shadow: var(--shadow-lift);
+    }
+
+    .static-ad-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .static-ad-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .ugc-grid {
-        height: 300px;
+        height: 350px;
       }
 
       .ugc-item {
-        width: 200px;
-        height: 112px;
+        width: 110px;
+        height: 196px;
       }
     }
 
     @media (max-width: 768px) {
       .ugc-grid {
-        height: 250px;
+        height: 300px;
         gap: 1rem;
       }
 
@@ -289,14 +342,14 @@
       }
 
       .ugc-item {
-        width: 160px;
-        height: 90px;
+        width: 100px;
+        height: 178px;
       }
     }
 
     @media (max-width: 480px) {
       .ugc-grid {
-        height: 200px;
+        height: 250px;
         gap: 0.75rem;
       }
 
@@ -305,8 +358,8 @@
       }
 
       .ugc-item {
-        width: 120px;
-        height: 67px;
+        width: 80px;
+        height: 142px;
       }
     }
 
@@ -417,8 +470,8 @@
     <div class="portfolio-container">
       <h2 style="font-family: 'Crimson Text', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--charcoal);">Top-Performing Static Ads</h2>
       <p style="font-size: 0.95rem; color: #666; margin-bottom: 2rem;">The feed creatives that proved engagement ≠ conversions</p>
-      <div id="staticAdsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-        <!-- Static ads will be added here -->
+      <div class="static-ads-carousel" id="staticAdsCarousel">
+        <!-- Static ads will be added here by JavaScript -->
       </div>
     </div>
   </section>
@@ -493,9 +546,16 @@
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446498/AQNpyZh2boNkt41bD3URXTYypGMDqPAES66T_wNLuVLcoL3BavOU7fioAf7yse9wwUl4QoiZT8INFBeKYiX9AcbdLBZc1NnJx-3VuKw_gfx54o.mp4',
     ];
 
+    // Static Ads URLs - 4:5 format images from Cloudinary
+    const staticAds = [
+      // Add your static ad image URLs here in 4:5 format
+      // Example: 'https://res.cloudinary.com/dnqhciwsm/image/upload/...'
+    ];
+
     const row1Track = document.getElementById('row1Track');
     const row2Track = document.getElementById('row2Track');
     const ugcGrid = document.getElementById('ugcGrid');
+    const staticAdsCarousel = document.getElementById('staticAdsCarousel');
 
     function createVideoCard(videoUrl) {
       const videoCard = document.createElement('div');
@@ -576,6 +636,16 @@
       });
     }
 
+    // Render static ads carousel
+    function renderStaticAds() {
+      staticAds.forEach((adUrl) => {
+        const adItem = document.createElement('div');
+        adItem.className = 'static-ad-item';
+        adItem.innerHTML = `<img src="${adUrl}" alt="Static Ad" loading="lazy">`;
+        staticAdsCarousel.appendChild(adItem);
+      });
+    }
+
     // Pause on hover
     ugcGrid.addEventListener('mouseenter', () => {
       ugcGrid.classList.add('paused');
@@ -587,6 +657,9 @@
 
     // Initialize
     setupInfiniteScroll();
+    if (staticAds.length > 0) {
+      renderStaticAds();
+    }
     lucide.createIcons();
   </script>
 </body>
