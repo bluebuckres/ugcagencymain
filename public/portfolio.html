@@ -130,7 +130,7 @@
       box-shadow: var(--shadow-lift);
     }
 
-    /* 2 rows with horizontal scroll - SEAMLESS INFINITE */
+    /* 2 rows with horizontal scroll */
     .ugc-grid {
       display: flex;
       flex-direction: column;
@@ -141,14 +141,28 @@
       border-radius: var(--radius-softer);
     }
 
-    /* Each row - will be animated with JS */
+    /* Each row is a viewport; inner track actually scrolls */
     .ugc-row {
-      display: flex;
-      gap: 1rem;
-      height: 50%;
       position: relative;
       overflow: hidden;
+      height: 50%;
       width: 100%;
+    }
+
+    .ugc-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      width: max-content;
+    }
+
+    /* Row 1: left, Row 2: right */
+    .row-1 .ugc-track {
+      animation: scroll-left 60s linear infinite;
+    }
+
+    .row-2 .ugc-track {
+      animation: scroll-right 60s linear infinite;
     }
 
     .ugc-item {
@@ -236,9 +250,20 @@
       height: 20px;
     }
 
+    /* Seamless double-track animations */
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
     /* Pause on hover */
-    .ugc-grid.paused .ugc-row {
-      animation-play-state: paused !important;
+    .ugc-grid.paused .ugc-track {
+      animation-play-state: paused;
     }
 
     /* Responsive */
@@ -378,9 +403,13 @@
     <div class="portfolio-container">
       <div class="ugc-grid" id="ugcGrid">
         <!-- Row 1: Scroll LEFT -->
-        <div class="ugc-row" id="row1"></div>
+        <div class="ugc-row row-1">
+          <div class="ugc-track" id="row1Track"></div>
+        </div>
         <!-- Row 2: Scroll RIGHT (opposite) -->
-        <div class="ugc-row" id="row2"></div>
+        <div class="ugc-row row-2">
+          <div class="ugc-track" id="row2Track"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -455,8 +484,8 @@
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446498/AQNpyZh2boNkt41bD3URXTYypGMDqPAES66T_wNLuVLcoL3BavOU7fioAf7yse9wwUl4QoiZT8INFBeKYiX9AcbdLBZc1NnJx-3VuKw_gfx54o.mp4',
     ];
 
-    const row1 = document.getElementById('row1');
-    const row2 = document.getElementById('row2');
+    const row1Track = document.getElementById('row1Track');
+    const row2Track = document.getElementById('row2Track');
     const ugcGrid = document.getElementById('ugcGrid');
 
     function createVideoCard(videoUrl) {
@@ -507,44 +536,35 @@
     }
 
     function setupInfiniteScroll() {
-      // Distribute videos equally
+      // Split videos between rows (alternating)
+      const row1Videos = [];
+      const row2Videos = [];
+
       portfolioVideos.forEach((videoUrl, index) => {
-        const rowIndex = index % 2;
-        const targetRow = rowIndex === 0 ? row1 : row2;
-        targetRow.appendChild(createVideoCard(videoUrl));
+        if (index % 2 === 0) {
+          row1Videos.push(videoUrl);
+        } else {
+          row2Videos.push(videoUrl);
+        }
       });
 
-      // Duplicate for seamless scroll
-      portfolioVideos.forEach((videoUrl, index) => {
-        const rowIndex = index % 2;
-        const targetRow = rowIndex === 0 ? row1 : row2;
-        targetRow.appendChild(createVideoCard(videoUrl));
+      // Base sequence for each row
+      row1Videos.forEach((videoUrl) => {
+        row1Track.appendChild(createVideoCard(videoUrl));
       });
 
-      // Animate rows
-      const itemWidth = 180 + 16; // width + gap
-      const row1Items = row1.querySelectorAll('.ugc-item').length;
-      const totalWidth = itemWidth * row1Items;
+      row2Videos.forEach((videoUrl) => {
+        row2Track.appendChild(createVideoCard(videoUrl));
+      });
 
-      // Create CSS animation dynamically
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-${totalWidth / 2}px); }
-        }
-        @keyframes scroll-right {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(${totalWidth / 2}px); }
-        }
-        #row1 {
-          animation: scroll-left 60s linear infinite !important;
-        }
-        #row2 {
-          animation: scroll-right 60s linear infinite !important;
-        }
-      `;
-      document.head.appendChild(style);
+      // Duplicate once for seamless double-track scroll (A + A)
+      row1Videos.forEach((videoUrl) => {
+        row1Track.appendChild(createVideoCard(videoUrl));
+      });
+
+      row2Videos.forEach((videoUrl) => {
+        row2Track.appendChild(createVideoCard(videoUrl));
+      });
     }
 
     // Pause on hover
