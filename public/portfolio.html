@@ -4,37 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Portfolio - UGC Videos | MakeUGC</title>
-  <meta name="description" content="Explore our portfolio of 20+ high-performing UGC videos. See how we create authentic content that drives conversions for D2C brands." />
-  <meta name="keywords" content="UGC portfolio, user generated content examples, UGC videos, D2C content, performance marketing" />
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://makeugc.in/portfolio.html">
-  <meta property="og:title" content="Our Portfolio - UGC Videos | MakeUGC">
-  <meta property="og:description" content="Explore our portfolio of 20+ high-performing UGC videos.">
-  <meta property="og:image" content="https://makeugc.in/assets/images/makeugclogo-01.svg">
-  
-  <!-- Canonical URL -->
+  <meta name="description" content="Explore our portfolio of 25 high-performing UGC videos." />
   <link rel="canonical" href="https://makeugc.in/portfolio.html">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/assets/images/makeugclogo-01.svg">
-  <link rel="apple-touch-icon" href="/assets/images/makeugclogo-01.svg">
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
-  
-  <!-- Tailwind CSS -->
   <link href="/assets/css/tailwind.css" rel="stylesheet">
-  
-  <!-- UTM Parameter Tracking -->
   <script src="assets/js/utm-tracker.js" defer></script>
-  
+
   <style>
     :root {
       --sage: #9CAF88;
@@ -53,12 +32,6 @@
       background: var(--cream);
       color: var(--charcoal);
       overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
     }
 
     /* Header */
@@ -97,12 +70,17 @@
       object-fit: cover;
     }
 
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
     nav a {
       color: var(--charcoal);
       text-decoration: none;
       font-size: 0.95rem;
       transition: color 0.3s;
-      margin-left: 2rem;
     }
 
     nav a:hover {
@@ -111,7 +89,7 @@
 
     /* Hero Section */
     .portfolio-hero {
-      padding: 4rem 0;
+      padding: 4rem 1.5rem;
       text-align: center;
       background: linear-gradient(135deg, rgba(156, 175, 136, 0.05) 0%, rgba(156, 175, 136, 0.02) 100%);
     }
@@ -128,16 +106,18 @@
       font-size: 1.1rem;
       color: #666;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto;
       line-height: 1.6;
     }
 
     /* Portfolio Grid Section */
     .portfolio-section {
-      padding: 4rem 0;
+      padding: 4rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    .portfolio-grid-container {
+    .portfolio-container {
       position: relative;
       overflow: hidden;
       background: white;
@@ -146,42 +126,24 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
     }
 
-    .portfolio-grid-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
+    /* 2x4 Grid with 9:16 aspect ratio */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
       gap: 1.5rem;
-      animation: scroll-horizontal 60s linear infinite;
-      will-change: transform;
-    }
-
-    .portfolio-grid.paused {
-      animation-play-state: paused;
-    }
-
-    @keyframes scroll-horizontal {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+      width: 100%;
     }
 
     .video-card {
       position: relative;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 9 / 16;
       border-radius: 12px;
       overflow: hidden;
       background: #000;
       cursor: pointer;
       transition: transform 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .video-card:hover {
@@ -195,58 +157,69 @@
       display: block;
     }
 
-    .video-overlay {
+    /* Video Controls */
+    .video-controls {
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      padding: 1rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 0.5rem;
       opacity: 0;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
+      z-index: 10;
     }
 
-    .video-card:hover .video-overlay {
-      background: rgba(0, 0, 0, 0.3);
+    .video-card:hover .video-controls {
       opacity: 1;
     }
 
-    .play-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.9);
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
       border-radius: 50%;
+      color: white;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--sage);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
 
-    /* Responsive Grid */
-    @media (max-width: 1024px) {
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+
+    .control-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
       .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
-      }
-
-      .portfolio-hero h1 {
-        font-size: 2.2rem;
       }
     }
 
     @media (max-width: 768px) {
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 1rem;
+        gap: 0.75rem;
       }
 
       .portfolio-hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
-      .portfolio-grid-container {
+      .portfolio-container {
         padding: 1rem;
       }
     }
@@ -254,20 +227,11 @@
     @media (max-width: 480px) {
       .portfolio-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 0.75rem;
+        gap: 0.5rem;
       }
 
       .portfolio-hero h1 {
         font-size: 1.5rem;
-      }
-
-      .portfolio-hero p {
-        font-size: 0.95rem;
-      }
-
-      .portfolio-section {
-        padding: 2rem 0;
       }
     }
 
@@ -275,32 +239,37 @@
     footer {
       background: var(--charcoal);
       color: white;
-      padding: 3rem 0 1rem;
+      padding: 3rem 1.5rem 1rem;
       margin-top: 4rem;
     }
 
     .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin-bottom: 2rem;
     }
 
-    .footer-section h4 {
+    .footer-section h3 {
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 1rem;
     }
 
-    .footer-section p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: #ccc;
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
     }
 
     .footer-section a {
       color: #ccc;
       text-decoration: none;
+      font-size: 0.9rem;
       transition: color 0.3s;
     }
 
@@ -309,15 +278,15 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid #444;
-      padding-top: 1rem;
       text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 0.85rem;
       color: #999;
     }
 
     .footer-bottom a {
-      color: #999;
+      color: #ccc;
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -325,98 +294,77 @@
     .footer-bottom a:hover {
       color: var(--sage);
     }
-
-    /* Loading State */
-    .video-card.loading {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="header-content">
-      <a href="index.html" class="logo">
-        <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo">
+      <a href="/" class="logo">
+        <img src="/assets/images/makeugclogo-01.svg" alt="MakeUGC Logo">
         <span>MakeUGC</span>
       </a>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="creators.html">Creators</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/creators.html">Creators</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="portfolio-hero">
-    <div class="container">
-      <h1>Our Portfolio</h1>
-      <p>Explore 20+ high-performing UGC videos that drive real conversions for D2C brands. Each video is crafted to tell your brand story authentically.</p>
-    </div>
+    <h1>Our Portfolio</h1>
+    <p>Explore 25 high-performing UGC videos that drive real conversions for D2C brands. Each video is crafted to tell your brand story authentically.</p>
   </section>
 
   <!-- Portfolio Grid Section -->
   <section class="portfolio-section">
-    <div class="container">
-      <div class="portfolio-grid-container" id="portfolioContainer">
-        <div class="portfolio-grid" id="portfolioGrid">
-          <!-- 25 UGC videos will be loaded here by JavaScript -->
-        </div>
+    <div class="portfolio-container">
+      <div class="portfolio-grid" id="portfolioGrid">
+        <!-- Videos will be loaded here by JavaScript -->
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-            <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo" style="height: 35px; width: 35px; border-radius: 50%; object-fit: cover;">
-            <h4 style="margin: 0;">MakeUGC</h4>
-          </div>
-          <p>MakeUGC.in<br>
-          3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India</p>
-          <p>connect@makeugc.in<br>
-          Mobile: +91 9239161632</p>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <p><a href="index.html">Home</a><br>
-          <a href="services.html">Services</a><br>
-          <a href="creators.html">Creators</a><br>
-          <a href="blog.html">Blog</a><br>
-          <a href="contact.html">Contact</a></p>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <p><a href="resources.html">Free Templates</a><br>
-          <a href="/tools/roi-calculator.html">ROI Calculator</a><br>
-          <a href="blog.html">Case Studies</a></p>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Trust & Legal</h4>
-          <p>Trusted by 50+ D2C Brands<br>
-          Meta Business Partner<br>
-          <a href="public/legal/security.html">🛡️ Your Data is Secure</a></p>
-        </div>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MakeUGC</h3>
+        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 1rem;">Creating authentic UGC content that converts.</p>
+        <p style="font-size: 0.85rem; color: #999;">Email: hello@makeugc.in<br>Mobile: +91 9226161032</p>
       </div>
-      
-      <div class="footer-bottom">
-        <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html">Privacy Policy</a> • <a href="/legal/terms-conditions.html">Terms of Service</a> • <a href="/legal/refund-policy.html">Refund Policy</a></p>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/creators.html">Creators</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
       </div>
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="/resources.html">Free Templates</a></li>
+          <li><a href="/resources.html">ROI Calculator</a></li>
+          <li><a href="/resources.html">Case Studies</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/legal/terms-conditions.html">Terms of Service</a></li>
+          <li><a href="/legal/refund-policy.html">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html">Privacy Policy</a> • <a href="/legal/terms-conditions.html">Terms of Service</a> • <a href="/legal/refund-policy.html">Refund Policy</a></p>
     </div>
   </footer>
 
@@ -451,13 +399,13 @@
     ];
 
     const portfolioGrid = document.getElementById('portfolioGrid');
-    const portfolioContainer = document.getElementById('portfolioContainer');
 
-    // Create video cards
+    // Create video cards with controls
     function createVideoCards() {
       portfolioVideos.forEach((videoUrl, index) => {
         const videoCard = document.createElement('div');
-        videoCard.className = 'video-card loading';
+        videoCard.className = 'video-card';
+        
         videoCard.innerHTML = `
           <video 
             autoplay 
@@ -470,64 +418,57 @@
             <source src="${videoUrl}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <div class="video-overlay">
-            <div class="play-icon">
-              <i data-lucide="play" style="width: 30px; height: 30px;"></i>
-            </div>
+          <div class="video-controls">
+            <button class="control-btn play-btn" title="Play/Pause">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+            <button class="control-btn sound-btn" title="Toggle Sound">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         `;
+
         portfolioGrid.appendChild(videoCard);
-      });
 
-      // Reinitialize Lucide icons
-      if (window.lucide) {
-        lucide.createIcons();
-      }
-    }
+        // Add event listeners
+        const video = videoCard.querySelector('video');
+        const playBtn = videoCard.querySelector('.play-btn');
+        const soundBtn = videoCard.querySelector('.sound-btn');
 
-    // Pause animation on hover
-    function setupHoverPause() {
-      portfolioContainer.addEventListener('mouseenter', () => {
-        portfolioGrid.classList.add('paused');
-      });
-
-      portfolioContainer.addEventListener('mouseleave', () => {
-        portfolioGrid.classList.remove('paused');
-      });
-
-      // Mobile touch support
-      portfolioContainer.addEventListener('touchstart', () => {
-        portfolioGrid.classList.add('paused');
-      });
-
-      portfolioContainer.addEventListener('touchend', () => {
-        setTimeout(() => {
-          portfolioGrid.classList.remove('paused');
-        }, 2000);
-      });
-    }
-
-    // Remove loading state when video loads
-    function setupVideoLoading() {
-      const videos = portfolioGrid.querySelectorAll('video');
-      videos.forEach(video => {
-        video.addEventListener('loadeddata', () => {
-          video.closest('.video-card').classList.remove('loading');
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (video.paused) {
+            video.play();
+            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
+          } else {
+            video.pause();
+            playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+          }
         });
 
-        video.addEventListener('error', () => {
-          video.closest('.video-card').classList.remove('loading');
-          console.warn(`Failed to load video: ${video.src}`);
+        soundBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          soundBtn.style.opacity = video.muted ? '0.5' : '1';
+        });
+
+        video.addEventListener('play', () => {
+          playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>`;
+        });
+
+        video.addEventListener('pause', () => {
+          playBtn.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
         });
       });
     }
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      createVideoCards();
-      setupHoverPause();
-      setupVideoLoading();
-    });
+    createVideoCards();
+    lucide.createIcons();
   </script>
 </body>
 </html>
