@@ -174,6 +174,8 @@
       height: 100%;
       object-fit: cover;
       transition: var(--transition-gentle);
+      display: block;
+      background: #000;
     }
 
     .ugc-overlay {
@@ -478,9 +480,11 @@
               muted 
               loop 
               playsinline
-              preload="metadata"
+              preload="auto"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
             >
               <source src="${videoUrl}" type="video/mp4">
+              Your browser does not support the video tag.
             </video>
             <div class="ugc-overlay"></div>
             <div class="video-controls">
