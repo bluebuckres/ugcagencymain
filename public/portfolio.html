@@ -114,7 +114,7 @@
       line-height: 1.6;
     }
 
-    /* Portfolio Grid Section - Like Hero but Horizontal */
+    /* Portfolio Grid Section */
     .portfolio-section {
       padding: 4rem 1.5rem;
       max-width: 1400px;
@@ -130,11 +130,10 @@
       box-shadow: var(--shadow-lift);
     }
 
-    /* 2 rows × 4 columns with horizontal scroll */
+    /* 2 rows with horizontal scroll */
     .ugc-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 1rem;
       height: 600px;
       position: relative;
@@ -142,20 +141,22 @@
       border-radius: var(--radius-softer);
     }
 
-    .ugc-column {
+    /* Each row */
+    .ugc-row {
       display: flex;
-      flex-direction: column;
       gap: 1rem;
+      height: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Row 1: Scroll LEFT */
+    .ugc-row:nth-child(1) {
       animation: scroll-left 120s linear infinite;
     }
 
-    /* Row 2 (odd columns: 1, 3) scroll left */
-    .ugc-column:nth-child(odd) {
-      animation: scroll-left 120s linear infinite;
-    }
-
-    /* Row 2 (even columns: 2, 4) scroll right (opposite) */
-    .ugc-column:nth-child(even) {
+    /* Row 2: Scroll RIGHT (opposite) */
+    .ugc-row:nth-child(2) {
       animation: scroll-right 120s linear infinite;
       animation-delay: -60s;
     }
@@ -168,6 +169,8 @@
       transition: var(--transition-gentle);
       aspect-ratio: 9 / 16;
       background: #000;
+      flex: 0 0 calc(25% - 0.75rem);
+      min-width: calc(25% - 0.75rem);
     }
 
     .ugc-item:hover {
@@ -245,30 +248,33 @@
 
     @keyframes scroll-left {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      100% { transform: translateX(-50%); }
     }
 
     @keyframes scroll-right {
       0% { transform: translateX(0); }
-      100% { transform: translateX(100%); }
+      100% { transform: translateX(50%); }
     }
 
     /* Pause on hover */
-    .ugc-grid.paused .ugc-column {
+    .ugc-grid.paused .ugc-row {
       animation-play-state: paused;
     }
 
     /* Responsive */
     @media (max-width: 1200px) {
       .ugc-grid {
-        grid-template-columns: repeat(3, 1fr);
         height: 500px;
+      }
+
+      .ugc-item {
+        flex: 0 0 calc(33.333% - 0.75rem);
+        min-width: calc(33.333% - 0.75rem);
       }
     }
 
     @media (max-width: 768px) {
       .ugc-grid {
-        grid-template-columns: repeat(2, 1fr);
         height: 400px;
         gap: 0.75rem;
       }
@@ -280,18 +286,26 @@
       .portfolio-container {
         padding: 1rem;
       }
+
+      .ugc-item {
+        flex: 0 0 calc(50% - 0.375rem);
+        min-width: calc(50% - 0.375rem);
+      }
     }
 
     @media (max-width: 480px) {
       .ugc-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
         height: 300px;
         gap: 0.5rem;
       }
 
       .portfolio-hero h1 {
         font-size: 1.5rem;
+      }
+
+      .ugc-item {
+        flex: 0 0 100%;
+        min-width: 100%;
       }
     }
 
@@ -383,11 +397,10 @@
   <section class="portfolio-section">
     <div class="portfolio-container">
       <div class="ugc-grid" id="ugcGrid">
-        <!-- 4 columns for 2x4 grid -->
-        <div class="ugc-column" id="column1"></div>
-        <div class="ugc-column" id="column2"></div>
-        <div class="ugc-column" id="column3"></div>
-        <div class="ugc-column" id="column4"></div>
+        <!-- Row 1: Scroll LEFT -->
+        <div class="ugc-row" id="row1"></div>
+        <!-- Row 2: Scroll RIGHT (opposite) -->
+        <div class="ugc-row" id="row2"></div>
       </div>
     </div>
   </section>
@@ -462,21 +475,18 @@
       'https://res.cloudinary.com/dnqhciwsm/video/upload/q_auto/f_auto/v1764446498/AQNpyZh2boNkt41bD3URXTYypGMDqPAES66T_wNLuVLcoL3BavOU7fioAf7yse9wwUl4QoiZT8INFBeKYiX9AcbdLBZc1NnJx-3VuKw_gfx54o.mp4',
     ];
 
-    const columns = [
-      document.getElementById('column1'),
-      document.getElementById('column2'),
-      document.getElementById('column3'),
-      document.getElementById('column4'),
-    ];
-
+    const row1 = document.getElementById('row1');
+    const row2 = document.getElementById('row2');
     const ugcGrid = document.getElementById('ugcGrid');
 
-    // Distribute videos across 4 columns (2 rows each)
     function createVideoCards() {
       // Create 2 loops for seamless infinite scroll
       for (let loop = 0; loop < 2; loop++) {
         portfolioVideos.forEach((videoUrl, index) => {
-          const columnIndex = index % 4;
+          // Distribute videos: first 12-13 in row1, rest in row2
+          const rowIndex = index < 13 ? 0 : 1;
+          const targetRow = rowIndex === 0 ? row1 : row2;
+
           const videoCard = document.createElement('div');
           videoCard.className = 'ugc-item';
           
@@ -510,7 +520,7 @@
             </div>
           `;
 
-          columns[columnIndex].appendChild(videoCard);
+          targetRow.appendChild(videoCard);
 
           // Add event listeners
           const video = videoCard.querySelector('video');
