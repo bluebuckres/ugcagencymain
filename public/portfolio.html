@@ -338,6 +338,15 @@
         width: 140px;
         height: 249px;
       }
+
+      .static-ads-row {
+        height: 280px;
+      }
+
+      .static-ad-item {
+        width: 224px;
+        height: 280px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -350,9 +359,89 @@
         font-size: 1.5rem;
       }
 
+      .portfolio-hero p {
+        font-size: 0.95rem;
+      }
+
       .ugc-item {
         width: 120px;
         height: 213px;
+      }
+
+      .static-ads-row {
+        height: 240px;
+      }
+
+      .static-ads-track {
+        gap: 1rem;
+      }
+
+      .static-ad-item {
+        width: 192px;
+        height: 240px;
+      }
+    }
+
+    /* CTA Section */
+    .portfolio-cta {
+      padding: 3rem 1.5rem;
+      background: linear-gradient(135deg, var(--sage)/10 0%, var(--sage)/5 100%);
+      text-align: center;
+    }
+
+    .portfolio-cta h3 {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .portfolio-cta p {
+      font-size: 1rem;
+      color: var(--charcoal)/70;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .portfolio-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--sage);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(156, 175, 136, 0.3);
+    }
+
+    .portfolio-cta-btn:hover {
+      background: var(--sage)/90;
+      box-shadow: 0 8px 20px rgba(156, 175, 136, 0.4);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-cta {
+        padding: 2rem 1rem;
+      }
+
+      .portfolio-cta h3 {
+        font-size: 1.5rem;
+      }
+
+      .portfolio-cta p {
+        font-size: 0.95rem;
+      }
+
+      .portfolio-cta-btn {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.95rem;
       }
     }
 
@@ -469,6 +558,16 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="portfolio-cta">
+    <h3>Ready to Get Started?</h3>
+    <p>Let's discuss how our high-performing creatives can transform your brand's marketing strategy.</p>
+    <a href="/contact.html" class="portfolio-cta-btn">
+      <span>Get in Touch</span>
+      <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+    </a>
   </section>
 
   <!-- Footer -->
