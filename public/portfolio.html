@@ -262,32 +262,24 @@
       animation-play-state: paused;
     }
 
-    /* Static Ads Carousel */
-    .static-ads-carousel {
+    /* Static Ads Carousel - Infinite Scroll */
+    .static-ads-row {
+      position: relative;
+      overflow: hidden;
+      height: 280px;
+      width: 100%;
+    }
+
+    .static-ads-track {
       display: flex;
+      align-items: flex-start;
       gap: 1.5rem;
-      overflow-x: auto;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
-      min-height: 280px;
+      width: max-content;
+      animation: scroll-left 60s linear infinite;
     }
 
-    .static-ads-carousel::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .static-ads-carousel::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 10px;
-    }
-
-    .static-ads-carousel::-webkit-scrollbar-thumb {
-      background: var(--sage);
-      border-radius: 10px;
-    }
-
-    .static-ads-carousel::-webkit-scrollbar-thumb:hover {
-      background: var(--sage)/80;
+    .static-ads-track:hover {
+      animation-play-state: paused;
     }
 
     .static-ad-item {
@@ -299,8 +291,8 @@
       aspect-ratio: 4 / 5;
       background: #000;
       flex-shrink: 0;
-      width: 200px;
-      height: 250px;
+      width: 224px;
+      height: 280px;
       box-shadow: var(--shadow-lift);
     }
 
@@ -471,8 +463,10 @@
     <div class="portfolio-container">
       <h2 style="font-family: 'Crimson Text', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--charcoal);">Top-Performing Static Ads</h2>
       <p style="font-size: 0.95rem; color: #666; margin-bottom: 2rem;">The feed creatives that proved engagement ≠ conversions</p>
-      <div class="static-ads-carousel" id="staticAdsCarousel">
-        <!-- Static ads will be added here by JavaScript -->
+      <div class="static-ads-row">
+        <div class="static-ads-track" id="staticAdsCarousel">
+          <!-- Static ads will be added here by JavaScript -->
+        </div>
       </div>
     </div>
   </section>
@@ -642,8 +636,17 @@
       });
     }
 
-    // Render static ads carousel
+    // Render static ads carousel with infinite scroll
     function renderStaticAds() {
+      // Add ads once
+      staticAds.forEach((adUrl) => {
+        const adItem = document.createElement('div');
+        adItem.className = 'static-ad-item';
+        adItem.innerHTML = `<img src="${adUrl}" alt="Static Ad" loading="lazy">`;
+        staticAdsCarousel.appendChild(adItem);
+      });
+      
+      // Duplicate for seamless loop (A + A)
       staticAds.forEach((adUrl) => {
         const adItem = document.createElement('div');
         adItem.className = 'static-ad-item';
