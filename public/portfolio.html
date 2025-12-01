@@ -265,14 +265,15 @@
     /* Static Ads Carousel */
     .static-ads-carousel {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       overflow-x: auto;
       padding: 1rem 0;
       scroll-behavior: smooth;
+      min-height: 280px;
     }
 
     .static-ads-carousel::-webkit-scrollbar {
-      height: 6px;
+      height: 8px;
     }
 
     .static-ads-carousel::-webkit-scrollbar-track {
@@ -298,14 +299,14 @@
       aspect-ratio: 4 / 5;
       background: #000;
       flex-shrink: 0;
-      width: 160px;
-      height: 200px;
+      width: 200px;
+      height: 250px;
       box-shadow: var(--shadow-lift);
     }
 
     .static-ad-item:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
     .static-ad-item img {
