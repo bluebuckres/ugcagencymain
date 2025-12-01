@@ -507,21 +507,25 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
-      <a href="/" class="logo">
-        <img src="/assets/images/makeugclogo-01.svg" alt="MakeUGC Logo">
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo" style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
         <span>MakeUGC</span>
       </a>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/creators.html">Creators</a>
-        <a href="/contact.html">Contact</a>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="creators.html">Creators</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact</a></li>
+      </ul>
+      <button class="mobile-nav-toggle"><i data-lucide="menu"></i></button>
     </div>
-  </header>
+  </nav>
 
   <!-- Hero Section -->
   <section class="portfolio-hero">
@@ -571,42 +575,62 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>MakeUGC</h3>
-        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 1rem;">Creating authentic UGC content that converts.</p>
-        <p style="font-size: 0.85rem; color: #999;">Email: hello@makeugc.in<br>Mobile: +91 9226161032</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo" style="height: 35px; width: 35px; border-radius: 50%; object-fit: cover;">
+            <h4 style="margin: 0;">MakeUGC</h4>
+          </div>
+          <p>MakeUGC.in<br>
+          3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India</p>
+          <p>connect@makeugc.in<br>
+          Mobile: +91 9239161632</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <p><a href="index.html">Home</a><br>
+          <a href="services.html">Services</a><br>
+          <a href="creators.html">Creators</a><br>
+          <a href="blog.html">Blog</a><br>
+          <a href="contact.html">Contact</a></p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <p><a href="resources.html">Free Templates</a><br>
+          <a href="creator-brief-template.html">Creator Brief Template</a><br>
+          <a href="roi-calculator.html">ROI Calculator</a><br>
+          <a href="blog.html">Case Studies</a></p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Trust & Legal</h4>
+          <p>Trusted by 50+ D2C Brands<br>
+          Meta Business Partner<br>
+          <a href="public/legal/security.html">🛡️ Your Data is Secure</a></p>
+          <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.75rem;">
+            <a href="https://www.linkedin.com/company/makeugc-in/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #0A66C2; color: white; border-radius: 50%; text-decoration: none; transition: all 0.3s;">
+              <i data-lucide="linkedin" style="width: 12px; height: 12px;"></i>
+            </a>
+            <a href="https://x.com/makeugc_in" target="_blank" rel="noopener noreferrer" title="X (Twitter)" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #000000; color: white; border-radius: 50%; text-decoration: none; transition: all 0.3s;">
+              <i data-lucide="twitter" style="width: 12px; height: 12px;"></i>
+            </a>
+            <a href="https://www.youtube.com/@MakeUGC_in" target="_blank" rel="noopener noreferrer" title="YouTube" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #FF0000; color: white; border-radius: 50%; text-decoration: none; transition: all 0.3s;">
+              <i data-lucide="youtube" style="width: 12px; height: 12px;"></i>
+            </a>
+            <a href="https://www.instagram.com/makeugc.in/" target="_blank" rel="noopener noreferrer" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; border-radius: 50%; text-decoration: none; transition: all 0.3s;">
+              <i data-lucide="instagram" style="width: 12px; height: 12px;"></i>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/creators.html">Creators</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
+      
+      <div class="footer-bottom">
+        <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html">Privacy Policy</a> • <a href="/legal/terms-conditions.html">Terms of Service</a> • <a href="/legal/refund-policy.html">Refund Policy</a> • <a href="/legal/security.html">Security</a></p>
       </div>
-      <div class="footer-section">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="/resources.html">Free Templates</a></li>
-          <li><a href="/resources.html">ROI Calculator</a></li>
-          <li><a href="/resources.html">Case Studies</a></li>
-          <li><a href="/blog/">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/legal/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="/legal/terms-conditions.html">Terms of Service</a></li>
-          <li><a href="/legal/refund-policy.html">Refund Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html">Privacy Policy</a> • <a href="/legal/terms-conditions.html">Terms of Service</a> • <a href="/legal/refund-policy.html">Refund Policy</a></p>
     </div>
   </footer>
 
