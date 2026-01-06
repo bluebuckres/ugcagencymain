@@ -2815,35 +2815,86 @@
 
     <!-- Geo-Based Pricing Detection -->
     <script>
-        // Detect visitor country and show appropriate pricing
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    const country = data.country_code;
+        /**
+         * Robust Geo-Detection for Pricing
+         * Detects location to show INR or USD pricing.
+         * Includes fallback APIs and manual bypass (?geo=US)
+         */
+        (function () {
+            const CONFIG = {
+                primaryApi: 'https://ipapi.co/json/',
+                fallbackApi: 'https://ip-api.com/json/', // Backup if primary fails
+                debug: true // Enables console logging
+            };
 
-                    // If NOT India, show USD pricing
-                    if (country !== 'IN') {
-                        // Hide INR prices
-                        document.querySelectorAll('.inr-price').forEach(el => {
-                            el.style.display = 'none';
-                        });
+            function log(...args) {
+                if (CONFIG.debug) console.log('[Geo-Pricing]', ...args);
+            }
 
-                        // Show USD equivalent or "Get Quote"
-                        document.querySelectorAll('.global-price').forEach(el => {
-                            el.style.display = 'block';
-                        });
+            function updatePricing(countryCode) {
+                const isIndia = countryCode === 'IN';
+                log(`Setting pricing for: ${countryCode} (India: ${isIndia})`);
 
-                        console.log('Geo-detection: Showing global pricing for country:', country);
-                    } else {
-                        console.log('Geo-detection: Showing INR pricing for India');
+                const inrElements = document.querySelectorAll('.inr-price');
+                const globalElements = document.querySelectorAll('.global-price');
+
+                if (!isIndia) {
+                    // International pricing
+                    inrElements.forEach(el => el.style.display = 'none');
+                    globalElements.forEach(el => el.style.display = 'block');
+                } else {
+                    // Indian pricing (ensure default state)
+                    inrElements.forEach(el => el.style.display = '');
+                    globalElements.forEach(el => el.style.display = 'none');
+                }
+            }
+
+            async function detectLocation() {
+                // 1. Check for manual bypass via URL (?geo=US or ?geo=IN)
+                const urlParams = new URLSearchParams(window.location.search);
+                const geoBypass = urlParams.get('geo');
+                if (geoBypass) {
+                    log('Manual bypass detected:', geoBypass);
+                    updatePricing(geoBypass.toUpperCase());
+                    return;
+                }
+
+                // 2. Try Primary API (ipapi.co)
+                try {
+                    log('Attempting primary detection (ipapi.co)...');
+                    const response = await fetch(CONFIG.primaryApi);
+                    const data = await response.json();
+                    if (data && data.country_code) {
+                        updatePricing(data.country_code);
+                        return;
                     }
-                })
-                .catch(error => {
-                    console.log('Geo-detection failed, defaulting to INR pricing:', error);
-                    // On error, keep default INR pricing visible
-                });
-        });
+                    throw new Error('Invalid secondary API response');
+                } catch (e) {
+                    log('Primary detection failed, trying fallback...', e.message);
+                }
+
+                // 3. Try Fallback API (ip-api.com)
+                try {
+                    log('Attempting fallback detection (ip-api.com)...');
+                    const response = await fetch(CONFIG.fallbackApi);
+                    const data = await response.json();
+                    if (data && data.countryCode) {
+                        updatePricing(data.countryCode);
+                        return;
+                    }
+                } catch (e) {
+                    log('All detection services failed. Defaulting to INR.', e.message);
+                    updatePricing('IN'); // Fallback to INR
+                }
+            }
+
+            // Run detection after DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', detectLocation);
+            } else {
+                detectLocation();
+            }
+        })();
     </script>
 </body>
 
