@@ -13,20 +13,11 @@
 
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    connect-src
-    'self'
-    https://www.facebook.com
-    https://connect.facebook.net
-    https://*.supabase.co
-    https://cdn.jsdelivr.net
-    https://unpkg.com
-    https://cdnjs.cloudflare.com
-    https://res.cloudinary.com
-    https://ipapi.co
-    https://ip-api.com;
-    script-src 'self' 'unsafe-inline' https://connect.facebook.net;
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://res.cloudinary.com;
+    connect-src 'self' https://www.facebook.com https://connect.facebook.net https://*.supabase.co https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com https://res.cloudinary.com https://ipapi.co https://ip-api.com;
+    script-src 'self' 'unsafe-inline' https://www.facebook.com https://connect.facebook.net https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com;
+    img-src 'self' data: https://www.facebook.com https://res.cloudinary.com https://makeugc.in;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
     ">
 
 
@@ -2640,14 +2631,21 @@
 
     <!-- Initialize Lucide Icons and Animations -->
     <script>
-        // Initialize Lucide icons with retry mechanism
+        // Initialize Lucide icons with retry mechanism and safety limit
+        let lucideRetryCount = 0;
+        const MAX_LUCIDE_RETRIES = 5;
+
         function initializeLucideIcons() {
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 lucide.createIcons();
-                console.log('Lucide icons initialized successfully');
+                console.log('[UGC] Lucide icons initialized successfully');
+            } else if (lucideRetryCount < MAX_LUCIDE_RETRIES) {
+                lucideRetryCount++;
+                const delay = 500 * lucideRetryCount; // Increased backoff delay
+                console.warn(`[UGC] Lucide not loaded, retrying in ${delay}ms (Attempt ${lucideRetryCount}/${MAX_LUCIDE_RETRIES})...`);
+                setTimeout(initializeLucideIcons, delay);
             } else {
-                console.warn('Lucide not loaded, retrying...');
-                setTimeout(initializeLucideIcons, 100);
+                console.error('[UGC] Lucide failed to load after multiple attempts. Icons may not be visible.');
             }
         }
 
