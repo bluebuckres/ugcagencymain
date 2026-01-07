@@ -11,6 +11,25 @@
         content="UGC services, content creation services, influencer management, social media content, TikTok content, Instagram reels, video production">
     <meta name="author" content="UGC Agency">
 
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    connect-src
+    'self'
+    https://www.facebook.com
+    https://connect.facebook.net
+    https://*.supabase.co
+    https://cdn.jsdelivr.net
+    https://unpkg.com
+    https://cdnjs.cloudflare.com
+    https://res.cloudinary.com
+    https://ipapi.co
+    https://ip-api.com;
+    script-src 'self' 'unsafe-inline' https://connect.facebook.net;
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https://res.cloudinary.com;
+    ">
+
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://makeugc.in/services">
@@ -2815,15 +2834,14 @@
 
     <!-- Geo-Based Pricing Detection -->
     <script>
-        console.log('Line: IIFE start');
+
         /**
          * Robust Geo-Detection for Pricing
          * Detects location to show INR or USD pricing.
          * Includes fallback APIs and manual bypass (?geo=US)
          */
-        console.log('Line: Entering IIFE');
+
         (function () {
-            console.log('Line: CONFIG declaration');
             const CONFIG = {
 
                 primaryApi: 'https://ipapi.co/json/',
@@ -2833,120 +2851,73 @@
                 debug: true // Enables console logging
             };
 
-            console.log('Line: log() function declaration');
             function log(...args) {
-                console.log('Line: log() invoked condition check');
                 if (CONFIG.debug) console.log('[Geo-Pricing]', ...args);
             }
 
-            console.log('Line: updatePricing() function declaration');
             function updatePricing(countryCode) {
-                console.log('Line: isIndia evaluation');
                 const isIndia = countryCode === 'IN';
-                console.log('Line: logging pricing decision');
                 log(`Setting pricing for: ${countryCode} (India: ${isIndia})`);
 
-                console.log('Line: query inrElements');
                 const inrElements = document.querySelectorAll('.inr-price');
-                console.log('Line: query globalElements');
                 const globalElements = document.querySelectorAll('.global-price');
-
-                console.log('Line: checking international vs India');
                 if (!isIndia) {
-                    console.log('Line: international pricing branch');
                     // International pricing
-                    console.log('Line: hide INR elements');
                     inrElements.forEach(el => el.style.display = 'none');
-                    console.log('Line: show global elements');
                     globalElements.forEach(el => el.style.display = 'block');
                 } else {
-                    console.log('Line: India pricing branch');
                     // Indian pricing (ensure default state)
-                    console.log('Line: show INR elements');
                     inrElements.forEach(el => el.style.display = '');
-                    console.log('Line: hide global elements');
                     globalElements.forEach(el => el.style.display = 'none');
                 }
             }
 
-            console.log('Line: detectLocation() function declaration');
             async function detectLocation() {
-                console.log('Line: URLSearchParams initialization');
                 // 1. Check for manual bypass via URL (?geo=US or ?geo=IN)
                 const urlParams = new URLSearchParams(window.location.search);
-                console.log('Line: geo param extraction');
                 const geoBypass = urlParams.get('geo');
-                console.log('Line: geoBypass condition check');
                 if (geoBypass) {
-                    console.log('Line: manual bypass detected');
                     log('Manual bypass detected:', geoBypass);
-                    console.log('Line: updatePricing via bypass');
                     updatePricing(geoBypass.toUpperCase());
-                    console.log('Line: return after bypass');
                     return;
                 }
 
-                console.log('Line: primary API try block start');
                 // 2. Try Primary API (ipapi.co)
                 try {
-                    console.log('Line: attempting primary detection');
                     log('Attempting primary detection (ipapi.co)...');
-                    console.log('Line: fetch primary API');
                     const response = await fetch(CONFIG.primaryApi);
-                    console.log('Line: parse primary API JSON');
                     const data = await response.json();
-                    console.log('Line: log primary API response');
                     log('Primary API response:', data);
-                    console.log('Line: primary API country_code check');
                     if (data && data.country_code) {
-                        console.log('Line: updatePricing from primary API');
                         updatePricing(data.country_code);
-                        console.log('Line: return after primary success');
                         return;
                     }
-                    console.log('Line: throwing invalid primary response error');
                     throw new Error('Invalid secondary API response');
                 } catch (e) {
-                    console.log('Line: primary API failed');
                     log('Primary detection failed, trying fallback...', e.message);
                 }
 
-                console.log('Line: fallback API try block start');
                 // 3. Try Fallback API (ip-api.com)
                 try {
-                    console.log('Line: attempting fallback detection');
                     log('Attempting fallback detection (ip-api.com)...');
-                    console.log('Line: fetch fallback API');
                     const response = await fetch(CONFIG.fallbackApi);
-                    console.log('Line: parse fallback API JSON');
                     const data = await response.json();
-                    console.log('Line: log fallback API response');
                     log('Fallback API response:', data);
-                    console.log('Line: fallback API countryCode check');
                     if (data && data.countryCode) {
-                        console.log('Line: updatePricing from fallback API');
                         updatePricing(data.countryCode);
-                        console.log('Line: return after fallback success');
                         return;
                     }
                 } catch (e) {
-                    console.log('Line: all services failed');
                     log('All detection services failed. Defaulting to INR.', e.message);
-                    console.log('Line: fallback to INR');
                     updatePricing('IN'); // Fallback to INR
                 }
             }
-
-            console.log('Line: DOM ready state check');
             // Run detection after DOM is ready
             if (document.readyState === 'loading') {
-                console.log('Line: add DOMContentLoaded listener');
                 document.addEventListener('DOMContentLoaded', detectLocation);
             } else {
-                console.log('Line: DOM already ready, run detectLocation');
                 detectLocation();
             }
-            console.log('Line: IIFE end');
         })();
     </script>
 
