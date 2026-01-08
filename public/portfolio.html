@@ -478,12 +478,21 @@
       }
     }
 
-    /* AI Reels Grid (Fixed 6) */
-    /* AI Reels Marquee - Single Row for Desktop */
-    .ai-reels-marquee {
+    /* AI Reels Grid (2 Rows Scrolling) */
+    .ai-reels-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      height: 680px;
       position: relative;
       overflow: hidden;
-      height: 350px;
+      border-radius: var(--radius-softer);
+    }
+
+    .ai-reels-row {
+      position: relative;
+      overflow: hidden;
+      height: 50%;
       width: 100%;
     }
 
@@ -495,23 +504,35 @@
       animation: scroll-left 40s linear infinite;
     }
 
-    .ai-reels-track:hover {
+    .row-2 .ai-reels-track {
+      animation-direction: reverse;
+    }
+
+    .ai-reels-grid.paused .ai-reels-track {
       animation-play-state: paused;
     }
 
     @media (max-width: 1200px) {
-      .ai-reels-marquee {
-        height: 320px;
+      .ai-reels-grid {
+        height: 600px;
       }
     }
 
     @media (max-width: 768px) {
-      .ai-reels-marquee {
-        height: 280px;
+      .ai-reels-grid {
+        height: 520px;
+        gap: 1rem;
       }
 
       .portfolio-container h2 {
         font-size: 1.75rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ai-reels-grid {
+        height: 440px;
+        gap: 0.75rem;
       }
     }
 
@@ -713,9 +734,14 @@
         Reels made with AI</h2>
       <p style="font-size: 0.95rem; color: #666; margin-bottom: 2rem;">Innovation meets performance. 6 curated
         AI-generated reels.</p>
-      <div class="ai-reels-marquee">
-        <div class="ai-reels-track" id="aiReelsTrack">
-          <!-- Scrolling Reels will be added here -->
+      <div class="ai-reels-grid" id="aiReelsGrid">
+        <!-- Row 1: Scroll LEFT -->
+        <div class="ai-reels-row row-1">
+          <div class="ai-reels-track" id="aiReelsTrack1"></div>
+        </div>
+        <!-- Row 2: Scroll RIGHT -->
+        <div class="ai-reels-row row-2">
+          <div class="ai-reels-track" id="aiReelsTrack2"></div>
         </div>
       </div>
     </div>
@@ -861,19 +887,22 @@
     // AI Reels (6 Fixed Videos) - Using placeholders from existing videos for now
     // AI Reels (11 Total Videos) - Merged Links
     const aiReelsVideos = [
-      // Previous Batch
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632886/WmdAe2kV9J-I7yL4_x8rwts.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632812/JB3Pj73bMNxIfmSU_vea1f2.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632808/JOan-_tlbH2gorPr_wrxmos.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632806/aQWsctEQF9M_RmX7_upfvfn.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632798/0tAz34wBH0Vx2cFM_akdq37.mp4',
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767632789/6qjLch1q3DIsmPn8_hy2fun.mp4',
-      // New Batch
       'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767693511/WuM6TCy4lLut8hYe_yvjauh.mp4',
-      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767693509/xauyJYxN9FgWWOHp_asrt1z.mp4',
-      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767693469/QzK9R-rNrhcLsvp8_tfdddl.mp4',
-      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767693318/9HUWpGpRpMtBJfYu_dumv2i.mp4',
-      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767693249/Bd5TYOpNoeboMU2B_i6uat6.mp4'
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901095/UaEPgcWF3HdQMesz_taa9vk.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901148/wmBsJ1Iz0yBexBNu_km6jsy.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901159/CdO2bFrkrCRC4Kbb_uawa1y.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901160/CcdA3NN1-8h_AA0U_qph0nw.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901163/CQZ-IInu0XayIyda_ejgpca.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901163/DOn7KepZIVkWuhqm_trn5tr.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901164/FVi4aQT_ZEfZ9AiL_m2in8y.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901163/cwhocDBbGeYXBxf7_cwbqws.mp4',
+      'https://res.cloudinary.com/dnqhciwsm/video/upload/v1767901165/G6yV7hjM4WOf3pL7_o4guak.mp4'
     ];
 
     // AI Static Ads (17 Total Ads) - New Links
@@ -901,7 +930,9 @@
     const row2Track = document.getElementById('row2Track');
     const ugcGrid = document.getElementById('ugcGrid');
     const staticAdsCarousel = document.getElementById('staticAdsCarousel');
-    const aiReelsTrack = document.getElementById('aiReelsTrack');
+    const aiReelsGrid = document.getElementById('aiReelsGrid');
+    const aiReelsTrack1 = document.getElementById('aiReelsTrack1');
+    const aiReelsTrack2 = document.getElementById('aiReelsTrack2');
     const aiStaticAdsCarousel = document.getElementById('aiStaticAdsCarousel');
 
     // Performance Optimization: Intersection Observer
@@ -1043,19 +1074,28 @@
     }
 
     function renderAiReels() {
-      // Add items once
-      aiReelsVideos.forEach(videoUrl => {
-        aiReelsTrack.appendChild(createVideoCard(videoUrl));
+      const row1Videos = [];
+      const row2Videos = [];
+
+      aiReelsVideos.forEach((videoUrl, index) => {
+        if (index % 2 === 0) {
+          row1Videos.push(videoUrl);
+        } else {
+          row2Videos.push(videoUrl);
+        }
       });
-      // Duplicate for seamless loop (since we have 6, duplicating for 12 is enough for most screens to be seamless)
-      // Actually, if we have a lot of space, we might need 3x. 2x is standard for CSS marquee if width > container.
-      aiReelsVideos.forEach(videoUrl => {
-        aiReelsTrack.appendChild(createVideoCard(videoUrl));
-      });
-      // Triplicate for wider screens or just to be safe
-      aiReelsVideos.forEach(videoUrl => {
-        aiReelsTrack.appendChild(createVideoCard(videoUrl));
-      });
+
+      // Populate tracks
+      row1Videos.forEach(url => aiReelsTrack1.appendChild(createVideoCard(url)));
+      row2Videos.forEach(url => aiReelsTrack2.appendChild(createVideoCard(url)));
+
+      // Duplicate for seamless scroll
+      row1Videos.forEach(url => aiReelsTrack1.appendChild(createVideoCard(url)));
+      row2Videos.forEach(url => aiReelsTrack2.appendChild(createVideoCard(url)));
+
+      // Triplicate for safety
+      row1Videos.forEach(url => aiReelsTrack1.appendChild(createVideoCard(url)));
+      row2Videos.forEach(url => aiReelsTrack2.appendChild(createVideoCard(url)));
     }
 
     function renderAiStaticAds() {
@@ -1076,13 +1116,11 @@
     }
 
     // Pause on hover
-    ugcGrid.addEventListener('mouseenter', () => {
-      ugcGrid.classList.add('paused');
-    });
+    ugcGrid.addEventListener('mouseenter', () => ugcGrid.classList.add('paused'));
+    ugcGrid.addEventListener('mouseleave', () => ugcGrid.classList.remove('paused'));
 
-    ugcGrid.addEventListener('mouseleave', () => {
-      ugcGrid.classList.remove('paused');
-    });
+    aiReelsGrid.addEventListener('mouseenter', () => aiReelsGrid.classList.add('paused'));
+    aiReelsGrid.addEventListener('mouseleave', () => aiReelsGrid.classList.remove('paused'));
 
     // Initialize
     setupInfiniteScroll();
