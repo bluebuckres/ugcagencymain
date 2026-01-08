@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,25 @@
     <meta http-equiv="Expires" content="0">
     <title>Application Received | MakeUGC</title>
     <meta name="description" content="Thank you for applying to become a UGC creator with MakeUGC.">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/makeugclogo-01.svg">
-    <link rel="apple-touch-icon" href="/assets/images/makeugclogo-01.svg">
-    
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon-square.svg">
+    <link rel="shortcut icon" href="/assets/images/favicon-square.svg">
+    <link rel="apple-touch-icon" href="/assets/images/favicon-square.svg">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+
     <!-- Tailwind CSS -->
     <link href="/assets/css/tailwind.css" rel="stylesheet">
-    
+
     <!-- Custom Styles for Mobile Responsiveness -->
     <style>
         :root {
@@ -36,11 +40,11 @@
             --color-rust: #B85450;
             --color-dust-blue: #8B9DC3;
         }
-        
+
         * {
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-cream);
@@ -52,12 +56,12 @@
             padding: 1.5rem;
             margin: 0;
         }
-        
+
         .container {
             max-width: 42rem;
             width: 100%;
         }
-        
+
         h1 {
             font-family: 'Crimson Text', serif;
             font-size: 2.25rem;
@@ -65,24 +69,24 @@
             margin-bottom: 1rem;
             color: var(--color-charcoal);
         }
-        
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.875rem;
             }
         }
-        
+
         h2 {
             font-family: 'Crimson Text', serif;
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--color-charcoal);
         }
-        
+
         p {
             line-height: 1.5;
         }
-        
+
         .checkmark-circle {
             display: inline-flex;
             align-items: center;
@@ -95,18 +99,18 @@
             margin-bottom: 2rem;
             animation: fadeInUp 0.5s ease-out;
         }
-        
+
         .checkmark-icon {
             width: 4rem;
             height: 4rem;
             color: white;
             animation: checkmark 0.6s ease-out 0.3s both;
         }
-        
+
         .content-fade {
             animation: fadeInUp 0.6s ease-out 0.5s both;
         }
-        
+
         .referral-section {
             background: #f0f9ff;
             border: 2px solid #0ea5e9;
@@ -115,25 +119,25 @@
             margin: 1.5rem 0;
             text-align: center;
         }
-        
+
         @media (max-width: 640px) {
             .referral-section {
                 padding: 1rem;
                 margin: 1rem 0;
             }
         }
-        
+
         .referral-section h2 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-        
+
         @media (max-width: 640px) {
             .referral-section h2 {
                 font-size: 1.25rem;
             }
         }
-        
+
         .referral-link-box {
             background: white;
             padding: 0.75rem;
@@ -145,7 +149,7 @@
             border: 1px solid #ddd;
             overflow-x: auto;
         }
-        
+
         .button-group {
             display: flex;
             flex-wrap: wrap;
@@ -153,8 +157,9 @@
             justify-content: center;
             margin-bottom: 1rem;
         }
-        
-        button, a.btn {
+
+        button,
+        a.btn {
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             border: none;
@@ -165,37 +170,39 @@
             display: inline-block;
             font-size: 0.95rem;
         }
-        
+
         @media (max-width: 640px) {
-            button, a.btn {
+
+            button,
+            a.btn {
                 padding: 0.625rem 1rem;
                 font-size: 0.875rem;
             }
         }
-        
+
         .btn-primary {
             background-color: var(--color-sage);
             color: white;
         }
-        
+
         .btn-primary:hover {
             background-color: var(--color-moss);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
-        
+
         .btn-secondary {
             background-color: white;
             color: var(--color-charcoal);
             border: 2px solid rgba(156, 175, 136, 0.2);
         }
-        
+
         .btn-secondary:hover {
             border-color: var(--color-sage);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
-        
+
         .info-box {
             background-color: rgba(139, 157, 195, 0.1);
             border: 2px solid rgba(139, 157, 195, 0.3);
@@ -204,13 +211,13 @@
             margin-bottom: 2rem;
             text-align: left;
         }
-        
+
         @media (max-width: 640px) {
             .info-box {
                 padding: 1rem;
             }
         }
-        
+
         .steps-container {
             background: white;
             border-radius: 1rem;
@@ -219,23 +226,23 @@
             margin-bottom: 2rem;
             text-align: left;
         }
-        
+
         @media (max-width: 640px) {
             .steps-container {
                 padding: 1rem;
             }
         }
-        
+
         .step {
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .step:last-child {
             margin-bottom: 0;
         }
-        
+
         .step-number {
             flex-shrink: 0;
             width: 3rem;
@@ -248,24 +255,24 @@
             font-weight: bold;
             color: var(--color-sage);
         }
-        
+
         .step-content h3 {
             font-weight: 600;
             color: var(--color-charcoal);
             margin-bottom: 0.25rem;
         }
-        
+
         .step-content p {
             font-size: 0.875rem;
             color: rgba(58, 58, 58, 0.7);
         }
-        
+
         .social-proof {
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(58, 58, 58, 0.1);
         }
-        
+
         .proof-items {
             display: flex;
             align-items: center;
@@ -273,60 +280,63 @@
             gap: 2rem;
             flex-wrap: wrap;
         }
-        
+
         @media (max-width: 640px) {
             .proof-items {
                 gap: 1rem;
             }
         }
-        
+
         .proof-item {
             text-align: center;
         }
-        
+
         .proof-value {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--color-sage);
         }
-        
+
         .proof-label {
             font-size: 0.75rem;
         }
     </style>
-    
+
     <style>
         @keyframes checkmark {
             0% {
                 transform: scale(0) rotate(45deg);
             }
+
             50% {
                 transform: scale(1.2) rotate(45deg);
             }
+
             100% {
                 transform: scale(1) rotate(45deg);
             }
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .checkmark-circle {
             animation: fadeInUp 0.5s ease-out;
         }
-        
+
         .checkmark-icon {
             animation: checkmark 0.6s ease-out 0.3s both;
         }
-        
+
         .content-fade {
             animation: fadeInUp 0.6s ease-out 0.5s both;
         }
@@ -336,10 +346,11 @@
     <!-- Referral System -->
     <script src="/assets/js/referral-system.js?v=2.0" defer></script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" />
     </noscript>
 </head>
+
 <body>
     <div class="container">
         <div style="text-align: center;">
@@ -347,21 +358,21 @@
             <div class="checkmark-circle">
                 <i data-lucide="check" class="checkmark-icon"></i>
             </div>
-            
+
             <!-- Success Message -->
             <div class="content-fade">
                 <h1>Application Received! 🎉</h1>
                 <p style="font-size: 1.125rem; color: rgba(58, 58, 58, 0.8); margin-bottom: 2rem; line-height: 1.5;">
                     Thank you for applying to become a UGC creator with MakeUGC.
                 </p>
-                
+
                 <!-- Referral Section Container (populated by referral-system.js) -->
                 <div id="referral-section-container"></div>
-                
+
                 <!-- What Happens Next -->
                 <div class="steps-container">
                     <h2 style="text-align: center; margin-bottom: 1.5rem;">What Happens Next?</h2>
-                    
+
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-content">
@@ -369,7 +380,7 @@
                             <p>Our team will review your application and portfolio within 2-3 business days.</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-content">
@@ -377,7 +388,7 @@
                             <p>We'll send you an email with next steps or a request for more information.</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
@@ -385,7 +396,7 @@
                             <p>If approved, we'll schedule a call to discuss opportunities and training.</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">4</div>
                         <div class="step-content">
@@ -394,35 +405,41 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Important Note -->
                 <div class="info-box">
                     <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-                        <i data-lucide="info" style="width: 1.5rem; height: 1.5rem; color: var(--color-dust-blue); flex-shrink: 0; margin-top: 0.25rem;"></i>
+                        <i data-lucide="info"
+                            style="width: 1.5rem; height: 1.5rem; color: var(--color-dust-blue); flex-shrink: 0; margin-top: 0.25rem;"></i>
                         <div>
-                            <h3 style="font-weight: 600; color: var(--color-charcoal); margin-bottom: 0.5rem;">Check Your Email</h3>
+                            <h3 style="font-weight: 600; color: var(--color-charcoal); margin-bottom: 0.5rem;">Check
+                                Your Email</h3>
                             <p style="font-size: 0.875rem; color: rgba(58, 58, 58, 0.7);">
-                                Please check your email (including spam folder) for our response. Make sure to whitelist <strong>connect@makeugc.in</strong> to ensure you receive our messages.
+                                Please check your email (including spam folder) for our response. Make sure to whitelist
+                                <strong>connect@makeugc.in</strong> to ensure you receive our messages.
                             </p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Action Buttons -->
                 <div class="button-group" style="justify-content: center; margin-bottom: 2rem;">
-                    <a href="index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <a href="index.html" class="btn btn-primary"
+                        style="display: inline-flex; align-items: center; gap: 0.5rem;">
                         <i data-lucide="home" style="width: 1.25rem; height: 1.25rem;"></i>
                         Back to Home
                     </a>
-                    <a href="blog.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <a href="blog.html" class="btn btn-secondary"
+                        style="display: inline-flex; align-items: center; gap: 0.5rem;">
                         <i data-lucide="book-open" style="width: 1.25rem; height: 1.25rem;"></i>
                         Read Our Blog
                     </a>
                 </div>
-                
+
                 <!-- Social Proof -->
                 <div class="social-proof">
-                    <p style="font-size: 0.875rem; color: rgba(58, 58, 58, 0.6); margin-bottom: 1rem;">Join our growing creator community</p>
+                    <p style="font-size: 0.875rem; color: rgba(58, 58, 58, 0.6); margin-bottom: 1rem;">Join our growing
+                        creator community</p>
                     <div class="proof-items">
                         <div class="proof-item">
                             <div class="proof-value">120+</div>
@@ -441,14 +458,15 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         });
     </script>
 </body>
+
 </html>
