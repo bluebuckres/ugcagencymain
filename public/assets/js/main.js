@@ -8,7 +8,7 @@ const blogPosts = [
         readTime: "8 min read",
         author: "Emma Foster",
         date: "December 20, 2024",
-        image: "assets/images/illustrations/creator-brief.svg",
+        image: "blog_banner/creator brif template.png",
         trending: true,
         views: 18250,
         engagement: 9.4,
@@ -22,7 +22,7 @@ const blogPosts = [
         readTime: "9 min read",
         author: "Ryan Mitchell",
         date: "December 18, 2024",
-        image: "assets/images/illustrations/hook-attention.svg",
+        image: "blog_banner/viral hook formula.png",
         trending: true,
         views: 31480,
         engagement: 12.7,
@@ -36,7 +36,7 @@ const blogPosts = [
         readTime: "5 min read",
         author: "Sarah Chen",
         date: "December 15, 2024",
-        image: "assets/images/illustrations/creative-hook.svg",
+        image: "blog_banner/viral hook formula.png",
         trending: true,
         views: 24500,
         engagement: 11.4,
@@ -50,7 +50,7 @@ const blogPosts = [
         readTime: "8 min read",
         author: "Marcus Rodriguez",
         date: "October 3, 2024",
-        image: "assets/images/illustrations/roas-growth.svg",
+        image: "blog_banner/low roas.png",
         trending: true,
         views: 32100,
         engagement: 14.2,
@@ -64,7 +64,7 @@ const blogPosts = [
         readTime: "10 min read",
         author: "David Park",
         date: "November 28, 2024",
-        image: "assets/images/illustrations/ab-testing.svg",
+        image: "blog_banner/a:b testing.png",
         trending: true,
         views: 19420,
         engagement: 8.9,
@@ -78,7 +78,7 @@ const blogPosts = [
         readTime: "7 min read",
         author: "Success Team",
         date: "November 20, 2024",
-        image: "assets/images/illustrations/creator-journey.svg",
+        image: "blog_banner/our creator journey.png",
         trending: false,
         views: 28900,
         engagement: 12.3,
@@ -92,7 +92,7 @@ const blogPosts = [
         readTime: "6 min read",
         author: "Data Team",
         date: "November 15, 2024",
-        image: "assets/images/illustrations/genz-vs-influencer.svg",
+        image: "blog_banner/influencer vs genz.png",
         trending: true,
         views: 31200,
         engagement: 13.8,
@@ -106,7 +106,7 @@ const blogPosts = [
         readTime: "8 min read",
         author: "Algorithm Team",
         date: "November 10, 2024",
-        image: "assets/images/illustrations/instagram-algorithm.svg",
+        image: "blog_banner/insta algorithm uodate.png",
         trending: false,
         views: 18700,
         engagement: 9.1,
@@ -120,7 +120,7 @@ const blogPosts = [
         readTime: "9 min read",
         author: "Research Team",
         date: "November 5, 2024",
-        image: "assets/images/illustrations/reels-vs-shorts.svg",
+        image: "blog_banner/insta reels vs yt shorts.png",
         trending: false,
         views: 15600,
         engagement: 7.8,
@@ -141,7 +141,7 @@ const categories = [
 ];
 
 // Initialize the blog system
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     renderFilteredPosts();
     renderCategories();
     initializeSearch();
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function renderBlogPosts(posts = blogPosts) {
     const blogContainer = document.getElementById('blogGrid');
     if (!blogContainer) return;
-    
+
     blogContainer.innerHTML = posts.map(post => `
         <article class="blog-card-standard fade-in-up">
             <a href="${post.url}" class="blog-card block rounded-2xl overflow-hidden border border-sage/20 hover:shadow-xl transition-all">
@@ -192,14 +192,14 @@ function renderBlogPosts(posts = blogPosts) {
 function renderCategories() {
     // Category buttons already exist in HTML, just add event listeners
     const categoryButtons = document.querySelectorAll('.category-tag');
-    
+
     categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             const selectedCategory = this.dataset.category;
             filterPostsByCategory(selectedCategory);
         });
@@ -217,8 +217,8 @@ function filterPostsByCategory(categoryId) {
 function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
     if (!searchInput) return;
-    
-    searchInput.addEventListener('input', function(e) {
+
+    searchInput.addEventListener('input', function (e) {
         currentSearchQuery = e.target.value.toLowerCase().trim();
         postsToShow = 6; // Reset pagination
         renderFilteredPosts();
@@ -244,9 +244,9 @@ function getPopularPosts() {
 function renderTrendingPosts() {
     const trendingContainer = document.getElementById('trendingPosts');
     if (!trendingContainer) return;
-    
+
     const trendingPosts = getTrendingPosts();
-    
+
     trendingContainer.innerHTML = trendingPosts.map(post => `
         <div class="trending-post">
             <a href="${post.url}" class="block hover:bg-sage/5 p-3 rounded-lg transition-colors">
@@ -270,9 +270,9 @@ function initializeLiveMetrics() {
     const bounceRateEl = document.getElementById('bounceRate');
     const pageViewsEl = document.getElementById('pageViews');
     const readerLocationsEl = document.getElementById('readerLocations');
-    
+
     if (!totalViewsEl || !engagementRateEl || !activeReadersEl) return;
-    
+
     // Starting values with realistic ranges
     let totalViews = 1847293;
     let engagementRate = 12.7;
@@ -282,25 +282,25 @@ function initializeLiveMetrics() {
     let avgTimeSeconds = 47;
     let bounceRate = 31.2;
     let pageViews = 3.8;
-    
+
     const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad', 'Jaipur', 'Surat'];
-    
+
     function updateMetrics() {
         // Total views increases gradually (15-45 views per update for realistic growth)
         totalViews += Math.floor(Math.random() * 31) + 15; // +15 to +45
-        
+
         // Engagement rate fluctuates (±0.1-0.3%)
         engagementRate += (Math.random() - 0.5) * 0.6;
         engagementRate = Math.max(11.5, Math.min(14.2, engagementRate)); // Keep between 11.5-14.2%
-        
+
         // Active readers changes more dramatically (±5-15 people)
         activeReaders += Math.floor(Math.random() * 21) - 10; // -10 to +10
         activeReaders = Math.max(85, Math.min(185, activeReaders)); // Keep between 85-185
-        
+
         // Weekly growth fluctuates slightly
         weeklyGrowth += (Math.random() - 0.5) * 0.4;
         weeklyGrowth = Math.max(15.0, Math.min(22.0, weeklyGrowth));
-        
+
         // Average time fluctuates
         avgTimeSeconds += Math.floor(Math.random() * 11) - 5; // -5 to +5 seconds
         if (avgTimeSeconds >= 60) {
@@ -312,69 +312,69 @@ function initializeLiveMetrics() {
         }
         avgTimeMinutes = Math.max(5, Math.min(8, avgTimeMinutes));
         avgTimeSeconds = Math.max(0, Math.min(59, avgTimeSeconds));
-        
+
         // Bounce rate fluctuates
         bounceRate += (Math.random() - 0.5) * 0.6;
         bounceRate = Math.max(28.0, Math.min(35.0, bounceRate));
-        
+
         // Page views fluctuates
         pageViews += (Math.random() - 0.5) * 0.2;
         pageViews = Math.max(3.2, Math.min(4.5, pageViews));
-        
+
         // Update reader locations randomly
         const shuffled = cities.sort(() => 0.5 - Math.random());
         const selectedCities = shuffled.slice(0, 3).join(', ') + '...';
-        
+
         // Update display with smooth animations
         animateCounter(totalViewsEl, parseInt(totalViewsEl.textContent.replace(/,/g, '')) || totalViews, totalViews);
         animateCounter(engagementRateEl, parseFloat(engagementRateEl.textContent) || engagementRate, engagementRate, '%', 1);
         animateCounter(activeReadersEl, parseInt(activeReadersEl.textContent) || activeReaders, activeReaders);
-        
+
         if (weeklyGrowthEl) {
             animateCounter(weeklyGrowthEl, parseFloat(weeklyGrowthEl.textContent.replace(/[+%]/g, '')) || weeklyGrowth, weeklyGrowth, '%', 1, '+');
         }
-        
+
         if (avgTimeEl) {
             avgTimeEl.textContent = `${avgTimeMinutes}m ${avgTimeSeconds}s`;
         }
-        
+
         if (bounceRateEl) {
             animateCounter(bounceRateEl, parseFloat(bounceRateEl.textContent.replace('%', '')) || bounceRate, bounceRate, '%', 1);
         }
-        
+
         if (pageViewsEl) {
             animateCounter(pageViewsEl, parseFloat(pageViewsEl.textContent) || pageViews, pageViews, '', 1);
         }
-        
+
         if (readerLocationsEl) {
             readerLocationsEl.textContent = selectedCities;
         }
     }
-    
+
     // Animate counter with smooth transitions
     function animateCounter(element, start, end, suffix = '', decimals = 0, prefix = '') {
         const duration = 800; // 0.8 seconds for faster animation
         const increment = (end - start) / (duration / 16); // 60fps
         let current = start;
-        
+
         const timer = setInterval(() => {
             current += increment;
             if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
                 current = end;
                 clearInterval(timer);
             }
-            
-            const displayValue = decimals > 0 ? 
-                current.toFixed(decimals) : 
+
+            const displayValue = decimals > 0 ?
+                current.toFixed(decimals) :
                 Math.floor(current).toLocaleString();
-            
+
             element.textContent = prefix + displayValue + suffix;
         }, 16);
     }
-    
+
     // Initial update
     updateMetrics();
-    
+
     // Update every 2-4 seconds with random intervals for quick fluctuations
     function scheduleNextUpdate() {
         const nextUpdate = 2000 + Math.random() * 2000; // 2-4 seconds
@@ -383,7 +383,7 @@ function initializeLiveMetrics() {
             scheduleNextUpdate();
         }, nextUpdate);
     }
-    
+
     scheduleNextUpdate();
 }
 
@@ -395,23 +395,23 @@ let currentSearchQuery = '';
 function initializeLoadMore() {
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     if (!loadMoreBtn) return;
-    
-    loadMoreBtn.addEventListener('click', function() {
+
+    loadMoreBtn.addEventListener('click', function () {
         const previousPostCount = document.querySelectorAll('.masonry-item').length;
         postsToShow += 3; // Load 3 more posts each time
         renderFilteredPosts();
-        
+
         // Smooth scroll to first new post after a brief delay for rendering
         setTimeout(() => {
             const allPosts = document.querySelectorAll('.masonry-item');
             if (allPosts[previousPostCount]) {
-                allPosts[previousPostCount].scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
+                allPosts[previousPostCount].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
                 });
             }
         }, 100);
-        
+
         // Hide button if all posts are shown
         const totalPosts = getFilteredPosts().length;
         if (postsToShow >= totalPosts) {
@@ -422,22 +422,22 @@ function initializeLoadMore() {
 
 function getFilteredPosts() {
     let filtered = blogPosts;
-    
+
     // Apply category filter
     if (currentCategory !== 'all') {
         filtered = filtered.filter(post => post.category === currentCategory);
     }
-    
+
     // Apply search filter
     if (currentSearchQuery) {
-        filtered = filtered.filter(post => 
+        filtered = filtered.filter(post =>
             post.title.toLowerCase().includes(currentSearchQuery) ||
             post.excerpt.toLowerCase().includes(currentSearchQuery) ||
             post.category.toLowerCase().includes(currentSearchQuery) ||
             post.author.toLowerCase().includes(currentSearchQuery)
         );
     }
-    
+
     return filtered;
 }
 
@@ -445,7 +445,7 @@ function renderFilteredPosts() {
     const filtered = getFilteredPosts();
     const postsToDisplay = filtered.slice(0, postsToShow);
     renderBlogPosts(postsToDisplay);
-    
+
     // Show/hide load more button
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     if (loadMoreBtn) {
