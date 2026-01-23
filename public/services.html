@@ -798,6 +798,51 @@
             text-decoration: line-through;
         }
 
+        /* Pricing Toggle */
+        .pricing-toggle-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .pricing-toggle {
+            background: rgba(139, 154, 122, 0.15);
+            border-radius: 30px;
+            padding: 4px;
+            display: flex;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(139, 154, 122, 0.3);
+        }
+
+        .pricing-toggle-btn {
+            padding: 8px 24px;
+            border-radius: 26px;
+            border: none;
+            background: transparent;
+            color: var(--color-charcoal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .pricing-toggle-btn.active {
+            background: var(--color-sage);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 154, 122, 0.3);
+            opacity: 1;
+        }
+
+        .pricing-toggle-btn:hover:not(.active) {
+            opacity: 1;
+            color: var(--color-sage);
+        }
+
         .price-item.special {
             flex-direction: column;
             align-items: flex-start;
@@ -1806,6 +1851,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="creators.html">Creators</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -1865,6 +1911,15 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 1rem;">Four Core Services - Pick What You Need, Scale As You
                 Grow</h2>
+
+            <div class="pricing-toggle-container">
+                <div class="pricing-toggle">
+                    <button class="pricing-toggle-btn active" onclick="setPricingMode('GLOBAL')" id="btn-global">Global
+                        ($)</button>
+                    <button class="pricing-toggle-btn" onclick="setPricingMode('IN')" id="btn-in">India (₹)</button>
+                </div>
+            </div>
+
             <p
                 style="text-align: center; color: var(--color-charcoal); opacity: 0.8; margin-bottom: 4rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Complete solutions for your brand's digital growth</p>
@@ -1891,13 +1946,14 @@
                     </ul>
 
                     <div class="enhanced-pricing-section">
-                        <h4>Pricing Tiers (Transparent)</h4>
+                        <h4>Pricing Tiers <span style="font-weight: 400; font-size: 0.9rem; opacity: 0.8;">(Starting
+                                from)</span></h4>
                         <div class="pricing-items">
                             <div class="price-item" style="border-radius: 8px; padding: 1rem;">
                                 <span class="price-label" style="font-size: 1.1rem; font-weight: 600;">Starter</span>
                                 <span class="price-value" style="font-size: 1.1rem; font-weight: 600;">
                                     <span class="inr-price" style="display:none">1 video - ₹5,000</span><span
-                                        class="global-price">1 video - $100</span></span>
+                                        class="global-price">1 video - $250</span></span>
                             </div>
                             <div class="price-item special"
                                 style="background: linear-gradient(135deg, rgba(139, 154, 122, 0.15) 0%, rgba(156, 175, 136, 0.25) 100%); border: 2px solid rgba(139, 154, 122, 0.4); border-radius: 8px; padding: 1rem; box-shadow: 0 8px 24px rgba(139, 154, 122, 0.15); position: relative; overflow: hidden;">
@@ -1907,12 +1963,12 @@
                                 <span class="price-label" style="font-size: 1.1rem; font-weight: 600;">Growth</span>
                                 <span class="price-value" style="display: flex; flex-direction: column; gap: 0.3rem;">
                                     <span class="current-price inr-price"
-                                        style="font-size: 1.1rem; font-weight: 700; color: #8B9A7A; display:none;">5
+                                        style="font-size: 1.1rem; font-weight: 700; color: #8B9A7A; display:none;">3
                                         videos -
-                                        ₹17,000</span>
+                                        ₹15,000</span>
                                     <span class="current-price global-price"
-                                        style="font-size: 1.1rem; font-weight: 700; color: #8B9A7A;">5 videos -
-                                        $350</span>
+                                        style="font-size: 1.1rem; font-weight: 700; color: #8B9A7A;">3 videos -
+                                        $550</span>
                                     <span class="discount-badge inr-price"
                                         style="background: rgba(139, 154, 122, 0.2); color: #7A8471; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; display: none; width: fit-content;">✓
                                         15% OFF</span>
@@ -1928,8 +1984,8 @@
                             <div class="price-item" style="border-radius: 8px; padding: 1rem;">
                                 <span class="price-label" style="font-size: 1.1rem; font-weight: 600;">Scale</span>
                                 <span class="price-value" style="font-size: 1.1rem; font-weight: 600;">
-                                    <span class="inr-price" style="display:none">10 videos - ₹30,000</span><span
-                                        class="global-price">10 videos - $600</span></span>
+                                    <span class="inr-price" style="display:none">5 videos - ₹25,000</span><span
+                                        class="global-price">5 videos - $1,000</span></span>
                             </div>
                             <div class="price-item">
                                 <span class="price-label">Custom</span>
@@ -2143,17 +2199,17 @@
                             <h4>PACKAGES</h4>
                             <div class="pricing-items">
                                 <div class="price-item">
-                                    <span class="price-label">AI Video Pack</span>
+                                    <span class="price-label">AI Video</span>
                                     <span class="price-value">
-                                        <span class="inr-price" style="display:none">Starting at ₹16,500</span>
+                                        <span class="inr-price" style="display:none">Starting at ₹3,000</span>
                                         <span class="global-price">Starting at $200</span>
                                     </span>
                                 </div>
                                 <div class="price-item">
-                                    <span class="price-label">AI Photo Pack</span>
+                                    <span class="price-label">AI Static Ads</span>
                                     <span class="price-value">
-                                        <span class="inr-price" style="display:none">Starting at ₹6,500</span>
-                                        <span class="global-price">Starting at $80</span>
+                                        <span class="inr-price" style="display:none">Starting at ₹800</span>
+                                        <span class="global-price">Starting at $20</span>
                                     </span>
                                 </div>
                                 <div class="price-item">
@@ -2574,6 +2630,7 @@
                     <h4>Quick Links</h4>
                     <p><a href="index.html">Home</a><br>
                         <a href="services.html">Services</a><br>
+                        <a href="pricing.html">Pricing</a><br>
                         <a href="creators.html">Creators</a><br>
                         <a href="blog.html">Blog</a><br>
                         <a href="contact.html">Contact</a>
@@ -2847,22 +2904,36 @@
                 if (CONFIG.debug) console.log('[Geo-Pricing]', ...args);
             }
 
-            function updatePricing(countryCode) {
+            function setPricingMode(countryCode) {
                 const isIndia = countryCode === 'IN';
-                log(`Setting pricing for: ${countryCode} (India: ${isIndia})`);
+                log(`Setting pricing mode: ${isIndia ? 'India' : 'Global'}`);
 
                 const inrElements = document.querySelectorAll('.inr-price');
                 const globalElements = document.querySelectorAll('.global-price');
+                const btnGlobal = document.getElementById('btn-global');
+                const btnIn = document.getElementById('btn-in');
 
+                // Update Toggle UI
                 if (isIndia) {
-                    // Indian pricing: Show INR, Hide Global
-                    inrElements.forEach(el => el.style.display = 'block');
-                    globalElements.forEach(el => el.style.display = 'none');
+                    if (btnIn) btnIn.classList.add('active');
+                    if (btnGlobal) btnGlobal.classList.remove('active');
                 } else {
-                    // International pricing: Hide INR, Show Global (default state)
-                    inrElements.forEach(el => el.style.display = 'none');
-                    globalElements.forEach(el => el.style.display = 'block');
+                    if (btnGlobal) btnGlobal.classList.add('active');
+                    if (btnIn) btnIn.classList.remove('active');
                 }
+
+                // Update Visibility
+                // Using empty string checks the CSS stylesheet or user agent default (usually inline for span)
+                inrElements.forEach(el => el.style.display = isIndia ? '' : 'none');
+                globalElements.forEach(el => el.style.display = isIndia ? 'none' : '');
+            }
+
+            // Expose to global scope for onclick handlers
+            window.setPricingMode = setPricingMode;
+
+            // Kept for compatibility if called elsewhere
+            function updatePricing(countryCode) {
+                setPricingMode(countryCode);
             }
 
             async function detectLocation() {
@@ -2871,7 +2942,7 @@
                 const geoBypass = urlParams.get('geo');
                 if (geoBypass) {
                     log('Manual bypass detected:', geoBypass);
-                    updatePricing(geoBypass.toUpperCase());
+                    setPricingMode(geoBypass.toUpperCase());
                     return;
                 }
 
@@ -2882,7 +2953,7 @@
                     const data = await response.json();
                     log('Primary API response:', data);
                     if (data && data.country_code) {
-                        updatePricing(data.country_code);
+                        setPricingMode(data.country_code);
                         return;
                     }
                     throw new Error('Invalid secondary API response');
@@ -2897,12 +2968,12 @@
                     const data = await response.json();
                     log('Fallback API response:', data);
                     if (data && data.countryCode) {
-                        updatePricing(data.countryCode);
+                        setPricingMode(data.countryCode);
                         return;
                     }
                 } catch (e) {
                     log('All detection services failed. Defaulting to USD.', e.message);
-                    updatePricing('US'); // Fallback to USD
+                    setPricingMode('US'); // Fallback to USD
                 }
             }
 
