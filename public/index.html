@@ -405,12 +405,31 @@
         }
 
         .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .h1-primary {
+            display: block;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--color-sage);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-family: var(--font-sans);
+            background: none;
+            -webkit-text-fill-color: initial;
+        }
+
+        .h1-secondary {
+            display: block;
+            font-size: clamp(2rem, 5vw, 3.75rem);
             background: linear-gradient(135deg, var(--color-charcoal), var(--color-sage));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: var(--font-serif);
         }
 
         .hero-subheading {
@@ -1760,6 +1779,33 @@
                 font-size: 1rem;
             }
 
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+                padding-bottom: 4rem;
+            }
+
+            .h1-primary {
+                font-size: 0.9rem !important;
+                letter-spacing: 1px;
+                margin-bottom: 0.5rem;
+            }
+
+            .h1-secondary {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+
+            .hero-subheading {
+                font-size: 1.1rem !important;
+                padding: 0 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1775,10 +1821,6 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 2rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
             }
 
             .service-icon-overview i {
@@ -2063,13 +2105,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Performance-First UGC That Drives Sales, Not Just Likes</h1>
-                    <p class="hero-subheading">120+ creators ready to tell your brand story. Transform your marketing
-                        with authentic UGC that converts browsers into buyers.</p>
+                    <h1>
+                        <span class="h1-primary"> #1 UGC Content Creation Agency in India</span>
+                        <span class="h1-secondary">Performance-First UGC That Drives Sales for D2C Brands</span>
+                    </h1>
+                    <p class="hero-subheading"> You are wasting ₹50,000+/month on ads that don't convert.
+                        We create UGC content that cuts your CPA by 67% in 30 days—guaranteed.</p>
                     <div class="hero-cta-group">
                         <div class="hero-cta-top">
                             <a href="contact.html?service=strategy" class="btn-primary">Book Free Strategy Call</a>
-                            <a href="creator-application.html" class="btn-secondary">Apply To Become a Creator</a>
                         </div>
                         <div class="hero-cta-bottom">
                             <a href="portfolio.html" class="btn-secondary">
