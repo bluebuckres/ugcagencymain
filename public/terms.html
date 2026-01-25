@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Product Handling | MakeUGC</title>
+    <meta name="description"
+        content="Product handling checklist, shipping policies, insurance terms, and usage rights for MakeUGC campaigns.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link href="/assets/css/styles.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-warm-stone: #F5F1EB;
+            --color-sage: #8B9A7A;
+            --color-charcoal: #2C2C2C;
+            --font-serif: 'Crimson Text', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-charcoal);
+            background-color: var(--color-warm-stone);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-serif);
+        }
+
+        /* Form Elements */
+        .checklist-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(139, 154, 122, 0.1);
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: var(--color-sage);
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            border: 1px solid #e5e7eb;
+            background: #F9FAF8;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: 2px solid var(--color-sage);
+            background: white;
+        }
+
+        /* Specialty Visibility Overrides */
+        .confirmation-box,
+        .confirmation-box h3,
+        .confirmation-box label,
+        .confirmation-box span {
+            color: white !important;
+        }
+
+        .footer h4 {
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        .footer a,
+        .footer p,
+        .footer span,
+        .footer li {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .footer a:hover {
+            color: #ffffff !important;
+            text-decoration: underline;
+        }
+
+        /* Sticky Sidebar */
+        .sticky-toc {
+            position: sticky;
+            top: 100px;
+        }
+
+        .toc-link.active {
+            color: var(--color-sage);
+            font-weight: 700;
+            border-left: 3px solid var(--color-sage);
+            padding-left: 12px;
+        }
+    </style>
+</head>
+
+<body class="pt-20">
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 text-center px-4">
+        <h1 class="text-4xl md:text-5xl text-[#2C2C2C] mb-4">Terms & Product Handling</h1>
+        <p class="text-lg text-[#2C2C2C] opacity-70 max-w-2xl mx-auto">
+            Please review our checklist and policies to ensure a smooth production process.
+        </p>
+    </section>
+
+    <!-- Main Content Layout -->
+    <section class="pb-20 px-4">
+        <div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <!-- Sidebar Navigation (Table of Contents) -->
+            <aside class="hidden lg:block col-span-1">
+                <div class="sticky-toc bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-lg mb-4 text-[#2C2C2C]">Table of Contents</h3>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li><a href="#checklist" class="toc-link block hover:text-[#8B9A7A] transition-colors">Product
+                                Checklist</a></li>
+                        <li><a href="#shipping" class="toc-link block hover:text-[#8B9A7A] transition-colors">Shipping
+                                Method</a></li>
+                        <li><a href="#insurance" class="toc-link block hover:text-[#8B9A7A] transition-colors">Insurance
+                                & Liability</a></li>
+                        <li><a href="#addons" class="toc-link block hover:text-[#8B9A7A] transition-colors">Add-On
+                                Costs</a></li>
+                        <li><a href="#return-policy"
+                                class="toc-link block hover:text-[#8B9A7A] transition-colors">Return Policy</a></li>
+                        <li><a href="#usage-rights" class="toc-link block hover:text-[#8B9A7A] transition-colors">Usage
+                                Rights</a></li>
+                        <li><a href="#cancellation"
+                                class="toc-link block hover:text-[#8B9A7A] transition-colors">Cancellation</a></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <a href="/contact.html" class="flex items-center gap-2 text-[#8B9A7A] font-bold text-sm">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> Have Questions?
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="col-span-1 lg:col-span-3 space-y-12">
+
+                <!-- 1. Product Handling Checklist Form -->
+                <div id="checklist" class="checklist-card p-8">
+                    <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                        <i data-lucide="clipboard-check" class="text-[#8B9A7A] w-8 h-8"></i>
+                        <h2 class="text-2xl font-bold m-0">Product Handling Checklist</h2>
+                    </div>
+
+                    <p class="mb-6 text-sm text-gray-500 bg-[#FAF8F5] p-3 rounded-lg">
+                        <i data-lucide="info" class="inline w-4 h-4 mr-1"></i>
+                        Please complete this checklist before we begin production.
+                    </p>
+
+                    <!-- Product Info -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">📦 Product Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Product Name/SKU</label>
+                                <input type="text" class="w-full p-2 rounded-lg" placeholder="e.g. Vitamin C Serum">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Quantity Needed</label>
+                                <input type="text" class="w-full p-2 rounded-lg" placeholder="e.g. 2 Units">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Size/Color/Variant</label>
+                                <input type="text" class="w-full p-2 rounded-lg" placeholder="e.g. 50ml / Orange">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Estimated Value (₹)</label>
+                                <input type="number" class="w-full p-2 rounded-lg" placeholder="₹">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Method -->
+                    <div id="shipping" class="mb-8">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">🚚 Shipping Method</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-start gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="shipping" class="mt-1">
+                                <div>
+                                    <span class="font-bold block text-sm">Ship directly to creator</span>
+                                    <span class="text-xs text-gray-500">We will provide address after booking
+                                        confirmation.</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="shipping" class="mt-1">
+                                <div>
+                                    <span class="font-bold block text-sm">Ship to MakeUGC Office (Kolkata)</span>
+                                    <span class="text-xs text-gray-500">We handle distribution to multiple
+                                        creators.</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="shipping" class="mt-1">
+                                <div>
+                                    <span class="font-bold block text-sm">AI UGC Only</span>
+                                    <span class="text-xs text-gray-500">No physical product required.</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Insurance -->
+                    <div id="insurance" class="mb-8">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">🛡️ Insurance & Liability</h3>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-4 text-sm">
+                            <p class="mb-2"><strong>Coverage Tiers:</strong></p>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                                <li><strong>Under ₹5,000:</strong> Standard coverage included (Free)</li>
+                                <li><strong>₹5,000 – ₹20,000:</strong> Insurance required (+₹500)</li>
+                                <li><strong>Over ₹20,000:</strong> Premium insurance required (+₹1,000)</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="insurance"> Standard (Free)
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="insurance"> Add Insurance (+₹500)
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="insurance"> Premium (+₹1,000)
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Handling Requirements -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">📋 Handling Instructions</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="flex items-center gap-2 mb-2 font-medium">
+                                    <input type="checkbox"> Special Handling Needed?
+                                </label>
+                                <input type="text" class="w-full p-2 rounded-lg text-sm"
+                                    placeholder="e.g. Fragile, Cold Storage, Waterproof...">
+                            </div>
+
+                            <div id="return-policy">
+                                <p class="mb-2 font-medium">Product Return Required?</p>
+                                <div class="flex gap-6">
+                                    <label class="flex items-center gap-2 text-sm">
+                                        <input type="radio" name="return"> No, creator keeps it
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm">
+                                        <input type="radio" name="return"> Yes, return it
+                                    </label>
+                                </div>
+                                <p class="text-xs text-red-500 mt-1">*Return shipping costs are client's responsibility.
+                                </p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Usage Instructions for Creator:</label>
+                                <textarea class="w-full p-2 rounded-lg border border-gray-200 h-20 text-sm"
+                                    placeholder="e.g. Shake well before use, apply on damp skin..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Ons -->
+                    <div id="addons" class="mb-8">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">🎬 Add-Ons & Extras</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- AI Addons -->
+                            <div>
+                                <h4 class="font-bold text-sm text-[#8B9A7A] uppercase tracking-wide mb-3">AI UGC Add-Ons
+                                </h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-start gap-2 text-sm">
+                                        <input type="checkbox">
+                                        <span>Multiple outfits/scenes (+₹1,000)</span>
+                                    </label>
+                                    <label class="flex items-start gap-2 text-sm">
+                                        <input type="checkbox">
+                                        <span>Professional Voiceover (+₹1,000)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Human Addons -->
+                            <div>
+                                <h4 class="font-bold text-sm text-[#8B9A7A] uppercase tracking-wide mb-3">Human UGC
+                                    Add-Ons</h4>
+                                <div class="space-y-2">
+
+                                    <label class="flex items-start gap-2 text-sm">
+                                        <input type="checkbox">
+                                        <span>Multiple Locations (+₹2k–5k)</span>
+                                    </label>
+                                    <label class="flex items-start gap-2 text-sm">
+                                        <input type="checkbox">
+                                        <span>Props/Styling Provided (+₹500–2k)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-dashed border-gray-200">
+                            <h4 class="font-bold text-sm text-[#2C2C2C] uppercase tracking-wide mb-3">Universal Add-Ons
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <label class="flex items-start gap-2 text-sm">
+                                    <input type="checkbox" disabled>
+                                    <span class="opacity-50 text-gray-400">Rush Delivery 24-48h (Consult Agent)</span>
+                                </label>
+                                <label class="flex items-start gap-2 text-sm">
+                                    <input type="checkbox" disabled>
+                                    <span class="opacity-50 text-gray-400">Extended Rights (Consult Agent)</span>
+                                </label>
+                                <label class="flex items-start gap-2 text-sm">
+                                    <input type="checkbox">
+                                    <span>Raw Footage (+₹2,000)</span>
+                                </label>
+                                <label class="flex items-start gap-2 text-sm">
+                                    <input type="checkbox">
+                                    <span>Multiple Aspect Ratios (+₹500 ea)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation -->
+                    <div class="bg-[#2C2C2C] confirmation-box p-6 rounded-xl">
+                        <h3 class="font-bold mb-4">✅ Confirmation</h3>
+                        <div class="space-y-2 text-sm mb-6">
+                            <label class="flex items-start gap-3">
+                                <input type="checkbox" class="mt-1 accent-white">
+                                <span>I will provide tracking number within 24 hours of shipping.</span>
+                            </label>
+                            <label class="flex items-start gap-3">
+                                <input type="checkbox" class="mt-1 accent-white">
+                                <span>I understand shipping costs to/from creator are my responsibility.</span>
+                            </label>
+                            <label class="flex items-start gap-3">
+                                <input type="checkbox" class="mt-1 accent-white">
+                                <span>I understand MakeUGC's liability is limited to the insured value selected
+                                    above.</span>
+                            </label>
+                        </div>
+                        <button onclick="window.print()"
+                            class="w-full bg-[#8B9A7A] hover:bg-[#7A8A6A] text-white py-3 rounded-lg font-bold transition-colors">
+                            Print / Save Checklist
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- 2. Detailed Policies Section -->
+                <div class="space-y-12">
+
+                    <div id="usage-rights">
+                        <h2 class="text-2xl font-bold mb-4 text-[#2C2C2C]">Usage Rights Policy</h2>
+                        <div class="prose text-gray-600">
+                            <p class="mb-4">Unless otherwise specified in a custom contract, the following usage rights
+                                apply to all standard orders:</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li><strong>Standard Rights:</strong> 12 months of paid ad usage (Meta, Google, TikTok,
+                                    etc.) and organic social posting rights.</li>
+                                <li><strong>Exclusions:</strong> TV, Billboard, Print, and OTT platforms are excluded
+                                    unless purchased separately.</li>
+                                <li><strong>Perpetual Rights:</strong> Available for an additional 30-50% of the base
+                                    video cost. This grants you the right to use the content forever.</li>
+                                <li><strong>Whitelisting:</strong> Creator whitelisting (running ads through the
+                                    creator's handle) is available upon request for an additional fee.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="cancellation">
+                        <h2 class="text-2xl font-bold mb-4 text-[#2C2C2C]">Cancellation & Refunds</h2>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="font-bold text-[#8B9A7A] mb-2 text-sm uppercase tracking-wide">Before
+                                        Production Starts</h4>
+                                    <p class="text-sm text-gray-600">If you cancel after booking but before the product
+                                        has been shipped or AI generation has started, you are eligible for a
+                                        <strong>90% refund</strong> (10% processing fee applies).
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[#8B9A7A] mb-2 text-sm uppercase tracking-wide">During
+                                        Production</h4>
+                                    <p class="text-sm text-gray-600">Once the creator has received the product or
+                                        scripting has begun, a <strong>50% refund</strong> is available. The product can
+                                        be returned at your expense.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <p class="text-sm text-gray-600"><strong>After Delivery:</strong> No refunds are issued
+                                    after the first draft is delivered. We offer 1 round of revisions to ensure
+                                    satisfaction.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-8 border-t border-gray-200">
+                        <p class="text-lg font-serif italic mb-4">"Clear communication ensures great content."</p>
+                        <p class="mb-4 text-sm">Still have questions about our terms?</p>
+                        <a href="https://wa.me/919239161632"
+                            class="inline-flex items-center gap-2 text-[#8B9A7A] font-bold hover:underline">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Us: +91 92391 61632
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Universal Footer -->
+    <footer class="footer py-16 text-white">
+        <div class="max-w-[1280px] mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="footer-section">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                            class="h-[35px] w-[35px] rounded-full object-cover">
+                        <h4 class="font-bold text-lg m-0">MakeUGC</h4>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        MakeUGC.in<br>
+                        3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India
+                    </p>
+                    <p class="text-gray-300 text-sm">
+                        connect@makeugc.in<br>
+                        Mobile: +91 9239161632
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="/index.html" class="hover:text-[#8B9A7A] transition-colors">Home</a></li>
+                        <li><a href="/services.html" class="hover:text-[#8B9A7A] transition-colors">Services</a></li>
+                        <li><a href="/pricing.html" class="hover:text-[#8B9A7A] transition-colors">Pricing</a></li>
+                        <li><a href="/creators.html" class="hover:text-[#8B9A7A] transition-colors">Creators</a></li>
+                        <li><a href="/blog.html" class="hover:text-[#8B9A7A] transition-colors">Blog</a></li>
+                        <li><a href="/contact.html" class="hover:text-[#8B9A7A] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="/resources.html" class="hover:text-[#8B9A7A] transition-colors">Free Templates</a>
+                        </li>
+                        <li><a href="/tools/creator-brief-template.html"
+                                class="hover:text-[#8B9A7A] transition-colors">Creator
+                                Brief Template</a></li>
+                        <li><a href="/tools/roi-calculator.html" class="hover:text-[#8B9A7A] transition-colors">ROI
+                                Calculator</a></li>
+                        <li><a href="/blog.html" class="hover:text-[#8B9A7A] transition-colors">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Trust & Social</h4>
+                    <p class="text-gray-300 text-sm mb-4">Trusted by 50+ D2C Brands. Meta Business Partner.</p>
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-[#FF0000] flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="youtube" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="instagram" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>© 2025 MakeUGC • All rights reserved • <a href="/legal/privacy-policy.html"
+                        class="hover:text-[#8B9A7A]">Privacy Policy</a> •
+                    <a href="/legal/terms-conditions.html" class="hover:text-[#8B9A7A]">Terms</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('mobile-open');
+                this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+            });
+
+            // Close mobile menu when clicking on links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('mobile-open');
+                    mobileToggle.innerHTML = '☰';
+                });
+            });
+        }
+
+        // Table of Contents Scroll Logic
+        const sections = document.querySelectorAll('div[id]');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        if (tocLinks.length > 0) {
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

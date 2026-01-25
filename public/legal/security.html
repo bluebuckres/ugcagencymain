@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security - UGC Agency</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --color-warm-stone: #F5F1EB;
@@ -19,10 +22,10 @@
             --color-cream: #FAF8F5;
             --color-muted-teal: #7A9B9B;
             --color-soft-terracotta: #D4A574;
-            
+
             --font-serif: 'Crimson Text', serif;
             --font-sans: 'Inter', sans-serif;
-            
+
             --radius-soft: 12px;
             --radius-softer: 16px;
             --shadow-subtle: 0 2px 8px rgba(44, 44, 44, 0.1);
@@ -102,7 +105,8 @@
             font-size: 15px;
         }
 
-        ul, ol {
+        ul,
+        ol {
             margin: 15px 0;
             padding-left: 25px;
         }
@@ -171,15 +175,15 @@
             .container {
                 padding: 20px 15px;
             }
-            
+
             .content {
                 padding: 25px;
             }
-            
+
             .header h1 {
                 font-size: 28px;
             }
-            
+
             .security-grid {
                 grid-template-columns: 1fr;
             }
@@ -197,20 +201,43 @@
             debug: false // Set to true for development
         };
     </script>
-    
+
     <!-- Meta Pixel Code -->
     <script src="/assets/js/meta-pixel.js" defer></script>
     <!-- Referral System -->
     <script src="/assets/js/referral-system.js" defer></script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" />
     </noscript>
+    <link href="/assets/css/styles.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="pt-20">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <a href="../../index.html" class="back-link">← Back to Home</a>
-        
+
         <div class="header">
             <h1>🔒 Security</h1>
             <p>Protecting your data and privacy is our top priority</p>
@@ -218,39 +245,49 @@
 
         <div class="content">
             <div class="security-feature">
-                <p><strong>At UGC Agency (BlueBuck Research Media LLP)</strong>, we implement enterprise-grade security measures to protect your business data, creative assets, and personal information. Your trust is paramount to our success.</p>
+                <p><strong>At UGC Agency (BlueBuck Research Media LLP)</strong>, we implement enterprise-grade security
+                    measures to protect your business data, creative assets, and personal information. Your trust is
+                    paramount to our success.</p>
             </div>
 
             <h2>🛡️ Data Protection Overview</h2>
-            <p>We employ multiple layers of security to ensure your information remains safe and confidential. Our security infrastructure is designed to protect against both external threats and internal vulnerabilities.</p>
+            <p>We employ multiple layers of security to ensure your information remains safe and confidential. Our
+                security infrastructure is designed to protect against both external threats and internal
+                vulnerabilities.</p>
 
             <div class="security-grid">
                 <div class="security-card">
                     <h4>🔐 Encryption</h4>
-                    <p>All data transmission uses TLS 1.3 encryption. Sensitive data is encrypted at rest using AES-256 encryption standards.</p>
+                    <p>All data transmission uses TLS 1.3 encryption. Sensitive data is encrypted at rest using AES-256
+                        encryption standards.</p>
                 </div>
                 <div class="security-card">
                     <h4>🔑 Access Control</h4>
-                    <p>Multi-factor authentication and role-based access controls ensure only authorized users can access your account.</p>
+                    <p>Multi-factor authentication and role-based access controls ensure only authorized users can
+                        access your account.</p>
                 </div>
                 <div class="security-card">
                     <h4>📊 Regular Audits</h4>
-                    <p>We conduct regular security audits and vulnerability assessments to identify and address potential risks.</p>
+                    <p>We conduct regular security audits and vulnerability assessments to identify and address
+                        potential risks.</p>
                 </div>
                 <div class="security-card">
                     <h4>💾 Secure Backups</h4>
-                    <p>Automated encrypted backups ensure your data is protected and recoverable in case of any incidents.</p>
+                    <p>Automated encrypted backups ensure your data is protected and recoverable in case of any
+                        incidents.</p>
                 </div>
             </div>
 
             <h2>🔒 Technical Security Measures</h2>
-            
+
             <h3>Infrastructure Security</h3>
             <ul>
-                <li><strong>Cloud Security:</strong> Hosted on secure cloud infrastructure with enterprise-grade protection</li>
+                <li><strong>Cloud Security:</strong> Hosted on secure cloud infrastructure with enterprise-grade
+                    protection</li>
                 <li><strong>Network Security:</strong> Firewalls, intrusion detection, and DDoS protection</li>
                 <li><strong>Server Security:</strong> Regular security updates and hardened server configurations</li>
-                <li><strong>Database Security:</strong> Encrypted databases with restricted access and query monitoring</li>
+                <li><strong>Database Security:</strong> Encrypted databases with restricted access and query monitoring
+                </li>
             </ul>
 
             <h3>Application Security</h3>
@@ -262,7 +299,7 @@
             </ul>
 
             <h2>🔐 Account Security</h2>
-            
+
             <h3>Authentication</h3>
             <ul>
                 <li>Strong password requirements (minimum 6 characters with complexity)</li>
@@ -281,7 +318,7 @@
             </ul>
 
             <h2>📱 Data Handling</h2>
-            
+
             <h3>Content Security</h3>
             <ul>
                 <li><strong>UGC Assets:</strong> Creator content is stored securely with access controls</li>
@@ -299,7 +336,7 @@
             </ul>
 
             <h2>🚨 Incident Response</h2>
-            
+
             <h3>Monitoring</h3>
             <ul>
                 <li>24/7 automated monitoring of our systems and networks</li>
@@ -317,12 +354,13 @@
             </ul>
 
             <h2>🏢 Compliance & Standards</h2>
-            
+
             <h3>Regulatory Compliance</h3>
             <ul>
                 <li><strong>Indian IT Act 2000:</strong> Compliance with Indian information technology laws</li>
                 <li><strong>Data Protection:</strong> Adherence to applicable data protection regulations</li>
-                <li><strong>Industry Standards:</strong> Following recognized security frameworks and best practices</li>
+                <li><strong>Industry Standards:</strong> Following recognized security frameworks and best practices
+                </li>
             </ul>
 
             <h3>Business Practices</h3>
@@ -334,7 +372,7 @@
             </ul>
 
             <h2>🔍 Privacy Protection</h2>
-            
+
             <h3>Data Minimization</h3>
             <ul>
                 <li>We collect only the data necessary to provide our services</li>
@@ -352,7 +390,8 @@
             </ul>
 
             <h2>⚠️ Reporting Security Issues</h2>
-            <p>We take security vulnerabilities seriously. If you discover a potential security issue, please report it to us immediately:</p>
+            <p>We take security vulnerabilities seriously. If you discover a potential security issue, please report it
+                to us immediately:</p>
 
             <div class="connect.info">
                 <h3>Security Contact</h3>
@@ -364,7 +403,7 @@
                     <li><strong>Response Time:</strong> Within 24 hours for critical issues</li>
                     <li><strong>PGP Key Available:</strong> For encrypted communications</li>
                 </ul>
-                
+
                 <h4>What to Include:</h4>
                 <ul>
                     <li>Detailed description of the vulnerability</li>
@@ -385,7 +424,8 @@
             </ul>
 
             <div class="security-feature">
-                <p><strong>Questions About Security?</strong> We're transparent about our security practices. Contact our team at security@ugcagency.com for more information about how we protect your data.</p>
+                <p><strong>Questions About Security?</strong> We're transparent about our security practices. Contact
+                    our team at security@ugcagency.com for more information about how we protect your data.</p>
             </div>
         </div>
     </div>
@@ -406,18 +446,18 @@
             z-index: 1000;
             display: none;
         }
-        
+
         .analytics-notice.show {
             display: block;
             animation: slideIn 0.3s ease-out;
         }
-        
+
         .analytics-notice .notice-buttons {
             margin-top: 12px;
             display: flex;
             gap: 10px;
         }
-        
+
         .analytics-notice button {
             padding: 6px 12px;
             border: none;
@@ -426,26 +466,27 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .analytics-notice .accept-btn {
             background: #3b82f6;
             color: white;
         }
-        
+
         .analytics-notice .decline-btn {
             background: #6b7280;
             color: white;
         }
-        
+
         .analytics-notice button:hover {
             transform: translateY(-1px);
         }
-        
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -485,12 +526,12 @@
         function acceptAnalytics() {
             localStorage.setItem('analytics-consent', 'accepted');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Enable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = true;
             }
-            
+
             // Reinitialize analytics if already loaded
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = true;
@@ -501,19 +542,19 @@
         function declineAnalytics() {
             localStorage.setItem('analytics-consent', 'declined');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Disable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = false;
             }
-            
+
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = false;
             }
         }
 
         // Check consent on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const consent = localStorage.getItem('analytics-consent');
             if (!consent) {
                 setTimeout(showAnalyticsNotice, 2000); // Show after 2 seconds
@@ -525,5 +566,27 @@
             }
         });
     </script>
+    <!-- Mobile Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function () {
+                    navLinks.classList.toggle('mobile-open');
+                    this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('mobile-open');
+                        mobileToggle.innerHTML = '☰';
+                    });
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

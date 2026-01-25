@@ -4,35 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Process | MakeUGC</title>
+    <title>Pricing & Packages | MakeUGC</title>
     <meta name="description"
-        content="Transparent pricing for AI and Human UGC content. No hidden fees, simple process. Get quality content that converts starting at ₹3,000.">
-    <meta name="keywords"
-        content="UGC pricing, AI UGC, Human UGC, content creation pricing, video pricing, influencer content cost">
-    <meta name="author" content="UGC Agency">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://makeugc.in/pricing">
-    <meta property="og:title" content="Pricing & Process | MakeUGC">
-    <meta property="og:description"
-        content="Transparent pricing for AI and Human UGC content. No hidden fees, simple process.">
-    <meta property="og:image" content="https://makeugc.in/resources/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://makeugc.in/pricing">
-    <meta property="twitter:title" content="Pricing & Process | MakeUGC">
-    <meta property="twitter:description" content="Transparent pricing for AI and Human UGC content.">
-    <meta property="twitter:image" content="https://makeugc.in/resources/twitter-image.jpg">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://makeugc.in/pricing">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon-square.svg">
-    <link rel="shortcut icon" href="/assets/images/favicon-square.svg">
-    <link rel="apple-touch-icon" href="/assets/images/favicon-square.svg">
+        content="Transparent pricing for AI and Human UGC. No hidden fees. Packages starting at ₹3,000 with 48-hour delivery.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +14,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for immediate use) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Lucide Icons -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
@@ -49,35 +26,18 @@
             --color-warm-stone: #F5F1EB;
             --color-sage: #8B9A7A;
             --color-charcoal: #2C2C2C;
-            --color-clay: #C4A484;
             --color-cream: #FAF8F5;
-            --color-muted-teal: #7A9B9B;
-            --color-soft-terracotta: #D4A574;
-            --color-ai-purple: #A855F7;
-            --color-human-green: #10B981;
-            --color-hybrid-blue: #3B82F6;
 
             --font-serif: 'Crimson Text', serif;
             --font-sans: 'Inter', sans-serif;
-
-            --radius-soft: 12px;
-            --radius-softer: 16px;
-            --shadow-subtle: 0 2px 8px rgba(44, 44, 44, 0.1);
-            --shadow-lift: 0 4px 16px rgba(44, 44, 44, 0.15);
-            --shadow-card: 0 8px 32px rgba(44, 44, 44, 0.12);
-
-            --transition-gentle: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: var(--font-sans);
-            line-height: 1.6;
             color: var(--color-charcoal);
             background-color: var(--color-warm-stone);
             overflow-x: hidden;
@@ -90,59 +50,20 @@
         h5,
         h6 {
             font-family: var(--font-serif);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-        }
-
-        h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-        }
-
-        h4 {
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .section:nth-child(even) {
-            background-color: var(--color-cream);
-        }
-
-        /* Navigation */
+        /* Navigation Styles */
         .main-nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 248, 245, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(245, 241, 235, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(139, 154, 122, 0.2);
+            border-bottom: 1px solid rgba(139, 154, 122, 0.15);
+            transition: var(--transition-gentle);
         }
 
         .nav-container {
@@ -160,6 +81,7 @@
             font-weight: 700;
             color: var(--color-charcoal);
             text-decoration: none;
+            transition: var(--transition-gentle);
         }
 
         .nav-links {
@@ -169,20 +91,20 @@
             align-items: center;
         }
 
-        .nav-links a {
+        .nav-links li a {
             text-decoration: none;
             color: var(--color-charcoal);
             font-weight: 500;
-            transition: var(--transition-gentle);
             position: relative;
+            transition: var(--transition-gentle);
             padding: 0.5rem 0;
         }
 
-        .nav-links a:hover {
+        .nav-links li a:hover {
             color: var(--color-sage);
         }
 
-        .nav-links a::after {
+        .nav-links li a::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -193,10 +115,11 @@
             transition: var(--transition-gentle);
         }
 
-        .nav-links a:hover::after {
+        .nav-links li a:hover::after {
             width: 100%;
         }
 
+        /* Special styling for navbar contact button */
         .nav-links .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -242,826 +165,615 @@
             display: none;
         }
 
-        .mobile-nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--color-charcoal);
-            padding: 0.5rem;
-            min-height: 44px;
-            min-width: 44px;
-            border-radius: 4px;
+        /* --- Button Styles --- */
+        .btn-primary {
+            background-color: var(--color-sage);
+            color: white;
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
-        .pricing-hero {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--color-warm-stone) 0%, var(--color-cream) 100%);
-            text-align: center;
-            position: relative;
-            padding-top: 120px;
-            padding-bottom: 3rem;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(139, 154, 122, 0.25);
+            background-color: #7A8A6A;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .btn-secondary {
+            border: 1px solid var(--color-sage);
+            color: var(--color-sage);
+            background: transparent;
+            transition: all 0.3s ease;
         }
 
-        .hero-content h1 {
-            margin-bottom: 1rem;
-            color: var(--color-charcoal);
+        .btn-secondary:hover {
+            background: var(--color-sage);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
-            color: var(--color-charcoal);
-            opacity: 0.8;
-        }
-
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
+        /* --- Pricing Specifics --- */
         .pricing-card {
-            background: white;
-            border-radius: var(--radius-softer);
-            padding: 2rem;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition-gentle);
-            position: relative;
-            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 16px 48px rgba(44, 44, 44, 0.18);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--color-sage);
-            transform: scale(1.02);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--color-sage), var(--color-muted-teal));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--color-sage) 0%, #7a8a6a 100%);
         }
 
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-icon.ai {
-            background: linear-gradient(135deg, #E8B4F7, #A855F7);
-        }
-
-        .card-icon.human {
-            background: linear-gradient(135deg, #A7F3D0, #10B981);
-        }
-
-        .card-icon.hybrid {
-            background: linear-gradient(135deg, #93C5FD, #3B82F6);
-        }
-
-        .card-icon i {
-            color: white;
-            width: 28px;
-            height: 28px;
-        }
-
-        .card-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            opacity: 0.7;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-sage);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-price span {
-            font-size: 1rem;
-            font-weight: 400;
-            opacity: 0.7;
-        }
-
-        .card-price .price-label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--color-charcoal);
-            opacity: 0.6;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-features {
+        /* --- FAQ Accordion Animation --- */
+        details>summary {
             list-style: none;
-            margin: 1.5rem 0;
         }
 
-        .card-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.95rem;
+        details>summary::-webkit-details-marker {
+            display: none;
         }
 
-        .card-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-sage);
-            font-weight: bold;
+        details[open] summary~* {
+            animation: slideDown 0.3s ease-in-out;
         }
 
-        .card-packs {
-            background: rgba(139, 154, 122, 0.1);
-            border-radius: var(--radius-soft);
-            padding: 1rem;
-            margin: 1rem 0;
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .card-packs p {
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-packs .savings {
-            color: var(--color-sage);
-            font-weight: 600;
-        }
-
-        .card-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            text-align: center;
-            border-radius: var(--radius-soft);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-gentle);
-            margin-top: 1rem;
-        }
-
-        .card-btn.primary {
-            background: var(--color-sage);
-            color: white;
-        }
-
-        .card-btn.primary:hover {
-            background: #7A8A6A;
-            transform: translateY(-2px);
-        }
-
-        .card-btn.secondary {
-            background: transparent;
-            color: var(--color-sage);
-            border: 2px solid var(--color-sage);
-        }
-
-        .card-btn.secondary:hover {
-            background: var(--color-sage);
-            color: white;
-        }
-
-        /* Add-ons Section */
-        .addons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .addon-item {
-            background: white;
-            padding: 1.25rem;
-            border-radius: var(--radius-soft);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-subtle);
-            transition: var(--transition-gentle);
-        }
-
-        .addon-item:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-2px);
-        }
-
-        .addon-name {
-            font-weight: 600;
-        }
-
-        .addon-price {
-            color: var(--color-sage);
-            font-weight: 700;
-        }
-
-        /* Process Section */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: var(--radius-softer);
-            box-shadow: var(--shadow-subtle);
-            transition: var(--transition-gentle);
-        }
-
-        .process-step:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-4px);
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--color-sage), var(--color-muted-teal));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
-        }
-
-        .step-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .step-description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-
-        .step-timeline {
-            font-size: 0.85rem;
-            color: var(--color-sage);
-            font-weight: 600;
-            margin-top: 0.75rem;
-        }
-
-        /* Comparison Table */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-            background: white;
-            border-radius: var(--radius-softer);
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 1.25rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(139, 154, 122, 0.15);
-        }
-
-        .comparison-table th {
-            background: var(--color-sage);
-            color: white;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tr:hover td {
-            background: rgba(139, 154, 122, 0.05);
-        }
-
-        /* FAQ Section */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .faq-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: var(--radius-soft);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .faq-question {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: var(--color-charcoal);
-        }
-
-        .faq-answer {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            margin-bottom: 0;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-muted-teal) 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .cta-section h2 {
-            color: white;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-gentle);
-        }
-
-        .cta-btn.white {
-            background: white;
-            color: var(--color-sage);
-        }
-
-        .cta-btn.white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-btn.outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-btn.outline:hover {
-            background: white;
-            color: var(--color-sage);
-        }
-
-        /* Footer */
+        /* --- Footer (Universal) --- */
         .footer {
             background: var(--color-charcoal);
             color: white;
-            padding: 3rem 0;
-            text-align: center;
         }
 
-        .footer a {
-            color: var(--color-sage);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .pricing-card.featured {
-                transform: none;
-                order: -1;
-            }
-
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Mobile Menu */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-charcoal);
+            z-index: 1001;
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
             .mobile-nav-toggle {
                 display: block;
             }
 
-            .process-grid {
-                grid-template-columns: 1fr;
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(139, 154, 122, 0.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             }
 
-            .faq-grid {
-                grid-template-columns: 1fr;
+            .nav-links.mobile-open {
+                display: flex;
             }
 
-            .comparison-table {
-                font-size: 0.85rem;
+            .nav-links .btn-primary {
+                width: 100%;
+                justify-content: center;
             }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.75rem;
-            }
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .section-header h2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            opacity: 0.75;
-            max-width: 600px;
-            margin: 0 auto;
         }
     </style>
 </head>
 
 <body>
+
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">MakeUGC</a>
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="btn-primary">Get Quote</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
             </ul>
-            <button class="mobile-nav-toggle">☰</button>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pricing-hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transparent Pricing. Simple Process.</h1>
-                <p>No hidden fees. No complicated contracts. Just great content that converts.</p>
+
+
+    <!-- Pricing Hero -->
+    <section class="pt-40 pb-20 text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl text-[#2C2C2C] mb-6">Simple Pricing. <br><span class="text-[#8B9A7A]">No
+                    Hidden Fees.</span></h1>
+            <p class="text-lg md:text-xl text-[#2C2C2C] opacity-80 mb-8 max-w-2xl mx-auto">
+                Choose between scalable AI content or authentic human storytelling. Both are optimized for ROAS.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pb-20 px-4">
+        <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- AI UGC -->
+            <div
+                class="pricing-card bg-white rounded-3xl p-8 border border-gray-100 flex flex-col relative overflow-hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-bold tracking-widest text-[#8B9A7A] uppercase">For Testing & Scale</span>
+                    <h3 class="text-3xl mt-2 mb-2 font-serif font-bold">AI UGC</h3>
+                    <p class="text-sm opacity-70">Hyper-realistic avatars for quick testing.</p>
+                </div>
+
+                <div class="mb-8 pb-8 border-b border-gray-100">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-sm font-medium text-gray-500">Starting at</span>
+                        <span class="text-4xl font-bold text-[#2C2C2C]">₹3,000</span>
+                        <span class="text-sm text-gray-500">/video</span>
+                        <a href="#customization" class="text-[#8B9A7A] hover:text-[#2C2C2C] transition-colors ml-1"
+                            title="See customizations">*</a>
+                    </div>
+                </div>
+
+                <ul class="space-y-4 mb-8 flex-1">
+                    <li class="flex gap-3 text-sm"><i data-lucide="zap" class="w-5 h-5 text-[#8B9A7A]"></i> Delivered in
+                        48 Hours</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> 1 Revision
+                        Included</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Perfect
+                        Lip-Sync</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Custom
+                        Backgrounds</li>
+                </ul>
+
+                <a href="contact.html?package=ai"
+                    class="btn-secondary w-full py-3 rounded-xl text-center font-semibold">Select AI Package</a>
+            </div>
+
+            <!-- Human UGC (Featured) -->
+            <div
+                class="pricing-card bg-white rounded-3xl p-8 border-2 border-[#8B9A7A] shadow-xl flex flex-col relative overflow-visible transform md:-translate-y-4">
+                <div
+                    class="absolute -top-4 left-1/2 -translate-x-1/2 popular-badge text-white px-6 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+                    Most Popular
+                </div>
+
+                <div class="mb-6">
+                    <span class="text-xs font-bold tracking-widest text-[#8B9A7A] uppercase">For Trust & Sales</span>
+                    <h3 class="text-3xl mt-2 mb-2 font-serif font-bold">Human UGC</h3>
+                    <p class="text-sm opacity-70">Real people, real products, real trust.</p>
+                </div>
+
+                <div class="mb-8 pb-8 border-b border-gray-100">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-sm font-medium text-gray-500">Starting at</span>
+                        <span class="text-4xl font-bold text-[#2C2C2C]">₹5,000</span>
+                        <span class="text-sm text-gray-500">/video</span>
+                        <a href="#customization" class="text-[#8B9A7A] hover:text-[#2C2C2C] transition-colors ml-1"
+                            title="See customizations">*</a>
+                    </div>
+                </div>
+
+                <ul class="space-y-4 mb-8 flex-1">
+                    <li class="flex gap-3 text-sm"><i data-lucide="user-check" class="w-5 h-5 text-[#8B9A7A]"></i>
+                        Vetted Indian Creators</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Authentic
+                        Unboxing/Reviews</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Includes
+                        Strategy & Script</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> 12 Months
+                        Ad Usage</li>
+                </ul>
+
+                <a href="contact.html?package=human"
+                    class="btn-primary w-full py-3 rounded-xl text-center font-semibold">Select Human Package</a>
+            </div>
+
+            <!-- Hybrid -->
+            <div
+                class="pricing-card bg-white rounded-3xl p-8 border border-gray-100 flex flex-col relative overflow-hidden">
+                <div class="mb-6">
+                    <span class="text-xs font-bold tracking-widest text-[#8B9A7A] uppercase">Best Value</span>
+                    <h3 class="text-3xl mt-2 mb-2 font-serif font-bold">Hybrid Pack</h3>
+                    <p class="text-sm opacity-70">Combine volume with authenticity.</p>
+                </div>
+
+                <div class="mb-8 pb-8 border-b border-gray-100">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-sm font-medium text-gray-500">Starting at</span>
+                        <span class="text-4xl font-bold text-[#2C2C2C]">₹18,000</span>
+                        <span class="text-sm text-gray-500">/pack</span>
+                        <a href="#customization" class="text-[#8B9A7A] hover:text-[#2C2C2C] transition-colors ml-1"
+                            title="See customizations">*</a>
+                    </div>
+                </div>
+
+                <ul class="space-y-4 mb-8 flex-1">
+                    <li class="flex gap-3 text-sm font-bold text-[#8B9A7A]"><i data-lucide="layers" class="w-5 h-5"></i>
+                        2 Human + 3 AI Videos</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Ideal for
+                        A/B Testing</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Test Hooks
+                        Cheaply</li>
+                    <li class="flex gap-3 text-sm"><i data-lucide="check" class="w-5 h-5 text-[#8B9A7A]"></i> Scale
+                        Winners</li>
+                </ul>
+
+                <a href="contact.html?package=hybrid"
+                    class="btn-secondary w-full py-3 rounded-xl text-center font-semibold">Get Hybrid Strategy</a>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Cards Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Choose Your Content Solution</h2>
-                <p>AI-powered speed or human authenticity — both proven to convert</p>
+    <!-- Comparison Table: AI vs Human -->
+    <section class="py-16 bg-[#FAF8F5]">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl text-[#2C2C2C] mb-4">AI vs Human UGC</h2>
+                <p class="text-[#2C2C2C] opacity-70">Not sure which one to choose? Here's the breakdown.</p>
             </div>
 
-            <div class="pricing-grid">
-                <!-- AI UGC Card -->
-                <div class="pricing-card">
-                    <div class="card-icon ai">
-                        <i data-lucide="sparkles"></i>
+            <div class="overflow-x-auto rounded-2xl shadow-sm border border-gray-200 bg-white">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#8B9A7A] text-white">
+                            <th class="p-4 font-serif font-bold text-lg">Feature</th>
+                            <th class="p-4 font-serif font-bold text-lg w-1/3">AI UGC</th>
+                            <th class="p-4 font-serif font-bold text-lg w-1/3 bg-[#7A8A6A]">Human UGC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[#2C2C2C]">
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Price</td>
+                            <td class="p-4">₹3,000-₹5,000/video</td>
+                            <td class="p-4 font-semibold bg-[#F5F7F4]">₹5,000-₹10,000/video</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Turnaround</td>
+                            <td class="p-4">48-72 hours</td>
+                            <td class="p-4 bg-[#F5F7F4]">5-7 days</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Best For</td>
+                            <td class="p-4">High-volume testing, scaling</td>
+                            <td class="p-4 bg-[#F5F7F4]">Trust-building, premium products</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Authenticity</td>
+                            <td class="p-4">Very realistic AI models</td>
+                            <td class="p-4 bg-[#F5F7F4]">100% real people</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Customization</td>
+                            <td class="p-4">Unlimited model variations</td>
+                            <td class="p-4 bg-[#F5F7F4]">Based on creator availability</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold">Revisions</td>
+                            <td class="p-4">Easy (AI regeneration)</td>
+                            <td class="p-4 bg-[#F5F7F4]">Limited (reshoot needed)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization / Add-Ons Section -->
+    <section id="customization" class="py-20 px-4">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl text-[#2C2C2C] mb-4">Customize Your Campaign</h2>
+                <p class="text-lg opacity-70">Add exactly what you need to make your ads perform.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- AI Specific Add-Ons -->
+                <div class="bg-[#FAF8F5] p-8 rounded-2xl border border-dashed border-[#8B9A7A]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-white rounded-lg text-[#8B9A7A]"><i data-lucide="bot"></i></div>
+                        <h3 class="text-xl font-bold">AI UGC Add-Ons</h3>
                     </div>
-                    <div class="card-label">AI UGC</div>
-                    <h3 class="card-title">AI-Generated Content</h3>
-                    <div class="card-price"><span class="price-label">Starting from</span> ₹3,000<span>/video</span>
-                    </div>
-                    <ul class="card-features">
-                        <li>Delivered in 48 hours</li>
-                        <li>Customizable AI models</li>
-                        <li>Multiple skin tones & faces</li>
-                        <li>Perfect for A/B testing</li>
-                        <li>Meta-ready formats</li>
-                        <li>1 revision included</li>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Multiple outfits / locations<br><span
+                                    class="text-xs opacity-60">(in same video)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹1,000</span>
+                        </li>
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Additional AI Model<br><span class="text-xs opacity-60">(in
+                                    one video)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹1,000</span>
+                        </li>
+                        <li class="flex justify-between items-center text-sm">
+                            <span class="opacity-80">Professional Voiceover</span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹1,000</span>
+                        </li>
                     </ul>
-                    <div class="card-packs">
-                        <p>3-Pack: ₹8,000 <span class="savings">(Save 11%)</span></p>
-                        <p>5-Pack: ₹12,000 <span class="savings">(Save 20%)</span></p>
-                    </div>
-                    <a href="contact.html?service=ai-ugc" class="card-btn secondary">Start with AI UGC</a>
                 </div>
 
-                <!-- Human UGC Card (Featured) -->
-                <div class="pricing-card featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="card-icon human">
-                        <i data-lucide="user"></i>
+                <!-- Human Specific Add-Ons -->
+                <div class="bg-[#FAF8F5] p-8 rounded-2xl border border-dashed border-[#8B9A7A]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-white rounded-lg text-[#8B9A7A]"><i data-lucide="user"></i></div>
+                        <h3 class="text-xl font-bold">Human UGC Add-Ons</h3>
                     </div>
-                    <div class="card-label">Human UGC</div>
-                    <h3 class="card-title">Real Creator Content</h3>
-                    <div class="card-price"><span class="price-label">Starting from</span> ₹5,000<span>/video</span>
-                    </div>
-                    <ul class="card-features">
-                        <li>Real human creators</li>
-                        <li>Authentic testimonials</li>
-                        <li>Higher trust & credibility</li>
-                        <li>Delivered in 5-7 days</li>
-                        <li>Professional editing</li>
-                        <li>Raw footage included</li>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Multiple Outfit Changes<br><span
+                                    class="text-xs opacity-60">(You provide outfits)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">Free</span>
+                        </li>
+                        <li class="flex justify-between items-center text-sm">
+                            <span class="opacity-80">Styling & Props</span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">Included</span>
+                        </li>
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Multiple Locations<br><span class="text-xs opacity-60">(Travel
+                                    & Setup)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹2k-5k</span>
+                        </li>
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Premium Locations<br><span class="text-xs opacity-60">(Studio,
+                                    Cafe, Beach)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹3k-7k</span>
+                        </li>
                     </ul>
-                    <div class="card-packs">
-                        <p>3-Pack: ₹15,000</p>
-                        <p>5-Pack: ₹25,000</p>
-                        <p>Premium (10K+ creators): ₹12,000-₹30,000</p>
-                    </div>
-                    <a href="contact.html?service=human-ugc" class="card-btn primary">Get Human UGC</a>
                 </div>
 
-                <!-- Hybrid Card -->
-                <div class="pricing-card">
-                    <div class="card-icon hybrid">
-                        <i data-lucide="layers"></i>
+                <!-- Universal Add-Ons -->
+                <div class="bg-[#FAF8F5] p-8 rounded-2xl border border-dashed border-[#8B9A7A]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-white rounded-lg text-[#8B9A7A]"><i data-lucide="settings-2"></i></div>
+                        <h3 class="text-xl font-bold">Universal Add-Ons</h3>
                     </div>
-                    <div class="card-label">Hybrid</div>
-                    <h3 class="card-title">Best of Both Worlds</h3>
-                    <div class="card-price"><span class="price-label">Starting at</span> ₹18,000<span>/package</span>
-                    </div>
-                    <ul class="card-features">
-                        <li>2 Human + 3 AI videos</li>
-                        <li>Authenticity meets scale</li>
-                        <li>Perfect for testing</li>
-                        <li>Multiple hooks & angles</li>
-                        <li>A/B test ready</li>
-                        <li>Best value for growth</li>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Rush Delivery<br><span class="text-xs opacity-60">(24-48
+                                    Hours)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+40-60%</span>
+                        </li>
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Extended Rights<br><span
+                                    class="text-xs opacity-60">(Perpetual/Multi-platform)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+30-50%</span>
+                        </li>
+                        <li class="flex justify-between items-center text-sm">
+                            <span class="opacity-80">Raw Footage</span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">+₹2,000</span>
+                        </li>
+                        <li class="flex justify-between items-start text-sm">
+                            <span class="opacity-80 pr-2">Extra Revisions<br><span class="text-xs opacity-60">(Beyond
+                                    included)</span></span>
+                            <span class="font-bold text-[#8B9A7A] whitespace-nowrap">₹500-1.5k</span>
+                        </li>
                     </ul>
-                    <div class="card-packs">
-                        <p><strong>Performance Pack:</strong></p>
-                        <p>3 Human + 5 AI = ₹35,000</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl text-center text-[#2C2C2C] mb-12">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span>What happens if I don't like the video?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        We offer 1 round of revisions included in the price for editing changes. For Human UGC, if the
+                        creator missed a specific instruction from the brief, we will reshoot for free. If you want to
+                        change the creative direction after shooting, a reshoot fee applies.
                     </div>
-                    <a href="contact.html?service=hybrid" class="card-btn secondary">Try Hybrid</a>
-                </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span>How do I send my product?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Once you book, we will share the shipping address of the specific creator matched to your brand.
+                        You are responsible for shipping costs. Products are generally not returned unless a return
+                        label is provided and agreed upon beforehand.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span>Do I own the content forever?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Our standard package includes 12 months of digital usage rights for ads and organic social. For
+                        perpetual (forever) rights, select the "Extended Usage Rights" add-on (+30-50%).
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span>Do you work with influencers?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Yes! But we specialize in UGC creators (non-influencer, ad-focused content).
+                        Our creators are trained specifically for performance marketing, not vanity metrics.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 5 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span> What's your refund policy?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Cancel before production: full refund minus 10% fee. Cancel after production begins: 50% refund.
+                        No refund after final delivery.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 6 -->
+                <details class="group bg-[#FAF8F5] rounded-xl p-4 transition-all duration-300">
+                    <summary
+                        class="flex justify-between items-center cursor-pointer font-bold text-[#2C2C2C] list-none">
+                        <span>What payment terms do you accept?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="text-[#8B9A7A]"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        50% advance to begin production, 50% before final file delivery.
+                        We accept Netbanking, UPI, bank transfer, and online invoice payments.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
-    <!-- Add-ons Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Available Add-Ons</h2>
-                <p>Customize your package with these optional enhancements</p>
-            </div>
-
-            <div class="addons-grid">
-                <div class="addon-item">
-                    <span class="addon-name">Lip-Syncing</span>
-                    <span class="addon-price">+₹1,500/video</span>
-                </div>
-                <div class="addon-item">
-                    <span class="addon-name">Voiceover</span>
-                    <span class="addon-price">+₹1,000/video</span>
-                </div>
-                <div class="addon-item">
-                    <span class="addon-name">Rush Delivery (24-48h)</span>
-                    <span class="addon-price">+40-60%</span>
-                </div>
-                <div class="addon-item">
-                    <span class="addon-name">Extended Usage Rights</span>
-                    <span class="addon-price">+30-50%</span>
-                </div>
-                <div class="addon-item">
-                    <span class="addon-name">Raw Footage</span>
-                    <span class="addon-price">+₹2,000</span>
-                </div>
-                <div class="addon-item">
-                    <span class="addon-name">Multiple Platforms</span>
-                    <span class="addon-price">+₹2,000-₹5,000</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>How We Work</h2>
-                <p>A simple, transparent process from brief to delivery</p>
-            </div>
-
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h4 class="step-title">Discovery & Briefing</h4>
-                    <p class="step-description">Share your product details, campaign goals, target audience, and brand
-                        guidelines. We'll analyze what type of content will work best.</p>
+    <!-- Universal Footer -->
+    <footer class="footer py-16 text-white">
+        <div class="max-w-[1280px] mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="footer-section">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                            class="h-[35px] w-[35px] rounded-full object-cover">
+                        <h4 class="font-bold text-lg m-0">MakeUGC</h4>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        MakeUGC.in<br>
+                        3rd Floor, 4G, KrishtiKunja, Airport, Kolkata, India
+                    </p>
+                    <p class="text-gray-300 text-sm">
+                        connect@makeugc.in<br>
+                        Mobile: +91 9239161632
+                    </p>
                 </div>
 
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h4 class="step-title">Proposal & Alignment</h4>
-                    <p class="step-description">We recommend AI, Human, or Hybrid UGC based on your goals. You'll get
-                        transparent pricing, sample options, and timeline confirmation.</p>
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="index.html" class="hover:text-[#8B9A7A] transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-[#8B9A7A] transition-colors">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-[#8B9A7A] transition-colors">Pricing</a></li>
+                        <li><a href="creators.html" class="hover:text-[#8B9A7A] transition-colors">Creators</a></li>
+                        <li><a href="blog.html" class="hover:text-[#8B9A7A] transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-[#8B9A7A] transition-colors">Contact</a></li>
+                    </ul>
                 </div>
 
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h4 class="step-title">Script Approval</h4>
-                    <p class="step-description">We create ad-focused scripts using proven Meta/Instagram frameworks. You
-                        review and approve before production begins.</p>
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="resources.html" class="hover:text-[#8B9A7A] transition-colors">Free Templates</a>
+                        </li>
+                        <li><a href="creator-brief-template.html" class="hover:text-[#8B9A7A] transition-colors">Creator
+                                Brief Template</a></li>
+                        <li><a href="roi-calculator.html" class="hover:text-[#8B9A7A] transition-colors">ROI
+                                Calculator</a></li>
+                        <li><a href="blog.html" class="hover:text-[#8B9A7A] transition-colors">Case Studies</a></li>
+                    </ul>
                 </div>
 
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h4 class="step-title">Production</h4>
-                    <p class="step-description">Content creation begins with our AI models or human creators.</p>
-                    <p class="step-timeline">AI UGC: 48-72 hours | Human UGC: 5-7 days</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">5</div>
-                    <h4 class="step-title">Editing & Delivery</h4>
-                    <p class="step-description">Professional editing with hooks, captions, CTA overlays, and music.
-                        Delivered in Meta-ready formats via Google Drive.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">6</div>
-                    <h4 class="step-title">Revisions & Final Files</h4>
-                    <p class="step-description">1 round of revisions included. Final files delivered after payment. Raw
-                        footage available on request.</p>
+                <div class="footer-section">
+                    <h4 class="font-bold text-lg mb-4">Trust & Social</h4>
+                    <p class="text-gray-300 text-sm mb-4">Trusted by 50+ D2C Brands. Meta Business Partner.</p>
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-[#FF0000] flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="youtube" class="w-4 h-4"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 flex items-center justify-center hover:scale-110 transition-transform"><i
+                                data-lucide="instagram" class="w-4 h-4"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Comparison Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>AI vs Human UGC</h2>
-                <p>Not sure which one to choose? Here's the breakdown</p>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>© 2025 MakeUGC • All rights reserved • <a href="#" class="hover:text-[#8B9A7A]">Privacy Policy</a> •
+                    <a href="#" class="hover:text-[#8B9A7A]">Terms</a>
+                </p>
             </div>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>AI UGC</th>
-                        <th>Human UGC</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Price</strong></td>
-                        <td>₹3,000-₹5,000/video</td>
-                        <td>₹5,000-₹10,000/video</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Turnaround</strong></td>
-                        <td>48-72 hours</td>
-                        <td>5-7 days</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Best For</strong></td>
-                        <td>High-volume testing, scaling</td>
-                        <td>Trust-building, premium products</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Authenticity</strong></td>
-                        <td>Very realistic AI models</td>
-                        <td>100% real people</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Customization</strong></td>
-                        <td>Unlimited model variations</td>
-                        <td>Based on creator availability</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Revisions</strong></td>
-                        <td>Easy (AI regeneration)</td>
-                        <td>Limited (reshoot needed)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Common Questions</h2>
-            </div>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4 class="faq-question">What's included in the base price?</h4>
-                    <p class="faq-answer">15-30 sec video, scripted concept, professional editing, Meta-ready format, 1
-                        revision round, and 12-month usage rights for Meta ads.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4 class="faq-question">Do you work with influencers?</h4>
-                    <p class="faq-answer">No. We specialize in UGC creators (non-influencer, ad-focused content). Our
-                        creators are trained specifically for performance marketing, not vanity metrics.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4 class="faq-question">What's your refund policy?</h4>
-                    <p class="faq-answer">Cancel before production: full refund minus 10% fee. Cancel after production
-                        begins: 50% refund. No refund after final delivery.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4 class="faq-question">Can I see samples before committing?</h4>
-                    <p class="faq-answer">Yes! We offer a ₹8,000 pilot package (1 Human UGC or 3 AI UGC videos) to test
-                        quality before scaling.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4 class="faq-question">What payment terms do you accept?</h4>
-                    <p class="faq-answer">50% advance to begin production, 50% before final file delivery. We accept
-                        UPI, bank transfer, and online invoice payments.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Create Content That Converts?</h2>
-            <p>Start with a pilot package or schedule a free consultation</p>
-            <div class="cta-buttons">
-                <a href="contact.html?service=pilot" class="cta-btn white">Start ₹8,000 Pilot</a>
-                <a href="https://wa.me/919876543210" target="_blank" class="cta-btn outline">WhatsApp Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 MakeUGC. All rights reserved. | <a href="contact.html">Contact Us</a></p>
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('mobile-open');
+                this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+            });
+
+            // Close mobile menu when clicking on links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('mobile-open');
+                    mobileToggle.innerHTML = '☰';
+                });
+            });
+        }
     </script>
 </body>
 

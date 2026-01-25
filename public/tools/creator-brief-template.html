@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Creator Brief Template - UGC Agency</title>
-    
+
     <!-- Authentication Protection -->
     <script src="../assets/js/auth-protection.js"></script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --color-warm-stone: #F5F1EB;
@@ -22,15 +25,15 @@
             --color-cream: #FAF8F5;
             --color-muted-teal: #7A9B9B;
             --color-soft-terracotta: #D4A574;
-            
+
             --font-serif: 'Crimson Text', serif;
             --font-sans: 'Inter', sans-serif;
-            
+
             --radius-soft: 12px;
             --radius-softer: 16px;
             --shadow-subtle: 0 2px 8px rgba(44, 44, 44, 0.1);
             --shadow-lift: 0 4px 16px rgba(44, 44, 44, 0.15);
-            
+
             --transition-gentle: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -87,7 +90,8 @@
             align-items: center;
         }
 
-        .controls input, .controls select {
+        .controls input,
+        .controls select {
             padding: 12px 16px;
             border: 2px solid rgba(139, 154, 122, 0.3);
             border-radius: var(--radius-soft);
@@ -97,7 +101,8 @@
             color: var(--color-charcoal);
         }
 
-        .controls input:focus, .controls select:focus {
+        .controls input:focus,
+        .controls select:focus {
             outline: none;
             border-color: var(--color-sage);
             box-shadow: 0 0 0 3px rgba(139, 154, 122, 0.1);
@@ -258,7 +263,8 @@
             gap: 20px;
         }
 
-        .dos, .donts {
+        .dos,
+        .donts {
             padding: 20px;
             border-radius: var(--radius-soft);
         }
@@ -273,16 +279,19 @@
             border-left: 4px solid var(--color-soft-terracotta);
         }
 
-        .dos h4, .donts h4 {
+        .dos h4,
+        .donts h4 {
             margin-bottom: 12px;
             font-size: 16px;
         }
 
-        .dos ul, .donts ul {
+        .dos ul,
+        .donts ul {
             list-style: none;
         }
 
-        .dos li, .donts li {
+        .dos li,
+        .donts li {
             margin-bottom: 8px;
             padding-left: 20px;
             position: relative;
@@ -339,18 +348,20 @@
         }
 
         @media (max-width: 768px) {
-            .form-row, .dos-donts {
+
+            .form-row,
+            .dos-donts {
                 grid-template-columns: 1fr;
             }
-            
+
             .main-content {
                 padding: 20px;
             }
-            
+
             .header {
                 padding: 24px 20px;
             }
-            
+
             .header h1 {
                 font-size: 28px;
             }
@@ -361,15 +372,16 @@
                 background: white;
                 padding: 0;
             }
-            
-            .controls, .btn {
+
+            .controls,
+            .btn {
                 display: none !important;
             }
-            
+
             .container {
                 box-shadow: none;
             }
-            
+
             .brief-output {
                 max-height: none;
                 overflow: visible;
@@ -388,17 +400,40 @@
             debug: false // Set to true for development
         };
     </script>
-    
+
     <!-- Meta Pixel Code -->
     <script src="/assets/js/meta-pixel.js" defer></script>
     <!-- Referral System -->
     <script src="/assets/js/referral-system.js" defer></script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" />
     </noscript>
+    <link href="/assets/css/styles.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="pt-20">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <div class="header">
             <div id="user-info"></div>
@@ -416,11 +451,11 @@
 
         <div class="main-content">
             <form class="brief-form" id="briefForm">
-                
+
                 <!-- Campaign Overview -->
                 <div class="section">
                     <h2>🎯 Campaign Overview</h2>
-                    
+
                     <div class="form-group">
                         <label class="form-label">Campaign Objective</label>
                         <select class="form-control" id="objective">
@@ -436,7 +471,8 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Target Audience</label>
-                            <input type="text" class="form-control" id="targetAudience" placeholder="e.g., Women 25-45, fitness enthusiasts">
+                            <input type="text" class="form-control" id="targetAudience"
+                                placeholder="e.g., Women 25-45, fitness enthusiasts">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Budget Range</label>
@@ -451,7 +487,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Key Message / Hook</label>
-                        <textarea class="form-control" id="keyMessage" placeholder="What's the main message? What problem does your product solve?"></textarea>
+                        <textarea class="form-control" id="keyMessage"
+                            placeholder="What's the main message? What problem does your product solve?"></textarea>
                     </div>
                 </div>
 
@@ -465,10 +502,12 @@
                             <input type="checkbox" name="platforms" value="TikTok"> TikTok (9:16, 15-60s)
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" name="platforms" value="Instagram Reels"> Instagram Reels (9:16, 15-90s)
+                            <input type="checkbox" name="platforms" value="Instagram Reels"> Instagram Reels (9:16,
+                            15-90s)
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" name="platforms" value="YouTube Shorts"> YouTube Shorts (9:16, up to 60s)
+                            <input type="checkbox" name="platforms" value="YouTube Shorts"> YouTube Shorts (9:16, up to
+                            60s)
                         </label>
                         <label class="checkbox-item">
                             <input type="checkbox" name="platforms" value="Meta Ads"> Meta Ads (9:16, 15-30s)
@@ -519,23 +558,27 @@
 
                     <div class="form-group">
                         <label class="form-label">Brand Voice & Tone</label>
-                        <textarea class="form-control" id="brandVoice" placeholder="Describe your brand personality (e.g., friendly, professional, playful, authentic)"></textarea>
+                        <textarea class="form-control" id="brandVoice"
+                            placeholder="Describe your brand personality (e.g., friendly, professional, playful, authentic)"></textarea>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Key Product Benefits</label>
-                            <textarea class="form-control" id="productBenefits" placeholder="List 3-5 key benefits to highlight"></textarea>
+                            <textarea class="form-control" id="productBenefits"
+                                placeholder="List 3-5 key benefits to highlight"></textarea>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Call-to-Action</label>
-                            <input type="text" class="form-control" id="cta" placeholder="e.g., Shop now, Download app, Visit website">
+                            <input type="text" class="form-control" id="cta"
+                                placeholder="e.g., Shop now, Download app, Visit website">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Hashtags & Mentions</label>
-                        <input type="text" class="form-control" id="hashtags" placeholder="#brandname #productname @brandhandle">
+                        <input type="text" class="form-control" id="hashtags"
+                            placeholder="#brandname #productname @brandhandle">
                     </div>
                 </div>
 
@@ -572,7 +615,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Additional Technical Notes</label>
-                        <textarea class="form-control" id="techNotes" placeholder="Any specific technical requirements, filming angles, product usage instructions..."></textarea>
+                        <textarea class="form-control" id="techNotes"
+                            placeholder="Any specific technical requirements, filming angles, product usage instructions..."></textarea>
                     </div>
                 </div>
 
@@ -592,7 +636,8 @@
                             <input type="checkbox" name="usageRights" value="Website"> Website & landing pages
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" name="usageRights" value="Whitelisting"> Creator whitelisting/partnership
+                            <input type="checkbox" name="usageRights" value="Whitelisting"> Creator
+                            whitelisting/partnership
                         </label>
                     </div>
 
@@ -632,14 +677,14 @@
         function generateBrief() {
             const formData = collectFormData();
             const briefText = createBriefTemplate(formData);
-            
+
             document.getElementById('briefOutput').textContent = briefText;
             document.getElementById('outputSection').style.display = 'block';
-            
+
             // Scroll to output
-            document.getElementById('outputSection').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
+            document.getElementById('outputSection').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
 
@@ -771,7 +816,7 @@ Thank you for partnering with ${data.brandName}! 🚀`;
             document.getElementById('hashtags').value = '#FitLifePro #30DayChallenge #FitnessTransformation #HealthyLifestyle @fitlifepro';
             document.getElementById('timeline').value = '5 business days';
             document.getElementById('techNotes').value = 'Please show the app interface clearly. Film workout in good lighting. Include before/after if possible (even same day). Show enthusiasm and energy!';
-            
+
             // Check some checkboxes
             document.querySelector('input[value="TikTok"]').checked = true;
             document.querySelector('input[value="Instagram Reels"]').checked = true;
@@ -779,7 +824,7 @@ Thank you for partnering with ${data.brandName}! 🚀`;
             document.querySelector('input[value="Demo"]').checked = true;
             document.querySelector('input[value="Organic"]').checked = true;
             document.querySelector('input[value="Paid Ads"]').checked = true;
-            
+
             alert('✅ Sample creator brief data loaded!');
         }
 
@@ -822,18 +867,18 @@ Thank you for partnering with ${data.brandName}! 🚀`;
             z-index: 1000;
             display: none;
         }
-        
+
         .analytics-notice.show {
             display: block;
             animation: slideIn 0.3s ease-out;
         }
-        
+
         .analytics-notice .notice-buttons {
             margin-top: 12px;
             display: flex;
             gap: 10px;
         }
-        
+
         .analytics-notice button {
             padding: 6px 12px;
             border: none;
@@ -842,26 +887,27 @@ Thank you for partnering with ${data.brandName}! 🚀`;
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .analytics-notice .accept-btn {
             background: #3b82f6;
             color: white;
         }
-        
+
         .analytics-notice .decline-btn {
             background: #6b7280;
             color: white;
         }
-        
+
         .analytics-notice button:hover {
             transform: translateY(-1px);
         }
-        
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -901,12 +947,12 @@ Thank you for partnering with ${data.brandName}! 🚀`;
         function acceptAnalytics() {
             localStorage.setItem('analytics-consent', 'accepted');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Enable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = true;
             }
-            
+
             // Reinitialize analytics if already loaded
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = true;
@@ -917,19 +963,19 @@ Thank you for partnering with ${data.brandName}! 🚀`;
         function declineAnalytics() {
             localStorage.setItem('analytics-consent', 'declined');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Disable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = false;
             }
-            
+
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = false;
             }
         }
 
         // Check consent on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const consent = localStorage.getItem('analytics-consent');
             if (!consent) {
                 setTimeout(showAnalyticsNotice, 2000); // Show after 2 seconds
@@ -941,5 +987,27 @@ Thank you for partnering with ${data.brandName}! 🚀`;
             }
         });
     </script>
+    <!-- Mobile Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function () {
+                    navLinks.classList.toggle('mobile-open');
+                    this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('mobile-open');
+                        mobileToggle.innerHTML = '☰';
+                    });
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

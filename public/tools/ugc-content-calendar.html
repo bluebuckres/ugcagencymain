@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional UGC Content Calendar - 30 Day Planner</title>
-    
+
     <!-- Authentication Protection -->
     <script src="../assets/js/auth-protection.js"></script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --color-warm-stone: #F5F1EB;
@@ -21,15 +24,15 @@
             --color-cream: #FAF8F5;
             --color-muted-teal: #7A9B9B;
             --color-soft-terracotta: #D4A574;
-            
+
             --font-serif: 'Crimson Text', serif;
             --font-sans: 'Inter', sans-serif;
-            
+
             --radius-soft: 12px;
             --radius-softer: 16px;
             --shadow-subtle: 0 2px 8px rgba(44, 44, 44, 0.1);
             --shadow-lift: 0 4px 16px rgba(44, 44, 44, 0.15);
-            
+
             --transition-gentle: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -86,7 +89,8 @@
             align-items: center;
         }
 
-        .controls input, .controls select {
+        .controls input,
+        .controls select {
             padding: 12px 16px;
             border: 2px solid rgba(139, 154, 122, 0.3);
             border-radius: var(--radius-soft);
@@ -96,7 +100,8 @@
             color: var(--color-charcoal);
         }
 
-        .controls input:focus, .controls select:focus {
+        .controls input:focus,
+        .controls select:focus {
             outline: none;
             border-color: var(--color-sage);
             box-shadow: 0 0 0 3px rgba(139, 154, 122, 0.1);
@@ -275,12 +280,29 @@
         }
 
         /* Content Type Colors */
-        .testimonial { border-left-color: var(--color-sage); }
-        .demo { border-left-color: var(--color-muted-teal); }
-        .unboxing { border-left-color: var(--color-soft-terracotta); }
-        .before-after { border-left-color: var(--color-clay); }
-        .tutorial { border-left-color: var(--color-sage); }
-        .lifestyle { border-left-color: var(--color-soft-terracotta); }
+        .testimonial {
+            border-left-color: var(--color-sage);
+        }
+
+        .demo {
+            border-left-color: var(--color-muted-teal);
+        }
+
+        .unboxing {
+            border-left-color: var(--color-soft-terracotta);
+        }
+
+        .before-after {
+            border-left-color: var(--color-clay);
+        }
+
+        .tutorial {
+            border-left-color: var(--color-sage);
+        }
+
+        .lifestyle {
+            border-left-color: var(--color-soft-terracotta);
+        }
 
         /* Tracking Table */
         .tracking-table {
@@ -289,7 +311,7 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .tracking-table th {
@@ -313,7 +335,8 @@
             background: #f8f9fa;
         }
 
-        .tracking-table input, .tracking-table select {
+        .tracking-table input,
+        .tracking-table select {
             width: 100%;
             padding: 8px;
             border: 1px solid #dee2e6;
@@ -330,10 +353,25 @@
             text-transform: uppercase;
         }
 
-        .status-draft { background: #e9ecef; color: #6c757d; }
-        .status-review { background: #fff3cd; color: #856404; }
-        .status-approved { background: #d4edda; color: #155724; }
-        .status-published { background: #d1ecf1; color: #0c5460; }
+        .status-draft {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .status-review {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-published {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
 
         /* Content Mix Chart */
         .content-mix {
@@ -410,7 +448,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -522,7 +560,7 @@
             background: #f0f4ff;
         }
 
-        .checkbox-label input:checked + span {
+        .checkbox-label input:checked+span {
             color: #667eea;
             font-weight: 600;
         }
@@ -537,7 +575,7 @@
             .calendar-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .container {
                 border-radius: 0;
             }
@@ -561,7 +599,8 @@
                 padding: 0;
             }
 
-            .controls, .btn {
+            .controls,
+            .btn {
                 display: none !important;
             }
 
@@ -582,17 +621,40 @@
             debug: false // Set to true for development
         };
     </script>
-    
+
     <!-- Meta Pixel Code -->
     <script src="/assets/js/meta-pixel.js" defer></script>
     <!-- Referral System -->
     <script src="/assets/js/referral-system.js" defer></script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" />
     </noscript>
+    <link href="/assets/css/styles.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="pt-20">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <div class="header">
             <div id="user-info"></div>
@@ -691,9 +753,12 @@
                 <div style="background: white; border: 2px solid #e9ecef; border-radius: 12px; padding: 24px;">
                     <h3 style="margin-bottom: 16px; color: #212529;">💡 Pro Tips for UGC Success</h3>
                     <ul style="line-height: 1.8; color: #495057;">
-                        <li><strong>Hook Formula:</strong> First 3 seconds = Stop the scroll. Use pattern interrupt or bold statement</li>
-                        <li><strong>Authenticity wins:</strong> Raw, unpolished content often outperforms highly produced videos</li>
-                        <li><strong>Test & iterate:</strong> Run 3-5 variants of each concept, double down on winners</li>
+                        <li><strong>Hook Formula:</strong> First 3 seconds = Stop the scroll. Use pattern interrupt or
+                            bold statement</li>
+                        <li><strong>Authenticity wins:</strong> Raw, unpolished content often outperforms highly
+                            produced videos</li>
+                        <li><strong>Test & iterate:</strong> Run 3-5 variants of each concept, double down on winners
+                        </li>
                         <li><strong>Rights management:</strong> Always secure usage rights for paid advertising</li>
                         <li><strong>Batch filming:</strong> Have creators film 3-5 pieces at once for consistency</li>
                         <li><strong>Platform-specific:</strong> Vertical 9:16 for TikTok/Reels, captions always ON</li>
@@ -714,7 +779,7 @@
             <div class="modal-body">
                 <form id="contentForm">
                     <input type="hidden" id="contentDate">
-                    
+
                     <div class="form-group">
                         <label class="form-label">Content Type</label>
                         <select class="form-control" id="contentType">
@@ -752,7 +817,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Hook/Key Message</label>
-                        <textarea class="form-control" id="hookMessage" placeholder="What's the opening hook? What problem does it solve?"></textarea>
+                        <textarea class="form-control" id="hookMessage"
+                            placeholder="What's the opening hook? What problem does it solve?"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -794,7 +860,7 @@
                 const date = new Date(year, month - 1, day);
                 const dateStr = date.toISOString().split('T')[0];
                 const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                
+
                 const dayCard = document.createElement('div');
                 dayCard.className = 'calendar-day';
                 dayCard.innerHTML = `
@@ -836,7 +902,7 @@
 
         document.getElementById('contentForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const date = document.getElementById('contentDate').value;
             const type = document.getElementById('contentType').value;
             const typeLabels = {
@@ -895,7 +961,7 @@
         function switchTab(tabName) {
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
+
             event.target.classList.add('active');
             document.getElementById(tabName).classList.add('active');
         }
@@ -903,7 +969,7 @@
         function fillSampleData() {
             const monthInput = document.getElementById('monthSelect').value;
             const [year, month] = monthInput.split('-');
-            
+
             const sampleContent = [
                 { day: 5, type: 'testimonial', typeLabel: 'Testimonial', creator: '@sarahsmith', platforms: 'TikTok, Reels', hook: 'I was skeptical but this changed everything...', time: '09:00', status: 'published' },
                 { day: 7, type: 'demo', typeLabel: 'Product Demo', creator: '@techreview', platforms: 'YouTube, Reels', hook: '3 features you didn\'t know existed', time: '14:00', status: 'approved' },
@@ -931,7 +997,7 @@
 
         // Initialize on page load and month change
         document.getElementById('monthSelect').addEventListener('change', initCalendar);
-        
+
         // Update brand name in header
         document.getElementById('brandName').addEventListener('input', (e) => {
             const brandName = e.target.value;
@@ -972,12 +1038,12 @@
         function loadData() {
             const saved = localStorage.getItem('ugcCalendarData');
             const savedBrand = localStorage.getItem('ugcBrandName');
-            
+
             if (saved) {
                 Object.assign(contentData, JSON.parse(saved));
                 renderContent();
             }
-            
+
             if (savedBrand) {
                 document.getElementById('brandName').value = savedBrand;
                 document.querySelector('.header h1').textContent = `🎬 ${savedBrand} - UGC Content Calendar`;
@@ -986,7 +1052,7 @@
 
         // Save data when content changes
         const originalRenderContent = renderContent;
-        renderContent = function() {
+        renderContent = function () {
             originalRenderContent();
             saveData();
         };
@@ -997,7 +1063,7 @@
         // Export functionality
         function exportToCSV() {
             const rows = [['Date', 'Content Type', 'Creator', 'Platform', 'Hook', 'Status', 'Post Time']];
-            
+
             const sortedDates = Object.keys(contentData).sort();
             sortedDates.forEach(date => {
                 contentData[date].forEach(content => {
@@ -1016,7 +1082,7 @@
             const csvContent = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
             const blob = new Blob([csvContent], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
-            
+
             const a = document.createElement('a');
             a.href = url;
             a.download = `${document.getElementById('brandName').value || 'UGC'}-content-calendar.csv`;
@@ -1027,7 +1093,7 @@
         }
 
         // Add export button functionality
-        document.querySelector('.controls').insertAdjacentHTML('beforeend', 
+        document.querySelector('.controls').insertAdjacentHTML('beforeend',
             '<button class="btn btn-secondary" onclick="exportToCSV()">📊 Export CSV</button>'
         );
     </script>
@@ -1048,18 +1114,18 @@
             z-index: 1000;
             display: none;
         }
-        
+
         .analytics-notice.show {
             display: block;
             animation: slideIn 0.3s ease-out;
         }
-        
+
         .analytics-notice .notice-buttons {
             margin-top: 12px;
             display: flex;
             gap: 10px;
         }
-        
+
         .analytics-notice button {
             padding: 6px 12px;
             border: none;
@@ -1068,26 +1134,27 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .analytics-notice .accept-btn {
             background: #3b82f6;
             color: white;
         }
-        
+
         .analytics-notice .decline-btn {
             background: #6b7280;
             color: white;
         }
-        
+
         .analytics-notice button:hover {
             transform: translateY(-1px);
         }
-        
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -1127,12 +1194,12 @@
         function acceptAnalytics() {
             localStorage.setItem('analytics-consent', 'accepted');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Enable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = true;
             }
-            
+
             // Reinitialize analytics if already loaded
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = true;
@@ -1143,19 +1210,19 @@
         function declineAnalytics() {
             localStorage.setItem('analytics-consent', 'declined');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Disable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = false;
             }
-            
+
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = false;
             }
         }
 
         // Check consent on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const consent = localStorage.getItem('analytics-consent');
             if (!consent) {
                 setTimeout(showAnalyticsNotice, 2000); // Show after 2 seconds
@@ -1167,5 +1234,27 @@
             }
         });
     </script>
+    <!-- Mobile Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function () {
+                    navLinks.classList.toggle('mobile-open');
+                    this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('mobile-open');
+                        mobileToggle.innerHTML = '☰';
+                    });
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -291,7 +292,7 @@
         .hidden {
             display: none !important;
         }
-        
+
         .quiz-card.visible {
             display: block;
             animation: slideIn 0.6s ease forwards;
@@ -333,21 +334,44 @@
             debug: false // Set to true for development
         };
     </script>
-    
+
     <!-- Meta Pixel Code -->
     <script src="/assets/js/meta-pixel.js" defer></script>
     <!-- Referral System -->
     <script src="/assets/js/referral-system.js" defer></script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1" />
     </noscript>
 </head>
-<body>
+
+<body class="pt-20">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="/assets/images/makeugclogo-01.jpg" alt="MakeUGC Logo"
+                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;">
+                <span>MakeUGC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/creators.html">Creators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/contact.html" class="btn btn-primary">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <div class="quiz-header">
             <h1>Find Your Perfect UGC Solution</h1>
-            <p>Answer 4 quick questions to discover which of our services will drive the best results for your brand.</p>
+            <p>Answer 4 quick questions to discover which of our services will drive the best results for your brand.
+            </p>
         </div>
 
         <div class="quiz-progress">
@@ -361,7 +385,7 @@
         <div class="quiz-card" id="question1">
             <div class="question-number">Question 1</div>
             <h2 class="question-title">What's your primary goal right now?</h2>
-            
+
             <div class="options-grid">
                 <div class="option-card" data-answer="content" onclick="selectOption(this, 'content')">
                     <h4>🎥 Create engaging content</h4>
@@ -393,7 +417,7 @@
         <div class="quiz-card hidden" id="question2">
             <div class="question-number">Question 2</div>
             <h2 class="question-title">What's your monthly marketing budget?</h2>
-            
+
             <div class="options-grid">
                 <div class="option-card" data-answer="small" onclick="selectOption(this, 'small')">
                     <h4>₹5K - ₹25K</h4>
@@ -425,7 +449,7 @@
         <div class="quiz-card hidden" id="question3">
             <div class="question-number">Question 3</div>
             <h2 class="question-title">How urgent is your timeline?</h2>
-            
+
             <div class="options-grid">
                 <div class="option-card" data-answer="asap" onclick="selectOption(this, 'asap')">
                     <h4>⚡ ASAP (Within 1 week)</h4>
@@ -457,7 +481,7 @@
         <div class="quiz-card hidden" id="question4">
             <div class="question-number">Question 4</div>
             <h2 class="question-title">What level of support do you need?</h2>
-            
+
             <div class="options-grid">
                 <div class="option-card" data-answer="diy" onclick="selectOption(this, 'diy')">
                     <h4>🛠️ DIY Friendly</h4>
@@ -489,7 +513,7 @@
                 </div>
                 <h2 class="results-title" id="resultsTitle">Perfect Match Found!</h2>
                 <p class="results-description" id="resultsDescription"></p>
-                
+
                 <div class="service-features" id="serviceFeatures">
                     <h4>What's included:</h4>
                     <ul id="featuresList"></ul>
@@ -511,16 +535,16 @@
             // Remove selected class from all options in current question
             const currentOptions = document.querySelectorAll(`#question${currentQuestion} .option-card`);
             currentOptions.forEach(option => option.classList.remove('selected'));
-            
+
             // Add selected class to clicked option
             element.classList.add('selected');
-            
+
             // Store the answer
             answers[`q${currentQuestion}`] = value;
-            
+
             console.log(`Selected answer for Q${currentQuestion}:`, value);
             console.log('Current answers:', answers);
-            
+
             // Enable next button
             const nextBtn = document.getElementById(`next${currentQuestion}`);
             if (nextBtn) {
@@ -531,7 +555,7 @@
         function nextQuestion(questionNum) {
             // Hide current question
             document.getElementById(`question${questionNum}`).classList.add('hidden');
-            
+
             // Show next question
             currentQuestion++;
             const nextQuestionElement = document.getElementById(`question${currentQuestion}`);
@@ -539,7 +563,7 @@
                 nextQuestionElement.classList.remove('hidden');
                 console.log('Showing question:', currentQuestion);
             }
-            
+
             // Update progress
             updateProgress();
         }
@@ -547,11 +571,11 @@
         function previousQuestion(questionNum) {
             // Hide current question
             document.getElementById(`question${questionNum}`).classList.add('hidden');
-            
+
             // Show previous question
             currentQuestion--;
             document.getElementById(`question${currentQuestion}`).classList.remove('hidden');
-            
+
             // Update progress
             updateProgress();
         }
@@ -568,20 +592,20 @@
             if (question4) {
                 question4.classList.add('hidden');
             }
-            
+
             // Show results first
             const resultsElement = document.getElementById('results');
             if (resultsElement) {
                 resultsElement.classList.remove('hidden');
                 console.log('Showing results');
             }
-            
+
             // Calculate and show results with delay to ensure DOM is ready
             setTimeout(() => {
                 const recommendation = calculateRecommendation();
                 displayResults(recommendation);
             }, 50);
-            
+
             // Update progress to 100%
             document.getElementById('progressFill').style.width = '100%';
             document.getElementById('progressText').textContent = 'Quiz Complete!';
@@ -699,15 +723,15 @@
 
         function displayResults(recommendation) {
             console.log('Displaying results for:', recommendation.service);
-            
+
             const titleElement = document.getElementById('resultsTitle');
             const descElement = document.getElementById('resultsDescription');
             const contactBtn = document.getElementById('contactBtn');
-            
+
             if (titleElement) titleElement.textContent = recommendation.title;
             if (descElement) descElement.textContent = recommendation.description;
             if (contactBtn) contactBtn.href = recommendation.contactUrl;
-            
+
             // Update icon safely
             const iconElement = document.querySelector('#resultsIcon i');
             if (iconElement) {
@@ -716,7 +740,7 @@
             } else {
                 console.error('Icon element not found');
             }
-            
+
             // Update features list
             const featuresList = document.getElementById('featuresList');
             if (featuresList) {
@@ -742,41 +766,41 @@
         function restartQuiz() {
             currentQuestion = 1;
             answers = {};
-            
+
             // Hide results and show first question
             document.getElementById('results').classList.add('hidden');
             document.getElementById('question1').classList.remove('hidden');
-            
+
             // Hide other questions
             for (let i = 2; i <= 4; i++) {
                 document.getElementById(`question${i}`).classList.add('hidden');
             }
-            
+
             // Reset all selections
             document.querySelectorAll('.option-card').forEach(option => {
                 option.classList.remove('selected');
             });
-            
+
             // Disable all next buttons
             for (let i = 1; i <= 4; i++) {
                 const nextBtn = document.getElementById(`next${i}`);
                 if (nextBtn) nextBtn.disabled = true;
             }
-            
+
             // Reset progress
             updateProgress();
         }
 
         // Initialize Lucide icons and debug
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
-            
+
             // Debug - check if all questions exist
             for (let i = 1; i <= 4; i++) {
                 const questionElement = document.getElementById(`question${i}`);
                 console.log(`Question ${i} exists:`, !!questionElement);
             }
-            
+
             const resultsElement = document.getElementById('results');
             console.log('Results element exists:', !!resultsElement);
         });
@@ -798,18 +822,18 @@
             z-index: 1000;
             display: none;
         }
-        
+
         .analytics-notice.show {
             display: block;
             animation: slideIn 0.3s ease-out;
         }
-        
+
         .analytics-notice .notice-buttons {
             margin-top: 12px;
             display: flex;
             gap: 10px;
         }
-        
+
         .analytics-notice button {
             padding: 6px 12px;
             border: none;
@@ -818,26 +842,27 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .analytics-notice .accept-btn {
             background: #3b82f6;
             color: white;
         }
-        
+
         .analytics-notice .decline-btn {
             background: #6b7280;
             color: white;
         }
-        
+
         .analytics-notice button:hover {
             transform: translateY(-1px);
         }
-        
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -877,12 +902,12 @@
         function acceptAnalytics() {
             localStorage.setItem('analytics-consent', 'accepted');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Enable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = true;
             }
-            
+
             // Reinitialize analytics if already loaded
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = true;
@@ -893,19 +918,19 @@
         function declineAnalytics() {
             localStorage.setItem('analytics-consent', 'declined');
             document.getElementById('analytics-notice').classList.remove('show');
-            
+
             // Disable tracking
             if (window.UMAMI_CONFIG) {
                 window.UMAMI_CONFIG.trackingEnabled = false;
             }
-            
+
             if (window.ugcAnalytics) {
                 window.ugcAnalytics.trackingEnabled = false;
             }
         }
 
         // Check consent on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const consent = localStorage.getItem('analytics-consent');
             if (!consent) {
                 setTimeout(showAnalyticsNotice, 2000); // Show after 2 seconds
@@ -917,5 +942,27 @@
             }
         });
     </script>
+    <!-- Mobile Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function () {
+                    navLinks.classList.toggle('mobile-open');
+                    this.innerHTML = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('mobile-open');
+                        mobileToggle.innerHTML = '☰';
+                    });
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
