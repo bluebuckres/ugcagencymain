@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakeUGC - Scale Your Brand’s Story. Authentic Humans. Unlimited AI. | MakeUGC.in</title>
+    <title>MakeUGC - Performance-First UGC That Drives Sales | MakeUGC.in</title>
     <meta name="description"
-        content="Performance-first UGC that drives sales, not just likes. 120+ creators ready to tell your brand story. Trusted by 50+ D2C brands with proven ROI results.">
+        content="MakeUGC: The Hybrid Content Agency. Scale with 120+ Human Creators & Hyper-Realistic AI Avatars. Trusted by 50+ Brands globally.">
     <meta name="keywords"
         content="UGC agency, user generated content, D2C marketing, creator network, performance marketing, ROI driven UGC">
     <meta name="author" content="MakeUGC">
@@ -14,7 +14,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://makeugc.in">
-    <meta property="og:title" content="MakeUGC - Scale Your Brand’s Story. Authentic Humans. Unlimited AI.">
+    <meta property="og:title" content="MakeUGC - Performance-First UGC for D2C Brands">
     <meta property="og:description"
         content="Transform your marketing with authentic UGC that converts. Get results from day one with our trained creator network.">
     <meta property="og:image" content="https://makeugc.in/assets/images/makeugclogo-01.svg">
@@ -22,7 +22,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://makeugc.in">
-    <meta property="twitter:title" content="MakeUGC - Scale Your Brand’s Story. Authentic Humans. Unlimited AI.">
+    <meta property="twitter:title" content="MakeUGC - Performance-First UGC">
     <meta property="twitter:description"
         content="Performance-first UGC that drives sales, not just likes. 120+ creators ready.">
     <meta property="twitter:image" content="https://makeugc.in/assets/images/makeugclogo-01.svg">
@@ -684,9 +684,8 @@
         .testimonials-wrapper {
             display: flex;
             gap: 0;
-            animation: scroll 60s linear infinite;
+            animation: scroll 30s linear infinite;
             width: fit-content;
-            will-change: transform;
         }
 
         .testimonials-wrapper:hover {
@@ -707,6 +706,26 @@
             flex-shrink: 0;
             min-height: 320px;
             margin: 0 1rem;
+        }
+
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .testimonial-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .testimonial-card:nth-child(5) {
+            animation-delay: 0.5s;
         }
 
         .testimonial-card:hover {
@@ -1767,28 +1786,24 @@
             }
 
             .h1-primary {
-                font-size: 0.95rem !important;
-                letter-spacing: 1.5px;
-                margin-bottom: 0.75rem;
-                opacity: 0.9;
+                font-size: 0.9rem !important;
+                letter-spacing: 1px;
+                margin-bottom: 0.5rem;
             }
 
             .h1-secondary {
-                font-size: 2.25rem !important;
-                line-height: 1.1;
-                margin-bottom: 1.25rem;
+                font-size: 2rem !important;
+                line-height: 1.2;
             }
 
             .hero-subheading {
-                font-size: 1.05rem !important;
-                padding: 0 1.5rem;
-                margin-bottom: 2.5rem;
-                line-height: 1.5;
+                font-size: 1.1rem !important;
+                padding: 0 1rem;
+                margin-bottom: 2rem;
             }
 
             .hero-buttons {
                 justify-content: center;
-                gap: 0.75rem;
             }
 
             .hero-content {
@@ -2040,131 +2055,235 @@
             animation: slideDown 0.4s ease-in-out infinite;
         }
     </style>
-
     <style>
-        /* Fork in the Road Section Styling */
-        .fork-section {
-            padding: 5rem 0;
-            background: linear-gradient(to bottom, #ffffff, var(--color-cream));
-        }
-
-        .fork-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .fork-card {
-            background: white;
-            border-radius: var(--radius-softer);
-            box-shadow: var(--shadow-subtle);
-            transition: var(--transition-smooth);
-            border: 1px solid rgba(139, 154, 122, 0.1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .fork-img-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
+        /* New CSS for Brand Pivot */
+        .intent-toggle-section {
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, var(--color-warm-stone), var(--color-cream));
+            text-align: center;
             border-bottom: 1px solid rgba(139, 154, 122, 0.1);
+        }
+
+        .intent-toggle-container {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem;
+            border-radius: 50px;
+            gap: 0.5rem;
+            border: 1px solid rgba(139, 154, 122, 0.2);
+            position: relative;
+        }
+
+        .intent-option {
+            padding: 0.75rem 2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--color-charcoal);
+            font-size: 1rem;
+            user-select: none;
+        }
+
+        .intent-option.active {
+            background: var(--color-sage);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 154, 122, 0.3);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 6rem 0;
             background: var(--color-warm-stone);
+            position: relative;
         }
 
-        .fork-illustration {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
-        .fork-card:hover .fork-illustration {
-            transform: scale(1.05);
-        }
-
-        .fork-card-content {
+        .pricing-card {
+            background: white;
             padding: 2.5rem;
-        }
-
-        .fork-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lift);
-            border-color: var(--color-sage);
-        }
-
-        .fork-card.ai-card {
-            border-top: 5px solid var(--color-muted-teal);
-        }
-
-        .fork-card.human-card {
-            border-top: 5px solid var(--color-sage);
-        }
-
-        .fork-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .fork-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-warm-stone);
-            border-radius: 12px;
-            color: var(--color-sage);
-        }
-
-        .ai-card .fork-icon {
-            color: var(--color-muted-teal);
-            background: rgba(122, 155, 155, 0.1);
-        }
-
-        .fork-details {
+            border-radius: 20px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
 
-        .fork-detail-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
         }
 
-        .fork-label {
+        .pricing-card.popular {
+            border: 2px solid var(--color-sage);
+            background: linear-gradient(to bottom, #ffffff, #fcfdfc);
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-sage);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(139, 154, 122, 0.3);
+        }
+
+        .pricing-card.value .pricing-badge {
+            background: var(--color-soft-terracotta);
+            box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3);
+        }
+
+        .pricing-card.value {
+            border: 2px solid var(--color-soft-terracotta);
+        }
+
+        .price-wrapper {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: var(--font-serif);
             color: var(--color-charcoal);
-            width: 80px;
-            flex-shrink: 0;
         }
 
-        .fork-value {
+        .price-unit {
+            color: #666;
             font-size: 1rem;
-            color: #555;
-            line-height: 1.5;
         }
 
-        /* Mobile adjustment for fork section */
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #4a4a4a;
+        }
+
+        .pricing-features li i {
+            color: var(--color-sage);
+            min-width: 20px;
+        }
+
+        /* Urgency Box */
+        .urgency-box {
+            background: #FEF2F2;
+            border-left: 4px solid #EF4444;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            color: #991B1B;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-card.popular {
+                transform: none;
+                grid-column: span 2;
+            }
+
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
         @media (max-width: 768px) {
-            .fork-grid {
+            .pricing-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                grid-column: auto;
+            }
+
+            .testimonial-card,
+            .pricing-card {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .intent-toggle-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .intent-option {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-item {
+                width: 100%;
             }
         }
     </style>
+
     <!-- Professional Umami Analytics Integration -->
     <script>
         // Configuration - Update these values after setting up Umami
@@ -2216,21 +2335,14 @@
                 <div class="hero-text">
                     <h1>
                         <span class="h1-primary"> #1 UGC Content Creation Agency in India</span>
-                        <span class="h1-secondary">Get performance-First UGC. Authentic Humans. Unlimited AI.</span>
+                        <span class="h1-secondary">Performance-First UGC That Drives Sales for D2C Brands</span>
                     </h1>
-                    <p class="hero-subheading"> The first performance agency offering both.
-                        Connect deeply with Vetted Creators or scale instantly with Hyper-Realistic AI Avatars. One
-                        platform, zero production headaches.</p>
+                    <p class="hero-subheading"> You are wasting ₹50,000+/month on ads that don't convert.
+                        We create UGC content that cuts your CPA by 67% in 30 days—guaranteed.</p>
                     <div class="hero-cta-group">
-                        <div class="hero-cta-top"
-                            style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                            <a href="contact.html?service=human-strategy" class="btn btn-primary">Book a Human Strategy
-                                Call</a>
-                            <a href="ai-demo.html" class="btn btn-secondary">Try AI Demo</a>
+                        <div class="hero-cta-top">
+                            <a href="contact.html?service=strategy" class="btn-primary">Book Free Strategy Call</a>
                         </div>
-                        <p class="hero-trust-text" style="font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.8;">
-                            Trusted by 50+ Brands in India, US, & UK
-                        </p>
                         <div class="hero-cta-bottom">
                             <a href="portfolio.html" class="btn-secondary">
                                 <i data-lucide="play-circle"></i>
@@ -2379,15 +2491,29 @@
         </div>
     </section>
 
+    <!-- Post-Hero Intent Toggle -->
+    <section class="intent-toggle-section">
+        <div class="container">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; opacity: 0.8;">Are you a Global Brand or an Indian D2C
+                Brand?</h3>
+            <div class="intent-toggle-container">
+                <div class="intent-option active" id="btn-indian" onclick="toggleCurrency('inr')">🇮🇳 Indian D2C Brand
+                </div>
+                <div class="intent-option" id="btn-global" onclick="toggleCurrency('usd')">🌎 Global Brand</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
     <section class="stats-section">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 3rem;">Trusted by 50+ D2C Brands</h2>
             <div class="stats-grid">
                 <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">120+</span>
-                    <div class="stat-label">Creators</div>
-                    <div class="stat-description">Ready to tell your brand story</div>
+                    <span class="stat-number"
+                        style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 0.5rem; display: block;">120+ Humans
+                        &<br>Unlimited AI Avatars</span>
+                    <div class="stat-label">Ready to tell your story</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
                     <span class="stat-number">5.2x</span>
@@ -2400,140 +2526,68 @@
                     <div class="stat-description">For our brand partners</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">72hr</span>
-                    <div class="stat-label">Turnaround Time</div>
-                    <div class="stat-description">From brief to final content</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fork in the Road Section -->
-    <section class="fork-section">
-        <div class="container">
-            <h2
-                style="text-align: center; margin-bottom: 1rem; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -0.03em;">
-                Two Ways to Grow.<br>One Goal: Revenue.</h2>
-            <p
-                style="text-align: center; color: var(--color-charcoal); opacity: 0.7; margin-bottom: 4rem; font-size: 1.25rem;">
-                Choose the path that fits your current scale.</p>
-            <div class="fork-grid">
-                <!-- Human UGC Card -->
-                <div class="fork-card human-card animate-on-scroll">
-                    <div class="fork-img-wrapper">
-                        <img src="assets/images/illustrations/REAL UGC.png" alt="Human UGC Illustration"
-                            class="fork-illustration">
-                    </div>
-                    <div class="fork-card-content">
-                        <div class="fork-header">
-                            <div class="fork-icon">
-                                <i data-lucide="users"></i>
-                            </div>
-                            <h3>Human UGC</h3>
-                        </div>
-                        <div class="fork-details">
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-sage);">Best For</span>
-                                <span class="fork-value">Emotional connection, Trust, Reviews, Unboxing.</span>
-                            </div>
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-sage);">The Vibe</span>
-                                <span class="fork-value">Authentic, Raw, Relatable.</span>
-                            </div>
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-sage);">Speed</span>
-                                <span class="fork-value">5-7 Business Days Turnaround.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI UGC Card -->
-                <div class="fork-card ai-card animate-on-scroll">
-                    <div class="fork-img-wrapper">
-                        <img src="assets/images/illustrations/AiUGC.png" alt="AI UGC Illustration"
-                            class="fork-illustration">
-                    </div>
-                    <div class="fork-card-content">
-                        <div class="fork-header">
-                            <div class="fork-icon">
-                                <i data-lucide="bot"></i>
-                            </div>
-                            <h3>AI UGC</h3>
-                        </div>
-                        <div class="fork-details">
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-muted-teal);">Best For</span>
-                                <span class="fork-value">High volume, Testing hooks, Explainer videos, Global
-                                    dubbing.</span>
-                            </div>
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-muted-teal);">The Vibe</span>
-                                <span class="fork-value">Polished, Fast, Consistent.</span>
-                            </div>
-                            <div class="fork-detail-item">
-                                <span class="fork-label" style="color: var(--color-muted-teal);">Speed</span>
-                                <span class="fork-value">72 Hours Turnaround.</span>
-                            </div>
-                        </div>
+                    <div class="stat-item animate-on-scroll">
+                        <span class="stat-number"
+                            style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 0.5rem; display: block;">Instant
+                            AI /<br>72hr Human</span>
+                        <div class="stat-label">Turnaround Time</div>
+                        <div class="stat-description">From brief to final content</div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Testimonial Section -->
     <section class="testimonial-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 0.5rem; font-size: 2.5rem;">The Wall of Scaled Brands</h2>
+            <h2 style="text-align: center; margin-bottom: 0.5rem; font-size: 2.5rem;">Real Stories, Real Results</h2>
             <p
                 style="text-align: center; color: var(--color-charcoal); opacity: 0.75; margin-bottom: 3rem; font-size: 1.1rem;">
-                12 unique success stories from Mumbai to Miami. Constant growth, global trust.</p>
+                Founders and marketers who transformed their business with UGC</p>
 
-            <div class="testimonials-grid" style="overflow: hidden;">
+            <div class="testimonials-grid">
                 <div class="testimonials-wrapper">
-
-                    <!-- 1. Sarah Jenkins (US) -->
-                    <div class="testimonial-card">
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Feb 14, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"We needed 50 variations of an ad for Black Friday. The AI UGC allowed us to test
-                            hooks overnight, while the Human UGC closed the sale. Pure magic."</blockquote>
+                        <blockquote>
+                            Honestly? I was burning $500 monthly on studio shoots that weren't converting. My CA was
+                            getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month
+                            itself, our CPA dropped from $12 to $4. I wish I'd found them earlier. Would've saved
+                            thousands.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">SJ</div>
-                            <div class="author-info">
-                                <div class="author-name">Sarah Jenkins</div>
-                                <div class="author-title">CMO, LuxeSkin AI (Austin)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Amit Verma (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.8</span>
-                            </div>
-                            <span class="review-date">Jan 05, 2025</span>
-                        </div>
-                        <blockquote>"Burning $500 monthly on studio shoots wasn't working. Priya Sharma showed me Hybrid
-                            UGC. CPA dropped from $12 to $4. Saved us thousands."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">AV</div>
+                            <div class="author-avatar">AV</div>
                             <div class="author-info">
                                 <div class="author-name">Amit Verma</div>
                                 <div class="author-title">Founder, GlowNaturals</div>
@@ -2541,47 +2595,46 @@
                         </div>
                     </div>
 
-                    <!-- 3. Omar Al-Fayed (UAE) -->
-                    <div class="testimonial-card">
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Mar 12, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"We launched in Dubai and needed Arabic creators. MakeUGC connected us in < 48
-                                hours. CPA dropped by $15 instantly. Amazing service."</blockquote>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar" style="background:#8B9A7A">OA</div>
-                                    <div class="author-info">
-                                        <div class="author-name">Omar Al-Fayed</div>
-                                        <div class="author-title">Ecommerce Lead, Desert Bloom</div>
-                                    </div>
-                                </div>
-                    </div>
-
-                    <!-- 4. Rohan Malhotra (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.8</span>
-                            </div>
-                            <span class="review-date">Dec 18, 2024</span>
-                        </div>
-                        <blockquote>"By June, I was ready to shut down. Sales weren't coming. Anjali Desai suggested
-                            real people reviews. Sales picked up in 3 weeks. Best decision ever."</blockquote>
+                        <blockquote>
+                            We launched in April and by June, I was almost ready to shut down. Ads weren't working,
+                            nobody trusted us. Anjali Desai at MakeUGC.in suggested real people reviewing our products.
+                            Game changer. Sales picked up in 3 weeks. Sometimes one decision changes everything.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#C4A484">RM</div>
+                            <div class="author-avatar">RM</div>
                             <div class="author-info">
                                 <div class="author-name">Rohan Malhotra</div>
                                 <div class="author-title">Co-founder, FitFuel Nutrition</div>
@@ -2589,47 +2642,47 @@
                         </div>
                     </div>
 
-                    <!-- 5. Emma Thompson (UK) -->
-                    <div class="testimonial-card">
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Jan 05, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"The localized dialects matter for UK. Their creators nailed the specific accents
-                            for Manchester and London. Finally ads that feel like real conversations."</blockquote>
+                        <blockquote>
+                            My biggest mistake? Spending 2 months trying to create content in-house. My team hated being
+                            on camera, videos looked forced. Found MakeUGC.in through a founder group. Kavya Iyer got us
+                            15 videos in 10 days. Not all were perfect, maybe 12 worked well, but that's fine. We
+                            finally had content that didn't look like an ad.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#7A9B9B">ET</div>
-                            <div class="author-info">
-                                <div class="author-name">Emma Thompson</div>
-                                <div class="author-title">Brand Manager, London Luxe</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6. Neha Agarwal (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Oct 22, 2024</span>
-                        </div>
-                        <blockquote>"Mistake? Spending months on in-house content. My team hated being on camera.
-                            MakeUGC got us 15 winning videos in 10 days. Massive ROI shift."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">NA</div>
+                            <div class="author-avatar">NA</div>
                             <div class="author-info">
                                 <div class="author-name">Neha Agarwal</div>
                                 <div class="author-title">Founder, ThreadsIndia</div>
@@ -2637,95 +2690,95 @@
                         </div>
                     </div>
 
-                    <!-- 7. Fatima Khalid (Saudi Arabia) -->
-                    <div class="testimonial-card">
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.8</span>
-                            </div>
-                            <span class="review-date">Feb 10, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"Cultural nuance is key in KSA. The creators respected modest guidelines while
-                            keeping content engaging. Sales up 40% in Riyadh and Jeddah."</blockquote>
+                        <blockquote>
+                            Meta was rejecting our ads left and right. Too polished, they said. I didn't get it until
+                            Sneha Patel from MakeUGC.in explained - people want real, not perfect. Their creators made
+                            our ayurvedic products feel trustworthy. Approval rate went from 40% to 95%. Simple change,
+                            massive impact.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#C4A484">FK</div>
-                            <div class="author-info">
-                                <div class="author-name">Fatima Khalid</div>
-                                <div class="author-title">DTC Lead, Abaya Chic</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 8. Priya Krishnan (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Dec 01, 2024</span>
-                        </div>
-                        <blockquote>"Meta was rejecting our ads for being 'too polished'. MakeUGC creators made our
-                            ayurvedic products feel real. Approval rate hit 95%."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#8B9A7A">PK</div>
+                            <div class="author-avatar">PK</div>
                             <div class="author-info">
                                 <div class="author-name">Priya Krishnan</div>
-                                <div class="author-title">Marketing, VedaRoots</div>
+                                <div class="author-title">Marketing Head, VedaRoots</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 9. Michael Davis (USA) -->
-                    <div class="testimonial-card">
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Jan 18, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"We use AI UGC for testing 20+ hooks on TikTok daily. Insane speed. Once we find a
-                            winner, we swap it with human UGC. Most efficient setup yet."</blockquote>
+                        <blockquote>
+                            I'll be honest - I thought UGC was just a trend. Spent 6 months doing influencer collabs
+                            that gave zero ROI. Then a friend mentioned MakeUGC.in. Meera Reddy explained the
+                            difference. These aren't influencers, they're customers. Our retention rate doubled because
+                            people finally believed in us. Took me too long to figure this out.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">MD</div>
-                            <div class="author-info">
-                                <div class="author-name">Michael Davis</div>
-                                <div class="author-title">Growth, Peak Fitness NYC</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 10. Karan Kapoor (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.8</span>
-                            </div>
-                            <span class="review-date">Sep 15, 2024</span>
-                        </div>
-                        <blockquote>"Influencer collabs gave zero ROI. MakeUGC explained the difference—they aren't
-                            influencers, they're customers. Our retention rate doubled."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">KK</div>
+                            <div class="author-avatar">KK</div>
                             <div class="author-info">
                                 <div class="author-name">Karan Kapoor</div>
                                 <div class="author-title">CEO, HomeSaga</div>
@@ -2733,284 +2786,54 @@
                         </div>
                     </div>
 
-                    <!-- 11. Jessica Lee (USA) -->
-                    <div class="testimonial-card">
+                    <!-- Duplicate first card for seamless loop -->
+                    <div class="testimonial-card animate-on-scroll">
                         <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Feb 02, 2025</span>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
+                            <svg class="star-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 10.26 24 11.27 18 17.14 19.18 26.02 12 21.77 4.82 26.02 6 17.14 0 11.27 8.91 10.26 12 2">
+                                </polygon>
+                            </svg>
                         </div>
-                        <blockquote>"The Hybrid pack saved us $15k in Q4 alone. High volume AI content for top-funnel
-                            and human UGC for retargeting. Total game changer."</blockquote>
+                        <blockquote>
+                            Honestly? I was burning $500 monthly on studio shoots that weren't converting. My CA was
+                            getting worried. Then Priya Sharma from MakeUGC.in showed me how UGC works. First month
+                            itself, our CPA dropped from $12 to $4. I wish I'd found them earlier. Would've saved
+                            thousands.
+                        </blockquote>
                         <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">JL</div>
-                            <div class="author-info">
-                                <div class="author-name">Jessica Lee</div>
-                                <div class="author-title">CMO, Social Sphere (SF)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 12. Rajesh Gupta (India) -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip">
-                                <svg class="star-icon" style="color:#22C55E; fill:#22C55E;" viewBox="0 0 24 24"
-                                    width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                <span class="rating-val">4.9</span>
-                            </div>
-                            <span class="review-date">Mar 02, 2025</span>
-                        </div>
-                        <blockquote>"Bringing global faces for shoots used to take weeks and lakhs. MakeUGC got us the
-                            content in days. Speed is the only moat now."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">RG</div>
-                            <div class="author-info">
-                                <div class="author-name">Rajesh Gupta</div>
-                                <div class="author-title">Founder, GlobalGlow India</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- REPEAT ALL 12 FOR SEAMLESS LOOP -->
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Feb 14,
-                                2025</span>
-                        </div>
-                        <blockquote>"We needed 50 variations of an ad for Black Friday. The AI UGC allowed us to test
-                            hooks overnight, while the Human UGC closed the sale."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">SJ</div>
-                            <div class="author-info">
-                                <div class="author-name">Sarah Jenkins</div>
-                                <div class="author-title">CMO, LuxeSkin AI</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.8</span></div><span class="review-date">Jan 05,
-                                2025</span>
-                        </div>
-                        <blockquote>"Burning $500 monthly on studio shoots wasn't working. Priya Sharma showed me Hybrid
-                            UGC and CPA dropped instantly."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">AV</div>
+                            <div class="author-avatar">AV</div>
                             <div class="author-info">
                                 <div class="author-name">Amit Verma</div>
                                 <div class="author-title">Founder, GlowNaturals</div>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Mar 12,
-                                2025</span>
-                        </div>
-                        <blockquote>"Launched in Dubai and needed Arabic creators. MakeUGC connected us in < 48 hours.
-                                CPA dropped by $15 instantly."</blockquote>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar" style="background:#8B9A7A">OA</div>
-                                    <div class="author-info">
-                                        <div class="author-name">Omar Al-Fayed</div>
-                                        <div class="author-title">Ecommerce Lead, Desert Bloom</div>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.8</span></div><span class="review-date">Dec 18,
-                                2024</span>
-                        </div>
-                        <blockquote>"Sales weren't coming. Anjali Desai suggested real people reviews. Sales picked up
-                            in 3 weeks. Best decision ever."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#C4A484">RM</div>
-                            <div class="author-info">
-                                <div class="author-name">Rohan Malhotra</div>
-                                <div class="author-title">Co-founder, FitFuel Nutrition</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Jan 05,
-                                2025</span>
-                        </div>
-                        <blockquote>"Localized dialects matter. Their creators nailed the specific accents for
-                            Manchester and London. Trust spiked."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#7A9B9B">ET</div>
-                            <div class="author-info">
-                                <div class="author-name">Emma Thompson</div>
-                                <div class="author-title">Brand Manager, London Luxe</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Oct 22,
-                                2024</span>
-                        </div>
-                        <blockquote>"Spending months on in-house content was a mistake. MakeUGC got us winning videos in
-                            10 days. Massive ROI."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">NA</div>
-                            <div class="author-info">
-                                <div class="author-name">Neha Agarwal</div>
-                                <div class="author-title">Founder, ThreadsIndia</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.8</span></div><span class="review-date">Feb 10,
-                                2025</span>
-                        </div>
-                        <blockquote>"Cultural nuance is key in KSA. The creators respected modest fashion guidelines
-                            while keeping content engaging."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#C4A484">FK</div>
-                            <div class="author-info">
-                                <div class="author-name">Fatima Khalid</div>
-                                <div class="author-title">DTC Lead, Abaya Chic</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Dec 01,
-                                2024</span>
-                        </div>
-                        <blockquote>"Meta rejected our polished ads. MakeUGC creators made our ayurvedic products feel
-                            real and trustworthy. ROI hit 95%."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#8B9A7A">PK</div>
-                            <div class="author-info">
-                                <div class="author-name">Priya Krishnan</div>
-                                <div class="author-title">Marketing, VedaRoots</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Jan 18,
-                                2025</span>
-                        </div>
-                        <blockquote>"We use AI UGC for testing 20+ hooks on TikTok. Once we find a winner, we swap it
-                            with human UGC. Efficient."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">MD</div>
-                            <div class="author-info">
-                                <div class="author-name">Michael Davis</div>
-                                <div class="author-title">Growth, Peak Fitness NYC</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.8</span></div><span class="review-date">Sep 15,
-                                2024</span>
-                        </div>
-                        <blockquote>"Influencer collabs gave zero ROI. MakeUGC explained the difference—they aren't
-                            influencers, they're customers."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">KK</div>
-                            <div class="author-info">
-                                <div class="author-name">Karan Kapoor</div>
-                                <div class="author-title">CEO, HomeSaga</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Feb 02,
-                                2025</span>
-                        </div>
-                        <blockquote>"The Hybrid pack saved us thousands. AI content for top-funnel and human UGC for
-                            retargeting is genius."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#5B7C99">JL</div>
-                            <div class="author-info">
-                                <div class="author-name">Jessica Lee</div>
-                                <div class="author-title">CMO, Social Sphere (SF)</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <div class="rating-chip"><svg class="star-icon" style="color:#22C55E; fill:#22C55E;"
-                                    viewBox="0 0 24 24" width="18" height="18">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.82 3.25L7.38 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg><span class="rating-val">4.9</span></div><span class="review-date">Mar 02,
-                                2025</span>
-                        </div>
-                        <blockquote>"Bringing global faces for shoots used to take weeks. MakeUGC got us the content in
-                            days. Speed is the game."</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar" style="background:#D4A574">RG</div>
-                            <div class="author-info">
-                                <div class="author-name">Rajesh Gupta</div>
-                                <div class="author-title">Founder, GlobalGlow India</div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -3214,7 +3037,8 @@
                         <label for="currentSpend">Current Monthly Marketing Spend ($)</label>
                         <div class="slider-container">
                             <input type="range" id="currentSpend" min="1000" max="50000" value="5000" step="500">
-                            <div class="slider-value">$<span id="currentSpendValue">5,000</span></div>
+                            <div class="slider-value"><span class="currency-symbol">₹</span><span
+                                    id="currentSpendValue">5,000</span></div>
                         </div>
                     </div>
 
@@ -3239,7 +3063,8 @@
                         <label for="ugcBudget">UGC Investment Budget ($)</label>
                         <div class="slider-container">
                             <input type="range" id="ugcBudget" min="500" max="10000" value="2000" step="100">
-                            <div class="slider-value">$<span id="ugcBudgetValue">2,000</span></div>
+                            <div class="slider-value"><span class="currency-symbol">₹</span><span
+                                    id="ugcBudgetValue">2,000</span></div>
                         </div>
                     </div>
                 </div>
@@ -3247,13 +3072,15 @@
                 <div class="calculator-results">
                     <div class="result-card improved-revenue">
                         <h4>Projected Revenue</h4>
-                        <div class="result-value" id="projectedRevenue">$30,000</div>
+                        <div class="result-value"><span class="currency-symbol">₹</span><span
+                                id="projectedRevenue">30,000</span></div>
                         <div class="result-change" id="revenueIncrease">+40% increase</div>
                     </div>
 
                     <div class="result-card net-profit">
                         <h4>Net Profit Gain</h4>
-                        <div class="result-value" id="netProfit">$8,000</div>
+                        <div class="result-value"><span class="currency-symbol">₹</span><span
+                                id="netProfit">8,000</span></div>
                         <div class="result-change" id="profitMargin">400% ROI</div>
                     </div>
 
@@ -3262,6 +3089,12 @@
                         <div class="result-value" id="newROAS">4.8x</div>
                         <div class="result-change" id="roasImprovement">+92% better</div>
                     </div>
+                </div>
+
+                <div class="urgency-box hidden" id="urgencyBox">
+                    <i data-lucide="alert-triangle"></i>
+                    <span>⚠️ Cost of Waiting: Every month without UGC costs you <span id="wastedSpend">$0</span> in
+                        wasted ad spend.</span>
                 </div>
 
 
@@ -3285,42 +3118,90 @@
         </div>
     </section>
 
-    <!-- Services Overview Section -->
-    <section class="services-overview">
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
         <div class="container">
-            <h2>We create content that converts customers, not just content that looks pretty.</h2>
-            <p>Every piece of content we create is optimized for performance metrics that matter - conversions, ROAS,
-                and revenue growth.</p>
+            <h2 style="text-align: center; margin-bottom: 1rem;">Transparent Pricing. No Hidden Fees.</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto; opacity: 0.8;">Choose the perfect plan for
+                your growth stage. Scale up or down anytime.</p>
 
-            <div class="services-grid-overview">
-                <div class="service-overview-card animate-on-scroll">
-                    <div class="service-icon-overview">
-                        <i data-lucide="users"></i>
+            <div class="pricing-grid">
+                <!-- Card 1: AI UGC -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-icon"><i data-lucide="bot"
+                            style="width: 32px; height: 32px; color: var(--color-sage);"></i></div>
+                    <h3 style="margin-top: 1rem;">AI User Generated Content</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Hyper-realistic avatars for quick testing.</p>
+
+                    <div class="price-wrapper">
+                        <span class="price-amount price-inr">₹3,000</span>
+                        <span class="price-amount price-usd hidden">$40</span>
+                        <span class="price-unit">/video</span>
                     </div>
-                    <h3>Creator Partnerships</h3>
-                    <p>Vetted creators with full authentic brand voices. Strategic matchings by demographics and
-                        psychographics. No generic 'influenced' anything.</p>
-                    <a href="creators.html" class="service-link">View Our Creators →</a>
+
+                    <a href="contact.html?plan=ai-ugc" class="btn-secondary"
+                        style="width: 100%; justify-content: center;">Get Started</a>
+
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle-2"></i> Delivered in 48 Hours</li>
+                        <li><i data-lucide="check-circle-2"></i> Perfect Lip-Sync</li>
+                        <li><i data-lucide="check-circle-2"></i> Custom Backgrounds</li>
+                        <li><i data-lucide="check-circle-2"></i> HD Quality Export</li>
+                        <li><i data-lucide="check-circle-2"></i> 50+ Avatar Options</li>
+                    </ul>
                 </div>
 
-                <div class="service-overview-card animate-on-scroll">
-                    <div class="service-icon-overview">
-                        <i data-lucide="zap"></i>
+                <!-- Card 2: Human UGC (Popular) -->
+                <div class="pricing-card popular animate-on-scroll">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-icon"><i data-lucide="user"
+                            style="width: 32px; height: 32px; color: var(--color-sage);"></i></div>
+                    <h3 style="margin-top: 1rem;">Human UGC</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Real people, real products, real trust.</p>
+
+                    <div class="price-wrapper">
+                        <span class="price-amount price-inr">₹5,000</span>
+                        <span class="price-amount price-usd hidden">$70</span>
+                        <span class="price-unit">/video</span>
                     </div>
-                    <h3>Campaign Optimization</h3>
-                    <p>High-converting ad creatives with A/B testing protocols. Data-driven optimization strategies with
-                        in-depth creative content optimization.</p>
-                    <a href="services.html" class="service-link">See Our Process →</a>
+
+                    <a href="contact.html?plan=human-ugc" class="btn-primary"
+                        style="width: 100%; justify-content: center;">Get Started</a>
+
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle-2"></i> Vetted Creators</li>
+                        <li><i data-lucide="check-circle-2"></i> Authentic Unboxing/Review</li>
+                        <li><i data-lucide="check-circle-2"></i> Script & Strategy Included</li>
+                        <li><i data-lucide="check-circle-2"></i> Raw Files Available</li>
+                        <li><i data-lucide="check-circle-2"></i> 72hr Turnaround</li>
+                    </ul>
                 </div>
 
-                <div class="service-overview-card animate-on-scroll">
-                    <div class="service-icon-overview">
-                        <i data-lucide="trending-up"></i>
+                <!-- Card 3: Hybrid Pack (Value) -->
+                <div class="pricing-card value animate-on-scroll">
+                    <div class="pricing-badge">Best Value</div>
+                    <div class="pricing-icon"><i data-lucide="zap"
+                            style="width: 32px; height: 32px; color: var(--color-soft-terracotta);"></i></div>
+                    <h3 style="margin-top: 1rem;">Hybrid Growth Pack</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Combine volume with authenticity.</p>
+
+                    <div class="price-wrapper">
+                        <span class="price-amount price-inr">₹18,000</span>
+                        <span class="price-amount price-usd hidden">$250</span>
+                        <span class="price-unit">/pack</span>
                     </div>
-                    <h3>Performance Analytics</h3>
-                    <p>Comprehensive tracking from creative-level performance. Attribution modeling and ROI reporting
-                        with weekly and strategic optimization work.</p>
-                    <a href="roi-calculator.html" class="service-link">View Case Studies →</a>
+
+                    <a href="contact.html?plan=hybrid-pack" class="btn-secondary"
+                        style="width: 100%; justify-content: center; border-color: var(--color-soft-terracotta); color: var(--color-soft-terracotta);">Get
+                        Started</a>
+
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle-2"></i> <strong>3 Human Videos</strong></li>
+                        <li><i data-lucide="check-circle-2"></i> <strong>10 AI Variations</strong></li>
+                        <li><i data-lucide="check-circle-2"></i> Full Rights Usage</li>
+                        <li><i data-lucide="check-circle-2"></i> 15% Savings</li>
+                        <li><i data-lucide="check-circle-2"></i> Dedicated Strategist</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -3541,6 +3422,9 @@
 
             // Update slider value displays
             if (document.getElementById('currentSpendValue')) {
+                // Update currency symbol dynamically
+                const symbols = document.querySelectorAll('.currency-symbol');
+                symbols.forEach(s => s.textContent = currentCurrency === 'USD' ? '$' : '₹');
                 document.getElementById('currentSpendValue').textContent = formatCurrency(currentSpend);
             }
             if (document.getElementById('currentROASValue')) {
@@ -3567,10 +3451,10 @@
 
             // Update display
             if (document.getElementById('projectedRevenue')) {
-                document.getElementById('projectedRevenue').textContent = '$' + formatCurrency(Math.round(projectedRevenue));
+                document.getElementById('projectedRevenue').innerText = formatCurrency(Math.round(projectedRevenue));
             }
             if (document.getElementById('netProfit')) {
-                document.getElementById('netProfit').textContent = '$' + formatCurrency(Math.round(netProfit));
+                document.getElementById('netProfit').innerText = formatCurrency(Math.round(netProfit));
             }
             if (document.getElementById('newROAS')) {
                 document.getElementById('newROAS').textContent = newROAS.toFixed(1) + 'x';
@@ -3601,7 +3485,7 @@
             if (!insights) return;
 
             insights.innerHTML = `
-                <li>With $${formatCurrency(budget)} invested in UGC content creation</li>
+                <li>With <span class="currency-symbol">${currentCurrency === 'USD' ? '$' : '₹'}</span>${formatCurrency(budget)} invested in UGC content creation</li>
                 <li>Improved authenticity can boost conversion rates by 2.3x</li>
                 <li>UGC performs 5x better than brand-created content</li>
                 <li>Expected payback period: ${Math.max(2, Math.ceil(timeframe / 3))}-${Math.ceil(timeframe / 2)} months</li>
@@ -3722,58 +3606,18 @@
             }
         }
 
-
         @keyframes scroll {
             0% {
                 transform: translateX(0);
             }
 
-            100% {
-                transform: translateX(-6384px);
-                /* (12 unique cards * 532px total width each) */
+            99.9% {
+                transform: translateX(calc(-532px * 5));
             }
-        }
 
-        /* Updated Testimonial Card Styling */
-        .testimonial-card {
-            width: 500px;
-            margin: 0 16px;
-            /* 32px gap total */
-            min-height: 380px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .stars {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        .rating-chip {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: #F0FDF4;
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid #DCFCE7;
-        }
-
-        .rating-val {
-            font-weight: 700;
-            color: #166534;
-            font-size: 0.9rem;
-        }
-
-        .review-date {
-            font-size: 0.8rem;
-            color: #888;
-            margin-left: auto;
+            100% {
+                transform: translateX(0);
+            }
         }
     </style>
 
@@ -3868,6 +3712,103 @@
             // Smooth infinite scroll using CSS animation
             // The animation will continuously scroll through all cards
         }
+    </script>
+    <script>
+        // Currency Toggle Logic
+        let currentCurrency = 'INR';
+
+        function toggleCurrency(type) {
+            currentCurrency = type.toUpperCase();
+            const isGlobal = currentCurrency === 'USD';
+
+            // Toggle active state
+            document.getElementById('btn-indian').classList.toggle('active', !isGlobal);
+            document.getElementById('btn-global').classList.toggle('active', isGlobal);
+
+            // Toggle Price Elements in Pricing Section
+            const inrElements = document.querySelectorAll('.price-inr');
+            const usdElements = document.querySelectorAll('.price-usd');
+
+            inrElements.forEach(el => el.classList.toggle('hidden', isGlobal));
+            usdElements.forEach(el => el.classList.toggle('hidden', !isGlobal));
+
+            // Trigger ROI update to refresh currency symbols if necessary
+            updateROICalculator();
+        }
+
+        // Initialize default state
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure INR is default active/shown
+            toggleCurrency('inr');
+        });
+
+        // Insert Urgency Calculation into existing ROI function
+        const originalUpdateInsights = updateInsights; // preserve if needed
+
+        // Override or extend the calculator update to include urgency
+        // Implementation Note: Since I cannot easily inject into the middle of the function, 
+        // I will add a separate listener or extend the function.
+        // Actually, I can just append the logic to the end of the updateROICalculator function 
+        // by observing changes or patching it. 
+        // Better yet, I'll add the logic to be called after updateROICalculator runs.
+
+        // Helper to format with current currency
+        function formatMoney(amount) {
+            if (currentCurrency === 'USD') {
+                // Approximate conversion for display if needed, or just symbol change
+                // Note: The ROI calculator inputs are in specific ranges suitable for INR or USD?
+                // The default values: Spend 5000. 
+                // If INR, ₹5000 is small. If USD, $5000 is robust.
+                // Assuming the inputs are treated as units. New currency just changes symbol.
+                return '$' + amount.toLocaleString('en-US');
+            } else {
+                return '₹' + amount.toLocaleString('en-IN');
+            }
+        }
+
+        // Patching the existing updateROICalculator? 
+        // The existing function uses `formatCurrency` which returns `amount.toLocaleString('en-US')`.
+        // I will override `formatCurrency` to support dynamic currency.
+
+        window.formatCurrency = function (amount) {
+            if (currentCurrency === 'USD') {
+                return amount.toLocaleString('en-US');
+            } else {
+                // For INR, we might want to scale up if the input was intended for USD? 
+                // Or just assume the user inputs the correct value for their currency.
+                // Given "Default to INR", and input max is 50000. 50k INR is decent budget. 
+                return amount.toLocaleString('en-IN');
+            }
+        };
+
+        // Add Urgency Logic
+        function updateUrgencyBox() {
+            const currentSpend = parseInt(document.getElementById('currentSpend')?.value) || 0;
+            const wasted = Math.round(currentSpend * 0.3); // 30%
+
+            const urgencyBox = document.getElementById('urgencyBox');
+            const wastedSpendSpan = document.getElementById('wastedSpend');
+
+            if (urgencyBox && wastedSpendSpan) {
+                const symbol = currentCurrency === 'USD' ? '$' : '₹';
+                wastedSpendSpan.textContent = symbol + window.formatCurrency(wasted);
+                urgencyBox.classList.remove('hidden');
+            }
+        }
+
+        // Hook into inputs to trigger urgency update
+        const roiInputs = ['currentSpend', 'currentROAS', 'timeframe', 'ugcBudget'];
+        roiInputs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', updateUrgencyBox);
+                el.addEventListener('change', updateUrgencyBox);
+            }
+        });
+
+        // Initial call
+        setTimeout(updateUrgencyBox, 1000);
+
     </script>
 </body>
 
