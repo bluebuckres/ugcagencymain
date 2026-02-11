@@ -1172,6 +1172,10 @@ h1, h2, h3, h4, h5, h6 {
   resize: both;
 }
 
+.list-decimal {
+  list-style-type: decimal;
+}
+
 .list-disc {
   list-style-type: disc;
 }
@@ -1426,6 +1430,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .border-sage\/50 {
   border-color: rgb(156 175 136 / 0.5);
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .border-white\/20 {
@@ -1842,6 +1851,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 2rem;
 }
 
+.pl-4 {
+  padding-left: 1rem;
+}
+
 .pl-5 {
   padding-left: 1.25rem;
 }
@@ -1928,6 +1941,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1979,6 +1996,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
 }
 
 .tracking-wide {
@@ -2336,6 +2357,10 @@ h1, h2, h3, h4, h5, h6 {
 .hover\:bg-warm-stone:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(250 248 245 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-white\/10:hover {
+  background-color: rgb(255 255 255 / 0.1);
 }
 
 .hover\:text-\[\#2C2C2C\]:hover {
