@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon-square.svg">
-    <link rel="shortcut icon" href="/assets/images/favicon-square.svg">
-    <link rel="apple-touch-icon" href="/assets/images/favicon-square.svg">
-    <link rel="apple-touch-icon" href="/assets/images/favicon-square.svg">
-    <meta http-equiv="refresh" content="0; url=blog-creator-journey-0-to-1m.html">
-    <!-- Meta Pixel Code -->
-    <script src="/assets/js/meta-pixel.js" defer></script>
-    <!-- Referral System -->
-    <script src="/assets/js/referral-system.js" defer></script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
-    </noscript>
+Integrate PostHog with HTML snippet
+Read the docs
+1. Add the snippet to your website
+required
+Add this snippet to your website within the <head> tag. This can also be used in services like Google Tag Manager:
 
-<!-- PostHog -->
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_pPwLGTzkb58fgL5MjeHgoSWahKp8JWxPThYXbK4ChTt', {
@@ -26,8 +11,9 @@
         defaults: '2026-01-30'
     })
 </script>
-</head>
-<body>
-    <p>Redirecting to <a href="blog-creator-journey-0-to-1m.html">From 0 to 1M Views: Our Creator's Journey</a>...</p>
-</body>
-</html>
+2. Send events
+Click around and view a couple pages to generate some events. PostHog automatically captures pageviews, clicks, and other interactions for you.
+
+If you'd like, you can also manually capture custom events:
+
+posthog.capture('my_custom_event', { property: 'value' })
