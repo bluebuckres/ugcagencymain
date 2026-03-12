@@ -5,6 +5,7 @@ import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/layout/Footer";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { PostHogProvider } from "@/components/providers/PostHogProvider";
+import { TrustedBrands } from "@/components/sections/TrustedBrands";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
         <PostHogProvider>
           <Navbar />
           {children}
+          <TrustedBrands />
           <Footer />
           <ThemeSwitcher />
         </PostHogProvider>
