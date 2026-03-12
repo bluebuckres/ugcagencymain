@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --color-tan: #c7a689;
+    --color-tan: #086972;
+    /* Dark Cyan brand color */
     --color-sage: #8e9c80;
     --color-cream: #f2ede6;
     --color-white: #ffffff;
@@ -32,7 +33,7 @@
     transform: translateY(16px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  
+
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);

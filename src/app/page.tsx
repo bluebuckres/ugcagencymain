@@ -3,6 +3,7 @@ import { StatsBar } from "@/components/sections/StatsBar";
 import { ProblemStatement } from "@/components/sections/ProblemStatement";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Services } from "@/components/sections/Services";
+import { AppPreview } from "@/components/sections/AppPreview";
 import { WhoItsFor } from "@/components/sections/WhoItsFor";
 import { CreatorNetwork } from "@/components/sections/CreatorNetwork";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -50,6 +51,7 @@ export default function Home() {
         <ProblemStatement />
         <HowItWorks />
         <Services />
+        <AppPreview />
         <WhoItsFor />
         <CreatorNetwork />
         <Testimonials />

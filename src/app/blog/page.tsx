@@ -74,7 +74,7 @@ export default function BlogIndex() {
                     {mockPosts.map((post, idx) => (
                         <Reveal key={post.slug} delay={idx * 100}>
                             <Link href={`/blog/${post.slug}`} className="block group h-full">
-                                <article className="bg-white p-8 md:p-10 rounded-3xl border border-[--color-border] h-full flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_-8px_rgba(199,166,137,0.15)] hover:-translate-y-1">
+                                <article className="bg-white p-8 md:p-10 rounded-3xl border border-[--color-border] h-full flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_-8px_rgba(8,105,114,0.15)] hover:-translate-y-1">
                                     <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest text-[--color-muted] mb-6">
                                         <span className="text-[--color-sage] font-medium">{post.category}</span>
                                         <span>•</span>

@@ -26,10 +26,12 @@ const dmMono = DM_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#c7a689",
+  themeColor: "#086972",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export const metadata: Metadata = {

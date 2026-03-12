@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, List, X, MapPin, CaretDown, MagnifyingGlass, UserCircle, VideoCamera, Lightbulb, Users, Robot, Translate, Ticket } from "@phosphor-icons/react";
+import { ArrowRight, List, X, Tag, CaretDown, MagnifyingGlass, UserCircle, VideoCamera, Lightbulb, Users, Robot, Translate, Ticket } from "@phosphor-icons/react";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -12,9 +12,33 @@ export default function Navbar() {
     // New states for the interactive UI elements
     const [isLocationOpen, setIsLocationOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [selectedNiche, setSelectedNiche] = useState<string | null>(null);
 
-    // Mock Data for Dropdowns
-    const cities = ["Mumbai", "Delhi", "Bangalore", "Gurgaon", "Pune", "Remote View"];
+    // Industry / Niche options
+    const niches = [
+        "Beauty & Skincare",
+        "Fashion & Apparel",
+        "Fitness & Wellness",
+        "Food & Beverage",
+        "Home & Living",
+        "Tech & Gadgets",
+        "Baby & Parenting",
+        "Finance & Fintech",
+        "Travel & Hospitality",
+        "Pet Care",
+        "Health & Supplements",
+        "Jewellery & Accessories",
+        "Education & E-learning",
+        "Automotive",
+        "Gaming",
+        "Sports & Outdoors",
+        "Sustainable & Eco",
+        "Real Estate",
+        "Entertainment & Media",
+        "Luxury & Premium",
+        "D2C & E-commerce",
+        "SaaS & Software",
+    ];
     const services = [
         { name: "Video & Photo Production", icon: <VideoCamera size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
         { name: "Creative Strategy & Meta Ads", icon: <Lightbulb size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
@@ -74,18 +98,25 @@ export default function Navbar() {
                                 }}
                                 className="flex items-center gap-2 bg-white border border-[--color-border] rounded-l-2xl px-5 py-3 min-w-[200px] hover:bg-[--color-cream] transition-colors focus:outline-none"
                             >
-                                <MapPin size={22} className="text-[--color-sage]" />
-                                <span className="font-sans text-sm text-[--color-ink] truncate text-left flex-grow">Select City</span>
-                                <CaretDown size={16} className={`text-[--color-muted] transition-transform ${isLocationOpen ? "rotate-180" : ""}`} />
+                                <Tag size={22} className="text-[--color-sage] shrink-0" />
+                                <span className="font-sans text-sm text-[--color-ink] truncate text-left flex-grow">
+                                    {selectedNiche ?? "Select Industry"}
+                                </span>
+                                <CaretDown size={16} className={`text-[--color-muted] transition-transform shrink-0 ${isLocationOpen ? "rotate-180" : ""}`} />
                             </button>
 
-                            {/* Location Dropdown */}
+                            {/* Industry / Niche Dropdown */}
                             {isLocationOpen && (
-                                <div className="absolute top-full left-0 mt-2 w-full min-w-[220px] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2">
-                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Available Locations</div>
-                                    {cities.map((city, idx) => (
-                                        <button key={idx} className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] hover:text-[--color-tan] transition-colors">
-                                            {city}
+                                <div className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[380px] overflow-y-auto">
+                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Industry / Niche</div>
+                                    {niches.map((niche, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => { setSelectedNiche(niche); setIsLocationOpen(false); }}
+                                            className={`w-full text-left px-5 py-3 font-sans text-sm hover:bg-[--color-cream] hover:text-[--color-tan] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium bg-[--color-cream]" : "text-[--color-ink]"
+                                                }`}
+                                        >
+                                            {niche}
                                         </button>
                                     ))}
                                 </div>
@@ -163,8 +194,8 @@ export default function Navbar() {
                             className="flex items-center justify-center bg-[--color-cream] border border-[--color-border] rounded-l-xl px-3 py-3 w-1/3 focus:outline-none"
                             onClick={() => setIsLocationOpen(!isLocationOpen)}
                         >
-                            <MapPin size={18} className="text-[--color-sage] mr-1 shrink-0" />
-                            <span className="font-sans text-xs text-[--color-ink] truncate">City</span>
+                            <Tag size={18} className="text-[--color-sage] mr-1 shrink-0" />
+                            <span className="font-sans text-xs text-[--color-ink] truncate">{selectedNiche ?? "Industry"}</span>
                         </button>
                         <div className="flex items-center bg-white border border-l-0 border-[--color-border] rounded-r-xl px-3 py-3 flex-grow focus-within:border-[--color-tan] transition-colors relative">
                             <MagnifyingGlass size={18} className="text-[--color-muted] mr-2 shrink-0" />
@@ -184,13 +215,30 @@ export default function Navbar() {
                             {/* Mobile Service Metadata Dropdown */}
                             {isSearchOpen && (
                                 <div className="absolute top-full right-0 left-0 mt-2 w-[calc(100%+33.333%)] -ml-[33.333%] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[300px] overflow-y-auto z-50">
-                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Available Services</div>
+                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Popular Services</div>
                                     {services.map((service, idx) => (
                                         <button key={idx} className="w-full text-left px-4 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center gap-3">
                                             <div className="p-1.5 bg-white border border-[--color-border] rounded-md">
                                                 {service.icon}
                                             </div>
                                             <span className="truncate">{service.name}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* Mobile Industry / Niche Dropdown */}
+                            {isLocationOpen && (
+                                <div className="absolute top-full right-0 left-0 mt-2 w-[calc(100%+33.333%)] -ml-[33.333%] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[300px] overflow-y-auto z-50">
+                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Industry / Niche</div>
+                                    {niches.map((niche, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => { setSelectedNiche(niche); setIsLocationOpen(false); }}
+                                            className={`w-full text-left px-4 py-3 font-sans text-sm hover:bg-[--color-cream] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium" : "text-[--color-ink]"
+                                                }`}
+                                        >
+                                            {niche}
                                         </button>
                                     ))}
                                 </div>
@@ -222,7 +270,6 @@ export default function Navbar() {
                         <Link href="/pricing" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">Pricing</Link>
                         <Link href="/ai-ugc" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">AI UGC</Link>
                         <Link href="/how-it-works" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">How It Works</Link>
-                        <Link href="/about" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">About Us</Link>
                         <Link href="/blog" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">Insights Blog</Link>
                         <Link href="/careers" onClick={() => setIsMobileOpen(false)} className="text-[--color-ink] hover:text-[--color-tan] transition-colors">Careers</Link>
 

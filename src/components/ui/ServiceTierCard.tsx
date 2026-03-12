@@ -14,7 +14,7 @@ interface ServiceTierCardProps {
 
 export function ServiceTierCard({ badge, isPopular = false, title, description, features, ctaText, href }: ServiceTierCardProps) {
     return (
-        <div className="bg-white border border-[--color-border] rounded-2xl p-8 hover:shadow-[0_8px_32px_-8px_rgba(199,166,137,0.15)] hover:-translate-y-[2px] transition-all duration-300 flex flex-col h-full">
+        <div className="bg-white border border-[--color-border] rounded-2xl p-8 hover:shadow-[0_8px_32px_-8px_rgba(8,105,114,0.15)] hover:-translate-y-[2px] transition-all duration-300 flex flex-col h-full">
             <div className="mb-6">
                 <span className={`inline-block font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 ${isPopular ? 'bg-[--color-tan] text-white' : 'bg-[--color-cream] text-[--color-sage]'
                     }`}>

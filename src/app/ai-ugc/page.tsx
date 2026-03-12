@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 const FeatureHighlight = ({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) => (
-    <div className="flex gap-6 group p-8 rounded-2xl border border-[--color-border] bg-white hover:shadow-[0_8px_32px_-8px_rgba(199,166,137,0.15)] transition-all">
+    <div className="flex gap-6 group p-8 rounded-2xl border border-[--color-border] bg-white hover:shadow-[0_8px_32px_-8px_rgba(8,105,114,0.15)] transition-all">
         <div className="text-[--color-tan] shrink-0 mt-1 p-3 bg-[--color-cream] rounded-xl">{icon}</div>
         <div>
             <h3 className="font-sans text-xl font-medium text-[--color-ink] mb-3">{title}</h3>

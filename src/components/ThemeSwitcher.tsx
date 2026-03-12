@@ -9,7 +9,7 @@ export default function ThemeSwitcher() {
 
     // Predefined color themes
     const themes = [
-        { name: "Tan (Default)", hex: "#c7a689" },
+        { name: "Dark Cyan (Default)", hex: "#086972" },
         { name: "Peacock Blue", hex: "#006b8f" },
         { name: "Dark Cyan", hex: "#008b8b" },
         { name: "Forest Green", hex: "#2e8b57" },

@@ -76,32 +76,73 @@ export function StatsBar() {
     // That's 5 items. We should map over all 5 and change grid-cols to 5.
 
     return (
-        <section className="bg-white border-b border-[--color-border] py-16 md:py-24 overflow-x-hidden">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-6 lg:divide-x divide-[--color-border]">
-                    {stats.map((stat, idx) => {
-                        const Icon = stat.icon;
-                        return (
-                            <div key={idx} className="flex flex-col items-center lg:items-start lg:pl-10 xl:pl-12 first:lg:pl-0 text-center lg:text-left group">
-                                <div className="text-[--color-tan] mb-4 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300">
-                                    <Icon size={40} weight={stat.isFloat ? "fill" : "regular"} />
-                                </div>
-                                <div className="font-mono text-3xl xl:text-4xl text-[--color-ink] mb-2 tracking-tight flex items-start gap-1">
-                                    {stat.isFloat ? (
-                                        <span>4.8</span>
-                                    ) : (
-                                        <Counter end={stat.value} suffix={stat.suffix} />
-                                    )}
-                                </div>
-                                <div className="font-sans text-sm text-[--color-muted] flex items-center gap-1">
-                                    {stat.label}
-                                    <span className="text-[--color-tan] leading-none">*</span>
-                                </div>
-                            </div>
-                        );
-                    })}
+        <>
+            {/* ── Mobile: auto-scrolling marquee ticker ── */}
+            <section className="md:hidden bg-white border-b border-[--color-border] py-2.5 overflow-hidden">
+                <style>{`
+                    @keyframes stats-marquee {
+                        0%   { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    .stats-ticker {
+                        display: flex;
+                        width: max-content;
+                        animation: stats-marquee 18s linear infinite;
+                    }
+                    .stats-ticker:hover { animation-play-state: paused; }
+                `}</style>
+                <div className="stats-ticker">
+                    {/* Render twice for seamless loop */}
+                    {[...Array(2)].map((_, copy) => (
+                        <div key={copy} className="flex items-center">
+                            {stats.map((stat, idx) => {
+                                const Icon = stat.icon;
+                                return (
+                                    <React.Fragment key={idx}>
+                                        <div className="flex items-center gap-1.5 px-4 whitespace-nowrap">
+                                            <Icon size={14} weight={stat.isFloat ? "fill" : "regular"} className="text-[--color-tan] shrink-0" />
+                                            <span className="font-mono text-xs font-semibold text-[--color-ink]">
+                                                {stat.isFloat ? "4.8" : <Counter end={stat.value} suffix={stat.suffix} duration={1200} />}
+                                            </span>
+                                            <span className="font-sans text-xs text-[--color-muted]">{stat.label}</span>
+                                        </div>
+                                        <span className="text-[--color-border] text-xs select-none">·</span>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </div>
+                    ))}
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* ── Desktop: original tall section ── */}
+            <section className="hidden md:block bg-white border-b border-[--color-border] py-16 md:py-24 overflow-x-hidden">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-6 lg:divide-x divide-[--color-border]">
+                        {stats.map((stat, idx) => {
+                            const Icon = stat.icon;
+                            return (
+                                <div key={idx} className="flex flex-col items-center lg:items-start lg:pl-10 xl:pl-12 first:lg:pl-0 text-center lg:text-left group">
+                                    <div className="text-[--color-tan] mb-4 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300">
+                                        <Icon size={40} weight={stat.isFloat ? "fill" : "regular"} />
+                                    </div>
+                                    <div className="font-mono text-3xl xl:text-4xl text-[--color-ink] mb-2 tracking-tight flex items-start gap-1">
+                                        {stat.isFloat ? (
+                                            <span>4.8</span>
+                                        ) : (
+                                            <Counter end={stat.value} suffix={stat.suffix} />
+                                        )}
+                                    </div>
+                                    <div className="font-sans text-sm text-[--color-muted] flex items-center gap-1">
+                                        {stat.label}
+                                        <span className="text-[--color-tan] leading-none">*</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }
