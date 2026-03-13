@@ -55,6 +55,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable} ${dmMono.variable}`}>
       <head>
+        {/* Preconnect to NeetoCal for faster script fetch */}
+        <link rel="preconnect" href="https://cdn.neetocal.com" />
         {/* Preload NeetoCal embed script so it starts downloading with the HTML */}
         <link rel="preload" href="https://cdn.neetocal.com/javascript/embed.js" as="script" />
       </head>

@@ -46,6 +46,25 @@ function CalendarSkeleton() {
 
                 {/* Skeleton Grid for Calendar */}
                 <div className="space-y-6 pt-4">
+                    {/* Simulated Progress Bar */}
+                    <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                        <div 
+                            className="h-full bg-[--color-tan] transition-all duration-[3000ms] ease-out"
+                            style={{ 
+                                width: '90%',
+                                animation: 'progressSim 3s ease-out forwards'
+                            }}
+                        />
+                    </div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes progressSim {
+                            0% { width: 0%; }
+                            20% { width: 30%; }
+                            50% { width: 60%; }
+                            100% { width: 90%; }
+                        }
+                    `}} />
+
                     {/* Month Header bar */}
                     <div className="flex items-center justify-between">
                         <div className="h-8 w-40 bg-gray-100 rounded-lg shimmer-container" />
@@ -87,6 +106,16 @@ export function NeetoCalEmbed() {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
+        // 1. Listen for NeetoCal's internal window messages
+        // NeetoCal sends postMessages to handle dynamic height. 
+        // Receiving this means the widget is actively rendering.
+        const handleIframeMessage = (event: MessageEvent) => {
+            if (event.origin.includes('neetocal.com')) {
+                setReady(true);
+            }
+        };
+        window.addEventListener("message", handleIframeMessage);
+
         if (initialized.current) return;
         initialized.current = true;
 
@@ -108,10 +137,24 @@ export function NeetoCalEmbed() {
                 isSidebarAndCoverImgHidden: "false",
                 shouldForwardQueryParams: "false",
             });
-            
-            // Wait for NeetoCal to actually start rendering
-            // We'll hide the skeleton after a slightly longer delay to ensure smooth transition
-            setTimeout(() => setReady(true), 800);
+
+            // 2. MutationObserver to watch for the Iframe injection
+            const container = document.querySelector("#inline-embed-container");
+            if (container) {
+                const observer = new MutationObserver((mutations, obs) => {
+                    const iframe = container.querySelector('iframe');
+                    if (iframe) {
+                        obs.disconnect(); // Stop watching once the iframe is found
+
+                        // Set ready when the iframe explicitly finishes loading its document
+                        iframe.onload = () => {
+                            // Minimal 150ms buffer to ensure NeetoCal's internal React hydration finishes
+                            setTimeout(() => setReady(true), 150);
+                        };
+                    }
+                });
+                observer.observe(container, { childList: true, subtree: true });
+            }
         };
 
         const existingScript = document.querySelector(
@@ -124,39 +167,35 @@ export function NeetoCalEmbed() {
             } else {
                 existingScript.addEventListener('load', initEmbed);
             }
-            return;
+        } else {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.neetocal.com/javascript/embed.js';
+            script.async = true;
+            document.body.appendChild(script);
+            script.onload = () => {
+                (script as any)._loaded = true;
+                initEmbed();
+            };
         }
 
-        const script = document.createElement('script');
-        script.src = 'https://cdn.neetocal.com/javascript/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-        script.onload = () => {
-            (script as any)._loaded = true;
-            initEmbed();
-        };
-
         return () => {
-            // No cleanup of script tag here as it's needed globally/shared
+            window.removeEventListener("message", handleIframeMessage);
         };
     }, []);
 
     return (
         <div ref={containerRef} className="w-full relative min-h-[650px] overflow-hidden">
-            {/* Enhanced Skeleton Motion UI */}
-            <div 
-                className={`absolute inset-0 z-10 bg-white transition-all duration-700 ease-in-out px-4 md:px-0 ${
-                    ready ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100'
-                }`}
+            <div
+                className={`absolute inset-0 z-10 bg-white transition-all duration-700 ease-in-out px-4 md:px-0 ${ready ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100'
+                    }`}
             >
                 <CalendarSkeleton />
             </div>
 
             <div
                 id="inline-embed-container"
-                className={`w-full min-h-[650px] transition-all duration-700 ease-out ${
-                    ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className={`w-full min-h-[650px] transition-all duration-700 ease-out ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
             />
         </div>
     );
