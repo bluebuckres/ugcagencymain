@@ -3,29 +3,79 @@ import { useEffect, useRef, useState } from 'react';
 
 function CalendarSkeleton() {
     return (
-        <div className="animate-pulse space-y-6" aria-label="Loading calendar…">
-            {/* Header bar */}
-            <div className="flex items-center justify-between">
-                <div className="h-6 w-48 bg-gray-200 rounded-lg" />
-                <div className="h-6 w-24 bg-gray-200 rounded-lg" />
-            </div>
-            {/* Day-of-week row */}
-            <div className="grid grid-cols-7 gap-2">
-                {Array.from({ length: 7 }).map((_, i) => (
-                    <div key={`dh-${i}`} className="h-4 bg-gray-100 rounded" />
-                ))}
-            </div>
-            {/* Calendar grid */}
-            <div className="grid grid-cols-7 gap-2">
-                {Array.from({ length: 35 }).map((_, i) => (
-                    <div key={`d-${i}`} className="h-10 bg-gray-100 rounded-lg" />
-                ))}
-            </div>
-            {/* Time-slot list */}
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-                {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={`ts-${i}`} className="h-12 bg-gray-100 rounded-xl" />
-                ))}
+        <div className="relative overflow-hidden w-full h-full min-h-[500px] flex flex-col pt-2" aria-label="Preparing calendar…">
+            {/* Custom Shimmer Animation Style */}
+            <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes shimmer {
+                    100% { transform: translateX(100%); }
+                }
+                .shimmer-container {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .shimmer-container::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    transform: translateX(-100%);
+                    background-image: linear-gradient(
+                        90deg,
+                        rgba(255, 255, 255, 0) 0,
+                        rgba(255, 255, 255, 0.5) 20%,
+                        rgba(255, 255, 255, 0.8) 60%,
+                        rgba(255, 255, 255, 0)
+                    );
+                    animation: shimmer 2s infinite;
+                }
+            `}} />
+
+            <div className="space-y-8 animate-in fade-in duration-500">
+                {/* Descriptive Loading Header */}
+                <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-full bg-orange-50 flex items-center justify-center">
+                            <div className="w-5 h-5 border-2 border-[--color-tan] border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                        <h3 className="font-display text-2xl text-[--color-ink]">Schedule your call</h3>
+                    </div>
+                    <p className="text-[--color-muted] font-sans">Preparing your booking experience...</p>
+                </div>
+
+                {/* Skeleton Grid for Calendar */}
+                <div className="space-y-6 pt-4">
+                    {/* Month Header bar */}
+                    <div className="flex items-center justify-between">
+                        <div className="h-8 w-40 bg-gray-100 rounded-lg shimmer-container" />
+                        <div className="flex gap-2">
+                            <div className="h-8 w-8 bg-gray-100 rounded-full shimmer-container" />
+                            <div className="h-8 w-8 bg-gray-100 rounded-full shimmer-container" />
+                        </div>
+                    </div>
+
+                    {/* Day-of-week row */}
+                    <div className="grid grid-cols-7 gap-3">
+                        {Array.from({ length: 7 }).map((_, i) => (
+                            <div key={`dh-${i}`} className="h-4 bg-gray-50 rounded shimmer-container" />
+                        ))}
+                    </div>
+
+                    {/* Calendar grid cells */}
+                    <div className="grid grid-cols-7 gap-3">
+                        {Array.from({ length: 28 }).map((_, i) => (
+                            <div key={`d-${i}`} className="aspect-square bg-gray-50/50 rounded-xl shimmer-container border border-gray-100/50" />
+                        ))}
+                    </div>
+
+                    {/* Bottom loading bar */}
+                    <div className="pt-6 border-t border-gray-100">
+                        <div className="h-14 w-full bg-gray-50 rounded-2xl shimmer-container flex items-center px-4">
+                            <div className="h-2 w-1/3 bg-gray-200 rounded-full" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
@@ -58,17 +108,17 @@ export function NeetoCalEmbed() {
                 isSidebarAndCoverImgHidden: "false",
                 shouldForwardQueryParams: "false",
             });
-            // Give the iframe a moment to paint, then hide skeleton
-            setTimeout(() => setReady(true), 400);
+            
+            // Wait for NeetoCal to actually start rendering
+            // We'll hide the skeleton after a slightly longer delay to ensure smooth transition
+            setTimeout(() => setReady(true), 800);
         };
 
-        // Check if the preloaded script is already cached / loaded
         const existingScript = document.querySelector(
             'script[src="https://cdn.neetocal.com/javascript/embed.js"]'
         ) as HTMLScriptElement | null;
 
         if (existingScript) {
-            // Script tag already in DOM (from layout preload)
             if ((existingScript as any)._loaded) {
                 initEmbed();
             } else {
@@ -77,7 +127,6 @@ export function NeetoCalEmbed() {
             return;
         }
 
-        // Fallback: inject the script ourselves
         const script = document.createElement('script');
         script.src = 'https://cdn.neetocal.com/javascript/embed.js';
         script.async = true;
@@ -88,23 +137,26 @@ export function NeetoCalEmbed() {
         };
 
         return () => {
-            if (script.parentNode) {
-                script.parentNode.removeChild(script);
-            }
+            // No cleanup of script tag here as it's needed globally/shared
         };
     }, []);
 
     return (
-        <div ref={containerRef} style={{ width: '100%', minHeight: '600px', position: 'relative' }}>
-            {/* Skeleton shown until embed paints */}
-            {!ready && (
-                <div className="absolute inset-0 z-10 bg-white p-4 md:p-8">
-                    <CalendarSkeleton />
-                </div>
-            )}
+        <div ref={containerRef} className="w-full relative min-h-[650px] overflow-hidden">
+            {/* Enhanced Skeleton Motion UI */}
+            <div 
+                className={`absolute inset-0 z-10 bg-white transition-all duration-700 ease-in-out px-4 md:px-0 ${
+                    ready ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100'
+                }`}
+            >
+                <CalendarSkeleton />
+            </div>
+
             <div
                 id="inline-embed-container"
-                style={{ width: '100%', minHeight: '600px' }}
+                className={`w-full min-h-[650px] transition-all duration-700 ease-out ${
+                    ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
             />
         </div>
     );
