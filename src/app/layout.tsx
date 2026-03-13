@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     "Connect your brand with India's top UGC creators. Scroll-stopping video ads for Meta, Instagram & YouTube — from self-serve to full AI+human production.",
   manifest: "/manifest.json",
   icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
     apple: "/icons/icon-192.png",
   },
 };
