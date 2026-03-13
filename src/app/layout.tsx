@@ -52,6 +52,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable} ${dmMono.variable}`}>
+      <head>
+        {/* Preload NeetoCal embed script so it starts downloading with the HTML */}
+        <link rel="preload" href="https://cdn.neetocal.com/javascript/embed.js" as="script" />
+      </head>
       <body className="antialiased min-h-[100dvh] flex flex-col relative w-full overflow-x-hidden">
         <div className="grain-overlay" aria-hidden="true"></div>
         <PostHogProvider>

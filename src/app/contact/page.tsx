@@ -25,13 +25,11 @@ export default function ContactPage() {
                 </Reveal>
             </section>
 
-            {/* NeetoCal Embed */}
+            {/* NeetoCal Embed — no Reveal wrapper; skeleton handles perceived load */}
             <section className="pb-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-                <Reveal delay={200}>
-                    <div className="bg-white rounded-3xl border border-[--color-border] shadow-sm overflow-hidden p-4 md:p-8">
-                        <NeetoCalEmbed />
-                    </div>
-                </Reveal>
+                <div className="bg-white rounded-3xl border border-[--color-border] shadow-sm overflow-hidden p-4 md:p-8">
+                    <NeetoCalEmbed />
+                </div>
             </section>
 
             {/* Quick contact info cards */}
