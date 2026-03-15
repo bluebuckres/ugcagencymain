@@ -47,14 +47,14 @@ export default function Navbar() {
         "SaaS & Software",
     ];
 
-    // Static fallback services for when Supabase is not yet configured
+    // Static fallback services for when Supabase is not yet configured or no search is active
     const fallbackServices = [
-        { name: "Video & Photo Production", icon: <VideoCamera size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
-        { name: "Creative Strategy & Meta Ads", icon: <Lightbulb size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
-        { name: "Creator Hiring", icon: <Users size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
-        { name: "AI UGC Generation", icon: <Robot size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
-        { name: "Local Language UGC", icon: <Translate size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
-        { name: "Event & On-Ground Collabs", icon: <Ticket size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "Video & Photo Production", type: "managed", icon: <VideoCamera size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "Creative Strategy & Meta Ads", type: "managed", icon: <Lightbulb size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "Creator Hiring", type: "self-serve", icon: <Users size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "AI UGC Generation", type: "managed", icon: <Robot size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "Local Language UGC", type: "managed", icon: <Translate size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
+        { name: "Event & On-Ground Collabs", type: "managed", icon: <Ticket size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
     ];
 
     // Debounced search
@@ -205,7 +205,23 @@ export default function Navbar() {
                 </div>
                 <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-1 mt-1">Popular Services</div>
                 {fallbackServices.map((service, idx) => (
-                    <button key={idx} onMouseDown={(e) => e.preventDefault()} className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center justify-between group">
+                    <button 
+                        key={idx} 
+                        onMouseDown={(e) => e.preventDefault()} 
+                        onClick={() => {
+                            const params = new URLSearchParams({ service: service.name });
+                            if (selectedNiche) params.set("niche", selectedNiche);
+                            
+                            if (service.type === "self-serve") {
+                                router.push(`https://app.makeugc.in?${params.toString()}`);
+                            } else {
+                                router.push(`/contact?${params.toString()}`);
+                            }
+                            setIsSearchOpen(false);
+                            setSearchQuery("");
+                        }}
+                        className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center justify-between group"
+                    >
                         <div className="flex items-center gap-3">
                             <div className="p-2 bg-white border border-[--color-border] rounded-lg group-hover:border-[--color-tan] transition-colors">
                                 {service.icon}
