@@ -142,6 +142,27 @@ export default function Footer() {
                         </div>
                     </div>
 
+                    {/* SEO Internal Links — City × Service combinations */}
+                    <div className="py-8 border-t border-[--color-border]">
+                        <h4 className="font-sans text-xs font-medium text-[--color-muted] uppercase tracking-widest mb-4">Popular Searches</h4>
+                        <div className="flex flex-wrap gap-x-4 gap-y-2">
+                            {[
+                                { label: "UGC Creators in Mumbai", href: "/creators" },
+                                { label: "UGC Creators in Delhi", href: "/creators" },
+                                { label: "UGC Creators in Bangalore", href: "/creators" },
+                                { label: "UGC Agency India", href: "/brands" },
+                                { label: "AI UGC Videos", href: "/ai-ugc" },
+                                { label: "UGC for D2C Brands", href: "/brands" },
+                                { label: "Hire UGC Creators", href: "/creators" },
+                                { label: "UGC Video Ads Pricing", href: "/pricing" },
+                            ].map((link) => (
+                                <Link key={link.label} href={link.href} className="font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
                     {/* Bottom Bar */}
                     <div className="pt-8 border-t border-[--color-border] flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="font-sans text-xs text-[--color-muted]">

@@ -42,9 +42,29 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "MakeUGC — UGC Video Ads for D2C & E-commerce Brands",
+  metadataBase: new URL("https://www.makeugc.in"),
+  title: {
+    default: "MakeUGC — UGC Video Ads for D2C & E-commerce Brands",
+    template: "%s | MakeUGC",
+  },
   description:
     "Connect your brand with India's top UGC creators. Scroll-stopping video ads for Meta, Instagram & YouTube — from self-serve to full AI+human production.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "MakeUGC — UGC Video Ads for D2C & E-commerce Brands",
+    description: "Connect your brand with India's top UGC creators. Scroll-stopping video ads for Meta, Instagram & YouTube.",
+    url: "https://www.makeugc.in",
+    siteName: "MakeUGC",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MakeUGC — Performance UGC for Brands",
+    description: "Scroll-stopping video ads for Meta, Instagram & YouTube.",
+  },
   manifest: "/manifest.json",
   icons: {
     icon: "/icon.svg",

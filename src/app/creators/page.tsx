@@ -204,7 +204,7 @@ export default function CreatorsPage() {
                         <div className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] flex justify-center items-center">
                             <Reveal delay={400} className="w-full h-full">
                                 <div className="relative w-full h-full">
-                                    <Image src="/image/creator1.png" alt="MakeUGC Creator" fill className="object-contain lg:object-right-bottom" priority />
+                                    <Image src="/image/creator1.png" alt="MakeUGC Creator" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain lg:object-right-bottom" priority />
                                 </div>
                             </Reveal>
                         </div>

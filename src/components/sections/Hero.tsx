@@ -62,7 +62,7 @@ export function Hero() {
                                 style={{ transform: `rotate(${rotationOffsets[2] - 12}deg) translateZ(-50px)`, zIndex: 1 }}
                             >
                                 <div className="absolute inset-0 bg-black/10 mix-blend-multiply z-10 group-hover:opacity-0 transition-opacity duration-300"></div>
-                                <Image src="/image/hero3.png" alt="UGC Creator Example 3" fill className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
+                                <Image src="/image/hero3.png" alt="UGC Creator Example 3" fill sizes="(max-width: 768px) 100vw, 42vw" className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
                             </div>
 
                             {/* Card 2 - Middle (Center) */}
@@ -71,7 +71,7 @@ export function Hero() {
                                 style={{ transform: `rotate(${rotationOffsets[1]}deg) translateZ(0px)`, zIndex: 2 }}
                             >
                                 <div className="absolute inset-0 bg-black/5 mix-blend-multiply z-10 group-hover:opacity-0 transition-opacity duration-300"></div>
-                                <Image src="/image/hero2.png" alt="UGC Creator Example 2" fill className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
+                                <Image src="/image/hero2.png" alt="UGC Creator Example 2" fill sizes="(max-width: 768px) 100vw, 42vw" className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
                             </div>
 
                             {/* Card 1 - Front (Right) */}
@@ -82,7 +82,7 @@ export function Hero() {
                                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur tracking-widest text-[10px] uppercase font-mono px-3 py-1 rounded-full text-[--color-ink] z-20 shadow-sm">
                                     Top Performing
                                 </div>
-                                <Image src="/image/hero1.png" alt="UGC Creator Example 1" fill className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
+                                <Image src="/image/hero1.png" alt="UGC Creator Example 1" fill sizes="(max-width: 768px) 100vw, 42vw" className="object-cover group-hover:scale-105 transition-transform duration-500" priority />
                             </div>
                         </div>
                     </div>

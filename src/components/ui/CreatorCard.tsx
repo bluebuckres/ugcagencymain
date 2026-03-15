@@ -16,7 +16,7 @@ export function CreatorCard({ name, city, niches, platforms, delivery, rating, i
         <div className="bg-white border border-[--color-border] rounded-2xl p-6 hover:shadow-[0_8px_32px_-8px_rgba(8,105,114,0.15)] hover:-translate-y-[2px] transition-all duration-300 flex flex-col h-full group">
             <div className="flex items-center gap-4 mb-6">
                 <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border border-[--color-border]">
-                    <Image src={imageUrl} alt={name} fill className="object-cover" />
+                    <Image src={imageUrl} alt={name} fill sizes="56px" className="object-cover" />
                 </div>
                 <div>
                     <h4 className="font-sans text-sm font-medium text-[--color-ink]">{name}</h4>

@@ -35,6 +35,14 @@ const db = {
     }
 };
 
+export const revalidate = 3600; // 1 hr ISR
+
+export async function generateStaticParams() {
+    return Object.keys(db).map((slug) => ({
+        slug: slug,
+    }));
+}
+
 export function generateMetadata({ params }: { params: { slug: string } }) {
     const post = db[params.slug as keyof typeof db];
     if (!post) return { title: 'Post Not Found | MakeUGC' };
@@ -106,6 +114,22 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     <div>
                         <p className="font-sans font-medium text-[--color-ink]">Written by {post.author}</p>
                         <p className="font-sans text-sm text-[--color-muted]">We test thousands of ads a month. We share what works here.</p>
+                    </div>
+                </div>
+
+                {/* Internal Links — SEO link juice */}
+                <div className="mt-12 pt-8 border-t border-[--color-border]">
+                    <h3 className="font-sans text-sm font-medium text-[--color-muted] uppercase tracking-widest mb-4">Related Pages</h3>
+                    <div className="flex flex-wrap gap-3">
+                        <Link href="/creators" className="font-sans text-sm text-[--color-sage] hover:text-[--color-tan] underline underline-offset-4 transition-colors">Browse UGC Creators</Link>
+                        <span className="text-[--color-border]">·</span>
+                        <Link href="/brands" className="font-sans text-sm text-[--color-sage] hover:text-[--color-tan] underline underline-offset-4 transition-colors">For Brands</Link>
+                        <span className="text-[--color-border]">·</span>
+                        <Link href="/ai-ugc" className="font-sans text-sm text-[--color-sage] hover:text-[--color-tan] underline underline-offset-4 transition-colors">AI UGC Videos</Link>
+                        <span className="text-[--color-border]">·</span>
+                        <Link href="/pricing" className="font-sans text-sm text-[--color-sage] hover:text-[--color-tan] underline underline-offset-4 transition-colors">UGC Pricing</Link>
+                        <span className="text-[--color-border]">·</span>
+                        <Link href="/how-it-works" className="font-sans text-sm text-[--color-sage] hover:text-[--color-tan] underline underline-offset-4 transition-colors">How It Works</Link>
                     </div>
                 </div>
             </article>
