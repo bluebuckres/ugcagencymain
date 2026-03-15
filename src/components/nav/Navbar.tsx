@@ -1,45 +1,54 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, List, X, Tag, CaretDown, MagnifyingGlass, UserCircle, VideoCamera, Lightbulb, Users, Robot, Translate, Ticket } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, List, X, Tag, CaretDown, MagnifyingGlass, UserCircle, VideoCamera, Lightbulb, Users, Robot, Translate, Ticket, SpinnerGap, Warning } from "@phosphor-icons/react";
+import { searchServices } from "@/actions/searchServices";
+import type { Service } from "@/types/service";
+
+// Map Supabase icon_key → Phosphor icon
+const ICON_MAP: Record<string, React.ReactNode> = {
+    users:     <Users size={18} />,
+    robot:     <Robot size={18} />,
+    translate: <Translate size={18} />,
+    video:     <VideoCamera size={18} />,
+    lightbulb: <Lightbulb size={18} />,
+    ticket:    <Ticket size={18} />,
+};
+
+const TRENDING_PILLS = ["UGC Video", "AI Content", "Creator Hiring", "Meta Ads", "Regional UGC"];
 
 export default function Navbar() {
+    const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-    // New states for the interactive UI elements
+    // Search & niche states
     const [isLocationOpen, setIsLocationOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [selectedNiche, setSelectedNiche] = useState<string | null>(null);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [searchResults, setSearchResults] = useState<Service[]>([]);
+    const [isSearching, setIsSearching] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
+    const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
     // Industry / Niche options
     const niches = [
-        "Beauty & Skincare",
-        "Fashion & Apparel",
-        "Fitness & Wellness",
-        "Food & Beverage",
-        "Home & Living",
-        "Tech & Gadgets",
-        "Baby & Parenting",
-        "Finance & Fintech",
-        "Travel & Hospitality",
-        "Pet Care",
-        "Health & Supplements",
-        "Jewellery & Accessories",
-        "Education & E-learning",
-        "Automotive",
-        "Gaming",
-        "Sports & Outdoors",
-        "Sustainable & Eco",
-        "Real Estate",
-        "Entertainment & Media",
-        "Luxury & Premium",
-        "D2C & E-commerce",
+        "Beauty & Skincare", "Fashion & Apparel", "Fitness & Wellness",
+        "Food & Beverage", "Home & Living", "Tech & Gadgets",
+        "Baby & Parenting", "Finance & Fintech", "Travel & Hospitality",
+        "Pet Care", "Health & Supplements", "Jewellery & Accessories",
+        "Education & E-learning", "Automotive", "Gaming",
+        "Sports & Outdoors", "Sustainable & Eco", "Real Estate",
+        "Entertainment & Media", "Luxury & Premium", "D2C & E-commerce",
         "SaaS & Software",
     ];
-    const services = [
+
+    // Static fallback services for when Supabase is not yet configured
+    const fallbackServices = [
         { name: "Video & Photo Production", icon: <VideoCamera size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
         { name: "Creative Strategy & Meta Ads", icon: <Lightbulb size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
         { name: "Creator Hiring", icon: <Users size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
@@ -47,6 +56,64 @@ export default function Navbar() {
         { name: "Local Language UGC", icon: <Translate size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
         { name: "Event & On-Ground Collabs", icon: <Ticket size={20} className="text-[--color-muted] group-hover:text-[--color-tan] transition-colors" /> },
     ];
+
+    // Debounced search
+    const runSearch = useCallback(async (q: string) => {
+        if (!q.trim()) {
+            setSearchResults([]);
+            setHasSearched(false);
+            setIsSearching(false);
+            return;
+        }
+        setIsSearching(true);
+        try {
+            const results = await searchServices(q, selectedNiche);
+            setSearchResults(results);
+            setHasSearched(true);
+        } catch {
+            setSearchResults([]);
+            setHasSearched(true);
+        } finally {
+            setIsSearching(false);
+        }
+    }, [selectedNiche]);
+
+    const handleSearchChange = (value: string) => {
+        setSearchQuery(value);
+        if (debounceRef.current) clearTimeout(debounceRef.current);
+        if (!value.trim()) {
+            setSearchResults([]);
+            setHasSearched(false);
+            setIsSearching(false);
+            return;
+        }
+        setIsSearching(true);
+        debounceRef.current = setTimeout(() => runSearch(value), 300);
+    };
+
+    const handleServiceClick = (service: Service) => {
+        const params = new URLSearchParams({
+            service: service.name,
+            serviceId: service.id,
+            category: service.category,
+        });
+        if (selectedNiche) params.set("niche", selectedNiche);
+
+        if (service.type === "self-serve") {
+            router.push(`https://app.makeugc.in?${params.toString()}`);
+        } else {
+            router.push(`/contact?${params.toString()}`);
+        }
+        setIsSearchOpen(false);
+        setSearchQuery("");
+        setSearchResults([]);
+        setHasSearched(false);
+    };
+
+    const handleTrendingClick = (pill: string) => {
+        setSearchQuery(pill);
+        runSearch(pill);
+    };
 
     useEffect(() => {
         let ticking = false;
@@ -59,11 +126,98 @@ export default function Navbar() {
                 ticking = true;
             }
         };
-
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Render search results dropdown content
+    const renderSearchDropdown = () => {
+        // Loading state
+        if (isSearching) {
+            return (
+                <div className="px-5 py-8 flex flex-col items-center gap-3">
+                    <SpinnerGap size={24} className="text-[--color-tan] animate-spin" />
+                    <span className="font-sans text-sm text-[--color-muted]">Searching services...</span>
+                </div>
+            );
+        }
+
+        // Results
+        if (hasSearched && searchResults.length > 0) {
+            return (
+                <>
+                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-1">Results</div>
+                    {searchResults.map((service) => (
+                        <button
+                            key={service.id}
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => handleServiceClick(service)}
+                            className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center justify-between group"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-white border border-[--color-border] rounded-lg group-hover:border-[--color-tan] transition-colors text-[--color-muted] group-hover:text-[--color-tan]">
+                                    {ICON_MAP[service.icon_key] || <MagnifyingGlass size={18} />}
+                                </div>
+                                <div>
+                                    <span className="font-medium group-hover:text-[--color-tan] transition-colors block">{service.name}</span>
+                                    <span className="font-mono text-[10px] text-[--color-muted]">{service.category}</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${service.type === 'self-serve' ? 'bg-green-50 text-green-600 border border-green-200' : 'bg-purple-50 text-purple-600 border border-purple-200'}`}>
+                                    {service.type === 'self-serve' ? 'Self-serve' : 'Managed'}
+                                </span>
+                                <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[--color-tan]" />
+                            </div>
+                        </button>
+                    ))}
+                </>
+            );
+        }
+
+        // No results
+        if (hasSearched && searchResults.length === 0) {
+            return (
+                <div className="px-5 py-8 flex flex-col items-center gap-3 text-center">
+                    <Warning size={24} className="text-[--color-muted]" />
+                    <span className="font-sans text-sm text-[--color-muted]">No services matched &ldquo;{searchQuery}&rdquo;</span>
+                    <span className="font-sans text-xs text-[--color-muted]/60">Try a different keyword</span>
+                </div>
+            );
+        }
+
+        // Default: trending pills + fallback services
+        return (
+            <>
+                <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Trending</div>
+                <div className="flex flex-wrap gap-2 px-4 pb-3">
+                    {TRENDING_PILLS.map((pill, idx) => (
+                        <button
+                            key={idx}
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => handleTrendingClick(pill)}
+                            className="font-mono text-xs bg-[--color-cream] text-[--color-sage] border border-[--color-border] px-3 py-1.5 rounded-full hover:border-[--color-tan] hover:text-[--color-tan] transition-colors"
+                        >
+                            {pill}
+                        </button>
+                    ))}
+                </div>
+                <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-1 mt-1">Popular Services</div>
+                {fallbackServices.map((service, idx) => (
+                    <button key={idx} onMouseDown={(e) => e.preventDefault()} className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center justify-between group">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-white border border-[--color-border] rounded-lg group-hover:border-[--color-tan] transition-colors">
+                                {service.icon}
+                            </div>
+                            <span className="font-medium group-hover:text-[--color-tan] transition-colors">{service.name}</span>
+                        </div>
+                        <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[--color-tan]" />
+                    </button>
+                ))}
+            </>
+        );
+    };
 
     return (
         <>
@@ -87,7 +241,7 @@ export default function Navbar() {
                         />
                     </Link>
 
-                    {/* Middle Section: Location and Service Search (Urban Company Style) */}
+                    {/* Middle Section: Location and Service Search */}
                     <div className="hidden lg:flex items-center flex-grow max-w-3xl mx-8 relative">
                         {/* Location Selector */}
                         <div className="relative z-50">
@@ -105,7 +259,6 @@ export default function Navbar() {
                                 <CaretDown size={16} className={`text-[--color-muted] transition-transform shrink-0 ${isLocationOpen ? "rotate-180" : ""}`} />
                             </button>
 
-                            {/* Industry / Niche Dropdown */}
                             {isLocationOpen && (
                                 <div className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[380px] overflow-y-auto">
                                     <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Industry / Niche</div>
@@ -113,8 +266,7 @@ export default function Navbar() {
                                         <button
                                             key={idx}
                                             onClick={() => { setSelectedNiche(niche); setIsLocationOpen(false); }}
-                                            className={`w-full text-left px-5 py-3 font-sans text-sm hover:bg-[--color-cream] hover:text-[--color-tan] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium bg-[--color-cream]" : "text-[--color-ink]"
-                                                }`}
+                                            className={`w-full text-left px-5 py-3 font-sans text-sm hover:bg-[--color-cream] hover:text-[--color-tan] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium bg-[--color-cream]" : "text-[--color-ink]"}`}
                                         >
                                             {niche}
                                         </button>
@@ -128,9 +280,14 @@ export default function Navbar() {
                             <div
                                 className={`flex items-center gap-3 bg-white border ${isSearchOpen ? 'border-[--color-tan] ring-1 ring-[--color-tan]' : 'border-[--color-border]'} rounded-r-2xl px-5 py-3 transition-colors`}
                             >
-                                <MagnifyingGlass size={22} className="text-[--color-muted]" />
+                                {isSearching
+                                    ? <SpinnerGap size={22} className="text-[--color-tan] animate-spin shrink-0" />
+                                    : <MagnifyingGlass size={22} className="text-[--color-muted] shrink-0" />
+                                }
                                 <input
                                     type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => handleSearchChange(e.target.value)}
                                     placeholder="Search for 'Video Ads', 'AI UGC'..."
                                     className="w-full font-sans text-sm text-[--color-ink] placeholder:text-[--color-muted] focus:outline-none bg-transparent"
                                     onFocus={() => {
@@ -143,21 +300,10 @@ export default function Navbar() {
                                 />
                             </div>
 
-                            {/* Service Metadata Dropdown */}
+                            {/* Search Results Dropdown */}
                             {isSearchOpen && (
                                 <div className="absolute top-full left-0 mt-2 w-full bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[400px] overflow-y-auto">
-                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Popular Services Metadata</div>
-                                    {services.map((service, idx) => (
-                                        <button key={idx} className="w-full text-left px-5 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center justify-between group">
-                                            <div className="flex items-center gap-3">
-                                                <div className="p-2 bg-white border border-[--color-border] rounded-lg group-hover:border-[--color-tan] transition-colors">
-                                                    {service.icon}
-                                                </div>
-                                                <span className="font-medium group-hover:text-[--color-tan] transition-colors">{service.name}</span>
-                                            </div>
-                                            <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[--color-tan]" />
-                                        </button>
-                                    ))}
+                                    {renderSearchDropdown()}
                                 </div>
                             )}
                         </div>
@@ -165,7 +311,6 @@ export default function Navbar() {
 
                     {/* Right Section: Profile & Universal Menu */}
                     <div className="flex items-center gap-2 md:gap-4 z-50">
-                        {/* Profile Icon */}
                         <Link
                             href="/creators"
                             className="flex items-center gap-2 group p-2 md:px-4 md:py-2 hover:bg-[--color-cream] rounded-2xl transition-colors shrink-0"
@@ -175,7 +320,6 @@ export default function Navbar() {
                             <span className="hidden sm:block font-sans text-sm font-medium text-[--color-ink] group-hover:text-[--color-tan] transition-colors whitespace-nowrap">Creator Profile</span>
                         </Link>
 
-                        {/* Universal Hamburger Menu (Now on Desktop too) */}
                         <button
                             onClick={() => setIsMobileOpen(true)}
                             className="p-2 md:px-4 md:py-2 text-[--color-ink] hover:bg-[--color-cream] rounded-2xl transition-colors flex items-center gap-2 group shrink-0"
@@ -187,7 +331,7 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Mobile Search & Location (Shows below the navbar row) */}
+                {/* Mobile Search & Location */}
                 <div className="lg:hidden w-full px-4 pb-3 pt-2">
                     <div className="flex items-center w-full shadow-sm rounded-xl">
                         <button
@@ -198,9 +342,14 @@ export default function Navbar() {
                             <span className="font-sans text-xs text-[--color-ink] truncate">{selectedNiche ?? "Industry"}</span>
                         </button>
                         <div className="flex items-center bg-white border border-l-0 border-[--color-border] rounded-r-xl px-3 py-3 flex-grow focus-within:border-[--color-tan] transition-colors relative">
-                            <MagnifyingGlass size={18} className="text-[--color-muted] mr-2 shrink-0" />
+                            {isSearching
+                                ? <SpinnerGap size={18} className="text-[--color-tan] animate-spin mr-2 shrink-0" />
+                                : <MagnifyingGlass size={18} className="text-[--color-muted] mr-2 shrink-0" />
+                            }
                             <input
                                 type="text"
+                                value={searchQuery}
+                                onChange={(e) => handleSearchChange(e.target.value)}
                                 placeholder="Search services..."
                                 className="w-full font-sans text-sm text-[--color-ink] placeholder:text-[--color-muted] focus:outline-none bg-transparent"
                                 onFocus={() => {
@@ -212,18 +361,10 @@ export default function Navbar() {
                                 }}
                             />
 
-                            {/* Mobile Service Metadata Dropdown */}
+                            {/* Mobile Search Dropdown */}
                             {isSearchOpen && (
                                 <div className="absolute top-full right-0 left-0 mt-2 w-[calc(100%+33.333%)] -ml-[33.333%] bg-white border border-[--color-border] rounded-2xl shadow-xl py-2 max-h-[300px] overflow-y-auto z-50">
-                                    <div className="px-4 py-2 font-mono text-xs text-[--color-muted] uppercase tracking-widest border-b border-[--color-border] mb-2">Popular Services</div>
-                                    {services.map((service, idx) => (
-                                        <button key={idx} className="w-full text-left px-4 py-3 font-sans text-sm text-[--color-ink] hover:bg-[--color-cream] transition-colors flex items-center gap-3">
-                                            <div className="p-1.5 bg-white border border-[--color-border] rounded-md">
-                                                {service.icon}
-                                            </div>
-                                            <span className="truncate">{service.name}</span>
-                                        </button>
-                                    ))}
+                                    {renderSearchDropdown()}
                                 </div>
                             )}
 
@@ -235,8 +376,7 @@ export default function Navbar() {
                                         <button
                                             key={idx}
                                             onClick={() => { setSelectedNiche(niche); setIsLocationOpen(false); }}
-                                            className={`w-full text-left px-4 py-3 font-sans text-sm hover:bg-[--color-cream] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium" : "text-[--color-ink]"
-                                                }`}
+                                            className={`w-full text-left px-4 py-3 font-sans text-sm hover:bg-[--color-cream] transition-colors ${selectedNiche === niche ? "text-[--color-tan] font-medium" : "text-[--color-ink]"}`}
                                         >
                                             {niche}
                                         </button>

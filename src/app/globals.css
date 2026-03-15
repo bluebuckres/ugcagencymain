@@ -12,6 +12,12 @@
     --color-ink: #1a1a18;
     --color-muted: #7a7670;
     --color-border: #e8e2d9;
+    
+    /* Onboarding Design System */
+    --color-navy: #0F1F3D;
+    --color-blue: #2D6EF5;
+    --color-teal: #1D9E75;
+    --color-background-alt: #F4F6FA;
   }
 
   /* Light theme only as per requirement */

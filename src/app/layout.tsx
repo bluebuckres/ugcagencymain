@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans, DM_Mono } from "next/font/google";
+import { Fraunces, DM_Sans, DM_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -20,9 +20,15 @@ const dmSans = DM_Sans({
 });
 
 const dmMono = DM_Mono({
-  subsets: ["latin"],
   weight: ["400", "500"],
+  subsets: ["latin"],
   variable: "--font-dm-mono",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
   display: "swap",
 });
 
@@ -47,13 +53,15 @@ export const metadata: Metadata = {
   },
 };
 
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${dmSans.variable} ${dmMono.variable} ${sora.variable}`}>
       <head>
         {/* Preconnect to NeetoCal for faster script fetch */}
         <link rel="preconnect" href="https://cdn.neetocal.com" />
@@ -63,10 +71,9 @@ export default function RootLayout({
       <body className="antialiased min-h-[100dvh] flex flex-col relative w-full overflow-x-hidden">
         <div className="grain-overlay" aria-hidden="true"></div>
         <PostHogProvider>
-          <Navbar />
-          {children}
-          <TrustedBrands />
-          <Footer />
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
           <ThemeSwitcher />
         </PostHogProvider>
         <script

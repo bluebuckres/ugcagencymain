@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--color-ink)",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)"],
+        display: ["var(--font-sora)", "var(--font-fraunces)"],
         sans: ["var(--font-dm-sans)"],
         mono: ["var(--font-dm-mono)"],
       },

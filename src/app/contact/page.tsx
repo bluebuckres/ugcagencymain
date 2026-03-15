@@ -1,12 +1,30 @@
-import React from 'react';
+"use client";
+
+import React, { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { NeetoCalEmbed } from '@/components/sections/ContactForm';
 import { Reveal } from '@/components/ui/Reveal';
-import { EnvelopeSimple, Phone } from "@phosphor-icons/react/dist/ssr";
+import { EnvelopeSimple, Phone, CheckCircle } from "@phosphor-icons/react";
 
-export const metadata = {
-    title: "Schedule a Call | MakeUGC",
-    description: "Book a call with the MakeUGC team. Discuss your UGC strategy, get a demo of our platform, or plan your next campaign.",
-};
+function ServiceBanner() {
+    const searchParams = useSearchParams();
+    const service = searchParams.get("service");
+    const niche = searchParams.get("niche");
+
+    if (!service) return null;
+
+    return (
+        <Reveal delay={150}>
+            <div className="mb-8 p-4 rounded-2xl bg-green-50 border border-green-200 flex items-center gap-3 max-w-xl mx-auto">
+                <CheckCircle size={24} className="text-green-600 shrink-0" />
+                <div className="font-sans text-sm text-[--color-ink]">
+                    Enquiring about: <strong className="text-green-700">{service}</strong>
+                    {niche ? <span className="text-[--color-muted]"> for {niche}</span> : ""}
+                </div>
+            </div>
+        </Reveal>
+    );
+}
 
 export default function ContactPage() {
     return (
@@ -25,7 +43,14 @@ export default function ContactPage() {
                 </Reveal>
             </section>
 
-            {/* NeetoCal Embed — no Reveal wrapper; skeleton handles perceived load */}
+            {/* Service Banner from search params */}
+            <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+                <Suspense fallback={null}>
+                    <ServiceBanner />
+                </Suspense>
+            </section>
+
+            {/* NeetoCal Embed */}
             <section className="pb-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
                 <div className="bg-white rounded-3xl border border-[--color-border] shadow-sm overflow-hidden p-4 md:p-8">
                     <NeetoCalEmbed />
