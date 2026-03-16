@@ -7,7 +7,7 @@ import { ContactServiceBanner } from '@/components/sections/ContactServiceBanner
 import { BookCallButton } from '@/components/sections/BookCallButton';
 
 export const metadata: Metadata = {
-    title: "Get Started | MakeUGC",
+    title: "Get Started",
     description: "Submit a creative brief on the MakeUGC dashboard or book a strategy call. Whether you're a brand or an agency, launch your first UGC campaign in minutes.",
     alternates: {
         canonical: "https://www.makeugc.in/contact",

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Fraunces, DM_Sans, DM_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/nav/Navbar";
@@ -82,12 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable} ${dmMono.variable} ${sora.variable}`}>
-      <head>
-        {/* Preconnect to NeetoCal for faster script fetch */}
-        <link rel="preconnect" href="https://cdn.neetocal.com" />
-        {/* Preload NeetoCal embed script so it starts downloading with the HTML */}
-        <link rel="preload" href="https://cdn.neetocal.com/javascript/embed.js" as="script" />
-      </head>
+      <head />
       <body className="antialiased min-h-[100dvh] flex flex-col relative w-full overflow-x-hidden">
         <div className="grain-overlay" aria-hidden="true"></div>
         <PostHogProvider>
@@ -113,6 +109,18 @@ export default function RootLayout({
               }
             `,
           }}
+        />
+
+        {/* ── NeetoCal: initialise the embed queue as early as possible ── */}
+        <Script id="neetocal-init" strategy="afterInteractive">
+          {`window.neetoCal = window.neetoCal || { embed: function() { (neetoCal.q = neetoCal.q || []).push(arguments); } };`}
+        </Script>
+
+        {/* ── NeetoCal embed SDK ── */}
+        <Script
+          id="neetocal-sdk"
+          src="https://cdn.neetocal.com/javascript/embed.js"
+          strategy="afterInteractive"
         />
       </body>
     </html>
