@@ -1,5 +1,5 @@
 // sw.js
-const CACHE_NAME = 'makeugc-v1';
+const CACHE_NAME = 'makeugc-v2';
 const STATIC_ASSETS = [
     '/',
     '/manifest.json',
@@ -29,8 +29,23 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
+/** Only cache same-origin http/https GET requests — never chrome-extension, data:, etc. */
+function isCacheable(request) {
+    const url = new URL(request.url);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
+    // Skip Next.js dynamic image optimiser — it requires a live server
+    if (url.pathname.startsWith('/_next/image')) return false;
+    // Skip third-party analytics / tracking (PostHog, etc.)
+    if (!url.hostname.endsWith('makeugc.in') && !url.hostname.endsWith('neetocal.com')) return false;
+    return true;
+}
+
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
+
+    // Always skip non-cacheable requests — let the browser handle them normally
+    if (!isCacheable(event.request)) return;
+
     // Network-first for navigation requests
     if (event.request.mode === 'navigate') {
         event.respondWith(
@@ -38,14 +53,20 @@ self.addEventListener('fetch', (event) => {
         );
         return;
     }
-    // Cache-first for images and fonts
+
+    // Cache-first for static images and fonts (same-origin only)
     if (
         event.request.destination === 'image' ||
         event.request.destination === 'font'
     ) {
         event.respondWith(
-            caches.match(event.request).then((response) => {
-                return response || fetch(event.request).then((fetchRes) => {
+            caches.match(event.request).then((cached) => {
+                if (cached) return cached;
+                return fetch(event.request).then((fetchRes) => {
+                    // Only cache valid, opaque-safe responses
+                    if (!fetchRes || fetchRes.status !== 200 || fetchRes.type === 'error') {
+                        return fetchRes;
+                    }
                     return caches.open(CACHE_NAME).then((cache) => {
                         cache.put(event.request, fetchRes.clone());
                         return fetchRes;
@@ -55,10 +76,14 @@ self.addEventListener('fetch', (event) => {
         );
         return;
     }
-    // Network-first for everything else
+
+    // Network-first for everything else (JS, CSS, pages)
     event.respondWith(
         fetch(event.request)
             .then((response) => {
+                if (!response || response.status !== 200 || response.type === 'error') {
+                    return response;
+                }
                 const resClone = response.clone();
                 caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
                 return response;
