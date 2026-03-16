@@ -5,10 +5,10 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 
-// Initialize PostHog
-if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
+// Initialize PostHog with proxy
+if (typeof window !== 'undefined') {
+    posthog.init('phc_pPwLGTzkb58fgL5MjeHgoSWahKp8JWxPThYXbK4ChTt', {
+        api_host: 'https://s.makeugc.in',
         defaults: '2026-01-30',
         capture_pageview: false // We capture manually below to handle Next.js App Router
     });
