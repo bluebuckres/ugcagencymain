@@ -22,8 +22,9 @@ interface CreatorProfile {
     imageUrl: string;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const creator = await getCreator(params.slug) as CreatorProfile | null;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const creator = await getCreator(slug) as CreatorProfile | null;
     if (!creator) return { title: "Creator Not Found | MakeUGC" };
 
     // noindex thin pages — creator profiles with no reviews/jobs hurt domain authority
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `${creator.name} — UGC Creator in ${creator.city} | MakeUGC`,
         description: `Hire ${creator.name}, a vetted UGC creator in ${creator.city} specializing in ${creator.niches.join(", ")}. View portfolio and book on MakeUGC.`,
         alternates: {
-            canonical: `https://www.makeugc.in/hire/${params.slug}`,
+            canonical: `https://www.makeugc.in/hire/${slug}`,
         },
         ...(isThinPage && {
             robots: {
@@ -44,8 +45,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default async function HireCreatorPage({ params }: { params: { slug: string } }) {
-    const creator = await getCreator(params.slug) as CreatorProfile | null;
+export default async function HireCreatorPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const creator = await getCreator(slug) as CreatorProfile | null;
 
     if (!creator) {
         notFound();
