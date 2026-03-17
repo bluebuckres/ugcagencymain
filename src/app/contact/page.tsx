@@ -32,10 +32,10 @@ export default function ContactPage() {
                     </Reveal>
                     <Reveal delay={150}>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/#how-it-works" className="px-6 py-3 rounded-xl border-2 border-[--color-tan] text-[--color-ink] font-sans font-medium hover:bg-[--color-tan] hover:text-white transition-colors w-full sm:w-auto">
+                            <Link href="/how-it-works" className="px-6 py-3 rounded-xl border-2 border-[--color-tan] text-[--color-ink] font-sans font-medium hover:bg-[--color-tan] hover:text-white transition-colors w-full sm:w-auto">
                                 How it works
                             </Link>
-                            <Link href="/#pricing" className="px-6 py-3 rounded-xl border-2 border-[--color-border] text-[--color-muted] font-sans font-medium hover:border-[--color-tan] hover:text-[--color-tan] transition-colors w-full sm:w-auto">
+                            <Link href="/pricing" className="px-6 py-3 rounded-xl border-2 border-[--color-border] text-[--color-muted] font-sans font-medium hover:border-[--color-tan] hover:text-[--color-tan] transition-colors w-full sm:w-auto">
                                 View Pricing
                             </Link>
                         </div>
