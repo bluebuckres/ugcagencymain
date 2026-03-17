@@ -26,9 +26,19 @@ export default function ContactPage() {
                         </h1>
                     </Reveal>
                     <Reveal delay={100}>
-                        <p className="font-sans text-lg md:text-xl text-[--color-muted] leading-relaxed max-w-2xl mx-auto">
+                        <p className="font-sans text-lg md:text-xl text-[--color-muted] leading-relaxed max-w-2xl mx-auto mb-8">
                             Transform your performance marketing with authentic UGC. Whether you&apos;re an ambitious brand or a scaling agency, we provide the infrastructure to launch winning campaigns in 48 hours.
                         </p>
+                    </Reveal>
+                    <Reveal delay={150}>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <Link href="/#how-it-works" className="px-6 py-3 rounded-xl border-2 border-[--color-tan] text-[--color-ink] font-sans font-medium hover:bg-[--color-tan] hover:text-white transition-colors w-full sm:w-auto">
+                                How it works
+                            </Link>
+                            <Link href="/#pricing" className="px-6 py-3 rounded-xl border-2 border-[--color-border] text-[--color-muted] font-sans font-medium hover:border-[--color-tan] hover:text-[--color-tan] transition-colors w-full sm:w-auto">
+                                View Pricing
+                            </Link>
+                        </div>
                     </Reveal>
                 </div>
             </section>
