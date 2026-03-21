@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { ProblemStatement } from "@/components/sections/ProblemStatement";
+import { CategoriesCarousel } from "@/components/sections/CategoriesCarousel";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Services } from "@/components/sections/Services";
 import { AppPreview } from "@/components/sections/AppPreview";
@@ -49,6 +50,7 @@ export default function Home() {
         <Hero />
         <StatsBar />
         <ProblemStatement />
+        <CategoriesCarousel />
         <HowItWorks />
         <Services />
         <AppPreview />
