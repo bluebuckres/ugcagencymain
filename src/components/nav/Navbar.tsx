@@ -328,12 +328,11 @@ export default function Navbar() {
                     {/* Right Section: Profile & Universal Menu */}
                     <div className="flex items-center gap-2 md:gap-4 z-50">
                         <Link
-                            href="/creators"
+                            href="https://app.makeugc.in"
                             className="flex items-center gap-2 group p-2 md:px-4 md:py-2 hover:bg-[--color-cream] rounded-2xl transition-colors shrink-0"
                             title="Creator Profile"
                         >
                             <UserCircle size={32} className="text-[--color-ink] group-hover:text-[--color-tan] transition-colors" />
-                            <span className="hidden sm:block font-sans text-sm font-medium text-[--color-ink] group-hover:text-[--color-tan] transition-colors whitespace-nowrap">Creator Profile</span>
                         </Link>
 
                         <button
@@ -435,7 +434,7 @@ export default function Navbar() {
                                 <ArrowRight size={20} />
                             </Link>
 
-                            <Link href="/creators" onClick={() => setIsMobileOpen(false)} className="bg-[--color-cream] text-[--color-ink] border border-[--color-border] px-6 py-4 rounded-2xl text-lg font-sans font-medium flex items-center justify-center gap-2 w-full hover:bg-white transition-colors">
+                            <Link href="https://app.makeugc.in" onClick={() => setIsMobileOpen(false)} className="bg-[--color-cream] text-[--color-ink] border border-[--color-border] px-6 py-4 rounded-2xl text-lg font-sans font-medium flex items-center justify-center gap-2 w-full hover:bg-white transition-colors">
                                 <UserCircle size={24} />
                                 Create Creator Profile
                             </Link>

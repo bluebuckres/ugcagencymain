@@ -86,7 +86,7 @@ export function CreatorNetwork() {
                 </div>
 
                 <Reveal delay={600}>
-                    <Button variant="secondary" href="/creators" className="w-full sm:w-auto">
+                    <Button variant="secondary" href="https://app.makeugc.in" className="w-full sm:w-auto">
                         Browse All Creators <span className="ml-2 font-sans font-light">→</span>
                     </Button>
                 </Reveal>
