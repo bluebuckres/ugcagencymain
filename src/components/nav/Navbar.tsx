@@ -88,8 +88,16 @@ export default function Navbar() {
             return;
         }
         setIsSearching(true);
-        debounceRef.current = setTimeout(() => runSearch(value), 300);
+        debounceRef.current = setTimeout(() => runSearch(value), 500);
     };
+
+    // Refresh search when niche changes
+    useEffect(() => {
+        if (searchQuery.trim() && hasSearched) {
+            runSearch(searchQuery);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedNiche, runSearch]);
 
     const handleServiceClick = (service: Service) => {
         const params = new URLSearchParams({

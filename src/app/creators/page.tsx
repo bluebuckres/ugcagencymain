@@ -159,7 +159,7 @@ const HowToApply = () => {
                 <Reveal>
                     <h2 className="font-display text-3xl md:text-5xl tracking-tight leading-[1.1] text-[--color-ink] mb-16 text-center">How to Apply — Step by Step</h2>
                 </Reveal>
-                
+
                 <div className="relative border-l border-[--color-border] ml-4 md:ml-8 space-y-12">
                     {steps.map((step, idx) => (
                         <Reveal key={idx} delay={idx * 100}>
@@ -173,12 +173,12 @@ const HowToApply = () => {
                         </Reveal>
                     ))}
                 </div>
-                
+
                 <Reveal delay={600}>
                     <div className="mt-16 bg-[--color-cream] p-6 md:p-8 rounded-2xl border border-[--color-border] flex gap-4">
                         <div className="text-[--color-tan] mt-0.5"><WarningCircle size={24} weight="regular" /></div>
                         <p className="font-sans text-sm text-[--color-ink] leading-relaxed">
-                            <strong className="block mb-1">Incomplete profiles are not reviewed.</strong> 
+                            <strong className="block mb-1">Incomplete profiles are not reviewed.</strong>
                             Fill everything. A complete profile is the single biggest factor in getting matched to briefs faster.
                         </p>
                     </div>
@@ -305,15 +305,15 @@ const CreatorRules = () => (
                     ))}
                 </div>
             </div>
-            
+
             <div className="mt-12 bg-[--color-cream] p-8 rounded-2xl border border-[--color-border]">
-                 <h3 className="font-mono text-xs uppercase tracking-widest text-[--color-muted] mb-4">Revision Policy</h3>
-                 <ul className="space-y-3 font-sans text-sm text-[--color-ink] leading-relaxed">
-                     <li>• Each brief includes up to <strong>2 revision rounds</strong>.</li>
-                     <li>• Revisions needed because you didn&apos;t follow the brief = your responsibility.</li>
-                     <li>• Revisions because the brand changed their mind = paid separately.</li>
-                     <li>• A pattern of low-quality submissions will affect your rating.</li>
-                 </ul>
+                <h3 className="font-mono text-xs uppercase tracking-widest text-[--color-muted] mb-4">Revision Policy</h3>
+                <ul className="space-y-3 font-sans text-sm text-[--color-ink] leading-relaxed">
+                    <li>• Each brief includes up to <strong>2 revision rounds</strong>.</li>
+                    <li>• Revisions needed because you didn&apos;t follow the brief = your responsibility.</li>
+                    <li>• Revisions because the brand changed their mind = paid separately.</li>
+                    <li>• A pattern of low-quality submissions will affect your rating.</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -372,10 +372,10 @@ const CommunitySection = () => (
                     All approved creators get access to our private WhatsApp group where we share new brief alerts, tips to improve your rate, direct support, and payment updates.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-                     <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#20bd5a] transition-colors shadow-sm cursor-pointer inline-flex items-center justify-center gap-2">
+                    <a href="https://chat.whatsapp.com/IZxyjlqTfxR6Nt0wURBjEH" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#20bd5a] transition-colors shadow-sm cursor-pointer inline-flex items-center justify-center gap-2">
                         <ChatCircleText size={20} weight="fill" /> WhatsApp Community <span className="font-sans font-light opacity-80 pl-1">→</span>
-                     </a>
-                     <p className="font-sans text-xs text-[--color-muted] mt-4 sm:mt-0 sm:self-center italic">(Profile approval required)</p>
+                    </a>
+                    <p className="font-sans text-xs text-[--color-muted] mt-4 sm:mt-0 sm:self-center italic">(Profile approval required)</p>
                 </div>
             </Reveal>
 
@@ -452,7 +452,7 @@ export default function CreatorsPage() {
                             <Reveal delay={300}>
                                 <div className="flex items-center gap-4">
                                     <Button href="https://app.makeugc.in/sign-up" variant="primary">
-                                        Apply now <span className="ml-2 font-sans font-light cursor-pointer">→</span>
+                                        Get Paid to Create <span className="ml-2 font-sans font-light cursor-pointer">→</span>
                                     </Button>
                                     <span className="font-mono text-xs uppercase tracking-widest text-[--color-muted] hidden sm:block">app.makeugc.in/sign-up</span>
                                 </div>
