@@ -72,7 +72,7 @@ export function StatsBar() {
     ];
 
     // Wait, let's update grid cols if there's 5. 
-    // They asked for: 1,200+ Vetted Creators, 1000+ Campaigns Live, 500+ Brands, 48 hrs Avg. Delivery, 4.8 Brand Rating
+    // They asked for: 1,200+ Vetted Creators, 1000+ Campaigns Live, 500+ Brands, 72 hrs Avg. Delivery, 4.8 Brand Rating
     // That's 5 items. We should map over all 5 and change grid-cols to 5.
 
     return (

@@ -52,7 +52,7 @@ export default function Footer() {
                         </div>
                         <div className="space-y-2">
                             <p className="font-sans font-semibold text-[10px] uppercase tracking-widest text-[--color-ink]">Creators</p>
-                            <Link href="/creators" className="block font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">Join Network</Link>
+                            <Link href="/creators" className="block font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">Join as a Creator</Link>
                             <Link href="/how-it-works" className="block font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">How It Works</Link>
                             <Link href="/creators#faq" className="block font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">Creator FAQ</Link>
                             <Link href="#" className="block font-sans text-xs text-[--color-muted] hover:text-[--color-tan] transition-standard">Guidelines</Link>
@@ -114,7 +114,7 @@ export default function Footer() {
                         <div className="space-y-4">
                             <h4 className="font-sans font-medium text-[--color-ink] text-sm">For Creators</h4>
                             <ul className="space-y-3">
-                                <li><Link href="/creators" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">Join Network</Link></li>
+                                <li><Link href="/creators" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">Join as a Creator</Link></li>
                                 <li><Link href="/how-it-works" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">How It Works</Link></li>
                                 <li><Link href="/creators#faq" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">Creator FAQ</Link></li>
                                 <li><Link href="#" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">Guidelines</Link></li>

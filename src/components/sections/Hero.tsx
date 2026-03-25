@@ -49,7 +49,7 @@ export function Hero() {
                             <span className="hidden sm:inline">·</span>
                             <span>1,200+ Vetted Creators</span>
                             <span className="hidden sm:inline">·</span>
-                            <span>Delivered in 48 Hrs</span>
+                            <span>Delivered in 72 hrs</span>
                         </div>
                     </div>
 

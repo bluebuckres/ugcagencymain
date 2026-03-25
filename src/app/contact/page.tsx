@@ -150,7 +150,7 @@ export default function ContactPage() {
                     <div className="hidden md:block w-px h-12 bg-[--color-border]" />
                     <Reveal delay={100}>
                         <div>
-                            <div className="font-display text-3xl md:text-4xl text-[--color-ink]">48 hrs</div>
+                            <div className="font-display text-3xl md:text-4xl text-[--color-ink]">72 hrs</div>
                             <div className="font-sans text-sm text-[--color-muted] mt-1">Average delivery</div>
                         </div>
                     </Reveal>
