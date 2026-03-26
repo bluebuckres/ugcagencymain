@@ -265,7 +265,8 @@ export default function Navbar() {
                         />
                     </Link>
 
-                    {/* Middle Section: Location and Service Search */}
+                    {/* Middle Section: Location and Service Search (Hidden for now) */}
+                    {false && (
                     <div className="hidden lg:flex items-center flex-grow max-w-3xl mx-8 relative">
                         {/* Location Selector */}
                         <div className="relative z-50">
@@ -332,6 +333,7 @@ export default function Navbar() {
                             )}
                         </div>
                     </div>
+                    )}
 
                     {/* Right Section: Profile & Universal Menu */}
                     <div className="flex items-center gap-2 md:gap-4 z-50">
@@ -354,7 +356,8 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Mobile Search & Location */}
+                {/* Mobile Search & Location (Hidden for now) */}
+                {false && (
                 <div className="lg:hidden w-full px-4 pb-3 pt-2">
                     <div className="flex items-center w-full shadow-sm rounded-xl">
                         <button
@@ -409,6 +412,7 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
+                )}
             </header>
 
             {/* Universal Drawer (Mobile & Desktop) */}
