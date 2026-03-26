@@ -25,8 +25,8 @@ export default function Home() {
       availableLanguage: ["English", "Hindi"],
     },
     sameAs: [
-      "https://www.linkedin.com/company/makeugc",
-      "https://www.instagram.com/makeugc.in",
+      "https://in.linkedin.com/company/makeugc-in",
+      "https://www.instagram.com/makeugc.in/",
       "https://twitter.com/makeugcin",
     ],
   };

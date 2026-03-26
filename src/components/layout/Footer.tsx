@@ -20,10 +20,10 @@ export default function Footer() {
                             </p>
                         </div>
                         <div className="flex gap-3 items-center shrink-0 pt-0.5">
-                            <a href="https://linkedin.com/company/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
+                            <a href="https://in.linkedin.com/company/makeugc-in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
                                 <LinkedinLogo size={20} />
                             </a>
-                            <a href="https://instagram.com/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
+                            <a href="https://www.instagram.com/makeugc.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
                                 <InstagramLogo size={20} />
                             </a>
                             <a href="https://x.com/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="X" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
@@ -129,10 +129,10 @@ export default function Footer() {
                                 <li><Link href="/careers" className="font-sans text-sm text-[--color-muted] hover:text-[--color-tan] transition-standard">Careers</Link></li>
                             </ul>
                             <div className="pt-4 flex gap-3 items-center">
-                                <a href="https://linkedin.com/company/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
+                                <a href="https://in.linkedin.com/company/makeugc-in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
                                     <LinkedinLogo size={22} />
                                 </a>
-                                <a href="https://instagram.com/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
+                                <a href="https://www.instagram.com/makeugc.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">
                                     <InstagramLogo size={22} />
                                 </a>
                                 <a href="https://x.com/makeugc_in" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="text-[--color-sage] hover:text-[--color-tan] transition-standard">

@@ -40,7 +40,7 @@ export function Hero() {
                                 Start a Project <span className="ml-2 font-sans font-light">→</span>
                             </Button>
                             <Button href="/creators" variant="secondary">
-                                Browse Creators <span className="ml-1 font-sans font-light">↗</span>
+                                Creators <span className="ml-1 font-sans font-light">↗</span>
                             </Button>
                         </div>
 
