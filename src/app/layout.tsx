@@ -60,11 +60,20 @@ export const metadata: Metadata = {
     siteName: "MakeUGC",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "https://www.makeugc.in/ugc-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MakeUGC Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MakeUGC — Performance UGC for Brands",
     description: "Scroll-stopping video ads for Meta, Instagram & YouTube.",
+    images: ["https://www.makeugc.in/ugc-logo.jpg"],
   },
   manifest: "/manifest.json",
   icons: {
